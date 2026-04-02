@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Conversation Intelligence — Results</title>
+  <style>
+    :root {
+      --bg: #f6f7f9;
+      --card: #fff;
+      --text: #1a1a1a;
+      --muted: #5c6370;
+      --accent: #1e3a5f;
+      --border: #e2e5eb;
+    }
+    * { box-sizing: border-box; }
+    body {
+      font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.5;
+      margin: 0;
+      padding: 2rem;
+      max-width: 960px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    h1 {
+      font-size: 1.5rem;
+      margin: 0 0 0.25rem 0;
+      color: var(--accent);
+    }
+    .subtitle { color: var(--muted); font-size: 0.95rem; margin-bottom: 1.5rem; }
+    .meta { font-size: 0.85rem; color: var(--muted); margin-bottom: 2rem; }
+    section {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1.25rem 1.5rem;
+      margin-bottom: 1.5rem;
+      page-break-inside: avoid;
+    }
+    section h2 {
+      font-size: 1.05rem;
+      margin: 0 0 1rem 0;
+      padding-bottom: 0.5rem;
+      border-bottom: 2px solid var(--accent);
+      color: var(--accent);
+    }
+    .metrics {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+      gap: 0.75rem;
+      margin-bottom: 1.25rem;
+    }
+    .metric {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 0.75rem;
+      text-align: center;
+    }
+    .metric .val { font-size: 1.35rem; font-weight: 700; color: var(--accent); }
+    .metric .lbl { font-size: 0.75rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.03em; }
+    .exec {
+      white-space: pre-wrap;
+      font-size: 0.95rem;
+      color: #333;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.88rem;
+    }
+    th, td {
+      border: 1px solid var(--border);
+      padding: 0.5rem 0.65rem;
+      text-align: left;
+    }
+    th {
+      background: #eef1f6;
+      font-weight: 600;
+      color: var(--accent);
+    }
+    tr:nth-child(even) { background: #fafbfc; }
+    .num { text-align: right; }
+    .small { font-size: 0.82rem; }
+    .mono { font-family: ui-monospace, monospace; font-size: 0.85rem; }
+    .stage {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin-bottom: 1rem;
+    }
+    .stage h3 { margin: 0 0 0.35rem 0; font-size: 0.95rem; }
+    .stage .tech { font-size: 0.82rem; color: var(--muted); }
+    ul.decisions { margin: 0; padding-left: 1.2rem; }
+    ul.decisions li { margin-bottom: 0.5rem; }
+    footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-top: 2rem;
+    }
+    @media print {
+      body { background: #fff; padding: 1rem; }
+      section { box-shadow: none; page-break-inside: avoid; }
+      .metrics { break-inside: avoid; }
+    }
+  </style>
+</head>
+<body>
+  <h1>Conversation Intelligence Pipeline — Automated Analysis Report</h1>
+  <p class="subtitle">300 conversations across 3 e-commerce brands<br/>
+  Four-stage pipeline: ingest, LLM-as-judge evaluation (structured JSON), semantic clustering (UMAP + HDBSCAN), aggregate &amp; executive summary.</p>
+  <p class="meta">Generated: 2026-04-02T14:28:20.416768</p>
+
+  <section>
+    <h2>At a glance</h2>
+    <div class="metrics">
+      <div class="metric"><div class="val">300</div><div class="lbl">Conversations</div></div>
+      <div class="metric"><div class="val">3</div><div class="lbl">Issue clusters</div></div>
+      <div class="metric"><div class="val">1</div><div class="lbl">Failed evaluations</div></div>
+      <div class="metric"><div class="val">2.2</div><div class="lbl">Avg score (1–5)</div></div>
+      <div class="metric"><div class="val">99.7%</div><div class="lbl">Eval success rate</div></div>
+    </div>
+    <h2 style="border:none;padding:0;margin-top:0">Executive summary</h2>
+    <div class="exec">The most important finding this week is that our AI assistant is severely broken, particularly with cross-brand contamination, leading to an overall average accuracy score of just 1.62 across 300 conversations. The most pressing issues include a high hallucination rate of 82% for Sri Sri Tattva and 86% for Blue Tea. Out of the total conversations, only 8% resulted in successful issue resolution, indicating a fundamental problem with our AI&#x27;s ability to assist users effectively.
+
+Ranking the brands from best to worst, Blue Nectar leads with an average score of 3.56 and a resolution rate of 66%, but it still suffers from significant issues related to cross-brand confusion. Following it is Sri Sri Tattva with a score of 1.62, a resolution rate of 9%, and similar cross-brand confusion issues. Last is Blue Tea, which scores 1.42 with an 8% resolution rate, predominantly facing the same cross-brand confusion problem as its peers.
+
+The top three issue clusters are as follows: Firstly, &quot;Cross-brand Confusion in Product Recommendations&quot; has a total count of 612, making it the most critical area of concern, accounting for approximately 85% of all failures. This includes examples such as the assistant erroneously directing a Blue Tea customer to Sri Sri Tattva products. Second, &quot;Improve Order Tracking Assistance,&quot; with 36 instances, indicates that users struggle to receive timely and accurate information regarding their orders. Lastly, &quot;Improve Product Recommendation Engagement,&quot; with 28 counts, highlights how the assistant fails to optimize product suggestions, affecting user satisfaction and engagement.
+
+The team must immediately fix the brand routing logic in the assistant configuration for Blue Tea and Sri Sri Tattva, as this single change could potentially resolve up to 85% of all failures related to cross-brand contamination. Implementing this fix will greatly enhance user experience and trust in our AI assistant.</div>
+  </section>
+
+  <section>
+    <h2>Brand performance</h2>
+    <table>
+      <thead><tr><th>Brand</th><th>Overall score</th><th>Resolution</th><th>Hallucination</th><th>Frustration</th><th>Cross-brand</th><th>Factual accuracy</th><th>Add-to-cart</th></tr></thead>
+      <tbody><tr><td><strong>Blue Nectar</strong></td><td>3.56 / 5.0</td><td>66%</td><td>13%</td><td>27%</td><td>3.96 / 5.0</td><td>4.37 / 5.0</td><td>2%</td></tr><tr><td><strong>Sri Sri Tattva</strong></td><td>1.62 / 5.0</td><td>9%</td><td>82%</td><td>10%</td><td>1.53 / 5.0</td><td>2.65 / 5.0</td><td>3%</td></tr><tr><td><strong>Blue Tea</strong></td><td>1.42 / 5.0</td><td>8%</td><td>86%</td><td>16%</td><td>1.20 / 5.0</td><td>2.41 / 5.0</td><td>8%</td></tr></tbody>
+    </table>
+  </section>
+
+  <section>
+    <h2>Discovered issue clusters</h2>
+    <p class="small" style="margin-top:0;color:var(--muted)">Themes from embedded failure signals + HDBSCAN; labels merged conservatively (embedding similarity + LLM pass).</p>
+    <table>
+      <thead>
+        <tr><th>Cluster</th><th>Count</th><th>Severity avg</th><th>Brands affected</th></tr>
+      </thead>
+      <tbody><tr><td>Cross-brand Confusion in Product Recommendations</td><td class='num'>612</td><td class='num'>1.64</td><td class='small'>BT: 257 | SST: 236 | BN: 119</td></tr><tr><td>Improve Order Tracking Assistance</td><td class='num'>36</td><td class='num'>3.43</td><td class='small'>BN: 28 | SST: 4 | BT: 4</td></tr><tr><td>Improve Product Recommendation Engagement</td><td class='num'>28</td><td class='num'>3.95</td><td class='small'>BN: 18 | SST: 6 | BT: 4</td></tr></tbody>
+    </table>
+  </section>
+
+  <section>
+    <h2>Worst conversations (sample)</h2>
+    <table>
+      <thead>
+        <tr><th>Conversation</th><th>Brand</th><th>Score</th><th>Primary failure</th></tr>
+      </thead>
+      <tbody><tr><td class='mono'>69c502e516…</td><td>Blue Nectar</td><td class='num'>1.0</td><td>Conversation has no messages, making it impossible to evaluate any quality dimensions.</td></tr><tr><td class='mono'>69c4e2ec16…</td><td>Blue Nectar</td><td class='num'>1.0</td><td>The assistant did not respond to the user&#x27;s query, resulting in no assistance provided.</td></tr><tr><td class='mono'>69c4988280…</td><td>Blue Nectar</td><td class='num'>1.0</td><td>Assistant provided links to products from Blue Tea while the brand in question is Blue Nectar, indicating severe cross-brand contamination.</td></tr><tr><td class='mono'>69c504de06…</td><td>Sri Sri Tattva</td><td class='num'>1.0</td><td>Assistant provided information about promotions from Blue Nectar instead of Sri Sri Tattva, leading to brand contamination.</td></tr><tr><td class='mono'>69c5014b06…</td><td>Sri Sri Tattva</td><td class='num'>1.0</td><td>The assistant provided product information that was relevant to Blue Nectar instead of Sri Sri Tattva, resulting in cross-brand contamination.</td></tr><tr><td class='mono'>69c4ff2206…</td><td>Sri Sri Tattva</td><td class='num'>1.0</td><td>Conversation referenced a product from Blue Nectar instead of Sri Sri Tattva, leading to a total failure in resolution.</td></tr><tr><td class='mono'>69c4f04606…</td><td>Sri Sri Tattva</td><td class='num'>1.0</td><td>Assistant provided cancellation instructions for a different brand, failing to address the user&#x27;s request properly.</td></tr><tr><td class='mono'>69c4eeee06…</td><td>Sri Sri Tattva</td><td class='num'>1.0</td><td>The assistant provided a link to a product from Blue Nectar, misrepresenting the product as belonging to Sri Sri Tattva.</td></tr><tr><td class='mono'>69c4e94206…</td><td>Sri Sri Tattva</td><td class='num'>1.0</td><td>The conversation contained links and references to products from Blue Nectar, not Sri Sri Tattva.</td></tr><tr><td class='mono'>69c4dfd806…</td><td>Sri Sri Tattva</td><td class='num'>1.0</td><td>Assistant provided information not relevant to the brand Sri Sri Tattva and gave a link to a different brand, Blue Nectar.</td></tr><tr><td class='mono'>69c4dd7006…</td><td>Sri Sri Tattva</td><td class='num'>1.0</td><td>The assistant provided incorrect brand representation by linking to a Blue Nectar product page instead of the correct Sri Sri Tattva product.</td></tr><tr><td class='mono'>69c4da9006…</td><td>Sri Sri Tattva</td><td class='num'>1.0</td><td>The assistant referenced a product and provided a link to a competing brand, Blue Nectar, leading to significant cross-brand contamination.</td></tr></tbody>
+    </table>
+  </section>
+
+  <section>
+    <h2>System architecture</h2>
+    <div class="stage">
+      <h3>Stage 1 — Ingest &amp; normalize</h3>
+      <p>Parse conversations and messages; split agent text at <code>End of stream</code> for visible reply vs product JSON (hallucination ground truth).</p>
+      <p class="tech">Python · Pydantic · JSON or MongoDB (optional)</p>
+    </div>
+    <div class="stage">
+      <h3>Stage 2 — LLM-as-judge</h3>
+      <p>Per-conversation structured evaluation (Azure OpenAI, <code>json_schema</code> response format): factual accuracy, hallucination vs catalog, policy, tone, satisfaction signals, cross-brand check.</p>
+      <p class="tech">Azure OpenAI · asyncio · concurrent evaluations</p>
+    </div>
+    <div class="stage">
+      <h3>Stage 3 — Embed, cluster, discover</h3>
+      <p>Embed failure text with sentence-transformers; UMAP reduction; HDBSCAN; LLM cluster labels; conservative merge + overlap pass.</p>
+      <p class="tech">sentence-transformers · UMAP · HDBSCAN</p>
+    </div>
+    <div class="stage">
+      <h3>Stage 4 — Aggregate &amp; report</h3>
+      <p>Brand rollups, top failure clusters per brand, executive summary LLM pass; JSON + Markdown + Streamlit dashboard + this HTML page.</p>
+      <p class="tech">pandas · Streamlit · Plotly</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>Key design decisions</h2>
+    <ul class="decisions">
+      <li><strong>Structured JSON output</strong> — Guarantees parseable evaluations vs free-form JSON that can break downstream aggregation.</li>
+      <li><strong>HDBSCAN over k-means</strong> — No fixed cluster count; handles noise points suitable for exploratory issue discovery.</li>
+      <li><strong>Local embeddings</strong> — <code>all-MiniLM-L6-v2</code> on CPU: fast, no extra API cost for clustering text.</li>
+      <li><strong>Thin orchestration</strong> — Direct SDK calls where a single structured completion suffices; avoids heavy framework overhead for this pipeline.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Scalability &amp; path to production (sketch)</h2>
+    <table>
+      <thead>
+        <tr><th>Dimension</th><th>MVP (this project)</th><th>Production direction</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Data</td><td>JSON files or Mongo toggle</td><td>Incremental sync; warehouse / API</td></tr>
+        <tr><td>Processing</td><td><code>python pipeline.py</code></td><td>Queue workers; scheduled or near-real-time</td></tr>
+        <tr><td>Evaluation</td><td>Full LLM pass per conversation + disk cache</td><td>Triage heuristics + LLM on subset; batch API at scale</td></tr>
+        <tr><td>Dashboard</td><td>Streamlit local</td><td>Auth, roles, alerts on threshold breaches</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <footer>
+    Conversation Intelligence Pipeline — shareable results page (open in browser; Print → Save as PDF if needed).
+  </footer>
+</body>
+</html>

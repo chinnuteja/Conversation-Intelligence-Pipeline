@@ -1,0 +1,1327 @@
+[
+  {
+    "conversation_id": "69c502e516599deb6989b0da",
+    "brand_name": "Blue Nectar",
+    "widget_id": "680a0a8b70a26f7a0e24eedd",
+    "overall_score": 1.0,
+    "resolution_achieved": false,
+    "dimensions": {
+      "factual_accuracy": {
+        "score": 1.0,
+        "issues": [
+          "No interactions occurred to evaluate factual accuracy."
+        ],
+        "evidence": []
+      },
+      "hallucination_check": {
+        "score": 1.0,
+        "issues": [
+          "No interactions occurred to assess hallucinations."
+        ],
+        "evidence": []
+      },
+      "policy_compliance": {
+        "score": 1.0,
+        "issues": [
+          "No policy violations can be evaluated with zero exchanges."
+        ],
+        "evidence": []
+      },
+      "tone_and_helpfulness": {
+        "score": 1.0,
+        "issues": [
+          "No tone or helpfulness can be assessed without agent responses."
+        ],
+        "evidence": []
+      },
+      "user_satisfaction_signals": {
+        "score": 1.0,
+        "issues": [
+          "No user satisfaction signals as there were no messages from the user."
+        ],
+        "evidence": []
+      },
+      "cross_brand_check": {
+        "score": 1.0,
+        "issues": [
+          "No cross-brand contamination could be identified with zero interactions."
+        ],
+        "evidence": []
+      }
+    },
+    "failure_descriptions": [
+      "Conversation has no messages, making it impossible to evaluate any quality dimensions."
+    ],
+    "user_intent": "User attempted to ask a question using a quick action click.",
+    "frustration_signals": [],
+    "open_observations": "The lack of any interaction means that no evaluation can be made; consider ensuring that the AI assistant captures user messages effectively.",
+    "has_add_to_cart": false,
+    "event_counts": {
+      "quick_action_click": 1
+    }
+  },
+  {
+    "conversation_id": "69c4e2ec16599deb6989ae92",
+    "brand_name": "Blue Nectar",
+    "widget_id": "680a0a8b70a26f7a0e24eedd",
+    "overall_score": 1.0,
+    "resolution_achieved": false,
+    "dimensions": {
+      "factual_accuracy": {
+        "score": 1.0,
+        "issues": [
+          "No factual information was provided by the assistant."
+        ],
+        "evidence": []
+      },
+      "hallucination_check": {
+        "score": 1.0,
+        "issues": [
+          "No hallucinations present as no content was provided."
+        ],
+        "evidence": []
+      },
+      "policy_compliance": {
+        "score": 1.0,
+        "issues": [
+          "No content to evaluate for policy compliance."
+        ],
+        "evidence": []
+      },
+      "tone_and_helpfulness": {
+        "score": 1.0,
+        "issues": [
+          "No tone or helpfulness evaluation possible due to absence of content."
+        ],
+        "evidence": []
+      },
+      "user_satisfaction_signals": {
+        "score": 1.0,
+        "issues": [
+          "User received no assistance, leading to potential dissatisfaction."
+        ],
+        "evidence": []
+      },
+      "cross_brand_check": {
+        "score": 1.0,
+        "issues": [
+          "No cross-brand contamination detected as there was no content."
+        ],
+        "evidence": []
+      }
+    },
+    "failure_descriptions": [
+      "The assistant did not respond to the user's query, resulting in no assistance provided."
+    ],
+    "user_intent": "The user intended to ask a question but received no response.",
+    "frustration_signals": [],
+    "open_observations": "This indicates a failure in the assistant's handling of quick action requests, as no dialogue was initiated.",
+    "has_add_to_cart": false,
+    "event_counts": {
+      "quick_action_click": 1
+    }
+  },
+  {
+    "conversation_id": "69c4988280af262206b8858d",
+    "brand_name": "Blue Nectar",
+    "widget_id": "680a0a8b70a26f7a0e24eedd",
+    "overall_score": 1.0,
+    "resolution_achieved": false,
+    "dimensions": {
+      "factual_accuracy": {
+        "score": 5.0,
+        "issues": [],
+        "evidence": []
+      },
+      "hallucination_check": {
+        "score": 1.0,
+        "issues": [
+          "Assistant linked to products from Blue Tea instead of Blue Nectar."
+        ],
+        "evidence": [
+          "[**Butterfly Pea Flower Herbal Tea - 100 Teabags**](https://bluetea.co.in/products/butterfly-pea-flower-tea-100-teabags?variant=42531073065003)"
+        ]
+      },
+      "policy_compliance": {
+        "score": 5.0,
+        "issues": [],
+        "evidence": []
+      },
+      "tone_and_helpfulness": {
+        "score": 3.0,
+        "issues": [
+          "Response lacked direct help; repeating the product recommendations without understanding user intent."
+        ],
+        "evidence": [
+          "I'd love to help you find the perfect herbal infusion! To recommend what suits you best, could you share what you're looking for?"
+        ]
+      },
+      "user_satisfaction_signals": {
+        "score": 2.0,
+        "issues": [
+          "User's need was not addressed, potentially leading to frustration."
+        ],
+        "evidence": [
+          "Which team should I take"
+        ]
+      },
+      "cross_brand_check": {
+        "score": 1.0,
+        "issues": [
+          "Content served from the incorrect brand (Blue Tea instead of Blue Nectar)."
+        ],
+        "evidence": [
+          "[**Spearmint Herbal Tea - 200g**](https://bluetea.co.in/products/spearmint-tea-200g?variant=41721472122923)"
+        ]
+      }
+    },
+    "failure_descriptions": [
+      "Assistant provided links to products from Blue Tea while the brand in question is Blue Nectar, indicating severe cross-brand contamination.",
+      "User's request was repeated with no helpful direction provided."
+    ],
+    "user_intent": "The user is trying to find a suitable tea product to choose from.",
+    "frustration_signals": [
+      "User repeated the same question without receiving varied or useful responses."
+    ],
+    "open_observations": "The assistant's lack of understanding of user context and intent could indicate a gap in natural language processing capabilities, possibly leading to user dissatisfaction.",
+    "has_add_to_cart": false,
+    "event_counts": {}
+  },
+  {
+    "conversation_id": "69c504de06069052a32e9497",
+    "brand_name": "Sri Sri Tattva",
+    "widget_id": "6983153e1497a62e8542a0ad",
+    "overall_score": 1.0,
+    "resolution_achieved": false,
+    "dimensions": {
+      "factual_accuracy": {
+        "score": 1.0,
+        "issues": [
+          "Assistant provided promotional details for Blue Nectar instead of Sri Sri Tattva."
+        ],
+        "evidence": [
+          "Welcome! The **Buy 1 Get 1 Free Sale** is currently live at Blue Nectar."
+        ]
+      },
+      "hallucination_check": {
+        "score": 1.0,
+        "issues": [
+          "Assistant described an ongoing offer that appears to be inaccurate based on known promotions."
+        ],
+        "evidence": [
+          "Simply add any two products to your cart, and the lowest-priced item will be free."
+        ]
+      },
+      "policy_compliance": {
+        "score": 1.0,
+        "issues": [
+          "The assistant referenced a competing brand (Blue Nectar) instead of Sri Sri Tattva."
+        ],
+        "evidence": [
+          "For more details, visit [Blue Nectar](https://www.bluenectar.co.in)."
+        ]
+      },
+      "tone_and_helpfulness": {
+        "score": 3.0,
+        "issues": [
+          "The tone is welcoming, but the actual help provided is irrelevant due to the brand mismatch."
+        ],
+        "evidence": [
+          "Enjoy your Ayurvedic self-care journey!"
+        ]
+      },
+      "user_satisfaction_signals": {
+        "score": 2.0,
+        "issues": [
+          "User asked the same question multiple times without getting a relevant answer."
+        ],
+        "evidence": [
+          "Want to go for buy one get one offers"
+        ]
+      },
+      "cross_brand_check": {
+        "score": 1.0,
+        "issues": [
+          "Assistant directed the user to a different brand's website, leading to cross-brand contamination."
+        ],
+        "evidence": [
+          "Simply add any two products to your cart, and the lowest-priced item will be free."
+        ]
+      }
+    },
+    "failure_descriptions": [
+      "Assistant provided information about promotions from Blue Nectar instead of Sri Sri Tattva, leading to brand contamination.",
+      "User's request for information on Buy One Get One offers for Sri Sri Tattva products was not addressed."
+    ],
+    "user_intent": "The user wanted information about Buy One Get One offers for Sri Sri Tattva products.",
+    "frustration_signals": [
+      "User repeated the same question twice with no change in relevant response."
+    ],
+    "open_observations": "This conversation highlights a potential issue where the assistant fails to filter brand-specific promotions, which could confuse customers about ongoing offers.",
+    "has_add_to_cart": false,
+    "event_counts": {}
+  },
+  {
+    "conversation_id": "69c5014b06069052a32e2c4d",
+    "brand_name": "Sri Sri Tattva",
+    "widget_id": "6983153e1497a62e8542a0ad",
+    "overall_score": 1.0,
+    "resolution_achieved": false,
+    "dimensions": {
+      "factual_accuracy": {
+        "score": 2.0,
+        "issues": [
+          "Assistant provided information for the Kumkumadi product from a different brand."
+        ],
+        "evidence": [
+          "You can expect to see visible skin brightening results from the Kumkumadi Face Serum and Oil with Saffron for Glowing Skin (26 herbs) in about 28 days, as clinically proven."
+        ]
+      },
+      "hallucination_check": {
+        "score": 1.0,
+        "issues": [
+          "Assistant incorrectly referenced Blue Nectar products instead of Sri Sri Tattva."
+        ],
+        "evidence": [
+          "Shubhr Niacinamide Under Eye Serum for Dark Circles (17 Herbs, 30ml) which is from Blue Nectar is being mentioned."
+        ]
+      },
+      "policy_compliance": {
+        "score": 1.0,
+        "issues": [
+          "Conversation included links to products from a competing brand, which is against policy."
+        ],
+        "evidence": [
+          "https://www.bluenectar.co.in/products/kumkumadi-face-oil-serum-for-glowing-skin"
+        ]
+      },
+      "tone_and_helpfulness": {
+        "score": 3.0,
+        "issues": [
+          "The answers provided were clear and informative but related to an incorrect brand."
+        ],
+        "evidence": [
+          "You can expect to see visible skin brightening results from the Kumkumadi Face Serum..."
+        ]
+      },
+      "user_satisfaction_signals": {
+        "score": 1.0,
+        "issues": [
+          "User repeated their question without receiving relevant assistance."
+        ],
+        "evidence": [
+          "User: 'How long does it take to see results?'"
+        ]
+      },
+      "cross_brand_check": {
+        "score": 1.0,
+        "issues": [
+          "Assistant linked to content from a different brand (Blue Nectar)."
+        ],
+        "evidence": [
+          "Kumkumadi Face Serum and Oil with Saffron for Glowing Skin (Blue Nectar)"
+        ]
+      }
+    },
+    "failure_descriptions": [
+      "The assistant provided product information that was relevant to Blue Nectar instead of Sri Sri Tattva, resulting in cross-brand contamination.",
+      "The user's query about the Kumkumadi oil was answered with incorrect contextual information and products."
+    ],
+    "user_intent": "The user wanted to know how long it takes to see results from the Kumkumadi face oil and later the under-eye serum.",
+    "frustration_signals": [],
+    "open_observations": "There seems to be a systematic issue as the assistant is providing links and information for products from a competing brand, indicating a need for stricter content filtering or training focus on brands.",
+    "has_add_to_cart": false,
+    "event_counts": {}
+  },
+  {
+    "conversation_id": "69c4ff2206069052a32de8b7",
+    "brand_name": "Sri Sri Tattva",
+    "widget_id": "6983153e1497a62e8542a0ad",
+    "overall_score": 1.0,
+    "resolution_achieved": false,
+    "dimensions": {
+      "factual_accuracy": {
+        "score": 2.0,
+        "issues": [
+          "Assistant provides a link that is not from Sri Sri Tattva.",
+          "Key ingredient claims are relevant, but misleading since the product belongs to a different brand."
+        ],
+        "evidence": [
+          "The Kumkumadi Face Serum and Oil with Saffron for Glowing Skin (26 herbs) is crafted using a blend of 26 potent Ayurvedic herbs. Its key ingredients include pure saffron (Kumkuma), renowned for brightening and collagen-boosting properties."
+        ]
+      },
+      "hallucination_check": {
+        "score": 1.0,
+        "issues": [
+          "Assistant provides wrong brand information for the Kumkumadi product.",
+          "References to Blue Nectar instead of Sri Sri Tattva are incorrect and misleading."
+        ],
+        "evidence": [
+          "crafted using a blend of 26 potent Ayurvedic herbs. Its key ingredients include pure saffron (Kumkuma)."
+        ]
+      },
+      "policy_compliance": {
+        "score": 3.0,
+        "issues": [
+          "Link provided is to a different brand's website.",
+          "No apparent policy violations beyond the potential issue of linking incorrectly."
+        ],
+        "evidence": [
+          "The link to [bluenectar.co.in](https://www.bluenectar.co.in/products/kumkumadi-face-oil-serum-for-glowing-skin) for a product that should be from Sri Sri Tattva."
+        ]
+      },
+      "tone_and_helpfulness": {
+        "score": 4.0,
+        "issues": [],
+        "evidence": []
+      },
+      "user_satisfaction_signals": {
+        "score": 1.0,
+        "issues": [
+          "User's query not answered satisfactorily due to incorrect information leading to confusion."
+        ],
+        "evidence": [
+          "What are the key ingredients?"
+        ]
+      },
+      "cross_brand_check": {
+        "score": 1.0,
+        "issues": [
+          "Assistant provides information and a link for a product from Blue Nectar instead of Sri Sri Tattva.",
+          "Complete misinformation regarding the brand affiliation."
+        ],
+        "evidence": [
+          "Kumkumadi Face Serum and Oil with Saffron for Glowing Skin (26 herbs) is linked to a Blue Nectar product instead of Sri Sri Tattva."
+        ]
+      }
+    },
+    "failure_descriptions": [
+      "Conversation referenced a product from Blue Nectar instead of Sri Sri Tattva, leading to a total failure in resolution.",
+      "Assistant did not provide an accurate link or any correct brand-related information."
+    ],
+    "user_intent": "The user was trying to get information on the key ingredients of the Kumkumadi Face Serum from Sri Sri Tattva.",
+    "frustration_signals": [],
+    "open_observations": "The inclusion of incorrect brand information and links indicates a need to improve knowledge of brand affiliations and product contexts.",
+    "has_add_to_cart": false,
+    "event_counts": {}
+  },
+  {
+    "conversation_id": "69c4f04606069052a32b946a",
+    "brand_name": "Sri Sri Tattva",
+    "widget_id": "6983153e1497a62e8542a0ad",
+    "overall_score": 1.0,
+    "resolution_achieved": false,
+    "dimensions": {
+      "factual_accuracy": {
+        "score": 1.0,
+        "issues": [
+          "The assistant provided a contact for a different brand (Blue Nectar) instead of Sri Sri Tattva."
+        ],
+        "evidence": [
+          "Please email cs@bluenectar.co.in"
+        ]
+      },
+      "hallucination_check": {
+        "score": 1.0,
+        "issues": [
+          "The assistant should have referenced Sri Sri Tattva's cancellation policy, but instead mentioned a process for Blue Nectar."
+        ],
+        "evidence": [
+          "To cancel your order, please email cs@bluenectar.co.in"
+        ]
+      },
+      "policy_compliance": {
+        "score": 1.0,
+        "issues": [
+          "The response did not comply with the expected brand protocol for handling cancellations for Sri Sri Tattva."
+        ],
+        "evidence": [
+          "To cancel your order, please email cs@bluenectar.co.in"
+        ]
+      },
+      "tone_and_helpfulness": {
+        "score": 2.0,
+        "issues": [
+          "The tone was adequate, but the information provided was directed to the wrong brand, making it ultimately unhelpful."
+        ],
+        "evidence": [
+          "Thank you for reaching out. To cancel your order..."
+        ]
+      },
+      "user_satisfaction_signals": {
+        "score": 1.0,
+        "issues": [
+          "User's need to cancel the order was not visibly addressed."
+        ],
+        "evidence": [
+          "I want to cancel my order"
+        ]
+      },
+      "cross_brand_check": {
+        "score": 1.0,
+        "issues": [
+          "Provided contact details for Blue Nectar, which is a different brand."
+        ],
+        "evidence": [
+          "email cs@bluenectar.co.in"
+        ]
+      }
+    },
+    "failure_descriptions": [
+      "Assistant provided cancellation instructions for a different brand, failing to address the user's request properly.",
+      "Resolution for the user's need to cancel their order was not present as per the correct brand protocol."
+    ],
+    "user_intent": "The user wanted to cancel their order with Sri Sri Tattva.",
+    "frustration_signals": [],
+    "open_observations": "This conversation indicates a critical issue in brand handling and response consistency, which can significantly impact user trust and satisfaction.",
+    "has_add_to_cart": false,
+    "event_counts": {}
+  },
+  {
+    "conversation_id": "69c4eeee06069052a32b514b",
+    "brand_name": "Sri Sri Tattva",
+    "widget_id": "6983153e1497a62e8542a0ad",
+    "overall_score": 1.0,
+    "resolution_achieved": false,
+    "dimensions": {
+      "factual_accuracy": {
+        "score": 2.0,
+        "issues": [
+          "The product was incorrectly linked from a different brand's website."
+        ],
+        "evidence": [
+          "The link provided leads to Blue Nectar's product page, not Sri Sri Tattva's."
+        ]
+      },
+      "hallucination_check": {
+        "score": 1.0,
+        "issues": [
+          "The assistant mentioned the brand name 'Blue Nectar' instead of 'Sri Sri Tattva'."
+        ],
+        "evidence": [
+          "Link to 'https://www.bluenectar.co.in/products/anti-aging-cream-for-men-best-mens-face-cream-for-wrinkles-dark-spots'."
+        ]
+      },
+      "policy_compliance": {
+        "score": 1.0,
+        "issues": [
+          "The assistant provided content from the wrong brand."
+        ],
+        "evidence": [
+          "The product link is to Blue Nectar, not Sri Sri Tattva."
+        ]
+      },
+      "tone_and_helpfulness": {
+        "score": 3.0,
+        "issues": [
+          "While the response was generally informative, it failed in brand accuracy."
+        ],
+        "evidence": [
+          "'Yes, [**Shubhr Anti Aging Face Cream for Men...'"
+        ]
+      },
+      "user_satisfaction_signals": {
+        "score": 3.0,
+        "issues": [
+          "No clear signs of user frustration due to lack of resolution."
+        ],
+        "evidence": [
+          "The user asked a straightforward question."
+        ]
+      },
+      "cross_brand_check": {
+        "score": 1.0,
+        "issues": [
+          "The assistant linked to a product from a different brand."
+        ],
+        "evidence": [
+          "Link to Blue Nectar's product page."
+        ]
+      }
+    },
+    "failure_descriptions": [
+      "The assistant provided a link to a product from Blue Nectar, misrepresenting the product as belonging to Sri Sri Tattva.",
+      "User's query regarding product suitability for dry skin went unresolved due to incorrect brand context."
+    ],
+    "user_intent": "The user wanted to know if a specific product is suitable for men's dry skin.",
+    "frustration_signals": [],
+    "open_observations": "The assistant needs to ensure it links to the correct brand and checks its product information accuracy before responding.",
+    "has_add_to_cart": false,
+    "event_counts": {}
+  },
+  {
+    "conversation_id": "69c4e94206069052a32a5c52",
+    "brand_name": "Sri Sri Tattva",
+    "widget_id": "6983153e1497a62e8542a0ad",
+    "overall_score": 1.0,
+    "resolution_achieved": false,
+    "dimensions": {
+      "factual_accuracy": {
+        "score": 1.0,
+        "issues": [
+          "The assistant provided links to products that are not from the Sri Sri Tattva brand."
+        ],
+        "evidence": [
+          "The link for anti-aging cream directs to blue nectar website, indicating a wrong brand."
+        ]
+      },
+      "hallucination_check": {
+        "score": 1.0,
+        "issues": [
+          "The assistant claimed benefits and products that do not belong to the brand Sri Sri Tattva."
+        ],
+        "evidence": [
+          "'Shubhr Anti Aging Face Cream for Men with Saffron & Sandalwood (14 Herbs, 50g)' and 'Kumkumadi Night Cream for Men for Ultra Hydration & Skin Repair (16 Herbs, 50g)' not listed under Sri Sri Tattva."
+        ]
+      },
+      "policy_compliance": {
+        "score": 5.0,
+        "issues": [],
+        "evidence": []
+      },
+      "tone_and_helpfulness": {
+        "score": 5.0,
+        "issues": [],
+        "evidence": []
+      },
+      "user_satisfaction_signals": {
+        "score": 1.0,
+        "issues": [
+          "User's query was not satisfied, showing a lack of usable information."
+        ],
+        "evidence": [
+          "User inquired about product suitability and usage but links directed to different brand."
+        ]
+      },
+      "cross_brand_check": {
+        "score": 1.0,
+        "issues": [
+          "Assistant provided links to Blue Nectar products instead of Sri Sri Tattva."
+        ],
+        "evidence": [
+          "'Shubhr Anti Aging Face Cream for Men with Saffron & Sandalwood (14 Herbs, 50g)' is from Blue Nectar."
+        ]
+      }
+    },
+    "failure_descriptions": [
+      "The conversation contained links and references to products from Blue Nectar, not Sri Sri Tattva.",
+      "User's need for information about daily skincare routine was not met as the assistant linked to incorrect product sources."
+    ],
+    "user_intent": "The user was seeking guidance on using specific skincare products in their daily routine.",
+    "frustration_signals": [],
+    "open_observations": "This conversation indicates a significant risk of cross-brand association which could confuse customers and affect brand perception. Immediate attention is required to correct such discrepancies in product linking.",
+    "has_add_to_cart": false,
+    "event_counts": {}
+  },
+  {
+    "conversation_id": "69c4dfd806069052a3293ba1",
+    "brand_name": "Sri Sri Tattva",
+    "widget_id": "6983153e1497a62e8542a0ad",
+    "overall_score": 1.0,
+    "resolution_achieved": false,
+    "dimensions": {
+      "factual_accuracy": {
+        "score": 2.0,
+        "issues": [
+          "The assistant mentions a product that does not belong to Sri Sri Tattva."
+        ],
+        "evidence": [
+          "With regular use of Mouth Oil for Oil Pulling with Coconut & Mint for Oral care and Bad Breath (9 herbs)..."
+        ]
+      },
+      "hallucination_check": {
+        "score": 1.0,
+        "issues": [
+          "Assistant references the product as belonging to the Sri Sri Tattva brand, but the provided URL links to Blue Nectar, leading to brand confusion."
+        ],
+        "evidence": [
+          "many people notice fresher breath and a cleaner mouth within the first week."
+        ]
+      },
+      "policy_compliance": {
+        "score": 1.0,
+        "issues": [
+          "The assistant provided an incorrect product URL that directs to a different brand."
+        ],
+        "evidence": [
+          "Mouth Oil for Oil Pulling with Coconut & Mint for Oral care and Bad Breath (9 herbs)](https://www.bluenectar.co.in/products/mouth-pulling-oil)"
+        ]
+      },
+      "tone_and_helpfulness": {
+        "score": 3.0,
+        "issues": [],
+        "evidence": []
+      },
+      "user_satisfaction_signals": {
+        "score": 1.0,
+        "issues": [
+          "User's question was not addressed properly leading to dissatisfaction."
+        ],
+        "evidence": [
+          "Customer: How long does it take to see results?"
+        ]
+      },
+      "cross_brand_check": {
+        "score": 1.0,
+        "issues": [
+          "Assistant incorrectly references a product that belongs to Blue Nectar instead of Sri Sri Tattva."
+        ],
+        "evidence": [
+          "Mouth Oil for Oil Pulling with Coconut & Mint for Oral care and Bad Breath (9 herbs)"
+        ]
+      }
+    },
+    "failure_descriptions": [
+      "Assistant provided information not relevant to the brand Sri Sri Tattva and gave a link to a different brand, Blue Nectar.",
+      "User's inquiry about results was not addressed in the context of the correct product."
+    ],
+    "user_intent": "The user wanted to know how long it takes to see results from using the Mouth Oil.",
+    "frustration_signals": [],
+    "open_observations": "The response indicated a critical issue with product mapping; the assistant should ensure it references only products from the appropriate brand.",
+    "has_add_to_cart": false,
+    "event_counts": {}
+  },
+  {
+    "conversation_id": "69c4dd7006069052a328e14b",
+    "brand_name": "Sri Sri Tattva",
+    "widget_id": "6983153e1497a62e8542a0ad",
+    "overall_score": 1.0,
+    "resolution_achieved": false,
+    "dimensions": {
+      "factual_accuracy": {
+        "score": 2.0,
+        "issues": [
+          "Incorrect mention of ingredients as some herbs mentioned are not confirmed in the product data."
+        ],
+        "evidence": [
+          "The assistant claims 'Herbal blend (9 potent herbs)' without specifying and this is not aligned with the provided complete ingredients."
+        ]
+      },
+      "hallucination_check": {
+        "score": 1.0,
+        "issues": [
+          "The assistant links to the wrong brand's product page, misrepresenting the product affiliation with Sri Sri Tattva."
+        ],
+        "evidence": [
+          "The link provided leads to Blue Nectar instead of a Sri Sri Tattva product."
+        ]
+      },
+      "policy_compliance": {
+        "score": 2.0,
+        "issues": [
+          "Violation of clear brand representation as it directed towards another brand."
+        ],
+        "evidence": [
+          "Linking to Blue Nectar's product page when discussing Sri Sri Tattva's product."
+        ]
+      },
+      "tone_and_helpfulness": {
+        "score": 3.0,
+        "issues": [],
+        "evidence": []
+      },
+      "user_satisfaction_signals": {
+        "score": 2.0,
+        "issues": [
+          "User did not receive the intended product information correctly."
+        ],
+        "evidence": []
+      },
+      "cross_brand_check": {
+        "score": 1.0,
+        "issues": [
+          "Provided content/breadcrumbs from Blue Nectar which may confuse users about brand identity."
+        ],
+        "evidence": [
+          "The link provided directs to a Blue Nectar product rather than Sri Sri Tattva."
+        ]
+      }
+    },
+    "failure_descriptions": [
+      "The assistant provided incorrect brand representation by linking to a Blue Nectar product page instead of the correct Sri Sri Tattva product.",
+      "Incorrect details regarding the composition of the product could mislead the user."
+    ],
+    "user_intent": "User wanted to know the key ingredients of the Mouth Pulling Oil from Sri Sri Tattva.",
+    "frustration_signals": [],
+    "open_observations": "The conversation showcases significant brand confusion which indicates a potential issue with assistant training or product database management.",
+    "has_add_to_cart": false,
+    "event_counts": {}
+  },
+  {
+    "conversation_id": "69c4da9006069052a3287bc8",
+    "brand_name": "Sri Sri Tattva",
+    "widget_id": "6983153e1497a62e8542a0ad",
+    "overall_score": 1.0,
+    "resolution_achieved": false,
+    "dimensions": {
+      "factual_accuracy": {
+        "score": 2.0,
+        "issues": [
+          "The assistant provides information regarding the mouth oil but does not clearly confirm the product's actual name and features accurately."
+        ],
+        "evidence": [
+          "'Mouth Oil for Oil Pulling with Coconut & Mint for Oral care and Bad Breath (9 herbs)' mixed with linking to Blue Nectar."
+        ]
+      },
+      "hallucination_check": {
+        "score": 1.0,
+        "issues": [
+          "The URL links to a product on the Blue Nectar website, which is incorrect for a Sri Sri Tattva customer."
+        ],
+        "evidence": [
+          "'many people notice fresher breath and a cleaner mouth within the first week. For deeper benefits'"
+        ]
+      },
+      "policy_compliance": {
+        "score": 5.0,
+        "issues": [],
+        "evidence": []
+      },
+      "tone_and_helpfulness": {
+        "score": 3.0,
+        "issues": [
+          "The response is somewhat helpful, but misdirected towards a different brand."
+        ],
+        "evidence": [
+          "'Ayurvedic rituals like oil pulling work best when integrated into your daily routine.'"
+        ]
+      },
+      "user_satisfaction_signals": {
+        "score": 2.0,
+        "issues": [],
+        "evidence": []
+      },
+      "cross_brand_check": {
+        "score": 1.0,
+        "issues": [
+          "The assistant provided a link to a Blue Nectar product instead of Sri Sri Tattva."
+        ],
+        "evidence": [
+          "'many people notice fresher breath... [Mouth Oil for Oil Pulling with Coconut & Mint for Oral care and Bad Breath (9 herbs)](https://www.bluenectar.co.in/products/mouth-pulling-oil)'"
+        ]
+      }
+    },
+    "failure_descriptions": [
+      "The assistant referenced a product and provided a link to a competing brand, Blue Nectar, leading to significant cross-brand contamination.",
+      "The response did not address the user's specific inquiry about the mouth-pulling oil from Sri Sri Tattva."
+    ],
+    "user_intent": "The user wanted to know how long it generally takes to see results from using the mouth-pulling oil.",
+    "frustration_signals": [],
+    "open_observations": "The assistant's content source was entirely misdirected to a different brand, indicating a potential systemic issue in brand association.",
+    "has_add_to_cart": false,
+    "event_counts": {}
+  },
+  {
+    "conversation_id": "69c4cd4706069052a326a002",
+    "brand_name": "Sri Sri Tattva",
+    "widget_id": "6983153e1497a62e8542a0ad",
+    "overall_score": 1.0,
+    "resolution_achieved": false,
+    "dimensions": {
+      "factual_accuracy": {
+        "score": 2.0,
+        "issues": [
+          "The assistant provided information about a product that is not from Sri Sri Tattva."
+        ],
+        "evidence": [
+          "Shubhr Men's Vitamin E Face Cream is from Blue Nectar, not Sri Sri Tattva."
+        ]
+      },
+      "hallucination_check": {
+        "score": 1.0,
+        "issues": [
+          "The assistant incorrectly states product results without confirming if they pertain to the correct brand's product."
+        ],
+        "evidence": [
+          "Visible reduction in fine lines, improved skin texture, and enhanced firmness typically become noticeable after 4\u20136 weeks."
+        ]
+      },
+      "policy_compliance": {
+        "score": 1.0,
+        "issues": [
+          "The assistant linked to a product from a different brand (Blue Nectar) instead of Sri Sri Tattva."
+        ],
+        "evidence": [
+          "With regular use of Shubhr Men's Vitamin E Face Cream... (linking to Blue Nectar)"
+        ]
+      },
+      "tone_and_helpfulness": {
+        "score": 3.0,
+        "issues": [
+          "The assistant's tone was informative but misleading due to the wrong brand reference."
+        ],
+        "evidence": [
+          "With regular use of Shubhr Men's Vitamin E Face Cream..."
+        ]
+      },
+      "user_satisfaction_signals": {
+        "score": 3.0,
+        "issues": [
+          "No direct frustration signals from the user, but the resolution was inadequate."
+        ],
+        "evidence": [
+          "How long does it take to see results?"
+        ]
+      },
+      "cross_brand_check": {
+        "score": 1.0,
+        "issues": [
+          "Assistant includes information from Blue Nectar, which is a different brand."
+        ],
+        "evidence": [
+          "[Shubhr Men's Vitamin E Face Cream for Skin firming...](https://www.bluenectar.co.in/products/anti-aging-cream-anti-wrinkle-men-face-cream-vitamin-e-face-moisturizer)"
+        ]
+      }
+    },
+    "failure_descriptions": [
+      "The assistant provided information related to Blue Nectar instead of Sri Sri Tattva, indicating a significant cross-brand issue and leading to user confusion.",
+      "User's request regarding the timeframe for results was not fulfilled as the assistant referenced the wrong product."
+    ],
+    "user_intent": "The user wanted to know how long it would take to see results from a specific anti-aging product.",
+    "frustration_signals": [],
+    "open_observations": "The assistant's response indicates a critical issue of misattributing products to incorrect brands, which can lead to significant user dissatisfaction and trust issues.",
+    "has_add_to_cart": false,
+    "event_counts": {}
+  },
+  {
+    "conversation_id": "69c4c25806069052a3254a02",
+    "brand_name": "Sri Sri Tattva",
+    "widget_id": "6983153e1497a62e8542a0ad",
+    "overall_score": 1.0,
+    "resolution_achieved": false,
+    "dimensions": {
+      "factual_accuracy": {
+        "score": 1.0,
+        "issues": [
+          "Assistant provided accurate product details but from a different brand."
+        ],
+        "evidence": [
+          "Agent links to Batana & Almond Hair Serum, which is from Blue Nectar, not Sri Sri Tattva."
+        ]
+      },
+      "hallucination_check": {
+        "score": 1.0,
+        "issues": [
+          "Assistant claims to provide products from Sri Sri Tattva but actually lists products from Blue Nectar."
+        ],
+        "evidence": [
+          "For nourishing and revitalizing your hair, here are some Ayurvedic serum options."
+        ]
+      },
+      "policy_compliance": {
+        "score": 1.0,
+        "issues": [
+          "Assistant incorrectly represents products from another brand, violating brand-specific policy."
+        ],
+        "evidence": [
+          "Here are some Ayurvedic serum options."
+        ]
+      },
+      "tone_and_helpfulness": {
+        "score": 2.0,
+        "issues": [
+          "Tone is neutral but does not serve the user as the brand link is incorrect."
+        ],
+        "evidence": [
+          "For nourishing and effective hair care, here are some Ayurvedic hair serum options."
+        ]
+      },
+      "user_satisfaction_signals": {
+        "score": 1.0,
+        "issues": [
+          "User likely left unsatisfied due to the lack of relevant brand products."
+        ],
+        "evidence": [
+          "Hair serum"
+        ]
+      },
+      "cross_brand_check": {
+        "score": 1.0,
+        "issues": [
+          "Products provided by the assistant are from Blue Nectar, not Sri Sri Tattva."
+        ],
+        "evidence": [
+          "Batana & Almond Hair Serum for Hair Growth (17 herbs, 50ml)"
+        ]
+      }
+    },
+    "failure_descriptions": [
+      "Assistant incorrectly lists products from Blue Nectar for a query directed towards Sri Sri Tattva, resulting in product confusion.",
+      "User's need for specific Sri Sri Tattva products was never addressed."
+    ],
+    "user_intent": "The user is trying to find hair serum products from Sri Sri Tattva.",
+    "frustration_signals": [],
+    "open_observations": "This highlights a potential integration issue where the assistant serves products from the wrong brand, potentially confusing users.",
+    "has_add_to_cart": false,
+    "event_counts": {}
+  },
+  {
+    "conversation_id": "69c435e2b69374161c51dbfa",
+    "brand_name": "Sri Sri Tattva",
+    "widget_id": "6983153e1497a62e8542a0ad",
+    "overall_score": 1.0,
+    "resolution_achieved": false,
+    "dimensions": {
+      "factual_accuracy": {
+        "score": 5.0,
+        "issues": [],
+        "evidence": []
+      },
+      "hallucination_check": {
+        "score": 1.0,
+        "issues": [
+          "Assistant provided product links to Blue Nectar products instead of Sri Sri Tattva."
+        ],
+        "evidence": [
+          "Links provided lead to Blue Nectar: https://www.bluenectar.co.in/products/niacinamide-under-eye-serum-dark-circles?variant=44088663048437"
+        ]
+      },
+      "policy_compliance": {
+        "score": 5.0,
+        "issues": [],
+        "evidence": []
+      },
+      "tone_and_helpfulness": {
+        "score": 4.0,
+        "issues": [],
+        "evidence": []
+      },
+      "user_satisfaction_signals": {
+        "score": 5.0,
+        "issues": [],
+        "evidence": []
+      },
+      "cross_brand_check": {
+        "score": 1.0,
+        "issues": [
+          "Content from wrong brand detected in response."
+        ],
+        "evidence": [
+          "The assistant suggested products from Blue Nectar instead of Sri Sri Tattva."
+        ]
+      }
+    },
+    "failure_descriptions": [
+      "Assistant provided links to products from the wrong brand (Blue Nectar) instead of Sri Sri Tattva."
+    ],
+    "user_intent": "The user was likely looking for solutions for dark circles using products from Sri Sri Tattva.",
+    "frustration_signals": [],
+    "open_observations": "This represents a critical cross-brand contamination issue that could confuse users.",
+    "has_add_to_cart": false,
+    "event_counts": {}
+  },
+  {
+    "conversation_id": "69c3f169b69374161c4c47ef",
+    "brand_name": "Sri Sri Tattva",
+    "widget_id": "6983153e1497a62e8542a0ad",
+    "overall_score": 1.0,
+    "resolution_achieved": false,
+    "dimensions": {
+      "factual_accuracy": {
+        "score": 5.0,
+        "issues": [],
+        "evidence": []
+      },
+      "hallucination_check": {
+        "score": 1.0,
+        "issues": [
+          "Assistant incorrectly references a Blue Nectar product instead of Sri Sri Tattva."
+        ],
+        "evidence": [
+          "The key ingredients in Women's Shata Dhauta Ghrita Face Cream for Skin Glow & Firming (19 herbs, 50g) are linked to a Blue Nectar product URL."
+        ]
+      },
+      "policy_compliance": {
+        "score": 5.0,
+        "issues": [],
+        "evidence": []
+      },
+      "tone_and_helpfulness": {
+        "score": 5.0,
+        "issues": [],
+        "evidence": []
+      },
+      "user_satisfaction_signals": {
+        "score": 5.0,
+        "issues": [],
+        "evidence": []
+      },
+      "cross_brand_check": {
+        "score": 1.0,
+        "issues": [
+          "Assistant served content from the wrong brand (Blue Nectar) instead of Sri Sri Tattva."
+        ],
+        "evidence": [
+          "The link provided in the assistant's response directs to a Blue Nectar product page."
+        ]
+      }
+    },
+    "failure_descriptions": [
+      "Assistant incorrectly provided product information for Blue Nectar instead of Sri Sri Tattva, leading to a failure in addressing the user's needs."
+    ],
+    "user_intent": "The user was trying to learn about the key ingredients in a specific product from Sri Sri Tattva.",
+    "frustration_signals": [],
+    "open_observations": "There seems to be a significant issue with the assistant's ability to correctly identify products associated with Sri Sri Tattva, as it provided a linking error to a competitor's product.",
+    "has_add_to_cart": false,
+    "event_counts": {}
+  },
+  {
+    "conversation_id": "69c3e6a5b69374161c4a9fcc",
+    "brand_name": "Sri Sri Tattva",
+    "widget_id": "6983153e1497a62e8542a0ad",
+    "overall_score": 1.0,
+    "resolution_achieved": false,
+    "dimensions": {
+      "factual_accuracy": {
+        "score": 1.0,
+        "issues": [
+          "Product claims incorrectly mentioned a product from the wrong brand."
+        ],
+        "evidence": [
+          "The assistant referred to the product 'Mouth Oil for Oil Pulling with Coconut & Mint' from the Blue Nectar website."
+        ]
+      },
+      "hallucination_check": {
+        "score": 1.0,
+        "issues": [
+          "Claims made in the conversation do not correspond to the actual product data for the Sri Sri Tattva brand."
+        ],
+        "evidence": [
+          "The assistant's response included a link to a Blue Nectar product, which is a different brand."
+        ]
+      },
+      "policy_compliance": {
+        "score": 5.0,
+        "issues": [],
+        "evidence": []
+      },
+      "tone_and_helpfulness": {
+        "score": 3.0,
+        "issues": [
+          "The tone was generally helpful, but the information provided was inaccurate due to incorrect product attribution."
+        ],
+        "evidence": [
+          "The assistant's tone was informative, indicating timeframes for results."
+        ]
+      },
+      "user_satisfaction_signals": {
+        "score": 1.0,
+        "issues": [
+          "User's intent was not met as they received incorrect brand information."
+        ],
+        "evidence": [
+          "User's question about results was not addressed with relevant information."
+        ]
+      },
+      "cross_brand_check": {
+        "score": 1.0,
+        "issues": [
+          "Assistant provided content from a different brand, leading to severe brand confusion."
+        ],
+        "evidence": [
+          "Assistant linked to a product on 'bluenectar.co.in', not 'srisritattva.com'."
+        ]
+      }
+    },
+    "failure_descriptions": [
+      "The assistant delivered incorrect product information by linking to a competitor brand, causing user confusion.",
+      "The user's question about results was not addressed appropriately with relevant brand content."
+    ],
+    "user_intent": "The user wanted to know how long it takes to see results from an oil pulling product by Sri Sri Tattva.",
+    "frustration_signals": [],
+    "open_observations": "This highlights a critical issue with the assistant's ability to accurately reference products from the correct brand, which could lead to significant customer dissatisfaction.",
+    "has_add_to_cart": false,
+    "event_counts": {
+      "link_click": 1
+    }
+  },
+  {
+    "conversation_id": "69c3db81b69374161c498197",
+    "brand_name": "Sri Sri Tattva",
+    "widget_id": "6983153e1497a62e8542a0ad",
+    "overall_score": 1.0,
+    "resolution_achieved": false,
+    "dimensions": {
+      "factual_accuracy": {
+        "score": 1.0,
+        "issues": [
+          "The assistant provided incorrect information as it cited a discount policy for Blue Nectar, not Sri Sri Tattva."
+        ],
+        "evidence": [
+          "For the most accurate and updated shipping rates or any ongoing offers, please proceed to checkout or contact Blue Nectar\u2019s support at cs@bluenectar.co.in."
+        ]
+      },
+      "hallucination_check": {
+        "score": 1.0,
+        "issues": [
+          "The assistant referenced a product from Blue Nectar instead of the requested Sri Sri Tattva products."
+        ],
+        "evidence": [
+          "Currently, there\u2019s no specific mention of a shipping discount to Canada for [Kumkumadi Face Serum and Oil with Saffron for Glowing Skin (26 herbs)](https://www.bluenectar.co.in/products/kumkumadi-face-oil-serum-for-glowing-skin)."
+        ]
+      },
+      "policy_compliance": {
+        "score": 1.0,
+        "issues": [
+          "The assistant failed to comply with brand guidelines by directing the user to Blue Nectar's support."
+        ],
+        "evidence": [
+          "please proceed to checkout or contact Blue Nectar\u2019s support at cs@bluenectar.co.in."
+        ]
+      },
+      "tone_and_helpfulness": {
+        "score": 2.0,
+        "issues": [
+          "The response lacks useful information regarding shipping options that are relevant to Sri Sri Tattva."
+        ],
+        "evidence": [
+          "Currently, there\u2019s no specific mention of a shipping discount to Canada..."
+        ]
+      },
+      "user_satisfaction_signals": {
+        "score": 1.0,
+        "issues": [
+          "User's intent was not met as they were looking for specific information on shipping discounts."
+        ],
+        "evidence": [
+          "Any discount on shipping to Canada"
+        ]
+      },
+      "cross_brand_check": {
+        "score": 1.0,
+        "issues": [
+          "The assistant referenced a competitor brand (Blue Nectar) completely instead of focusing on Sri Sri Tattva."
+        ],
+        "evidence": [
+          "please proceed to checkout or contact Blue Nectar\u2019s support"
+        ]
+      }
+    },
+    "failure_descriptions": [
+      "Assistant provided information pertaining to the wrong brand (Blue Nectar) instead of Sri Sri Tattva, leading to confusion and a lack of resolution."
+    ],
+    "user_intent": "The user wanted to know if there were any shipping discounts available for orders to Canada from Sri Sri Tattva.",
+    "frustration_signals": [],
+    "open_observations": "There is a significant issue with the assistant pulling context from a different brand's website, suggesting a potential integration failure or miscommunication within the system.",
+    "has_add_to_cart": false,
+    "event_counts": {}
+  },
+  {
+    "conversation_id": "69c3c6c1b69374161c46e45e",
+    "brand_name": "Sri Sri Tattva",
+    "widget_id": "6983153e1497a62e8542a0ad",
+    "overall_score": 1.0,
+    "resolution_achieved": false,
+    "dimensions": {
+      "factual_accuracy": {
+        "score": 5.0,
+        "issues": [],
+        "evidence": []
+      },
+      "hallucination_check": {
+        "score": 1.0,
+        "issues": [
+          "Assistant provided product data for 'Anti Frizz Shampoo for Dry & Frizzy Hair' but linked to a URL for a product from Blue Nectar, which is a different brand."
+        ],
+        "evidence": [
+          "The key ingredients in [**Anti Frizz Shampoo for Dry & Frizzy Hair | Plant Based Biotin Shampoo (15 herbs, 200ml)**](https://www.bluenectar.co.in/products/green-tea-hair-shampoo-for-dry-frizzy-hair) are:"
+        ]
+      },
+      "policy_compliance": {
+        "score": 5.0,
+        "issues": [],
+        "evidence": []
+      },
+      "tone_and_helpfulness": {
+        "score": 5.0,
+        "issues": [],
+        "evidence": []
+      },
+      "user_satisfaction_signals": {
+        "score": 5.0,
+        "issues": [],
+        "evidence": []
+      },
+      "cross_brand_check": {
+        "score": 1.0,
+        "issues": [
+          "Assistant linked to a product from Blue Nectar instead of Sri Sri Tattva."
+        ],
+        "evidence": [
+          "The key ingredients in [**Anti Frizz Shampoo for Dry & Frizzy Hair | Plant Based Biotin Shampoo (15 herbs, 200ml)**](https://www.bluenectar.co.in/products/green-tea-hair-shampoo-for-dry-frizzy-hair) are:"
+        ]
+      }
+    },
+    "failure_descriptions": [
+      "Assistant linked to the wrong brand (Blue Nectar) instead of providing accurate information for Sri Sri Tattva."
+    ],
+    "user_intent": "The user was trying to learn about the key ingredients in the green tea hair shampoo for dry and frizzy hair.",
+    "frustration_signals": [],
+    "open_observations": "The response showcases a critical flaw in brand identification as it links to a product from an entirely different brand, indicating a cross-brand contamination issue that requires urgent attention.",
+    "has_add_to_cart": false,
+    "event_counts": {}
+  },
+  {
+    "conversation_id": "69c3bc4ab69374161c458a3f",
+    "brand_name": "Sri Sri Tattva",
+    "widget_id": "6983153e1497a62e8542a0ad",
+    "overall_score": 1.0,
+    "resolution_achieved": false,
+    "dimensions": {
+      "factual_accuracy": {
+        "score": 1.0,
+        "issues": [
+          "The contact information provided is for Blue Nectar, not Sri Sri Tattva."
+        ],
+        "evidence": [
+          "You can contact us at +91 9999519750 or email cs@bluenectar.co.in."
+        ]
+      },
+      "hallucination_check": {
+        "score": 5.0,
+        "issues": [],
+        "evidence": []
+      },
+      "policy_compliance": {
+        "score": 5.0,
+        "issues": [],
+        "evidence": []
+      },
+      "tone_and_helpfulness": {
+        "score": 3.0,
+        "issues": [
+          "While the tone was polite, it did not provide the correct brand contact information."
+        ],
+        "evidence": [
+          "Thank you for reaching out. Our team is available for consultations..."
+        ]
+      },
+      "user_satisfaction_signals": {
+        "score": 1.0,
+        "issues": [
+          "The user's request for a phone consultation was not directly addressed."
+        ],
+        "evidence": [
+          "[CUSTOMER]: Hi. I have tried calling for a phone consultation pls"
+        ]
+      },
+      "cross_brand_check": {
+        "score": 1.0,
+        "issues": [
+          "Assistant provided contact details from the wrong brand (Blue Nectar)."
+        ],
+        "evidence": [
+          "email cs@bluenectar.co.in"
+        ]
+      }
+    },
+    "failure_descriptions": [
+      "The assistant provided contact information for Blue Nectar instead of Sri Sri Tattva, leading to incorrect guidance for the user."
+    ],
+    "user_intent": "The user was seeking a phone consultation with Sri Sri Tattva's team.",
+    "frustration_signals": [],
+    "open_observations": "This response indicates a potential issue with brand identity, showing the risk of incorrect data being associated with the AI assistant.",
+    "has_add_to_cart": false,
+    "event_counts": {}
+  }
+]
