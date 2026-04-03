@@ -493,6 +493,16 @@ def classify_eval_theme(ev: dict) -> dict:
     }
 
 
+def is_failed_evaluation(ev: dict) -> bool:
+    """Hide judge/runtime failures from stakeholder-facing review lists."""
+    failure_descriptions = ev.get("failure_descriptions") or []
+    open_observations = (ev.get("open_observations") or "").lower()
+    return any(
+        isinstance(fd, str) and fd.startswith("EVALUATION_ERROR")
+        for fd in failure_descriptions
+    ) or "content management policy" in open_observations
+
+
 filtered_brands = [b for b in report.get("brands", []) if brand_visible(b["brand_name"])]
 theme_filter_active = len(theme_filter) < len(cluster_themes)
 theme_scoped_conversation_ids: set[str] = set()
@@ -772,6 +782,7 @@ with tabs[3]:
     primary_reviews = []
     mixed_reviews = []
     excluded_no_text = 0
+    excluded_failed_eval = 0
     for e in review_pool:
         if not brand_visible(e.get("brand_name", "")):
             continue
@@ -780,12 +791,15 @@ with tabs[3]:
         cid = str(e.get("conversation_id", ""))
         if theme_filter_active and cid not in theme_scoped_conversation_ids:
             continue
+        merged = merge_eval_from_store(cid, e, eval_by_id)
+        if is_failed_evaluation(merged):
+            excluded_failed_eval += 1
+            continue
         transcript = msg_index.get(cid, [])
         has_text_turns = any((m.get("messageType") or "text") == "text" for m in transcript)
         if not has_text_turns:
             excluded_no_text += 1
             continue
-        merged = merge_eval_from_store(cid, e, eval_by_id)
         theme_meta = classify_eval_theme(merged)
         if theme_filter_active and theme_meta["primary_theme"] not in theme_filter:
             mixed_reviews.append((e, theme_meta))
@@ -810,6 +824,10 @@ with tabs[3]:
     if excluded_no_text:
         st.caption(
             f"Excluded {excluded_no_text} event-only / no-text sessions from this review list."
+        )
+    if excluded_failed_eval:
+        st.caption(
+            f"Excluded {excluded_failed_eval} failed evaluations (e.g. judge/content-filter errors) from this review list."
         )
     if not all_evals:
         st.info(
