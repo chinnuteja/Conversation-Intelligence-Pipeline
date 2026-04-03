@@ -349,7 +349,7 @@ st.caption(
     f"{report.get('total_conversations', 0)} conversations analyzed"
 )
 
-tabs = st.tabs(["Overview", "Brand deep-dive", "Clusters", "Worst conversations"])
+tabs = st.tabs(["Overview", "Brand deep-dive", "Clusters", "Conversation review"])
 
 # Filter helpers
 def brand_visible(name: str) -> bool:
@@ -775,9 +775,9 @@ with tabs[2]:
             ids = cluster.get("sample_conversation_ids") or []
             st.write("Sample IDs: " + ", ".join(ids[:5]))
 
-# ── Tab: Worst conversations + transcripts ──
+# ── Tab: Conversation review + transcripts ──
 with tabs[3]:
-    st.subheader("Lowest-scored conversations")
+    st.subheader("Conversation review")
     review_pool = all_evals if all_evals else (report.get("worst_conversations") or [])
     primary_reviews = []
     mixed_reviews = []
