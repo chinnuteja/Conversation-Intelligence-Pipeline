@@ -2,6 +2,18 @@
 
 import logging
 import os
+import sys
+
+
+class _FlushingStreamHandler(logging.StreamHandler):
+    """Flush after every record so IDE / captured terminals show progress immediately."""
+
+    def emit(self, record):
+        super().emit(record)
+        try:
+            self.flush()
+        except OSError:
+            pass
 
 
 def setup_logging(level: str | None = None) -> None:
@@ -11,8 +23,12 @@ def setup_logging(level: str | None = None) -> None:
     if root.handlers:
         root.setLevel(log_level)
         return
-    logging.basicConfig(
-        level=log_level,
-        format="%(asctime)s [%(levelname)s] %(name)s: %(message)s",
-        datefmt="%Y-%m-%d %H:%M:%S",
+    handler = _FlushingStreamHandler(sys.stderr)
+    handler.setFormatter(
+        logging.Formatter(
+            fmt="%(asctime)s [%(levelname)s] %(name)s: %(message)s",
+            datefmt="%Y-%m-%d %H:%M:%S",
+        )
     )
+    root.addHandler(handler)
+    root.setLevel(log_level)

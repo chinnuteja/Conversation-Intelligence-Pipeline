@@ -42,7 +42,9 @@ def test_infer_brand_from_url():
 
 def test_resolve_brand_name_override_and_fallback():
     hints = {"w1": "Inferred Co"}
-    assert resolve_brand_name("680a0a8b70a26f7a0e24eedd", hints) == "Blue Nectar"
+    assert resolve_brand_name("680a0a8b70a26f7a0e24eedd", hints) == "Blue Tea"
+    assert resolve_brand_name("6983153e1497a62e8542a0ad", hints) == "Blue Nectar"
+    assert resolve_brand_name("69a92ad76dcbf2da868e0f9b", hints) == "Sri Sri Tattva"
     assert resolve_brand_name("w1", hints) == "Inferred Co"
     assert resolve_brand_name("unknownid1234567890", {}) == "Brand-unknowni"
 
@@ -87,6 +89,6 @@ def test_build_conversation_threads_minimal(monkeypatch, tmp_path):
     threads = ing.build_conversation_threads()
     assert len(threads) == 1
     assert threads[0].conversation_id == "c1"
-    assert threads[0].brand_name == "Blue Nectar"
+    assert threads[0].brand_name == "Blue Tea"
     assert threads[0].user_message_count == 1
     assert threads[0].agent_message_count == 1

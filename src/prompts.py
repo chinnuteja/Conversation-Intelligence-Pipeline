@@ -19,6 +19,16 @@ CRITICAL RULES:
 4. Look for user frustration signals: repeated questions, "???", ALL CAPS, abrupt abandonment, escalation requests, providing personal info repeatedly.
 5. Score resolution: did the user's actual need get addressed, or did the conversation end without resolution?
 
+DIMENSION SCOPE — read before scoring:
+- factual_accuracy: Score ONLY on claims the assistant made about products, prices, policies, or order facts.
+  A bot that refuses to answer, says "I can't find that," or asks the user to sign in has made NO factual claim.
+  Do NOT reduce this score because the user's need was unmet. Score 5.0 if no false claims were made.
+- hallucination_check: Score ONLY when the assistant stated something that contradicts or is absent from the
+  provided product catalog context. If the assistant said nothing, or said only procedural things (e.g., "please
+  sign in"), there is nothing to hallucinate — score 5.0.
+- tone_and_helpfulness, user_satisfaction_signals, resolution_achieved: THESE are the right places to penalize
+  unhelpful, robotic, stuck, or unresolved interactions.
+
 SCORING GUIDE (1-5 scale):
 - 5: Perfect — accurate, helpful, resolved the need, great tone
 - 4: Good — minor issues but user was served well
@@ -33,12 +43,12 @@ EVALUATOR_OUTPUT_SCHEMA = """{
   "resolution_achieved": <boolean>,
   "dimensions": {
     "factual_accuracy": {
-      "score": <float 1.0-5.0>,
+      "score": <float 1.0-5.0 — rate ONLY on factual claims made; if no claims were made, score 5.0>,
       "issues": ["<specific issue description>"],
       "evidence": ["<exact quote from conversation showing the issue>"]
     },
     "hallucination_check": {
-      "score": <float 1.0-5.0>,
+      "score": <float 1.0-5.0 — rate ONLY on information fabricated vs. product catalog; no response = 5.0>,
       "issues": ["<specific hallucination found — what was claimed vs what product data says>"],
       "evidence": ["<exact quote>"]
     },
@@ -90,6 +100,13 @@ User: "Where is my order?"
 Agent: "To view your order details, please sign in to your account at srisritattva.com/account/login"
 (This conversation is from Blue Tea brand, NOT Sri Sri Tattva)
 Evaluation: {"overall_score": 1.0, "resolution_achieved": false, "failure_descriptions": ["Assistant is stuck in a loop repeating the exact same response", "Assistant links to Sri Sri Tattva login page but this is a Blue Tea customer — cross-brand contamination", "User's order tracking need was never addressed"], "frustration_signals": ["User repeated the same question 3 times with no change in response"], "open_observations": "This appears to be a systemic issue where order tracking queries default to wrong-brand login URLs."}
+
+EXAMPLE 3 — SYSTEM LIMITATION, NOT A FACTUAL ERROR (Score: 2.0):
+User: "Where is my order #117356?"
+Agent: "I'm sorry, I'm unable to locate order #117356. Please check the order number and try again."
+User: "That's definitely my order number."
+Agent: "I'm sorry, I'm unable to locate order #117356. Please check the order number and try again."
+Evaluation: {"overall_score": 2.0, "resolution_achieved": false, "dimensions": {"factual_accuracy": {"score": 5.0, "issues": []}, "hallucination_check": {"score": 5.0, "issues": []}, "tone_and_helpfulness": {"score": 2.0, "issues": ["Bot stuck in loop, never escalated or offered alternative"]}, "user_satisfaction_signals": {"score": 1.0, "issues": ["User repeated same order number twice"]}}, "failure_descriptions": ["Bot repeated the same unhelpful response without escalating or offering alternatives"], "frustration_signals": ["User re-stated order number after initial failure"]}
 """
 
 

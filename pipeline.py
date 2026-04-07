@@ -11,7 +11,16 @@ import asyncio
 import json
 import logging
 import os
+import sys
 import time
+
+# Line-buffer stdio when not a TTY (IDE terminals) so logs and tqdm update sooner.
+for _stream in (sys.stdout, sys.stderr):
+    if hasattr(_stream, "reconfigure"):
+        try:
+            _stream.reconfigure(line_buffering=True)
+        except (OSError, AttributeError):
+            pass
 
 from src.logging_config import setup_logging
 
@@ -77,7 +86,7 @@ async def run_pipeline():
     logger.info("Report: %s/report.json", OUTPUT_DIR)
     logger.info("Results page: %s/results.html", OUTPUT_DIR)
     logger.info("Summary: %s/summary.md", OUTPUT_DIR)
-    logger.info("Dashboard: streamlit run dashboard/app.py")
+    logger.info("Dashboard: python run_dashboard.py")
     logger.info("=" * 60)
     return report
 

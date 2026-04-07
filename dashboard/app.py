@@ -1,7 +1,7 @@
 """
 Streamlit Dashboard — Conversation Intelligence
 
-Run from repo root: streamlit run dashboard/app.py
+Run from repo root: python run_dashboard.py   (or: streamlit run dashboard/app.py)
 """
 
 from __future__ import annotations
@@ -49,8 +49,22 @@ CUSTOM_CSS = """
 st.markdown(CUSTOM_CSS, unsafe_allow_html=True)
 
 
-@st.cache_data
-def load_report():
+def _output_cache_signature() -> tuple[float, float, float]:
+    """When pipeline regenerates outputs, mtimes change and Streamlit reloads fresh JSON."""
+    paths = (
+        OUTPUT_DIR / "report.json",
+        OUTPUT_DIR / "all_evaluations.json",
+        OUTPUT_DIR / "clusters.json",
+    )
+
+    def _mtime(p: Path) -> float:
+        return p.stat().st_mtime if p.is_file() else 0.0
+
+    return (_mtime(paths[0]), _mtime(paths[1]), _mtime(paths[2]))
+
+
+@st.cache_data(show_spinner=False)
+def load_report(_output_sig: tuple[float, float, float]):
     path = OUTPUT_DIR / "report.json"
     if not path.exists():
         st.error(f"Missing {path}. Run `python pipeline.py` first.")
@@ -59,8 +73,8 @@ def load_report():
         return json.load(f)
 
 
-@st.cache_data
-def load_all_evaluations():
+@st.cache_data(show_spinner=False)
+def load_all_evaluations(_output_sig: tuple[float, float, float]):
     path = OUTPUT_DIR / "all_evaluations.json"
     if not path.exists():
         return []
@@ -314,13 +328,18 @@ def render_review_conversation(ev: dict, mixed_note: str | None = None) -> None:
                 st.caption("No local transcript found for this conversation ID.")
 
 
-report = load_report()
-all_evals = load_all_evaluations()
+_output_sig = _output_cache_signature()
+report = load_report(_output_sig)
+all_evals = load_all_evaluations(_output_sig)
 eval_by_id = {str(e.get("conversation_id", "")): e for e in all_evals if e.get("conversation_id")}
 msg_index = load_messages_index()
 
 # ── Sidebar filters ──
 st.sidebar.header("Filters")
+st.sidebar.caption(
+    "Loads latest `output/report.json` + `all_evaluations.json`. "
+    "Restart the app or refresh the page after a new pipeline run."
+)
 brand_names = [b["brand_name"] for b in report.get("brands", [])]
 sel_brands = st.sidebar.multiselect(
     "Brands",
@@ -552,6 +571,7 @@ with tabs[0]:
             avg_all = 0.0
         st.metric("Avg score (filtered brands)", f"{avg_all:.2f}/5.0")
         st.metric("Clusters (filtered)", len(filtered_clusters))
+
     for i, brand in enumerate(filtered_brands[:4]):
         with cols[i + 1] if i + 1 < len(cols) else cols[-1]:
             st.markdown(f"**{brand['brand_name']}**")

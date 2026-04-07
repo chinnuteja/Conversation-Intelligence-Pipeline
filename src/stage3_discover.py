@@ -15,8 +15,9 @@ from collections import Counter
 
 from openai import AsyncAzureOpenAI
 from sklearn.metrics.pairwise import cosine_similarity
-import umap
-import hdbscan
+# Heavy imports moved inside functions to allow logging to start first
+# import umap
+# import hdbscan
 
 from src.config import (
     OAI_BASE_LLM,
@@ -109,6 +110,7 @@ def cluster_signals(embeddings: np.ndarray) -> np.ndarray:
     if n_samples < 5:
         return np.full(n_samples, -1)
 
+    import umap
     reducer = umap.UMAP(
         n_components=n_components,
         n_neighbors=n_neighbors,
@@ -117,6 +119,7 @@ def cluster_signals(embeddings: np.ndarray) -> np.ndarray:
     )
     reduced = reducer.fit_transform(embeddings)
 
+    import hdbscan
     clusterer = hdbscan.HDBSCAN(
         min_cluster_size=HDBSCAN_MIN_CLUSTER_SIZE,
         min_samples=HDBSCAN_MIN_SAMPLES,

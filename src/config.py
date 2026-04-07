@@ -23,9 +23,9 @@ MONGO_DB = os.getenv("MONGO_DB", "helio_intern")
 
 # Optional overrides: widget_id -> display name (takes precedence over URL inference)
 BRAND_MAP = {
-    "680a0a8b70a26f7a0e24eedd": "Blue Nectar",
-    "6983153e1497a62e8542a0ad": "Sri Sri Tattva",
-    "69a92ad76dcbf2da868e0f9b": "Blue Tea",
+    "680a0a8b70a26f7a0e24eedd": "Blue Tea",
+    "6983153e1497a62e8542a0ad": "Blue Nectar",
+    "69a92ad76dcbf2da868e0f9b": "Sri Sri Tattva",
 }
 
 # Heuristic: subdomain or domain fragment -> display name (for auto-discovery)
