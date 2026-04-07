@@ -28,6 +28,7 @@ DIMENSION SCOPE — read before scoring:
   sign in"), there is nothing to hallucinate — score 5.0.
 - tone_and_helpfulness, user_satisfaction_signals, resolution_achieved: THESE are the right places to penalize
   unhelpful, robotic, stuck, or unresolved interactions.
+- ZERO-INTENT / ABANDONED CHATS: If the user only says a greeting (like "Hi", "Hello") or abandons the chat without asking a question, DO NOT penalize the bot. The bot cannot resolve a problem that was never stated. Score `tone_and_helpfulness` and `user_satisfaction_signals` as 5.0 as long as the bot replied with a polite, standard greeting. Set `resolution_achieved` to true.
 
 SCORING GUIDE (1-5 scale):
 - 5: Perfect — accurate, helpful, resolved the need, great tone
@@ -107,6 +108,23 @@ Agent: "I'm sorry, I'm unable to locate order #117356. Please check the order nu
 User: "That's definitely my order number."
 Agent: "I'm sorry, I'm unable to locate order #117356. Please check the order number and try again."
 Evaluation: {"overall_score": 2.0, "resolution_achieved": false, "dimensions": {"factual_accuracy": {"score": 5.0, "issues": []}, "hallucination_check": {"score": 5.0, "issues": []}, "tone_and_helpfulness": {"score": 2.0, "issues": ["Bot stuck in loop, never escalated or offered alternative"]}, "user_satisfaction_signals": {"score": 1.0, "issues": ["User repeated same order number twice"]}}, "failure_descriptions": ["Bot repeated the same unhelpful response without escalating or offering alternatives"], "frustration_signals": ["User re-stated order number after initial failure"]}
+
+EXAMPLE 4 — ABANDONED CHAT (Score: 5.0):
+User: "Hi"
+Agent: "Hello! How can I help you today?"
+(Conversation ends or user just repeats "Hi")
+Evaluation: {
+  "overall_score": 5.0, 
+  "resolution_achieved": true,
+  "dimensions": {
+    "factual_accuracy": {"score": 5.0, "issues": []},
+    "hallucination_check": {"score": 5.0, "issues": []},
+    "tone_and_helpfulness": {"score": 5.0, "issues": []},
+    "user_satisfaction_signals": {"score": 5.0, "issues": []}
+  },
+  "failure_descriptions": [],
+  "frustration_signals": []
+}
 """
 
 

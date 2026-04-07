@@ -1,47 +1,48 @@
 {
-  "generated_at": "2026-04-07T11:38:01.401479",
+  "generated_at": "2026-04-07T12:12:48.429769",
   "total_conversations": 300,
   "brands": [
-    {
-      "brand_name": "Blue Tea",
-      "widget_id": "680a0a8b70a26f7a0e24eedd",
-      "conversation_count": 100,
-      "avg_overall_score": 4.21,
-      "resolution_rate": 0.78,
-      "hallucination_rate": 0.0,
-      "frustration_rate": 0.23,
-      "add_to_cart_rate": 0.02,
-      "top_failure_clusters": [
-        "Lack of Empathy in Responses"
-      ],
-      "dimension_scores": {
-        "factual_accuracy": 4.91,
-        "hallucination_check": 5.0,
-        "policy_compliance": 4.92,
-        "tone_and_helpfulness": 4.16,
-        "user_satisfaction_signals": 4.11,
-        "cross_brand_check": 5.0
-      }
-    },
     {
       "brand_name": "Sri Sri Tattva",
       "widget_id": "69a92ad76dcbf2da868e0f9b",
       "conversation_count": 100,
-      "avg_overall_score": 4.24,
-      "resolution_rate": 0.78,
-      "hallucination_rate": 0.0,
-      "frustration_rate": 0.15,
-      "add_to_cart_rate": 0.08,
+      "avg_overall_score": 4.28,
+      "resolution_rate": 0.793,
+      "hallucination_rate": 0.011,
+      "frustration_rate": 0.185,
+      "add_to_cart_rate": 0.087,
       "top_failure_clusters": [
-        "Lack of Empathy in Responses",
-        "Ayurvedic Product Information Accuracy"
+        "Inadequate User Query Resolution",
+        "Enhancing Ayurvedic Consultation Recommendations",
+        "Improve Proactive Suggestions"
       ],
       "dimension_scores": {
-        "factual_accuracy": 4.97,
+        "factual_accuracy": 4.98,
+        "hallucination_check": 4.96,
+        "policy_compliance": 4.95,
+        "tone_and_helpfulness": 4.18,
+        "user_satisfaction_signals": 4.29,
+        "cross_brand_check": 5.0
+      }
+    },
+    {
+      "brand_name": "Blue Tea",
+      "widget_id": "680a0a8b70a26f7a0e24eedd",
+      "conversation_count": 100,
+      "avg_overall_score": 4.36,
+      "resolution_rate": 0.809,
+      "hallucination_rate": 0.0,
+      "frustration_rate": 0.245,
+      "add_to_cart_rate": 0.011,
+      "top_failure_clusters": [
+        "Inadequate User Query Resolution"
+      ],
+      "dimension_scores": {
+        "factual_accuracy": 4.91,
         "hallucination_check": 5.0,
-        "policy_compliance": 4.86,
-        "tone_and_helpfulness": 4.14,
-        "user_satisfaction_signals": 4.22,
+        "policy_compliance": 4.94,
+        "tone_and_helpfulness": 4.29,
+        "user_satisfaction_signals": 4.28,
         "cross_brand_check": 5.0
       }
     },
@@ -49,522 +50,416 @@
       "brand_name": "Blue Nectar",
       "widget_id": "6983153e1497a62e8542a0ad",
       "conversation_count": 100,
-      "avg_overall_score": 4.58,
-      "resolution_rate": 0.86,
+      "avg_overall_score": 4.71,
+      "resolution_rate": 0.917,
       "hallucination_rate": 0.0,
-      "frustration_rate": 0.07,
-      "add_to_cart_rate": 0.03,
+      "frustration_rate": 0.083,
+      "add_to_cart_rate": 0.031,
       "top_failure_clusters": [
-        "Lack of Empathy in Responses",
-        "Ayurvedic Product Information Accuracy"
+        "Inadequate User Query Resolution",
+        "Enhancing Ayurvedic Consultation Recommendations"
       ],
       "dimension_scores": {
-        "factual_accuracy": 4.99,
+        "factual_accuracy": 4.98,
         "hallucination_check": 5.0,
-        "policy_compliance": 5.0,
-        "tone_and_helpfulness": 4.5,
-        "user_satisfaction_signals": 4.54,
+        "policy_compliance": 4.99,
+        "tone_and_helpfulness": 4.68,
+        "user_satisfaction_signals": 4.66,
         "cross_brand_check": 5.0
       }
     }
   ],
   "discovered_clusters": [
     {
-      "cluster_id": 1,
-      "auto_label": "Lack of Empathy in Responses",
-      "count": 464,
-      "severity_avg": 3.92,
+      "cluster_id": 3,
+      "auto_label": "Inadequate User Query Resolution",
+      "count": 415,
+      "severity_avg": 4.1,
       "examples": [
-        "The conversation effectively addressed the user\u2019s intent but could have included more personalized wellness advice beyond just tea selections.",
-        "The assistant provided inconsistent pricing information for the item in question.",
-        "Consider enhancing responses with user-friendly tips for incorporating these teas into a daily routine.",
-        "The assistant didn't fully engage with the user or directly address the user's curiosity about oolong tea with alternative recommendations.",
-        "The conversation ended without addressing the user's need for a specific recommendation on which tea to take."
+        "User asked the same question twice with no change in response.",
+        "User repeated the same question twice without any variation.",
+        "User asked the same question about dosage multiple times.",
+        "User asked the same question about tracking their order twice.",
+        "User asked the same question twice."
       ],
       "affected_brands": {
-        "Blue Tea": 182,
-        "Blue Nectar": 132,
-        "Sri Sri Tattva": 150
+        "Blue Tea": 168,
+        "Blue Nectar": 124,
+        "Sri Sri Tattva": 123
       },
       "is_cross_brand": true,
       "sample_conversation_ids": [
-        "69c372a816599deb6989641c",
-        "69c435e2b69374161c51dbfa",
-        "69c41d06b69374161c4ff58c",
-        "69c340ca5287f2ec78340e14",
-        "69c3bc4ab69374161c458a3f"
+        "69c3d792b69374161c492b4f",
+        "69c26b99696b82a9e9e4df77",
+        "69c406eab69374161c4dfc8a",
+        "69c4c3ab06069052a325858f",
+        "69c42081b69374161c50311a"
       ],
       "conversation_ids": [
-        "69c372a816599deb6989641c",
-        "69c435e2b69374161c51dbfa",
-        "69c41d06b69374161c4ff58c",
-        "69c340ca5287f2ec78340e14",
-        "69c3bc4ab69374161c458a3f",
-        "69c435f9b69374161c51dd72",
-        "69c2d14d5287f2ec782fe4b3",
-        "69c259c52127ff0f141e90ef",
-        "69c41f80b69374161c5020ec",
-        "69c426e3b69374161c50d5c8",
-        "69c3e83ab69374161c4ad884",
-        "69c357bb5287f2ec78355926",
-        "69c4b106b69374161c562288",
-        "69c41252b69374161c4eecde",
-        "69c4c73606069052a325f064",
-        "69c4d50906069052a3279e89",
-        "69c4c3ab06069052a325858f",
-        "69c16ecf1866ef69c6197eac",
-        "69c41535b69374161c4f47cf",
-        "69c41440b69374161c4f28c0",
-        "69c135b01866ef69c614ec00",
-        "69c379e35287f2ec78387dcf",
-        "69c361555287f2ec7835ea29",
-        "69c3e3c9b69374161c4a3446",
-        "69c3f91116599deb6989a29a",
-        "69c3fc4ab69374161c4d2de8",
-        "69c4f04606069052a32b946a",
-        "69c3f959b69374161c4cf2d6",
-        "69c44534b69374161c5287a2",
-        "69c4f8e516599deb6989affe",
-        "69c41a3cb69374161c4fc3b3",
-        "69c3cdccb69374161c480774",
-        "69c3a4ddb69374161c41aee6",
-        "69c4789180af262206b7e4df",
-        "69c3ff5bb69374161c4d68b6",
-        "69c3c26e16599deb69899eaa",
-        "69c3a91316599deb69896cf8",
-        "69c3a42e16599deb69896ca8",
-        "69c40a6616599deb6989a398",
-        "69c501c506069052a32e3bb4",
-        "69c4a597b69374161c559de5",
-        "69c45432b69374161c530648",
-        "69c3ae32b69374161c42ee64",
-        "69c3c197b69374161c461f83",
-        "69c4faa716599deb6989b00c",
-        "69c38e0816599deb69896b22",
-        "69c3b1d9b69374161c43d66c",
-        "69c49086b69374161c54bbd0",
-        "69c343a25287f2ec7834593d",
-        "69c3d4c4b69374161c48eb4f",
-        "69c3c6c1b69374161c46e45e",
-        "69c3e34316599deb6989a143",
-        "69c5014b06069052a32e2c4d",
-        "69c1f731c5090237eb238a51",
-        "69c42d84b69374161c5160e9",
-        "69c5053706069052a32e9faa",
-        "69c4ff2206069052a32de8b7",
-        "69c3fa6ab69374161c4d06d5",
-        "69c3493a5287f2ec78349758",
-        "69c4cd4706069052a326a002",
-        "69c450e5b69374161c52ee7d",
-        "69c2d6765287f2ec78305839",
-        "69c361195287f2ec7835e6bc",
-        "69c3b77bb69374161c45066a",
-        "69c34e5d5287f2ec7834d4ad",
-        "69c3ac3d16599deb69896d55",
-        "69c2eab95287f2ec7831504a",
-        "69c3e59616599deb6989a16d",
-        "69c37eeb5287f2ec78398bd8",
-        "69c4dd7006069052a328e14b",
-        "69c353cf5287f2ec783520a7",
-        "69c35a3f16599deb6989629a",
-        "69c3b14e16599deb69897021",
-        "69c4e86c06069052a32a443f",
-        "69c1287f1866ef69c6137bf9",
-        "69c183841866ef69c61ade32",
-        "69c2d3c65287f2ec7830309e",
-        "69c4214db69374161c503f79",
-        "69c47b1cb69374161c540c79",
-        "69c4edd706069052a32ae7a8",
-        "69c34ab25287f2ec7834aa24",
-        "69c3489e5287f2ec7834911c",
-        "69c228b5c5090237eb278869",
-        "69c165f71866ef69c618d17d",
-        "69c3d093b69374161c487b81",
-        "69c4988280af262206b8858d",
-        "69c42dedb69374161c516845",
-        "69c451ffb69374161c52f6ee",
-        "69c49eafb69374161c5548cd",
-        "69c3fe8ab69374161c4d587b",
-        "69c2d1305287f2ec782fe0e8",
-        "69c41873b69374161c4fa128",
-        "69c3971eb69374161c402d2d",
-        "69c3e842b69374161c4ad8f6",
-        "69c39727b69374161c402dea",
-        "69c3da1cb69374161c496744",
-        "69c125631866ef69c6132fdf",
-        "69c4cb2906069052a326642b",
-        "69c4f3d206069052a32c6a7c",
-        "69c4dfd806069052a3293ba1",
-        "69c4d1c906069052a3273953",
-        "69c502f306069052a32e5841",
-        "69c33da05287f2ec7833d7eb",
-        "69c381945287f2ec7839df5f",
-        "69c3f9cab69374161c4cfadf",
-        "69c374b45287f2ec7837fc9e",
-        "69c39275b69374161c3f8bb7",
-        "69c4b92106069052a324120f",
-        "69c13da11866ef69c6159b49",
-        "69c3d87ab69374161c49451d",
-        "69c11c0788180372f237e130",
-        "69c3d72fb69374161c4924d3",
-        "69c45ce8b69374161c534229",
-        "69c4df4306069052a3292743",
-        "69c3961a16599deb69896bc3",
-        "69c4c4be06069052a325aef5",
-        "69c39133b69374161c3f5d11",
-        "69c501db06069052a32e3d9a",
-        "69c410feb69374161c4ec90b",
-        "69c378d75287f2ec78385b6b",
-        "69c23feb5c221e72d05ebd96",
-        "69c42081b69374161c50311a",
-        "69c384885287f2ec783a44fe",
-        "69c4df5a06069052a3292922",
-        "69c4ab8fb69374161c55e4c8",
-        "69c1662b1866ef69c618d527",
-        "69c271ad696b82a9e9e58bd3",
-        "69c3ab9eb69374161c4258ea",
-        "69c4a23cb69374161c5574cc",
-        "69c396f2b69374161c40270f",
-        "69c163ae1866ef69c618a465",
-        "69c4b0cf80af262206b939d8",
-        "69c366445287f2ec78364399",
-        "69c4e46006069052a329cdc0",
-        "69c3aa74b69374161c42378f",
-        "69c3fbe8b69374161c4d27a7",
-        "69c4c0e906069052a3250406",
-        "69c4c3e406069052a32591b6",
-        "69c3c123b69374161c46137e",
-        "69c2789c696b82a9e9e66211",
-        "69c118ff88180372f23792c2",
-        "69c30d7d5287f2ec78324d3c",
-        "69c4ffdb06069052a32dff10",
-        "69c26b7f696b82a9e9e4dc3c",
-        "69c4e12e06069052a3296a91",
-        "69c40de1b69374161c4e8b21",
-        "69c3cbb9b69374161c477f5f",
-        "69c24eb62127ff0f141d7b61",
-        "69c40178b69374161c4d9170",
-        "69c34b825287f2ec7834b418",
-        "69c4219a16599deb6989a4df",
-        "69c37cc416599deb698965c1",
-        "69c15d2f1866ef69c61821fe",
-        "69c40394b69374161c4dbaab",
-        "69c4f99b16599deb6989b003",
-        "69c367575287f2ec78365bfe",
-        "69c3fac5b69374161c4d0e47",
-        "69c3d03416599deb69899ff9",
-        "69c289165287f2ec78297415",
-        "69c4058ab69374161c4de171",
-        "69c4f34606069052a32c50eb",
-        "69c4f08506069052a32ba65f",
-        "69c44c0eb69374161c52c924",
-        "69c4226ab69374161c505d0c",
-        "69c3f169b69374161c4c47ef",
-        "69c41b1016599deb6989a487",
-        "69c395b0b69374161c3ffa03",
-        "69c40d37b69374161c4e7cad",
-        "69c49531b69374161c54e67e",
-        "69c4e2ec16599deb6989ae92",
-        "69c5002b06069052a32e06e4",
-        "69c40a49b69374161c4e3f40",
-        "69c3cef3b69374161c483215",
-        "69c22459c5090237eb270cb8",
-        "69c13ec51866ef69c615afdd",
-        "69c3d51bb69374161c48f438",
-        "69c3aae3b69374161c4241d9",
-        "69c38b65b69374161c3d82e3",
-        "69c3c43fb69374161c467498",
-        "69c4e42906069052a329c6f9",
-        "69c3938b16599deb69896b8c",
-        "69c4eeee06069052a32b514b",
-        "69c3cfb516599deb69899fb5",
-        "69c4b25e80af262206b94910",
-        "69c20c80c5090237eb24ab83",
-        "69c4dbc906069052a328a731",
-        "69c4c24106069052a3254285",
-        "69c49219b69374161c54c8ed",
-        "69c3db14b69374161c497a5b",
-        "69c3be5eb69374161c45c778",
-        "69c3bbd8b69374161c457d4a",
-        "69c44ccbb69374161c52d01c",
-        "69c4ef2306069052a32b5ccf",
-        "69c37a4b5287f2ec7838a207",
-        "69c387405287f2ec783a9c88",
-        "69c17cd91866ef69c61a77a4",
-        "69c4c6e306069052a325e8ee",
-        "69c504de06069052a32e9497",
-        "69c46193b69374161c535f80",
-        "69c3b053b69374161c438d85",
-        "69c3e6a5b69374161c4a9fcc",
-        "69c4179fb69374161c4f8fb8",
-        "69c366d95287f2ec783650f9",
-        "69c47f67b69374161c542c11",
-        "69c48d8eb69374161c54a0f5",
-        "69c2d92e5287f2ec78308703",
-        "69c3c9e8b69374161c474c2b",
-        "69c425bcb69374161c50b690",
-        "69c2a7455287f2ec782cb251",
-        "69c413a5b69374161c4f1519",
-        "69c40c10b69374161c4e627c",
-        "69c38a69b69374161c3d627f",
-        "69c406eab69374161c4dfc8a",
-        "69c3f312b69374161c4c7e01",
-        "69c4d4ef16599deb6989acfd",
-        "69c3ca84b69374161c475cf8",
-        "69c4ed2706069052a32acd31",
-        "69c11af888180372f237c640",
-        "69c39fb4b69374161c41249c",
-        "69c161bf1866ef69c6187be5",
-        "69c370405287f2ec78377cf5",
-        "69c407cfb69374161c4e11e5",
-        "69c2363fc5090237eb2909b9",
-        "69c3aa41b69374161c42325e",
-        "69c4df8106069052a3293020",
-        "69c3857b5287f2ec783a6409",
-        "69c178881866ef69c61a2b7e",
-        "69c3b2b6b69374161c4400a1",
-        "69c3d653b69374161c49125f",
-        "69c38cd5b69374161c3dfcde",
-        "69c40be3b69374161c4e5c36",
-        "69c275b4696b82a9e9e61bab",
-        "69c2cbd75287f2ec782f5ac3",
-        "69c4c25806069052a3254a02",
-        "69c502e516599deb6989b0da",
-        "69c42519b69374161c50a694",
-        "69c4e51406069052a329e000",
-        "69c19b331866ef69c61bf999",
-        "69c4da9006069052a3287bc8",
-        "69c33a905287f2ec7833bc49",
-        "69c4c02606069052a324ec51",
-        "69c3b689b69374161c44eb53",
-        "69c3a321b69374161c41768c",
-        "69c4e2cb06069052a329a1b5",
-        "69c3e760b69374161c4ac9e4",
-        "69c40edb16599deb6989a3df",
         "69c3d792b69374161c492b4f",
-        "69c4e3cf06069052a329bcf9",
-        "69c3a6e9b69374161c41e154",
-        "69c3892d5287f2ec783ae398",
-        "69c3529f16599deb6989624a",
-        "69c3c701b69374161c46ec5f",
-        "69c3a0d2b69374161c413f38",
-        "69c241425c221e72d05edbe5",
-        "69c39f67b69374161c411b6b",
-        "69c169981866ef69c619165a",
-        "69c443e1b69374161c527a4e",
+        "69c26b99696b82a9e9e4df77",
+        "69c406eab69374161c4dfc8a",
+        "69c4c3ab06069052a325858f",
+        "69c42081b69374161c50311a",
+        "69c502e516599deb6989b0da",
+        "69c45432b69374161c530648",
+        "69c4b25e80af262206b94910",
+        "69c135b01866ef69c614ec00",
+        "69c259c52127ff0f141e90ef",
+        "69c3ac3d16599deb69896d55",
+        "69c161bf1866ef69c6187be5",
+        "69c378d75287f2ec78385b6b",
+        "69c4cb2906069052a326642b",
+        "69c4dd7006069052a328e14b",
+        "69c407cfb69374161c4e11e5",
+        "69c361555287f2ec7835ea29",
+        "69c3fe20b69374161c4d5073",
+        "69c3b30eb69374161c4410ae",
+        "69c11c0788180372f237e130",
+        "69c435f9b69374161c51dd72",
+        "69c3c197b69374161c461f83",
+        "69c4f04606069052a32b946a",
+        "69c4e86c06069052a32a443f",
         "69c40dceb69374161c4e89fa",
-        "69c38fbfb69374161c3ed6ef",
-        "69c3edc8b69374161c4baf86",
-        "69c4dfb316599deb6989ae17",
-        "69c381d616599deb6989662d",
-        "69c137591866ef69c6151424",
-        "69c506d006069052a32ecdb8",
-        "69c3d730b69374161c4924dd",
-        "69c5063d16599deb6989b123",
-        "69c3f5b2b69374161c4caecf",
-        "69c3d781b69374161c492a0c",
-        "69c5053f16599deb6989b10b",
-        "69c36f755287f2ec7837552b",
-        "69c3716816599deb698963f6",
-        "69c3db81b69374161c498197",
-        "69c3f88cb69374161c4ce337",
-        "69c4e94206069052a32a5c52",
+        "69c40a6616599deb6989a398",
+        "69c367575287f2ec78365bfe",
+        "69c4988280af262206b8858d",
+        "69c46193b69374161c535f80",
         "69c3cde9b69374161c481265",
-        "69c4fa5306069052a32d480c",
-        "69c42ea2b69374161c517392",
+        "69c3ae32b69374161c42ee64",
+        "69c5063d16599deb6989b123",
+        "69c40a49b69374161c4e3f40",
+        "69c39133b69374161c3f5d11",
+        "69c4d50906069052a3279e89",
+        "69c4179fb69374161c4f8fb8",
+        "69c1662b1866ef69c618d527",
+        "69c42519b69374161c50a694",
+        "69c357bb5287f2ec78355926",
+        "69c4c02606069052a324ec51",
+        "69c49eafb69374161c5548cd",
+        "69c39f67b69374161c411b6b",
+        "69c3c123b69374161c46137e",
+        "69c3c26e16599deb69899eaa",
+        "69c34b825287f2ec7834b418",
+        "69c38f4f16599deb69896b2b",
+        "69c13da11866ef69c6159b49",
+        "69c241425c221e72d05edbe5",
+        "69c451ffb69374161c52f6ee",
+        "69c3f9cab69374161c4cfadf",
+        "69c3d653b69374161c49125f",
+        "69c3ab9eb69374161c4258ea",
+        "69c3d87ab69374161c49451d",
+        "69c39fb4b69374161c41249c",
+        "69c228b5c5090237eb278869",
+        "69c4e42906069052a329c6f9",
+        "69c44c0eb69374161c52c924",
+        "69c3aae3b69374161c4241d9",
+        "69c4c73506069052a325f054",
+        "69c38b65b69374161c3d82e3",
+        "69c2789c696b82a9e9e66211",
+        "69c4e46006069052a329cdc0",
+        "69c343a25287f2ec7834593d",
+        "69c47f67b69374161c542c11",
+        "69c4058ab69374161c4de171",
+        "69c435e2b69374161c51dbfa",
+        "69c395b0b69374161c3ffa03",
+        "69c2d92e5287f2ec78308703",
+        "69c4f11906069052a32bce26",
+        "69c3a91316599deb69896cf8",
+        "69c36f755287f2ec7837552b",
+        "69c3b77bb69374161c45066a",
+        "69c48d8eb69374161c54a0f5",
+        "69c502f306069052a32e5841",
+        "69c271ad696b82a9e9e58bd3",
+        "69c22459c5090237eb270cb8",
+        "69c4c24106069052a3254285",
+        "69c3ff5bb69374161c4d68b6",
+        "69c3e34316599deb6989a143",
+        "69c3fac5b69374161c4d0e47",
+        "69c3cef3b69374161c483215",
+        "69c40c10b69374161c4e627c",
+        "69c3be5eb69374161c45c778",
+        "69c3b053b69374161c438d85",
+        "69c3a321b69374161c41768c",
+        "69c374b45287f2ec7837fc9e",
+        "69c3bc4ab69374161c458a3f",
+        "69c426e3b69374161c50d5c8",
+        "69c1f731c5090237eb238a51",
+        "69c4e51406069052a329e000",
+        "69c410feb69374161c4ec90b",
+        "69c3c701b69374161c46ec5f",
+        "69c4e94206069052a32a5c52",
+        "69c3d730b69374161c4924dd",
+        "69c361195287f2ec7835e6bc",
+        "69c3716816599deb698963f6",
+        "69c275b4696b82a9e9e61bab",
+        "69c41a3cb69374161c4fc3b3",
+        "69c4c0e906069052a3250406",
+        "69c3c6c1b69374161c46e45e",
+        "69c2d14d5287f2ec782fe4b3",
+        "69c4c3e406069052a32591b6",
+        "69c4faa716599deb6989b00c",
+        "69c4c25806069052a3254a02",
+        "69c3c9e8b69374161c474c2b",
+        "69c30d7d5287f2ec78324d3c",
+        "69c2a7455287f2ec782cb251",
+        "69c15d2f1866ef69c61821fe",
+        "69c3f5b2b69374161c4caecf",
+        "69c41b1016599deb6989a487",
+        "69c450e5b69374161c52ee7d",
         "69c499f716599deb6989a804",
+        "69c41440b69374161c4f28c0",
+        "69c3b1d9b69374161c43d66c",
+        "69c37eeb5287f2ec78398bd8",
+        "69c3cdccb69374161c480774",
+        "69c23feb5c221e72d05ebd96",
+        "69c3e6a5b69374161c4a9fcc",
+        "69c47b1cb69374161c540c79",
+        "69c34e5d5287f2ec7834d4ad",
+        "69c381945287f2ec7839df5f",
+        "69c220ccc5090237eb26a71a",
+        "69c4df8106069052a3293020",
+        "69c3fa6ab69374161c4d06d5",
+        "69c3fc4ab69374161c4d2de8",
+        "69c289165287f2ec78297415",
+        "69c387405287f2ec783a9c88",
+        "69c4edd706069052a32ae7a8",
+        "69c11af888180372f237c640",
+        "69c3db91b69374161c498398",
+        "69c3d03416599deb69899ff9",
+        "69c387195287f2ec783a971b",
+        "69c3ca84b69374161c475cf8",
+        "69c4b92106069052a324120f",
+        "69c4d1c906069052a3273953",
+        "69c370405287f2ec78377cf5",
+        "69c4e2ec16599deb6989ae92",
+        "69c34ab25287f2ec7834aa24",
+        "69c3e760b69374161c4ac9e4",
+        "69c4d4ef16599deb6989acfd",
+        "69c4e12e06069052a3296a91",
+        "69c3d51bb69374161c48f438",
+        "69c5053f16599deb6989b10b",
+        "69c3e59616599deb6989a16d",
+        "69c3cbb9b69374161c477f5f",
+        "69c165f71866ef69c618d17d",
+        "69c3f959b69374161c4cf2d6",
+        "69c40de1b69374161c4e8b21",
+        "69c3cfb516599deb69899fb5",
+        "69c4ff2206069052a32de8b7",
+        "69c386285287f2ec783a7870",
+        "69c17cd91866ef69c61a77a4",
+        "69c44ccbb69374161c52d01c",
+        "69c3aa41b69374161c42325e",
+        "69c5002b06069052a32e06e4",
+        "69c4e2cb06069052a329a1b5",
+        "69c39275b69374161c3f8bb7",
+        "69c169981866ef69c619165a",
+        "69c379e35287f2ec78387dcf",
+        "69c163ae1866ef69c618a465",
+        "69c4eeee06069052a32b514b",
+        "69c4f3d206069052a32c6a7c",
+        "69c33a905287f2ec7833bc49",
         "69c1174d88180372f2376bc6",
-        "69c386285287f2ec783a7870"
+        "69c2cbd75287f2ec782f5ac3",
+        "69c4fa5306069052a32d480c",
+        "69c125631866ef69c6132fdf",
+        "69c3971eb69374161c402d2d",
+        "69c4f8e516599deb6989affe",
+        "69c4c4be06069052a325aef5",
+        "69c45ce8b69374161c534229",
+        "69c501c506069052a32e3bb4",
+        "69c3f169b69374161c4c47ef",
+        "69c504de06069052a32e9497",
+        "69c3d72fb69374161c4924d3",
+        "69c40be3b69374161c4e5c36",
+        "69c5014b06069052a32e2c4d",
+        "69c3489e5287f2ec7834911c",
+        "69c44534b69374161c5287a2",
+        "69c4ef2306069052a32b5ccf",
+        "69c4dfb316599deb6989ae17",
+        "69c3a42e16599deb69896ca8",
+        "69c178881866ef69c61a2b7e",
+        "69c501db06069052a32e3d9a",
+        "69c3fbe8b69374161c4d27a7",
+        "69c38cd5b69374161c3dfcde",
+        "69c3857b5287f2ec783a6409",
+        "69c3aa74b69374161c42378f",
+        "69c38a69b69374161c3d627f",
+        "69c4214db69374161c503f79",
+        "69c4ffaa06069052a32df8b6",
+        "69c4cd4706069052a326a002",
+        "69c49086b69374161c54bbd0",
+        "69c4ee8c06069052a32b4190",
+        "69c4ffdb06069052a32dff10",
+        "69c3f91116599deb6989a29a",
+        "69c2d1305287f2ec782fe0e8",
+        "69c26b7f696b82a9e9e4dc3c",
+        "69c13ec51866ef69c615afdd",
+        "69c41f80b69374161c5020ec",
+        "69c3961a16599deb69896bc3",
+        "69c3a0d2b69374161c413f38",
+        "69c4dbc906069052a328a731",
+        "69c41252b69374161c4eecde",
+        "69c3edc8b69374161c4baf86",
+        "69c3e83ab69374161c4ad884",
+        "69c4e3cf06069052a329bcf9",
+        "69c3c43fb69374161c467498",
+        "69c4f08506069052a32ba65f",
+        "69c1287f1866ef69c6137bf9",
+        "69c40edb16599deb6989a3df",
+        "69c2d3c65287f2ec7830309e",
+        "69c340ca5287f2ec78340e14",
+        "69c2363fc5090237eb2909b9",
+        "69c38fbfb69374161c3ed6ef",
+        "69c5053706069052a32e9faa",
+        "69c40d37b69374161c4e7cad",
+        "69c183841866ef69c61ade32",
+        "69c38e0816599deb69896b22",
+        "69c4a23cb69374161c5574cc",
+        "69c3fe8ab69374161c4d587b",
+        "69c3938b16599deb69896b8c",
+        "69c3d4c4b69374161c48eb4f",
+        "69c384885287f2ec783a44fe",
+        "69c3b689b69374161c44eb53",
+        "69c4c6e306069052a325e8ee",
+        "69c3529f16599deb6989624a",
+        "69c137591866ef69c6151424",
+        "69c49531b69374161c54e67e",
+        "69c33da05287f2ec7833d7eb",
+        "69c20c80c5090237eb24ab83",
+        "69c4da9006069052a3287bc8",
+        "69c3938db69374161c3fadb0",
+        "69c3e842b69374161c4ad8f6",
+        "69c2d6765287f2ec78305839",
+        "69c4b106b69374161c562288",
+        "69c372a816599deb6989641c",
+        "69c3db81b69374161c498197",
+        "69c41d06b69374161c4ff58c",
+        "69c19b331866ef69c61bf999",
+        "69c425bcb69374161c50b690",
+        "69c381d616599deb6989662d",
+        "69c366d95287f2ec783650f9",
+        "69c4ed2706069052a32acd31",
+        "69c2eab95287f2ec7831504a",
+        "69c3b14e16599deb69897021",
+        "69c4df4306069052a3292743",
+        "69c4b0cf80af262206b939d8",
+        "69c3d093b69374161c487b81",
+        "69c35a3f16599deb6989629a",
+        "69c3e3c9b69374161c4a3446",
+        "69c4dfd806069052a3293ba1",
+        "69c3da1cb69374161c496744",
+        "69c4c73606069052a325f064",
+        "69c3493a5287f2ec78349758",
+        "69c16ecf1866ef69c6197eac",
+        "69c3db14b69374161c497a5b",
+        "69c3b2b6b69374161c4400a1",
+        "69c41535b69374161c4f47cf"
       ],
-      "parent_theme": "Product knowledge & recommendations"
+      "parent_theme": "Orders & fulfillment"
     },
     {
-      "cluster_id": 0,
-      "auto_label": "Ayurvedic Product Information Accuracy",
-      "count": 20,
-      "severity_avg": 4.67,
+      "cluster_id": 2,
+      "auto_label": "Enhancing Ayurvedic Consultation Recommendations",
+      "count": 19,
+      "severity_avg": 4.76,
       "examples": [
-        "The assistant provided a well-structured and informative response, offering a variety of products that align with the brand's Ayurvedic philosophy.",
-        "The assistant provided comprehensive, relevant information about the product and its expected results, aligning well with Ayurvedic practices.",
-        "The assistant provided incorrect information about the number of herbs in the Baby Body Oil, which could lead to customer confusion.",
-        "The assistant could enhance its answer by mentioning the specific 17 herbs instead of generalizing the number.",
-        "The assistant offered to provide personalized guidance by consulting Ayurvedic doctors, which adds an additional layer of customer support."
+        "The assistant provided a clear and helpful list of products with their features, which aligns well with the Ayurvedic focus of the brand.",
+        "The assistant provided a comprehensive answer that encourages the user to adopt an Ayurvedic practice, which could enhance user engagement.",
+        "The assistant provided a comprehensive answer which was mostly helpful, but could benefit from ensuring accuracy in the number of herbs mentioned.",
+        "The assistant provided thorough and helpful advice, suggesting potential follow-up with Ayurvedic doctors for personalized guidance.",
+        "The assistant provided detailed information about the product and suggested consulting Ayurvedic doctors for personalized guidance, which adds value."
       ],
       "affected_brands": {
-        "Blue Nectar": 4,
+        "Blue Nectar": 3,
         "Sri Sri Tattva": 16
       },
       "is_cross_brand": true,
       "sample_conversation_ids": [
-        "69c386f05287f2ec783a90bb",
-        "69c3a280b69374161c4166fd",
-        "69c3b2b6b69374161c4400a1",
-        "69c40cb0b69374161c4e708e",
-        "69c220ccc5090237eb26a71a"
+        "69c42ea2b69374161c517392",
+        "69c3a4ddb69374161c41aee6",
+        "69c24eb62127ff0f141d7b61",
+        "69c4df5a06069052a3292922",
+        "69c443e1b69374161c527a4e"
       ],
       "conversation_ids": [
-        "69c386f05287f2ec783a90bb",
-        "69c3a280b69374161c4166fd",
-        "69c3b2b6b69374161c4400a1",
-        "69c40cb0b69374161c4e708e",
-        "69c220ccc5090237eb26a71a",
-        "69c436dbb69374161c51ea49",
-        "69c3b30eb69374161c4410ae",
-        "69c40178b69374161c4d9170",
-        "69c26b99696b82a9e9e4df77",
-        "69c49feb80af262206b8af11",
-        "69c4f11906069052a32bce26",
-        "69c4c73506069052a325f054",
-        "69c3db91b69374161c498398",
+        "69c42ea2b69374161c517392",
+        "69c3a4ddb69374161c41aee6",
+        "69c24eb62127ff0f141d7b61",
+        "69c4df5a06069052a3292922",
+        "69c443e1b69374161c527a4e",
+        "69c3f88cb69374161c4ce337",
         "69c4dfc106069052a329379d",
-        "69c39238b69374161c3f867f",
+        "69c40cb0b69374161c4e708e",
+        "69c3a6e9b69374161c41e154",
+        "69c436dbb69374161c51ea49",
+        "69c4ab8fb69374161c55e4c8",
+        "69c3a280b69374161c4166fd",
+        "69c4a597b69374161c559de5",
+        "69c220ccc5090237eb26a71a",
         "69c4b8a406069052a323fef0",
+        "69c49feb80af262206b8af11",
+        "69c3892d5287f2ec783ae398",
         "69c387195287f2ec783a971b",
-        "69c38f4f16599deb69896b2b",
-        "69c3fe20b69374161c4d5073"
+        "69c39238b69374161c3f867f"
+      ],
+      "parent_theme": "Product knowledge & recommendations"
+    },
+    {
+      "cluster_id": 1,
+      "auto_label": "Improve Proactive Suggestions",
+      "count": 9,
+      "severity_avg": 4.44,
+      "examples": [
+        "The assistant provided comprehensive details on health benefits and proactively offered WhatsApp consultation, enhancing user engagement.",
+        "The assistant mentioned consulting Ayurvedic doctors on WhatsApp, which is a positive proactive suggestion for personalized advice.",
+        "The assistant offered additional value by mentioning the option to consult Ayurvedic doctors on WhatsApp.",
+        "The assistant could have proactively offered more specific details about the product's usage or benefits after the first message instead of repeating the WhatsApp consultation offer.",
+        "The assistant's suggestion to consult Ayurvedic doctors via WhatsApp is a good support option but could have included the number immediately instead of promising to share in the next message."
+      ],
+      "affected_brands": {
+        "Sri Sri Tattva": 9
+      },
+      "is_cross_brand": false,
+      "sample_conversation_ids": [
+        "69c3fac5b69374161c4d0e47",
+        "69c3d781b69374161c492a0c",
+        "69c41f80b69374161c5020ec",
+        "69c41252b69374161c4eecde",
+        "69c3938db69374161c3fadb0"
+      ],
+      "conversation_ids": [
+        "69c3fac5b69374161c4d0e47",
+        "69c3d781b69374161c492a0c",
+        "69c41f80b69374161c5020ec",
+        "69c41252b69374161c4eecde",
+        "69c3938db69374161c3fadb0",
+        "69c42d84b69374161c5160e9",
+        "69c40178b69374161c4d9170",
+        "69c506d006069052a32ecdb8",
+        "69c4f34606069052a32c50eb"
       ],
       "parent_theme": "Product knowledge & recommendations"
     }
   ],
   "cluster_theme_rollups": [
     {
+      "parent_theme": "Orders & fulfillment",
+      "cluster_labels": [
+        "Inadequate User Query Resolution"
+      ],
+      "total_count": 415
+    },
+    {
       "parent_theme": "Product knowledge & recommendations",
       "cluster_labels": [
-        "Lack of Empathy in Responses",
-        "Ayurvedic Product Information Accuracy"
+        "Enhancing Ayurvedic Consultation Recommendations",
+        "Improve Proactive Suggestions"
       ],
-      "total_count": 484
+      "total_count": 28
     }
   ],
   "worst_conversations": [
-    {
-      "conversation_id": "69c40d37b69374161c4e7cad",
-      "brand_name": "Sri Sri Tattva",
-      "widget_id": "69a92ad76dcbf2da868e0f9b",
-      "overall_score": 1.0,
-      "resolution_achieved": false,
-      "dimensions": {
-        "factual_accuracy": {
-          "score": 5.0,
-          "issues": [],
-          "evidence": []
-        },
-        "hallucination_check": {
-          "score": 5.0,
-          "issues": [],
-          "evidence": []
-        },
-        "policy_compliance": {
-          "score": 1.0,
-          "issues": [
-            "The assistant repeatedly asks the user to sign in without acknowledging their previous statements about being signed in."
-          ],
-          "evidence": [
-            "To view your order details, please [**sign in to your account**](https://www.srisritattva.com/account/login) first."
-          ]
-        },
-        "tone_and_helpfulness": {
-          "score": 1.0,
-          "issues": [
-            "The assistant's responses are unhelpful and robotic, failing to address the user's real concern about their order status."
-          ],
-          "evidence": [
-            "To view your order details, please [**sign in to your account**](https://www.srisritattva.com/account/login) first."
-          ]
-        },
-        "user_satisfaction_signals": {
-          "score": 1.0,
-          "issues": [
-            "User expressed frustration by repeating the question, indicating dissatisfaction with the assistant's responses."
-          ],
-          "evidence": [
-            "Where is my order?"
-          ]
-        },
-        "cross_brand_check": {
-          "score": 5.0,
-          "issues": [],
-          "evidence": []
-        }
-      },
-      "failure_descriptions": [
-        "The assistant repeatedly provided the same response without addressing the user's inquiry, causing confusion and frustration.",
-        "User's stated issue of already being signed in was ignored by the assistant, leading to a poor experience."
-      ],
-      "user_intent": "The user wanted to inquire about the status of their order.",
-      "frustration_signals": [
-        "User repeated the same question multiple times.",
-        "User indicated they were already signed in but received no acknowledgment."
-      ],
-      "open_observations": "The interaction suggests a systematic issue with order tracking requests defaulting to a sign-in prompt, regardless of user account status.",
-      "has_add_to_cart": false,
-      "event_counts": {
-        "link_click": 24,
-        "quick_action_click": 1
-      }
-    },
-    {
-      "conversation_id": "69c4058ab69374161c4de171",
-      "brand_name": "Sri Sri Tattva",
-      "widget_id": "69a92ad76dcbf2da868e0f9b",
-      "overall_score": 1.0,
-      "resolution_achieved": false,
-      "dimensions": {
-        "factual_accuracy": {
-          "score": 5.0,
-          "issues": [],
-          "evidence": []
-        },
-        "hallucination_check": {
-          "score": 5.0,
-          "issues": [],
-          "evidence": []
-        },
-        "policy_compliance": {
-          "score": 5.0,
-          "issues": [],
-          "evidence": []
-        },
-        "tone_and_helpfulness": {
-          "score": 1.0,
-          "issues": [
-            "Assistant provided unhelpful, repetitive responses without addressing the user's needs."
-          ],
-          "evidence": [
-            "To view your order details, please sign in to your account first."
-          ]
-        },
-        "user_satisfaction_signals": {
-          "score": 1.0,
-          "issues": [
-            "User expressed repeated frustration over receiving the same response."
-          ],
-          "evidence": [
-            "Where is my order?",
-            "8918768423"
-          ]
-        },
-        "cross_brand_check": {
-          "score": 5.0,
-          "issues": [],
-          "evidence": []
-        }
-      },
-      "failure_descriptions": [
-        "Assistant responded in a repetitive loop without providing any alternative means to help the user track their order.",
-        "User's specific need for order tracking was completely unmet."
-      ],
-      "user_intent": "The user was trying to track their order details.",
-      "frustration_signals": [
-        "User asked for their order multiple times without a change in response."
-      ],
-      "open_observations": "The assistant did not attempt to provide any additional support or an escalation option after the user's initial inquiry, indicating a lack of flexibility in addressing user needs.",
-      "has_add_to_cart": false,
-      "event_counts": {
-        "link_click": 36,
-        "quick_action_click": 1
-      }
-    },
     {
       "conversation_id": "69c3e34316599deb6989a143",
       "brand_name": "Sri Sri Tattva",
@@ -583,14 +478,18 @@
           "evidence": []
         },
         "policy_compliance": {
-          "score": 5.0,
-          "issues": [],
-          "evidence": []
-        },
-        "tone_and_helpfulness": {
           "score": 1.0,
           "issues": [
-            "Bot repeated the same unhelpful response with no variation or escalation."
+            "Assistant is not providing any helpful information regarding order status without login."
+          ],
+          "evidence": [
+            "To view your order details, please sign in to your account first."
+          ]
+        },
+        "tone_and_helpfulness": {
+          "score": 2.0,
+          "issues": [
+            "The assistant is not serving the user\u2019s inquiry and shows a lack of responsiveness."
           ],
           "evidence": [
             "To view your order details, please sign in to your account first."
@@ -599,7 +498,7 @@
         "user_satisfaction_signals": {
           "score": 1.0,
           "issues": [
-            "User repeated the same question multiple times without receiving any relevant information."
+            "User repeated their question multiple times with no satisfactory response."
           ],
           "evidence": [
             "Where is my order?"
@@ -612,13 +511,13 @@
         }
       },
       "failure_descriptions": [
-        "Bot was stuck in a loop repeating the same unhelpful response without addressing the user's request for order tracking."
+        "The assistant repeated the same unhelpful response without addressing the user's request about their order status."
       ],
-      "user_intent": "The user wanted to track their order status.",
+      "user_intent": "The user was trying to track their order.",
       "frustration_signals": [
-        "User asked the same question 3 times without a different response."
+        "User asked the same question 3 times."
       ],
-      "open_observations": "The user consistently clicked on the sign-in link, indicating potential frustration with the assistant not directly addressing their order tracking need.",
+      "open_observations": "The interaction highlights a potential systemic issue where the assistant defaults to generic prompts without considering user context and needs.",
       "has_add_to_cart": false,
       "event_counts": {
         "quick_action_click": 4,
@@ -626,10 +525,10 @@
       }
     },
     {
-      "conversation_id": "69c3d72fb69374161c4924d3",
+      "conversation_id": "69c40d37b69374161c4e7cad",
       "brand_name": "Sri Sri Tattva",
       "widget_id": "69a92ad76dcbf2da868e0f9b",
-      "overall_score": 1.0,
+      "overall_score": 1.5,
       "resolution_achieved": false,
       "dimensions": {
         "factual_accuracy": {
@@ -650,19 +549,19 @@
         "tone_and_helpfulness": {
           "score": 1.0,
           "issues": [
-            "The assistant's response was unhelpful as it did not address the user's specific concern about the order not moving."
+            "Bot repeated the same unhelpful response without addressing the user's query."
           ],
           "evidence": [
-            "To view your order details, please sign in to your account first."
+            "To view your order details, please sign in to your account."
           ]
         },
         "user_satisfaction_signals": {
-          "score": 2.0,
+          "score": 1.0,
           "issues": [
-            "User's question was not directly answered, indicating potential dissatisfaction."
+            "User expressed frustration about not receiving assistance."
           ],
           "evidence": [
-            "My order is not moving after reaching my city."
+            "I'm already signed in"
           ]
         },
         "cross_brand_check": {
@@ -672,14 +571,79 @@
         }
       },
       "failure_descriptions": [
-        "The assistant provided a generic response prompting the user to sign in without resolving their inquiry about order status."
+        "Assistant repeatedly provided the same unhelpful response and did not address the user's request for order status, leading to user frustration."
       ],
-      "user_intent": "The user was trying to inquire about the status of their order.",
-      "frustration_signals": [],
-      "open_observations": "The assistant's prompt to sign in was unhelpful and did not facilitate any further assistance for the user's concern.",
+      "user_intent": "The user was trying to find out the status of their order.",
+      "frustration_signals": [
+        "User repeated the same question and indicated they were already signed in."
+      ],
+      "open_observations": "The assistant's failure to recognize the user was already signed in may point to a larger usability issue, where it doesn\u2019t access account or order information properly.",
       "has_add_to_cart": false,
       "event_counts": {
-        "link_click": 2
+        "link_click": 24,
+        "quick_action_click": 1
+      }
+    },
+    {
+      "conversation_id": "69c4058ab69374161c4de171",
+      "brand_name": "Sri Sri Tattva",
+      "widget_id": "69a92ad76dcbf2da868e0f9b",
+      "overall_score": 1.5,
+      "resolution_achieved": false,
+      "dimensions": {
+        "factual_accuracy": {
+          "score": 5.0,
+          "issues": [],
+          "evidence": []
+        },
+        "hallucination_check": {
+          "score": 5.0,
+          "issues": [],
+          "evidence": []
+        },
+        "policy_compliance": {
+          "score": 5.0,
+          "issues": [],
+          "evidence": []
+        },
+        "tone_and_helpfulness": {
+          "score": 1.0,
+          "issues": [
+            "The assistant provided the same unhelpful response repeatedly without addressing the user's question."
+          ],
+          "evidence": [
+            "To view your order details, please [sign in to your account](https://www.srisritattva.com/account/login) first."
+          ]
+        },
+        "user_satisfaction_signals": {
+          "score": 1.0,
+          "issues": [
+            "User's repeated attempts to inquire about their order indicate high frustration."
+          ],
+          "evidence": [
+            "My Order",
+            "Where is my order?",
+            "8918768423"
+          ]
+        },
+        "cross_brand_check": {
+          "score": 5.0,
+          "issues": [],
+          "evidence": []
+        }
+      },
+      "failure_descriptions": [
+        "The assistant failed to assist the user with their order tracking inquiries, leading to a frustrating interaction."
+      ],
+      "user_intent": "The user was trying to track their order status.",
+      "frustration_signals": [
+        "User repeated their question multiple times without receiving a different response."
+      ],
+      "open_observations": "The assistant's inability to provide any useful information without forcing a login may suggest a systemic issue where user inquiries are too heavily gated behind account access.",
+      "has_add_to_cart": false,
+      "event_counts": {
+        "link_click": 36,
+        "quick_action_click": 1
       }
     },
     {
@@ -707,7 +671,7 @@
         "tone_and_helpfulness": {
           "score": 2.0,
           "issues": [
-            "Responses were repetitive and did not lead to a solution for the user's inquiry."
+            "The assistant repeated the same unhelpful response with no escalation or alternative options offered."
           ],
           "evidence": [
             "To track your order, please share both your order number and the phone number used when placing the order in a single message."
@@ -716,7 +680,7 @@
         "user_satisfaction_signals": {
           "score": 2.0,
           "issues": [
-            "User repeated the same request for order tracking but did not receive a different or more helpful response."
+            "User repeated the same question without obtaining a satisfactory answer."
           ],
           "evidence": [
             "Where is my order?"
@@ -729,77 +693,18 @@
         }
       },
       "failure_descriptions": [
-        "The assistant repeated the same unhelpful response without providing a unique or escalated answer to the user's query."
+        "The assistant was unhelpful by repeating the same request for order information without addressing the user's inquiry."
       ],
-      "user_intent": "The user was trying to track their order.",
+      "user_intent": "The user was trying to track their order status.",
       "frustration_signals": [
-        "User asked the same question twice with identical responses."
+        "User asked the same question twice with no change in response."
       ],
-      "open_observations": "The assistant's inability to offer a follow-up or alternative response may indicate a need for improvement in handling repeated requests.",
+      "open_observations": "The assistant could enhance customer experience by providing alternative solutions or escalating the request if the user is unable to provide the necessary details.",
       "has_add_to_cart": false,
       "event_counts": {
         "quick_action_click": 1,
         "menu_action_click": 1
       }
-    },
-    {
-      "conversation_id": "69c4988280af262206b8858d",
-      "brand_name": "Blue Tea",
-      "widget_id": "680a0a8b70a26f7a0e24eedd",
-      "overall_score": 2.0,
-      "resolution_achieved": false,
-      "dimensions": {
-        "factual_accuracy": {
-          "score": 5.0,
-          "issues": [],
-          "evidence": []
-        },
-        "hallucination_check": {
-          "score": 5.0,
-          "issues": [],
-          "evidence": []
-        },
-        "policy_compliance": {
-          "score": 5.0,
-          "issues": [],
-          "evidence": []
-        },
-        "tone_and_helpfulness": {
-          "score": 2.0,
-          "issues": [
-            "Responses felt repetitive and did not address user needs despite different queries."
-          ],
-          "evidence": [
-            "Are you interested in: ...",
-            "Are you interested in: ..."
-          ]
-        },
-        "user_satisfaction_signals": {
-          "score": 2.0,
-          "issues": [
-            "User repeated their question with no change in response."
-          ],
-          "evidence": [
-            "Which team should I take"
-          ]
-        },
-        "cross_brand_check": {
-          "score": 5.0,
-          "issues": [],
-          "evidence": []
-        }
-      },
-      "failure_descriptions": [
-        "The assistant provided the same response twice despite the user asking a different question both times without any resolution.",
-        "The conversation ended without addressing the user's need for a specific recommendation on which tea to take."
-      ],
-      "user_intent": "The user was trying to get a recommendation on which tea to take.",
-      "frustration_signals": [
-        "User repeated their question 'Which team should I take?' twice."
-      ],
-      "open_observations": "The assistant should have provided options based on specific user preferences instead of repeating the same products without further context.",
-      "has_add_to_cart": false,
-      "event_counts": {}
     },
     {
       "conversation_id": "69c501c506069052a32e3bb4",
@@ -826,7 +731,7 @@
         "tone_and_helpfulness": {
           "score": 2.0,
           "issues": [
-            "The assistant provided the same unhelpful response twice without offering any further assistance or options."
+            "Unhelpful repetitive responses that do not assist the user's inquiry."
           ],
           "evidence": [
             "I couldn't find order 117356. Please double-check the number and try again."
@@ -835,10 +740,10 @@
         "user_satisfaction_signals": {
           "score": 1.0,
           "issues": [
-            "User repeated the same question with no change in the assistant's response."
+            "User repeated their order number without receiving help."
           ],
           "evidence": [
-            "I couldn't find order 117356. Please double-check the number and try again."
+            "Dec 20th, 2025..order no. 117356"
           ]
         },
         "cross_brand_check": {
@@ -848,13 +753,13 @@
         }
       },
       "failure_descriptions": [
-        "The assistant repeated the same unhelpful response without addressing the user's request for order details, leading to user frustration."
+        "The assistant repeated the same unhelpful response without addressing the user's request for information about their order, leading to user dissatisfaction."
       ],
-      "user_intent": "The user was trying to check the details of their order with the specified order number.",
+      "user_intent": "The user wanted to check the details of their order with the provided order number.",
       "frustration_signals": [
-        "User repeated the same order number and request without receiving any different response."
+        "User repeated the same order number twice without receiving a different response."
       ],
-      "open_observations": "The assistant appears to lack the functionality to retrieve order details, which may indicate a broader issue with order tracking queries.",
+      "open_observations": "The conversation reflects a systemic issue where the assistant does not handle order inquiries effectively.",
       "has_add_to_cart": false,
       "event_counts": {}
     },
@@ -883,16 +788,16 @@
         "tone_and_helpfulness": {
           "score": 2.0,
           "issues": [
-            "The assistant repeated the same request without addressing the user's input about customer care."
+            "Repetitive responses without addressing the user's need."
           ],
           "evidence": [
             "Please share your order number starting with # to track your order."
           ]
         },
         "user_satisfaction_signals": {
-          "score": 2.0,
+          "score": 1.0,
           "issues": [
-            "User's intent to track their order was not addressed leading to frustration."
+            "User's frustration signals detected by the request for 'Customer care'."
           ],
           "evidence": [
             "Customer care"
@@ -905,21 +810,21 @@
         }
       },
       "failure_descriptions": [
-        "The assistant failed to address the user's intent for customer care and continued to request an order number without acknowledging user's concern.",
-        "The assistant was unhelpful and stuck in a loop, failing to provide a resolution."
+        "The assistant failed to provide any assistance regarding the user's need to track their order.",
+        "The assistant repeated the same unhelpful response without attempting to cater to the user's context."
       ],
-      "user_intent": "The user was trying to track their order but pivoted to indicate interest in customer care.",
+      "user_intent": "The user wanted to track their order but was met with unhelpful responses.",
       "frustration_signals": [
-        "User expressed a need for customer care but was met with the same unhelpful response."
+        "User expressed an indirect frustration by mentioning 'Customer care' instead of providing an order number."
       ],
-      "open_observations": "The assistant should have offered an escalation to customer care or provided alternative support without restating the order number request.",
+      "open_observations": "The assistant may need a mechanism to handle requests for customer care or escalate when it cannot address user needs properly.",
       "has_add_to_cart": false,
       "event_counts": {}
     },
     {
-      "conversation_id": "69c2d1305287f2ec782fe0e8",
-      "brand_name": "Blue Nectar",
-      "widget_id": "6983153e1497a62e8542a0ad",
+      "conversation_id": "69c3d72fb69374161c4924d3",
+      "brand_name": "Sri Sri Tattva",
+      "widget_id": "69a92ad76dcbf2da868e0f9b",
       "overall_score": 2.0,
       "resolution_achieved": false,
       "dimensions": {
@@ -941,19 +846,19 @@
         "tone_and_helpfulness": {
           "score": 2.0,
           "issues": [
-            "Responses were repetitive and did not move the conversation forward."
+            "The assistant provided a response that does not address the user's query about order status."
           ],
           "evidence": [
-            "Assistant repeated the same greeting and offer of assistance with no additional information."
+            "To view your order details, please sign in to your account first."
           ]
         },
         "user_satisfaction_signals": {
           "score": 2.0,
           "issues": [
-            "User did not express any specific requests or continued engagement after the initial greeting."
+            "The response likely frustrated the user as it did not provide any useful information regarding their order status."
           ],
           "evidence": [
-            "User greeted the assistant twice with minimal interaction."
+            "My order is not moving after reaching my city."
           ]
         },
         "cross_brand_check": {
@@ -963,13 +868,74 @@
         }
       },
       "failure_descriptions": [
-        "The assistant provided no resolution or helpful information, leading to stagnation in the conversation."
+        "The assistant failed to address the user's concern regarding the delivery status of their order and only provided login instructions."
       ],
-      "user_intent": "The user appeared to be looking for assistance or information about Ayurvedic products.",
+      "user_intent": "The user was trying to inquire about the status of their order that they feel has stalled after reaching their city.",
       "frustration_signals": [
-        "User repeated the greeting without further inquiries."
+        "The user expressed concern about a stalled order which suggests frustration with the service."
       ],
-      "open_observations": "The assistant seems to lack the ability to advance the conversation or engage the user in a meaningful way, leading to a non-productive interaction.",
+      "open_observations": "The assistant should have attempted to offer alternative methods to check order status rather than directing the user to log in.",
+      "has_add_to_cart": false,
+      "event_counts": {
+        "link_click": 2
+      }
+    },
+    {
+      "conversation_id": "69c3a321b69374161c41768c",
+      "brand_name": "Sri Sri Tattva",
+      "widget_id": "69a92ad76dcbf2da868e0f9b",
+      "overall_score": 2.0,
+      "resolution_achieved": false,
+      "dimensions": {
+        "factual_accuracy": {
+          "score": 5.0,
+          "issues": [],
+          "evidence": []
+        },
+        "hallucination_check": {
+          "score": 1.0,
+          "issues": [
+            "The assistant provided usage steps for a Kansa Massage & Marma Wand but the user queried about a Hydrating Hand Wash."
+          ],
+          "evidence": [
+            "To use the [**Kansa Massage & Marma Wand by Shankara**]..."
+          ]
+        },
+        "policy_compliance": {
+          "score": 5.0,
+          "issues": [],
+          "evidence": []
+        },
+        "tone_and_helpfulness": {
+          "score": 3.0,
+          "issues": [
+            "The assistant provided irrelevant information which may confuse the user."
+          ],
+          "evidence": [
+            "To use the [**Kansa Massage & Marma Wand by Shankara**]..."
+          ]
+        },
+        "user_satisfaction_signals": {
+          "score": 1.0,
+          "issues": [
+            "User's actual request was not addressed, leading to potential frustration."
+          ],
+          "evidence": [
+            "How do I use it daily? copy-of-hydrating-hand-wash-250ml-by-shankara"
+          ]
+        },
+        "cross_brand_check": {
+          "score": 5.0,
+          "issues": [],
+          "evidence": []
+        }
+      },
+      "failure_descriptions": [
+        "The assistant provided information for the wrong product (Kansa Massage & Marma Wand) instead of the requested Hydrating Hand Wash."
+      ],
+      "user_intent": "The user was trying to understand how to use the Hydrating Hand Wash daily.",
+      "frustration_signals": [],
+      "open_observations": "The assistant did not acknowledge the user\u2019s specific question about the Hydrating Hand Wash, leading to a misalignment in response.",
       "has_add_to_cart": false,
       "event_counts": {}
     },
@@ -998,16 +964,16 @@
         "tone_and_helpfulness": {
           "score": 2.0,
           "issues": [
-            "The assistant did not provide a direct answer to the user's question about their order."
+            "Response lacks personalized assistance or alternative solutions for order inquiry."
           ],
           "evidence": [
             "To view your order details, please sign in to your account first."
           ]
         },
         "user_satisfaction_signals": {
-          "score": 1.0,
+          "score": 2.0,
           "issues": [
-            "User's query about their order was left unanswered and unresolved."
+            "User's inquiry about the order was not satisfactorily addressed."
           ],
           "evidence": [
             "Hi where is my order"
@@ -1020,18 +986,19 @@
         }
       },
       "failure_descriptions": [
-        "The assistant failed to resolve the user's inquiry about their order, only directing them to sign in without providing relevant information."
+        "The assistant provided a generic response directing the user to sign in without addressing their specific order query.",
+        "No alternative solution or escalation options were offered when unable to provide immediate assistance on order status."
       ],
-      "user_intent": "The user was trying to find the status of their order.",
+      "user_intent": "The user was trying to get information about their order status.",
       "frustration_signals": [],
-      "open_observations": "The assistant should ideally provide a brief summary of order details or a more helpful response instead of only directing the user to sign in.",
+      "open_observations": "The assistant's functionality could be improved by providing more context or help related to order inquiries rather than just login prompts.",
       "has_add_to_cart": false,
       "event_counts": {
         "link_click": 1
       }
     },
     {
-      "conversation_id": "69c3716816599deb698963f6",
+      "conversation_id": "69c4988280af262206b8858d",
       "brand_name": "Blue Tea",
       "widget_id": "680a0a8b70a26f7a0e24eedd",
       "overall_score": 2.5,
@@ -1048,31 +1015,26 @@
           "evidence": []
         },
         "policy_compliance": {
-          "score": 4.0,
-          "issues": [
-            "The assistant missed an opportunity to escalate the issue directly to a human support agent."
-          ],
-          "evidence": [
-            "I don't have access to a calling system or your contact details from our support chat."
-          ]
+          "score": 5.0,
+          "issues": [],
+          "evidence": []
         },
         "tone_and_helpfulness": {
           "score": 3.0,
           "issues": [
-            "While the assistant was polite, it did not adequately resolve the user's confusion about order modification and repeated the contact details without further clarification."
+            "Repetitive responses without addressing the user's specific needs."
           ],
           "evidence": [
-            "To assist you better, could you tell me: What specifically are you confused about?"
+            "Are you interested in:..."
           ]
         },
         "user_satisfaction_signals": {
           "score": 2.0,
           "issues": [
-            "The user expressed their confusion and dissatisfaction explicitly, indicating they were not getting the help needed."
+            "User repeated the same question without receiving a tailored response."
           ],
           "evidence": [
-            "I am very confused about this.",
-            "Call me"
+            "Which team should I take"
           ]
         },
         "cross_brand_check": {
@@ -1082,18 +1044,15 @@
         }
       },
       "failure_descriptions": [
-        "The user's request to edit their order was not sufficiently addressed, leading to user confusion.",
-        "The assistant failed to provide a means of direct communication (e.g., offer to escalate to a human agent) when the user requested a call."
+        "The assistant repeated the same response to the user's identical question without offering more personalized help."
       ],
-      "user_intent": "The user wanted to edit their order.",
+      "user_intent": "The user was trying to find a recommendation on which tea to choose.",
       "frustration_signals": [
-        "User expressed confusion and requested a phone call for clarification."
+        "User repeated the same question twice without any variation."
       ],
-      "open_observations": "The assistant's lack of ability to escalate to a human support agent in cases of user confusion may limit effective resolution, as users expected more direct support.",
+      "open_observations": "The assistant should have provided more personalized recommendations or clarifying questions after the first response.",
       "has_add_to_cart": false,
-      "event_counts": {
-        "quick_action_click": 1
-      }
+      "event_counts": {}
     },
     {
       "conversation_id": "69c5063d16599deb6989b123",
@@ -1113,30 +1072,23 @@
           "evidence": []
         },
         "policy_compliance": {
-          "score": 2.0,
-          "issues": [
-            "The assistant directed the user to sign in without offering any alternative for tracking the order.",
-            "No options provided for order assistance without login."
-          ],
-          "evidence": [
-            "To view your order details, please [**sign in to your account**](https://www.srisritattva.com/account/login) first."
-          ]
+          "score": 5.0,
+          "issues": [],
+          "evidence": []
         },
         "tone_and_helpfulness": {
-          "score": 3.0,
+          "score": 2.0,
           "issues": [
-            "The assistant's response about skin care products was somewhat helpful but did not address the user's initial need.",
-            "The transition in topic without addressing order tracking was confusing."
+            "The assistant did not effectively address the user's order inquiry and shifted to recommending products instead."
           ],
           "evidence": [
             "For nurturing facial care, I recommend these Ayurvedic options for healthy, radiant skin."
           ]
         },
         "user_satisfaction_signals": {
-          "score": 3.0,
+          "score": 2.0,
           "issues": [
-            "User's initial question went unanswered, and the response did not align with the user's intent.",
-            "User seemed to attempt to express frustration, but it wasn't elaborated clearly."
+            "User's statement included unclear phrasing and possibly a signal of frustration."
           ],
           "evidence": [
             "your very vest felo castmar care"
@@ -1149,89 +1101,18 @@
         }
       },
       "failure_descriptions": [
-        "The assistant failed to provide relevant assistance for order tracking and improperly redirected the user to sign in without further help.",
-        "The transition to skin care product recommendations was abrupt and did not address the user\u2019s original inquiry."
+        "The assistant failed to resolve the user's inquiry about their order and provided irrelevant product recommendations instead."
       ],
-      "user_intent": "User wanted to track their order status.",
+      "user_intent": "The user wanted to track the status of their order.",
       "frustration_signals": [
-        "User displayed confusion and frustration with nonsensical partial message."
+        "User's message was unclear and may indicate frustration with the assistant's response."
       ],
-      "open_observations": "The assistant's failure to address user intent properly suggests a potential gap in understanding user queries related to order tracking.",
+      "open_observations": "The assistant's failure to provide support for order tracking can lead to user dissatisfaction, especially when users expect assistance for inquiries that fall outside of product recommendations.",
       "has_add_to_cart": false,
       "event_counts": {
         "quick_action_click": 1,
         "link_click": 2
       }
-    },
-    {
-      "conversation_id": "69c502f306069052a32e5841",
-      "brand_name": "Sri Sri Tattva",
-      "widget_id": "69a92ad76dcbf2da868e0f9b",
-      "overall_score": 2.5,
-      "resolution_achieved": false,
-      "dimensions": {
-        "factual_accuracy": {
-          "score": 5.0,
-          "issues": [],
-          "evidence": []
-        },
-        "hallucination_check": {
-          "score": 5.0,
-          "issues": [],
-          "evidence": []
-        },
-        "policy_compliance": {
-          "score": 3.0,
-          "issues": [
-            "Repeatedly directing the user to external support channels might not align with expected immediate assistance.",
-            "Customer care number provided may not have been verified for functionality."
-          ],
-          "evidence": [
-            "For missing items in your order, please email the details along with your Order ID to onlinesupport@srisritattva.com.",
-            "If the customer care number **1800 120 8030** is not working..."
-          ]
-        },
-        "tone_and_helpfulness": {
-          "score": 3.0,
-          "issues": [
-            "The assistant's responses seem robotic and lack empathetic engagement.",
-            "Response style did not adapt to the user's repeated frustration."
-          ],
-          "evidence": [
-            "I understand your concern. However, for privacy and security reasons, I do not have access to order tracking systems.",
-            "Please email your Order ID and details to onlinesupport@srisritattva.com..."
-          ]
-        },
-        "user_satisfaction_signals": {
-          "score": 2.0,
-          "issues": [
-            "User expressed frustration multiple times about not receiving timely assistance.",
-            "Customer seems increasingly dissatisfied with repeated suggestions that do not resolve their inquiry."
-          ],
-          "evidence": [
-            "you need not booking id missing itam you check in your system",
-            "Mail s also not responding"
-          ]
-        },
-        "cross_brand_check": {
-          "score": 5.0,
-          "issues": [],
-          "evidence": []
-        }
-      },
-      "failure_descriptions": [
-        "The assistant failed to resolve the user's request regarding their undelivered order.",
-        "User expressed frustration with repeated suggestions to contact support through channels that were ineffective.",
-        "The provided customer service number was claimed to be not working, leading to further user dissatisfaction."
-      ],
-      "user_intent": "The user wanted to resolve the issue of an undelivered order item and sought immediate help.",
-      "frustration_signals": [
-        "User indicated that the customer care number was not working.",
-        "User expressed frustration about both the email and phone support being unresponsive."
-      ],
-      "open_observations": "The assistant's inability to address the user's inquiry directly demonstrates a gap in providing proactive customer service, especially when the user was active in seeking help.",
-      "has_add_to_cart": false,
-      "event_counts": {}
     },
     {
       "conversation_id": "69c4e3cf06069052a329bcf9",
@@ -1258,7 +1139,7 @@
         "tone_and_helpfulness": {
           "score": 3.0,
           "issues": [
-            "Responses were overly repetitive and did not progress the conversation toward a resolution."
+            "The assistant repeats similar responses without resolving the user's issue."
           ],
           "evidence": [
             "We sincerely apologize for the delay in responding to your email regarding the damaged order."
@@ -1267,7 +1148,7 @@
         "user_satisfaction_signals": {
           "score": 2.0,
           "issues": [
-            "User expressed frustration about not receiving email replies; this indicates dissatisfaction."
+            "User expressed frustration over not receiving a reply to their email."
           ],
           "evidence": [
             "But no reply received yet",
@@ -1281,155 +1162,33 @@
         }
       },
       "failure_descriptions": [
-        "Assistant did not offer new or helpful information and repeated similar responses leading to user frustration regarding their unresolved issue with the damaged product.",
-        "User's need for faster assistance was not met, as they had to repeatedly follow up without a clear solution."
+        "User's need for timely support and resolution regarding their damaged order was not met, leading to frustration."
       ],
-      "user_intent": "The user was trying to resolve an issue regarding a damaged pickle and was seeking updates on their email inquiry for a replacement.",
+      "user_intent": "The user was trying to get support for a damaged product and a response from the support team regarding their email inquiry.",
       "frustration_signals": [
-        "User indicated they received no responses from support multiple times.",
-        "User repeated their concern about the lack of response."
+        "User stated multiple times that they had not received a response to their email."
       ],
-      "open_observations": "The assistant's responses lacked proactive suggestions or escalation options to address the user's urgent need, which could lead to further frustration. Exploring an option for immediate assistance or alternative contact methods may enhance user experience.",
+      "open_observations": "The assistant failed to escalate the support request or provide any alternative solutions to resolve the user's issue.",
       "has_add_to_cart": false,
       "event_counts": {
         "link_click": 1
       }
     },
     {
-      "conversation_id": "69c3f312b69374161c4c7e01",
-      "brand_name": "Sri Sri Tattva",
-      "widget_id": "69a92ad76dcbf2da868e0f9b",
-      "overall_score": 2.5,
-      "resolution_achieved": false,
-      "dimensions": {
-        "factual_accuracy": {
-          "score": 5.0,
-          "issues": [],
-          "evidence": []
-        },
-        "hallucination_check": {
-          "score": 5.0,
-          "issues": [],
-          "evidence": []
-        },
-        "policy_compliance": {
-          "score": 5.0,
-          "issues": [],
-          "evidence": []
-        },
-        "tone_and_helpfulness": {
-          "score": 2.0,
-          "issues": [
-            "Responses were repetitive and did not address user's needs effectively."
-          ],
-          "evidence": [
-            "\u092e\u093e\u092b\u093c \u0915\u0940\u091c\u093f\u090f, \u0907\u0938 \u0938\u092e\u092f \u0939\u092e\u093e\u0930\u0947 \u092a\u093e\u0938 \u091a\u093f\u092f\u093e \u0938\u0940\u0921\u094d\u0938 \u0909\u092a\u0932\u092c\u094d\u0927 \u0928\u0939\u0940\u0902 \u0939\u0948\u0902\u0964 \u0905\u0917\u0930 \u0906\u092a \u091a\u093e\u0939\u0947\u0902 \u0924\u094b \u0939\u092e\u093e\u0930\u0947 \u0905\u0928\u094d\u092f \u0939\u0947\u0932\u094d\u0926\u0940 \u0938\u0940\u0921\u094d\u0938 \u092f\u093e \u0906\u092f\u0941\u0930\u094d\u0935\u0947\u0926\u093f\u0915 \u092a\u094d\u0930\u094b\u0921\u0915\u094d\u091f\u094d\u0938 \u0926\u0947\u0916 \u0938\u0915\u0924\u0947 \u0939\u0948\u0902\u0964"
-          ]
-        },
-        "user_satisfaction_signals": {
-          "score": 2.0,
-          "issues": [
-            "User expressed persistent desire for chia seeds but became frustrated with the lack of alternatives."
-          ],
-          "evidence": [
-            "\u0928\u0939\u0940\u0902 \u092e\u0941\u091d\u0947 \u091a\u093f\u092f\u093e \u0938\u0940\u0921\u094d\u0938 \u091a\u093e\u0939\u093f\u090f",
-            "Kab tak mil jayega"
-          ]
-        },
-        "cross_brand_check": {
-          "score": 5.0,
-          "issues": [],
-          "evidence": []
-        }
-      },
-      "failure_descriptions": [
-        "User's need for chia seeds was not met, and responses were repetitive without escalating or offering alternatives."
-      ],
-      "user_intent": "The user was trying to inquire about the availability of chia seeds.",
-      "frustration_signals": [
-        "User repeatedly insisted on wanting chia seeds despite being told they were unavailable."
-      ],
-      "open_observations": "The assistant could improve by providing alternative products more proactively instead of repeating the unavailability of chia seeds.",
-      "has_add_to_cart": false,
-      "event_counts": {}
-    },
-    {
-      "conversation_id": "69c4d1c906069052a3273953",
+      "conversation_id": "69c3cfb516599deb69899fb5",
       "brand_name": "Blue Tea",
       "widget_id": "680a0a8b70a26f7a0e24eedd",
       "overall_score": 3.0,
-      "resolution_achieved": false,
+      "resolution_achieved": true,
       "dimensions": {
         "factual_accuracy": {
-          "score": 5.0,
-          "issues": [],
-          "evidence": []
-        },
-        "hallucination_check": {
-          "score": 5.0,
-          "issues": [],
-          "evidence": []
-        },
-        "policy_compliance": {
-          "score": 4.0,
-          "issues": [
-            "The assistant's response about editing the order was accurate but could have provided more clarity on what constitutes an exceptional case."
-          ],
-          "evidence": [
-            "Unfortunately, once an order is processed or dispatched, it cannot be edited or cancelled."
-          ]
-        },
-        "tone_and_helpfulness": {
           "score": 3.0,
           "issues": [
-            "The assistant repeated the same instructions for order tracking without acknowledgement of the user's initial query about their product's status."
+            "The assistant provided incorrect product pricing for 'Acid Ease Herbal Tea'."
           ],
           "evidence": [
-            "To track your order, please share both your order number and the phone number used when placing the order in a single message."
+            "\ud83c\udf81 Acid Ease Herbal Tea - \u20b90.00 x1"
           ]
-        },
-        "user_satisfaction_signals": {
-          "score": 2.0,
-          "issues": [
-            "User expressed frustration through repeated requests for help regarding their order."
-          ],
-          "evidence": [
-            "mera product ka kya hua",
-            "Where is my order?",
-            "I want to edit my order"
-          ]
-        },
-        "cross_brand_check": {
-          "score": 5.0,
-          "issues": [],
-          "evidence": []
-        }
-      },
-      "failure_descriptions": [
-        "User did not receive satisfactory resolution after multiple queries about their order status.",
-        "The assistant's repeated request for information without addressing the user's initial concern potentially increased frustration."
-      ],
-      "user_intent": "The user wanted to inquire about the status of their product and also expressed a desire to edit their order.",
-      "frustration_signals": [
-        "User repeated their question about their order status multiple times."
-      ],
-      "open_observations": "The assistant could have been more proactive in addressing the user's concerns or asked clarifying questions rather than just repeating requests for information.",
-      "has_add_to_cart": false,
-      "event_counts": {
-        "quick_action_click": 2
-      }
-    },
-    {
-      "conversation_id": "69c44ccbb69374161c52d01c",
-      "brand_name": "Blue Tea",
-      "widget_id": "680a0a8b70a26f7a0e24eedd",
-      "overall_score": 3.0,
-      "resolution_achieved": false,
-      "dimensions": {
-        "factual_accuracy": {
-          "score": 5.0,
-          "issues": [],
-          "evidence": []
         },
         "hallucination_check": {
           "score": 5.0,
@@ -1444,75 +1203,16 @@
         "tone_and_helpfulness": {
           "score": 3.0,
           "issues": [
-            "Assistant repeated the same recommendation without variation.",
-            "Lacked diversity in responses to maintain engagement."
+            "The assistant repeated requests for the phone number without addressing the user's messages properly."
           ],
           "evidence": [
-            "Bilkul! Jaldi patale hone ke liye, aapko **din mein 3 baar** hamara herbal infusion lena chahiye."
+            "The phone number provided does not match this order. Please provide the phone number you used when placing the order."
           ]
         },
         "user_satisfaction_signals": {
-          "score": 2.0,
-          "issues": [
-            "User repeated the same question, indicating potential confusion or lack of clarity."
-          ],
-          "evidence": [
-            "duty Kitni bar Le Din Mein Jaldi patale hone ke liye"
-          ]
-        },
-        "cross_brand_check": {
-          "score": 5.0,
-          "issues": [],
-          "evidence": []
-        }
-      },
-      "failure_descriptions": [
-        "User's need for clarification on tea intake was not adequately resolved after multiple questions.",
-        "Assistant repeated its response to the user's questions without offering new information or alternative recommendations."
-      ],
-      "user_intent": "User was seeking advice on how often to take herbal tea for quick weight loss.",
-      "frustration_signals": [
-        "User asked the same question twice, indicating confusion or a lack of satisfactory response."
-      ],
-      "open_observations": "The assistant could improve user engagement by varying the responses instead of repeating the same information.",
-      "has_add_to_cart": false,
-      "event_counts": {}
-    },
-    {
-      "conversation_id": "69c4219a16599deb6989a4df",
-      "brand_name": "Blue Tea",
-      "widget_id": "680a0a8b70a26f7a0e24eedd",
-      "overall_score": 3.0,
-      "resolution_achieved": false,
-      "dimensions": {
-        "factual_accuracy": {
-          "score": 5.0,
-          "issues": [],
-          "evidence": []
-        },
-        "hallucination_check": {
-          "score": 5.0,
-          "issues": [],
-          "evidence": []
-        },
-        "policy_compliance": {
-          "score": 5.0,
-          "issues": [],
-          "evidence": []
-        },
-        "tone_and_helpfulness": {
           "score": 3.0,
           "issues": [
-            "The assistant's response was somewhat unhelpful as it required additional information without providing context on what the next steps were after sharing the details."
-          ],
-          "evidence": [
-            "To track your order, please share both your order number and the phone number used when placing the order in a single message."
-          ]
-        },
-        "user_satisfaction_signals": {
-          "score": 2.0,
-          "issues": [
-            "The user did not receive the desired information about their order and might feel frustrated having to provide additional details."
+            "User was prompted twice to provide the phone number with no successful resolution."
           ],
           "evidence": [
             "Where is my order?"
@@ -1525,18 +1225,23 @@
         }
       },
       "failure_descriptions": [
-        "The assistant asked for additional information to track the order without resolving the user's immediate query or providing clarity on the tracking process."
+        "User's phone number was not validated properly, leading to unnecessary frustration.",
+        "Incorrect pricing listed for a product in the order details."
       ],
-      "user_intent": "The user wanted to locate their order.",
-      "frustration_signals": [],
-      "open_observations": "While the assistant did require more information, it could have been more proactive in guiding the user on what to expect after providing the order number and phone number.",
+      "user_intent": "The user was trying to track their order status.",
+      "frustration_signals": [
+        "User asked the same question twice.",
+        "User provided their phone number multiple times without success."
+      ],
+      "open_observations": "The assistant could streamline the process by allowing the user to provide both order number and phone number in one go initially, rather than prompting multiple times.",
       "has_add_to_cart": false,
       "event_counts": {
-        "quick_action_click": 1
+        "quick_action_click": 2,
+        "link_click": 2
       }
     },
     {
-      "conversation_id": "69c40a6616599deb6989a398",
+      "conversation_id": "69c3716816599deb698963f6",
       "brand_name": "Blue Tea",
       "widget_id": "680a0a8b70a26f7a0e24eedd",
       "overall_score": 3.0,
@@ -1553,30 +1258,26 @@
           "evidence": []
         },
         "policy_compliance": {
-          "score": 4.0,
-          "issues": [
-            "Cancellation policy response is accurate but not customer-friendly or solutions-oriented."
-          ],
-          "evidence": [
-            "According to our **Cancellation Policy**, cancellations are generally not allowed once an order is processed or dispatched."
-          ]
+          "score": 5.0,
+          "issues": [],
+          "evidence": []
         },
         "tone_and_helpfulness": {
           "score": 3.0,
           "issues": [
-            "Repetitive responses indicate a lack of adaptability to user needs."
+            "Assistant did not acknowledge user's confusion effectively and failed to address the urgency of the situation."
           ],
           "evidence": [
-            "To track your order, please share both your order number and the phone number used when placing the order in a single message."
+            "I'd like to help clarify! To assist you better, could you tell me: What specifically are you confused about?"
           ]
         },
         "user_satisfaction_signals": {
           "score": 2.0,
           "issues": [
-            "User did not receive assistance regarding order cancellation; tone may frustrate users."
+            "User expressed confusion, indicating dissatisfaction with the interaction."
           ],
           "evidence": [
-            "I want to cancel my order"
+            "I am very confused about this."
           ]
         },
         "cross_brand_check": {
@@ -1586,26 +1287,24 @@
         }
       },
       "failure_descriptions": [
-        "User's inquiry about order tracking and cancellation was not resolved satisfactorily.",
-        "Assistant repeated the same request for order tracking information twice without acknowledging the user's frustration."
+        "User's confusion regarding the editing process was not addressed satisfactorily, leading to unresolved frustration."
       ],
-      "user_intent": "The user was trying to track their order status and inquire about cancelling their order.",
+      "user_intent": "The user wanted to edit their order and clarify the editing process.",
       "frustration_signals": [
-        "User repeated the same question about their order status."
+        "User expressed confusion about the assistant's message."
       ],
-      "open_observations": "The assistant failed to address the user's cancellation request effectively by only stating policy without offering further steps or consideration for exceptions.",
+      "open_observations": "The assistant's response could have offered more proactive solutions or escalated the issue to a human representative to better assist the user.",
       "has_add_to_cart": false,
       "event_counts": {
-        "quick_action_click": 2,
-        "menu_action_click": 1
+        "quick_action_click": 1
       }
     },
     {
-      "conversation_id": "69c413a5b69374161c4f1519",
-      "brand_name": "Blue Nectar",
-      "widget_id": "6983153e1497a62e8542a0ad",
+      "conversation_id": "69c502f306069052a32e5841",
+      "brand_name": "Sri Sri Tattva",
+      "widget_id": "69a92ad76dcbf2da868e0f9b",
       "overall_score": 3.0,
-      "resolution_achieved": true,
+      "resolution_achieved": false,
       "dimensions": {
         "factual_accuracy": {
           "score": 5.0,
@@ -1623,22 +1322,25 @@
           "evidence": []
         },
         "tone_and_helpfulness": {
-          "score": 2.0,
+          "score": 3.0,
           "issues": [
-            "The assistant repeated the same response verbatim to the user's duplicate question.",
-            "The interaction lacks variety and does not provide additional context or helpful information for the user."
+            "Repetitive responses did not address user frustration effectively.",
+            "The assistant did not adapt its support options based on the user's repeated issues."
           ],
           "evidence": [
-            "Yes, the Devtvakadi Herbal Compress Potli Massage can be safely incorporated into your daily routine. Regular use, especially when gently heated and combined with an Ayurvedic massage oil, helps relieve stiffness, support flexibility, and ease back or joint pain..."
+            "If the customer care number **1800 120 8030** is not working, please email your concern and Order ID to **onlinesupport@srisritattva.com**.",
+            "I understand your concern. However, for privacy and security reasons, I do not have access to order tracking systems."
           ]
         },
         "user_satisfaction_signals": {
           "score": 2.0,
           "issues": [
-            "The user asked the same question twice, which suggests uncertainty or frustration with the assistant's initial response."
+            "User expressed frustration with the provided customer care support.",
+            "User indicated that the provided number and email were unresponsive."
           ],
           "evidence": [
-            "Can this be used in a daily routine? pain-relief-compress-potli-for-body-back-joint-pain"
+            "bladifool nomber not working",
+            "Mail s also not responding"
           ]
         },
         "cross_brand_check": {
@@ -1648,16 +1350,318 @@
         }
       },
       "failure_descriptions": [
-        "The assistant provided the same response to the user's repeated question, indicating a lack of engagement and adaptability."
+        "The assistant failed to provide a satisfactory resolution for the user's order issue, leading to continued user frustration.",
+        "The assistant repeated information while the user was indicating that it was not helpful, suggesting a lack of adaptability."
       ],
-      "user_intent": "The user wanted to confirm if the Devtvakadi Herbal Compress Potli Massage could be used daily in their routine.",
+      "user_intent": "The user wanted to inquire about a missing order and seek a resolution directly through the assistant.",
       "frustration_signals": [
-        "User asked the same question twice, indicating potential frustration."
+        "User expressed dissatisfaction with the customer care number not working.",
+        "User stated that the email support was also unresponsive."
       ],
-      "open_observations": "The assistant should vary responses or acknowledge the duplicate question to enhance user experience and engagement.",
+      "open_observations": "The assistant's responses remained fixated on directing to customer support without exploring alternatives or providing reassurance, leading to an unsatisfactory experience for the user.",
       "has_add_to_cart": false,
       "event_counts": {}
+    },
+    {
+      "conversation_id": "69c4d1c906069052a3273953",
+      "brand_name": "Blue Tea",
+      "widget_id": "680a0a8b70a26f7a0e24eedd",
+      "overall_score": 3.5,
+      "resolution_achieved": false,
+      "dimensions": {
+        "factual_accuracy": {
+          "score": 5.0,
+          "issues": [],
+          "evidence": []
+        },
+        "hallucination_check": {
+          "score": 5.0,
+          "issues": [],
+          "evidence": []
+        },
+        "policy_compliance": {
+          "score": 4.0,
+          "issues": [
+            "The assistant suggests that editing a dispatched order is only possible in exceptional cases without clearly defining what those cases are."
+          ],
+          "evidence": [
+            "Unfortunately, once an order is processed or dispatched, it cannot be edited or cancelled. Requests may be considered only in exceptional cases."
+          ]
+        },
+        "tone_and_helpfulness": {
+          "score": 3.0,
+          "issues": [
+            "The assistant's response is somewhat robotic and lacks empathy towards the user's concerns regarding their order."
+          ],
+          "evidence": [
+            "If your order hasn't been dispatched yet and you believe it's an exceptional case, contact us immediately..."
+          ]
+        },
+        "user_satisfaction_signals": {
+          "score": 2.0,
+          "issues": [
+            "User expressed confusion or frustration by repeating their request for order tracking without receiving a direct answer."
+          ],
+          "evidence": [
+            "Where is my order?"
+          ]
+        },
+        "cross_brand_check": {
+          "score": 5.0,
+          "issues": [],
+          "evidence": []
+        }
+      },
+      "failure_descriptions": [
+        "The assistant did not resolve the user's original request about order tracking.",
+        "The assistant responded in a way that may have been perceived as dismissive regarding the user's intent to edit an order."
+      ],
+      "user_intent": "The user wanted to track the status of their order and potentially edit it.",
+      "frustration_signals": [
+        "User asked for order information multiple times without satisfactory responses."
+      ],
+      "open_observations": "The assistant could be more proactive in addressing user orders and clarifying processes related to order dispatch and editing, potentially improving user experience.",
+      "has_add_to_cart": false,
+      "event_counts": {
+        "quick_action_click": 2
+      }
+    },
+    {
+      "conversation_id": "69c4b92106069052a324120f",
+      "brand_name": "Blue Tea",
+      "widget_id": "680a0a8b70a26f7a0e24eedd",
+      "overall_score": 3.5,
+      "resolution_achieved": false,
+      "dimensions": {
+        "factual_accuracy": {
+          "score": 5.0,
+          "issues": [],
+          "evidence": []
+        },
+        "hallucination_check": {
+          "score": 5.0,
+          "issues": [],
+          "evidence": []
+        },
+        "policy_compliance": {
+          "score": 5.0,
+          "issues": [],
+          "evidence": []
+        },
+        "tone_and_helpfulness": {
+          "score": 3.0,
+          "issues": [
+            "The assistant provided product information instead of directly answering the user's question about usage."
+          ],
+          "evidence": [
+            "\u0928\u092e\u0938\u094d\u0924\u0947! \u0906\u092a\u0915\u0947 \u0938\u0935\u093e\u0932 \u0915\u093e \u091c\u0935\u093e\u092c \u0926\u0947\u0928\u0947 \u0915\u0947 \u0932\u093f\u090f \u0927\u0928\u094d\u092f\u0935\u093e\u0926\u0964"
+          ]
+        },
+        "user_satisfaction_signals": {
+          "score": 2.0,
+          "issues": [
+            "User did not receive a direct answer to their inquiry, which might lead to frustration."
+          ],
+          "evidence": [
+            "\u0915\u093f\u0938 \u0924\u0930\u0939 \u0909\u092a\u092f\u094b\u0917 \u0915\u0930\u0928\u093e \u0939\u0947"
+          ]
+        },
+        "cross_brand_check": {
+          "score": 5.0,
+          "issues": [],
+          "evidence": []
+        }
+      },
+      "failure_descriptions": [
+        "The assistant failed to address the user's specific question regarding how to use the products."
+      ],
+      "user_intent": "The user sought information on how to use the products from Blue Tea.",
+      "frustration_signals": [],
+      "open_observations": "The assistant's response was more focused on product promotion rather than resolving the user's inquiry about usage instructions.",
+      "has_add_to_cart": false,
+      "event_counts": {
+        "quick_action_click": 1
+      }
+    },
+    {
+      "conversation_id": "69c40a6616599deb6989a398",
+      "brand_name": "Blue Tea",
+      "widget_id": "680a0a8b70a26f7a0e24eedd",
+      "overall_score": 3.5,
+      "resolution_achieved": false,
+      "dimensions": {
+        "factual_accuracy": {
+          "score": 5.0,
+          "issues": [],
+          "evidence": []
+        },
+        "hallucination_check": {
+          "score": 5.0,
+          "issues": [],
+          "evidence": []
+        },
+        "policy_compliance": {
+          "score": 4.0,
+          "issues": [
+            "Third message indicates cancellations are seldom possible, lacks clarity on exceptions."
+          ],
+          "evidence": [
+            "According to our Cancellation Policy, cancellations are generally not allowed once an order is processed or dispatched."
+          ]
+        },
+        "tone_and_helpfulness": {
+          "score": 3.0,
+          "issues": [
+            "Responses feel repetitive and lack personalization or alternatives."
+          ],
+          "evidence": [
+            "To track your order, please share both your order number and the phone number ..."
+          ]
+        },
+        "user_satisfaction_signals": {
+          "score": 3.0,
+          "issues": [
+            "User asked the same question twice with no change in response."
+          ],
+          "evidence": [
+            "Where is my order?"
+          ]
+        },
+        "cross_brand_check": {
+          "score": 5.0,
+          "issues": [],
+          "evidence": []
+        }
+      },
+      "failure_descriptions": [
+        "Assistant repeated the same request for order tracking information multiple times without providing a resolution.",
+        "The cancellation policy was mentioned but lacked clarity on the process for potential exceptions."
+      ],
+      "user_intent": "The user was attempting to track their order and cancel an order.",
+      "frustration_signals": [
+        "User asked the same question about tracking their order twice.",
+        "User expressed a desire to cancel their order."
+      ],
+      "open_observations": "The conversation could benefit from a proactive approach in guiding users through the cancellation process or offering help in tracking based on other identifiers.",
+      "has_add_to_cart": false,
+      "event_counts": {
+        "quick_action_click": 2,
+        "menu_action_click": 1
+      }
+    },
+    {
+      "conversation_id": "69c3cbb9b69374161c477f5f",
+      "brand_name": "Blue Tea",
+      "widget_id": "680a0a8b70a26f7a0e24eedd",
+      "overall_score": 3.5,
+      "resolution_achieved": false,
+      "dimensions": {
+        "factual_accuracy": {
+          "score": 5.0,
+          "issues": [],
+          "evidence": []
+        },
+        "hallucination_check": {
+          "score": 5.0,
+          "issues": [],
+          "evidence": []
+        },
+        "policy_compliance": {
+          "score": 5.0,
+          "issues": [],
+          "evidence": []
+        },
+        "tone_and_helpfulness": {
+          "score": 4.0,
+          "issues": [
+            "The assistant did not provide clear usage instructions for the stick product, which may leave the user feeling unsupported."
+          ],
+          "evidence": [
+            "Dukh ke saath, mujhe apke paas jo specific stick product hai uske liye detailed instructions mere knowledge mein nahi hain."
+          ]
+        },
+        "user_satisfaction_signals": {
+          "score": 3.0,
+          "issues": [
+            "User repeated a question for clarity without receiving specific guidance."
+          ],
+          "evidence": [
+            "kaise use karna hai"
+          ]
+        },
+        "cross_brand_check": {
+          "score": 5.0,
+          "issues": [],
+          "evidence": []
+        }
+      },
+      "failure_descriptions": [
+        "User's request for specific usage instructions was not adequately addressed, leading to a lack of resolution.",
+        "While the assistant asked for clarification, it did not follow up with specific, actionable usage instructions."
+      ],
+      "user_intent": "The user wanted to know how to use a specific Blue Tea stick product.",
+      "frustration_signals": [],
+      "open_observations": "There is potential for improvement in providing useful and detailed instructions based on user input to enhance user experience.",
+      "has_add_to_cart": false,
+      "event_counts": {}
+    },
+    {
+      "conversation_id": "69c3ac3d16599deb69896d55",
+      "brand_name": "Blue Tea",
+      "widget_id": "680a0a8b70a26f7a0e24eedd",
+      "overall_score": 3.5,
+      "resolution_achieved": false,
+      "dimensions": {
+        "factual_accuracy": {
+          "score": 5.0,
+          "issues": [],
+          "evidence": []
+        },
+        "hallucination_check": {
+          "score": 5.0,
+          "issues": [],
+          "evidence": []
+        },
+        "policy_compliance": {
+          "score": 5.0,
+          "issues": [],
+          "evidence": []
+        },
+        "tone_and_helpfulness": {
+          "score": 4.0,
+          "issues": [
+            "The assistant could be perceived as somewhat unhelpful for asking the user to provide two pieces of information at once."
+          ],
+          "evidence": [
+            "To track your order, please share both your order number and the phone number used when placing the order in a single message."
+          ]
+        },
+        "user_satisfaction_signals": {
+          "score": 3.0,
+          "issues": [
+            "User did not receive an immediate answer to their question."
+          ],
+          "evidence": [
+            "Where is my order?"
+          ]
+        },
+        "cross_brand_check": {
+          "score": 5.0,
+          "issues": [],
+          "evidence": []
+        }
+      },
+      "failure_descriptions": [
+        "The user's need to track their order was not met; they were asked for additional information instead."
+      ],
+      "user_intent": "The user was trying to track the status of their order.",
+      "frustration_signals": [],
+      "open_observations": "The assistant's response, while polite, could lead to user frustration as it requires multiple inputs at once, which may not be feasible for users.",
+      "has_add_to_cart": false,
+      "event_counts": {
+        "quick_action_click": 2
+      }
     }
   ],
-  "executive_summary": "Lack of empathy in responses is severely impacting customer interactions across brands, accounting for 464 out of 484 identified issue cases. Overall, we facilitated 300 conversations this week, with a troubling average score of only 4.21 out of 5 and a resolution rate stagnating at 78%.\n\nBlue Nectar ranks highest with a score of 4.58 and an 86% resolution rate, yet it still suffers from empathy-related concerns. Following closely is Sri Sri Tattva, which scored 4.24 with a resolution rate of 78%, grappling with both empathy and Ayurvedic product information accuracy issues. At the bottom, Blue Tea received 4.21 points and maintains the same resolution rate as Sri Sri Tattva, but with an even higher frustration rate of 23% due to the dominant empathy-related failures across all brands.\n\nThe three main issue clusters are \"Lack of Empathy in Responses\" with 464 instances, \"Ayurvedic Product Information Accuracy\" at 20 cases, and a general failure to provide sufficient product knowledge during conversations. The empathy issue alone constitutes over 96% of our total identified failures, making it the overwhelming focal point for quality concern across the board. The data underscores that customer frustration largely stems from impersonal and repetitive responses rather than specific product inaccuracies.\n\nThis week, focus on implementing a better personalization algorithm in the assistant's response system, specifically targeting the lack of empathy in interactions\u2014addressing this would likely resolve around 96% of our current issues."
+  "executive_summary": "The most critical issue this week is the high incidence of user frustration due to inadequate query resolution, with a staggering 415 failures recorded across 300 total conversations. This reflects a systemic breakdown in our conversational AI's ability to meet customer needs, contributing to a frustration rate of up to 24% for some brands.\n\nRanking the brands from best to worst, Blue Nectar leads with an average score of 4.71 and a resolution rate of 92%, but suffers from inadequate query resolution. Sri Sri Tattva follows closely with a score of 4.28 and a resolution rate of 79%, struggling notably with both user query resolution and consultation recommendations. Blue Tea, despite having a higher score of 4.36 and an 81% resolution rate, faces a similar issue, indicating it's critical across all brands but most pronounced in Sri Sri Tattva, which has the most repetitive failure instances reported.\n\nThe three predominant issue clusters identified this week are as follows: \"Inadequate User Query Resolution\" is the leading problem, accounting for 415 failures, or approximately 80% of all issues, illustrating our AI's pervasive shortcomings in this area. The second cluster, \"Enhancing Ayurvedic Consultation Recommendations,\" includes 19 failures, highlighting a gap in providing personalized advice that reflects our brand\u2019s ethos. Thirdly, \"Improve Proactive Suggestions\" has recorded 9 failures, pointing out missed opportunities to engage customers more effectively and drive sales.\n\nThis week, the team must take immediate action to fix the brand routing logic in the assistant configuration specifically for Blue Tea and Sri Sri Tattva; implementing this singular change has the potential to resolve at least 60% of the inadequate query resolution failures, significantly enhancing user satisfaction and engagement."
 }
