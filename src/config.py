@@ -42,12 +42,12 @@ EMBEDDING_BATCH_SIZE = 50
 # Clustering config
 UMAP_N_COMPONENTS = 10
 UMAP_METRIC = "cosine"
-HDBSCAN_MIN_CLUSTER_SIZE = 8
+HDBSCAN_MIN_CLUSTER_SIZE = 4
 HDBSCAN_MIN_SAMPLES = 2
 # First-pass merge: cosine similarity between cluster label embeddings
 # Default 0.65 per tuning plan; set CLUSTER_LABEL_MERGE_THRESHOLD=0.72 in .env if clusters over-merge
-CLUSTER_LABEL_MERGE_THRESHOLD = float(os.getenv("CLUSTER_LABEL_MERGE_THRESHOLD", "0.65"))
+CLUSTER_LABEL_MERGE_THRESHOLD = float(os.getenv("CLUSTER_LABEL_MERGE_THRESHOLD", "0.80"))
 # Second pass: merge clusters sharing >= this fraction of conversation IDs
 CLUSTER_CONVERSATION_OVERLAP_THRESHOLD = float(
-    os.getenv("CLUSTER_CONVERSATION_OVERLAP_THRESHOLD", "0.50")
+    os.getenv("CLUSTER_CONVERSATION_OVERLAP_THRESHOLD", "0.80")
 )

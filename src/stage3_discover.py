@@ -82,15 +82,10 @@ def collect_textual_signals(evaluations: list[ConversationEvaluation]) -> list[d
                         "overall_score": ev.overall_score,
                     }
                 )
-        if ev.open_observations and len(ev.open_observations) > 10:
-            signals.append(
-                {
-                    "text": ev.open_observations,
-                    "conversation_id": ev.conversation_id,
-                    "brand_name": ev.brand_name,
-                    "overall_score": ev.overall_score,
-                }
-            )
+        # open_observations intentionally excluded from clustering —
+        # it generates generic "could improve" commentary that collapses
+        # into one semantically indistinct blob. failure_descriptions and
+        # frustration_signals are specific enough to cluster meaningfully.
     return signals
 
 
