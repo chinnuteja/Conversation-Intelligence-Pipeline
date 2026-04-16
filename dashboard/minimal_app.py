@@ -346,7 +346,28 @@ for e in review_pool:
         
     filtered_reviews.append(e)
 
-# Sort worst to best
+# Helper to group by issue pattern
+def get_primary_issue_type(ev: dict) -> str:
+    cid = str(ev.get("conversation_id", ""))
+    merged = merge_eval_from_store(cid, ev, eval_by_id)
+    dims = merged.get("dimensions", {})
+    issues = []
+    for dim_name, dim_data in dims.items():
+        if dim_data.get("score", 5) < 5:
+            issues.append((dim_name, float(dim_data.get("score", 5))))
+    if not issues:
+        # Check if it was repeated endlessly
+        repeat_note, _ = _repetition_info(msg_index.get(cid, []))
+        if repeat_note:
+            return "Bot Stuck In Loop"
+        return "General Logic Failure"
+    
+    # Sort by lowest score
+    issues.sort(key=lambda x: x[1])
+    name = issues[0][0].replace("_", " ").title()
+    return name
+
+# Sort worst to best before grouping
 filtered_reviews.sort(key=lambda item: float(item.get("overall_score", 0)))
 
 st.caption(f"Showing {len(filtered_reviews)} flagged conversations for **{selected_brand}**.")
@@ -354,5 +375,15 @@ st.caption(f"Showing {len(filtered_reviews)} flagged conversations for **{select
 if not filtered_reviews:
     st.info("No flagged conversations found for this brand.")
 else:
+    # Group by primary issue type
+    grouped = {}
     for ev in filtered_reviews:
-        render_review_conversation(ev)
+        issue_type = get_primary_issue_type(ev)
+        grouped.setdefault(issue_type, []).append(ev)
+        
+    # Sort groups by frequency (highest first)
+    for issue_type, group_evs in sorted(grouped.items(), key=lambda x: len(x[1]), reverse=True):
+        st.markdown(f"<h4 style='color: #c0392b; margin-top: 30px; border-bottom: 1px solid #ddd; padding-bottom: 5px;'>👇 ISSUE PATTERN: {issue_type.upper()} ({len(group_evs)}) 👇</h4>", unsafe_allow_html=True)
+        for ev in group_evs:
+            render_review_conversation(ev)
+        st.markdown("<br/>", unsafe_allow_html=True)
