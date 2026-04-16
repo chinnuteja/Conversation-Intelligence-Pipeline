@@ -346,26 +346,49 @@ for e in review_pool:
         
     filtered_reviews.append(e)
 
-# Helper to group by issue pattern
+# Helper to group by issue pattern semantically instead of metric name
 def get_primary_issue_type(ev: dict) -> str:
     cid = str(ev.get("conversation_id", ""))
+    
+    # Check for loops first natively from the transcript
+    repeat_note, _ = _repetition_info(msg_index.get(cid, []))
+    if repeat_note:
+        return "Bot Stuck In Repetitive Loop"
+        
+    failures = " ".join(ev.get("failure_descriptions") or []).lower()
+    
+    # 1. Look for semantic hints in the AI's plain English failure descriptions
+    if "wrong product" in failures or "irrelevant" in failures or "product recommendations" in failures:
+        return "Suggesting Wrong/Irrelevant Products"
+    if "sign in" in failures or "login" in failures:
+        return "Forcing Unhelpful Sign-In Wall"
+    if "delivery" in failures or "timeline" in failures or "tracking" in failures:
+        return "Failing To Handle Delivery/Tracking"
+    if "repeat" in failures or "loop" in failures or "same response" in failures:
+        return "Bot Stuck In Repetitive Loop"
+        
+    # 2. Fallback to mapping the metric to a human behavior
     merged = merge_eval_from_store(cid, ev, eval_by_id)
     dims = merged.get("dimensions", {})
     issues = []
     for dim_name, dim_data in dims.items():
         if dim_data.get("score", 5) < 5:
             issues.append((dim_name, float(dim_data.get("score", 5))))
-    if not issues:
-        # Check if it was repeated endlessly
-        repeat_note, _ = _repetition_info(msg_index.get(cid, []))
-        if repeat_note:
-            return "Bot Stuck In Loop"
-        return "General Logic Failure"
-    
-    # Sort by lowest score
-    issues.sort(key=lambda x: x[1])
-    name = issues[0][0].replace("_", " ").title()
-    return name
+            
+    if issues:
+        issues.sort(key=lambda x: x[1])
+        top_dim = issues[0][0]
+        
+        dim_map = {
+            "user_satisfaction_signals": "Unresolved User Frustration",
+            "tone_and_helpfulness": "Unhelpful / Robotic Responses",
+            "policy_compliance": "Rigid Policy Dead-Ends",
+            "hallucination": "Making Up False Information",
+            "cross_brand_reference": "Suggesting Other Brands"
+        }
+        return dim_map.get(top_dim, top_dim.replace("_", " ").title())
+        
+    return "General Logic Failure"
 
 # Sort worst to best before grouping
 filtered_reviews.sort(key=lambda item: float(item.get("overall_score", 0)))
