@@ -272,33 +272,43 @@ def render_review_conversation(ev: dict) -> None:
                         if prv >= 0:
                             bad_indices.add(prv)
 
-        sorted_bad = sorted(bad_indices) or list(range(len(transcript)))
+        bad_indices_set = bad_indices or set()
 
-        for i, mi in enumerate(sorted_bad):
-            if i > 0 and mi > sorted_bad[i - 1] + 1:
-                st.divider()
+        # Show FULL conversation — highlight the bad parts, keep the rest for context
+        for mi, m in enumerate(transcript):
+            # Skip non-text events (clicks, etc.) to keep it clean
+            mtype = m.get("messageType") or "text"
+            if mtype == "event":
+                continue
 
-            m = transcript[mi]
             role = "User" if m.get("sender") == "user" else "Assistant"
             display_text, match_text, _, _ = prepare_transcript_turn(role, m.get("text") or "")
             hits = match_flags_to_message(match_text, flags)
+            is_bad = bool(hits) or mi in bad_indices_set
 
+            # Show issue caption above flagged messages
             if hits:
                 for hit in hits:
                     st.caption(f"**{hit['label']}** · {hit['score']:.1f}/5 — {hit['reason']}")
 
-            # Clean and escape text for safety
             safe_text = html.escape(display_text).replace("\n", "<br/>")
-            
-            # Subtle styling for differentiation
-            if role == "User":
-                bg_style = "background-color: rgba(255, 255, 255, 0.05); border-radius: 8px; padding: 12px; margin-bottom: 4px;"
+
+            if is_bad:
+                # Flagged message — red left border so it pops
+                if role == "User":
+                    bg_style = "border-left: 4px solid #e74c3c; background-color: rgba(231, 76, 60, 0.08); border-radius: 8px; padding: 12px; margin-bottom: 4px;"
+                else:
+                    bg_style = "border-left: 4px solid #e74c3c; background-color: rgba(231, 76, 60, 0.08); border-radius: 8px; padding: 12px; margin-bottom: 20px;"
             else:
-                bg_style = "background-color: rgba(255, 255, 255, 0.1); border-radius: 8px; padding: 12px; margin-bottom: 20px;"
+                # Context message — normal styling
+                if role == "User":
+                    bg_style = "background-color: rgba(255, 255, 255, 0.05); border-radius: 8px; padding: 12px; margin-bottom: 4px;"
+                else:
+                    bg_style = "background-color: rgba(255, 255, 255, 0.1); border-radius: 8px; padding: 12px; margin-bottom: 20px;"
 
             st.markdown(
                 f'<div style="{bg_style}">'
-                f'<span style="font-weight: bold; color: #888; font-size: 0.8rem; text-transform: uppercase;">{role}</span><br/>'
+                f'<span style="font-weight: bold; color: {"#e74c3c" if is_bad else "#888"}; font-size: 0.8rem; text-transform: uppercase;">{role}</span><br/>'
                 f'<div style="margin-top: 6px;">{safe_text}</div>'
                 f'</div>',
                 unsafe_allow_html=True
