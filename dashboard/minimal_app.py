@@ -414,16 +414,22 @@ def render_conversation(ev: dict) -> None:
                         if prv >= 0:
                             bad_indices.add(prv)
 
-        # ── Step 3: Prepare assistant-facing flags for smart routing ──
-        # Separate flags into user-facing vs assistant-facing categories
+        # ── Step 3: Prepare smart badge routing ──
+        # Categorize flags by who they describe
         ASSISTANT_DIMS = {"tone_and_helpfulness", "policy_compliance", "hallucination", "cross_brand_reference"}
         USER_DIMS = {"user_satisfaction_signals"}
 
-        assistant_flags = [f for f in flags if f["key"] in ASSISTANT_DIMS and f.get("score", 5) < 4]
-        user_flags = [f for f in flags if f["key"] in USER_DIMS and f.get("score", 5) < 4]
+        # Collect ALL assistant-facing flags (relaxed threshold - any score < 5)
+        assistant_flags = [f for f in flags if f["key"] in ASSISTANT_DIMS and f.get("score", 5) < 5]
+        user_flags = [f for f in flags if f["key"] in USER_DIMS and f.get("score", 5) < 5]
+
+        # Ultimate fallback: use the evaluation's failure_descriptions
+        fallback_reasons = [fd for fd in (ev.get("failure_descriptions") or [])
+                           if isinstance(fd, str) and not fd.startswith("EVALUATION_ERROR")]
 
         shown_insights: set[str] = set()  # de-duplication
-        assistant_flag_queue = list(assistant_flags)  # queue to attach to assistant messages
+        assistant_badge_shown = False
+        user_badge_shown = False
 
         st.markdown('<div class="chat-thread">', unsafe_allow_html=True)
 
@@ -452,11 +458,11 @@ def render_conversation(ev: dict) -> None:
             align = "left" if role == "User" else "right"
             display_role = "CUSTOMER" if role == "User" else "ASSISTANT"
 
-            # ── Build insight badges ──
+            # ── Build insight badges (3-tier fallback) ──
             insight_html = ""
 
             if hits:
-                # Direct evidence match — use it
+                # TIER 1: Direct evidence match
                 for hit in hits:
                     dedup_key = f"{hit['label']}:{hit['reason'][:40]}"
                     if dedup_key not in shown_insights:
@@ -468,37 +474,58 @@ def render_conversation(ev: dict) -> None:
                             f'  <span class="insight-reason">{html.escape(hit["reason"])}</span>'
                             f'</div>'
                         )
+                        if role == "Assistant":
+                            assistant_badge_shown = True
+                        else:
+                            user_badge_shown = True
 
-            elif is_bad and role == "Assistant" and assistant_flag_queue:
-                # SMART FALLBACK: Assistant is flagged (amber border) but no direct text match.
-                # Attach the next unused assistant-facing dimension flag.
-                flag = assistant_flag_queue[0]
-                reason_text = flag["issues"][0] if flag.get("issues") else "Flagged by AI evaluator"
-                dedup_key = f"{flag['label']}:{reason_text[:40]}"
-                if dedup_key not in shown_insights:
-                    shown_insights.add(dedup_key)
-                    insight_html += (
-                        f'<div class="audit-insight">'
-                        f'  <span class="insight-badge amber">{flag["label"]}</span>'
-                        f'  <span class="insight-reason">{html.escape(reason_text)}</span>'
-                        f'</div>'
-                    )
-                    # Only pop after successfully showing — so it doesn't show again
-                    assistant_flag_queue.pop(0)
+            elif is_bad and role == "Assistant" and not assistant_badge_shown:
+                # TIER 2: Use assistant-facing dimension flags
+                if assistant_flags:
+                    flag = assistant_flags[0]
+                    reason_text = flag["issues"][0] if flag.get("issues") else "Flagged by AI evaluator"
+                    badge_label = flag["label"]
+                # TIER 3: Use failure_descriptions as ultimate fallback
+                elif fallback_reasons:
+                    reason_text = fallback_reasons[0]
+                    badge_label = "Issue Detected"
+                else:
+                    reason_text = ""
+                    badge_label = ""
 
-            elif is_bad and role == "User" and user_flags:
-                # SMART FALLBACK for user: attach user-facing flag if no direct match
-                flag = user_flags[0]
-                reason_text = flag["issues"][0] if flag.get("issues") else "User expressed frustration"
-                dedup_key = f"{flag['label']}:{reason_text[:40]}"
-                if dedup_key not in shown_insights:
-                    shown_insights.add(dedup_key)
-                    insight_html += (
-                        f'<div class="audit-insight">'
-                        f'  <span class="insight-badge red">{flag["label"]}</span>'
-                        f'  <span class="insight-reason">{html.escape(reason_text)}</span>'
-                        f'</div>'
-                    )
+                if reason_text:
+                    dedup_key = f"{badge_label}:{reason_text[:40]}"
+                    if dedup_key not in shown_insights:
+                        shown_insights.add(dedup_key)
+                        insight_html += (
+                            f'<div class="audit-insight">'
+                            f'  <span class="insight-badge amber">{badge_label}</span>'
+                            f'  <span class="insight-reason">{html.escape(reason_text)}</span>'
+                            f'</div>'
+                        )
+                        assistant_badge_shown = True
+
+            elif is_bad and role == "User" and not user_badge_shown:
+                # TIER 2: Use user-facing dimension flags
+                if user_flags:
+                    flag = user_flags[0]
+                    reason_text = flag["issues"][0] if flag.get("issues") else "User expressed frustration"
+                    badge_label = flag["label"]
+                else:
+                    reason_text = ""
+                    badge_label = ""
+
+                if reason_text:
+                    dedup_key = f"{badge_label}:{reason_text[:40]}"
+                    if dedup_key not in shown_insights:
+                        shown_insights.add(dedup_key)
+                        insight_html += (
+                            f'<div class="audit-insight">'
+                            f'  <span class="insight-badge red">{badge_label}</span>'
+                            f'  <span class="insight-reason">{html.escape(reason_text)}</span>'
+                            f'</div>'
+                        )
+                        user_badge_shown = True
 
             st.markdown(
                 f'<div class="msg-row {align}">'
