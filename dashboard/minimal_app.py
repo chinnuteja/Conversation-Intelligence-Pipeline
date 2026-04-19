@@ -32,6 +32,85 @@ st.set_page_config(
 CUSTOM_CSS = """
 <style>
     .block-container { padding-top: 1.2rem; padding-bottom: 2rem; }
+    
+    /* Layout */
+    .review-wrapper {
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+        margin-bottom: 30px;
+        font-family: 'Inter', -apple-system, sans-serif;
+    }
+
+    .msg-group {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+
+    /* Alignment */
+    .align-left { align-items: flex-start; }
+    .align-right { align-items: flex-end; }
+
+    /* Role Label */
+    .role-label {
+        font-size: 0.65rem;
+        font-weight: 800;
+        letter-spacing: 0.1rem;
+        color: #888;
+        margin-bottom: 6px;
+        text-transform: uppercase;
+        margin-left: 12px;
+        margin-right: 12px;
+    }
+
+    /* The Capsule */
+    .chat-capsule {
+        max-width: 80%;
+        padding: 14px 18px;
+        border-radius: 18px;
+        font-size: 0.95rem;
+        line-height: 1.5;
+        position: relative;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.2); /* Darkened for visibility */
+        color: inherit;
+    }
+
+    /* Coloring */
+    .theme-red { border-color: #ff4b4b; background: rgba(255, 75, 75, 0.05); }
+    .theme-gold { border-color: #ffbd45; background: rgba(255, 189, 69, 0.05); }
+
+    /* Audit Badge */
+    .audit-badge {
+        display: inline-block;
+        margin-top: 10px;
+        padding: 2px 10px;
+        border-radius: 6px;
+        font-size: 0.7rem;
+        font-weight: 800;
+        text-transform: uppercase;
+        border: 1px solid transparent;
+        margin-left: 4px;
+    }
+
+    .badge-red { color: #ff4b4b; border-color: #ff4b4b; background: rgba(255, 75, 75, 0.1); }
+    .badge-gold { color: #ffbd45; border-color: #ffbd45; background: rgba(255, 189, 69, 0.1); }
+
+    /* Reasoning Text */
+    .audit-reason {
+        display: block;
+        margin-top: 6px;
+        font-size: 0.8rem;
+        font-style: italic;
+        opacity: 0.9;
+        max-width: 85%;
+        margin-left: 8px;
+        margin-right: 8px;
+    }
+
+    .reason-red { color: #ff4b4b; }
+    .reason-gold { color: #ffbd45; }
 </style>
 """
 st.markdown(CUSTOM_CSS, unsafe_allow_html=True)
@@ -275,6 +354,16 @@ def render_review_conversation(ev: dict) -> None:
         bad_indices_set = bad_indices or set()
 
         # Show FULL conversation — highlight the bad parts, keep the rest for context
+        st.markdown('<div class="review-wrapper">', unsafe_allow_html=True)
+        
+        # Performance/UX: Track which audit insights we've already shown for this convo 
+        # so we don't repeat the same "User Satisfaction" text 5 times.
+        shown_insights = set()
+        
+        # Get dimensions that actually failed for fallback
+        failed_assistant_dims = [f for f in flags if f.get("score", 5) < 4 and f.get("key") != "user_satisfaction_signals"]
+        assistant_fallback_shown = False
+
         for mi, m in enumerate(transcript):
             # Skip non-text events (clicks, etc.) to keep it clean
             mtype = m.get("messageType") or "text"
@@ -286,33 +375,56 @@ def render_review_conversation(ev: dict) -> None:
             hits = match_flags_to_message(match_text, flags)
             is_bad = bool(hits) or mi in bad_indices_set
 
-            # Show issue caption above flagged messages
-            if hits:
-                for hit in hits:
-                    st.caption(f"**{hit['label']}** · {hit['score']:.1f}/5 — {hit['reason']}")
-
+            # Build the components
             safe_text = html.escape(display_text).replace("\n", "<br/>")
+            align_class = "align-left" if role == "User" else "align-right"
+            display_role = "CUSTOMER" if role == "User" else "ASSISTANT"
+            
+            # Determine theme
+            theme_class = ""
+            badge_html = ""
+            reason_html = ""
+            
+            # Use Red for Customer (Frustration/Mistakes), Gold for Assistant (Logic/Tone)
+            use_red = (role == "User")
+            b_theme = "badge-red" if use_red else "badge-gold"
+            r_theme = "reason-red" if use_red else "reason-gold"
 
             if is_bad:
-                # Flagged message — red left border so it pops
-                if role == "User":
-                    bg_style = "border-left: 4px solid #e74c3c; background-color: rgba(231, 76, 60, 0.08); border-radius: 8px; padding: 12px; margin-bottom: 4px;"
-                else:
-                    bg_style = "border-left: 4px solid #e74c3c; background-color: rgba(231, 76, 60, 0.08); border-radius: 8px; padding: 12px; margin-bottom: 20px;"
-            else:
-                # Context message — normal styling
-                if role == "User":
-                    bg_style = "background-color: rgba(255, 255, 255, 0.05); border-radius: 8px; padding: 12px; margin-bottom: 4px;"
-                else:
-                    bg_style = "background-color: rgba(255, 255, 255, 0.1); border-radius: 8px; padding: 12px; margin-bottom: 20px;"
+                theme_class = "theme-red" if use_red else "theme-gold"
+                
+                # Logic for audit badges
+                current_insignts = []
+                if hits:
+                    current_insignts = hits
+                elif not use_red and not assistant_fallback_shown and failed_assistant_dims and mi in bad_indices_set:
+                    # Assistant Fallback: If AI graded this convo as bad for helpfullness but 
+                    # we didn't find the exact quote match, attach it to the first assistant failure
+                    current_insignts = [{"label": failed_assistant_dims[0]["label"], "reason": failed_assistant_dims[0].get("issues", ["Logic Failure"])[0]}]
+                    assistant_fallback_shown = True
+                elif use_red and not hits and mi in bad_indices_set:
+                    # Generic User Frustration fallback
+                    current_insignts = [{"label": "FRUSTRATION", "reason": ev.get("user_satisfaction_signals_reason", "User interaction flagged for follow-up.")}]
 
+                for ins in current_insignts:
+                    # DE-DUPLICATION: Only show unique insights once per conversation
+                    insight_key = (ins["label"], ins["reason"][:50])
+                    if insight_key not in shown_insights:
+                        badge_html += f'<div class="audit-badge {b_theme}">{ins["label"]}</div>'
+                        reason_html += f'<div class="audit-reason {r_theme}">{ins["reason"]}</div>'
+                        shown_insights.add(insight_key)
+
+            # Render the capsule
             st.markdown(
-                f'<div style="{bg_style}">'
-                f'<span style="font-weight: bold; color: {"#e74c3c" if is_bad else "#888"}; font-size: 0.8rem; text-transform: uppercase;">{role}</span><br/>'
-                f'<div style="margin-top: 6px;">{safe_text}</div>'
+                f'<div class="msg-group {align_class}">'
+                f'  <div class="role-label">{display_role}</div>'
+                f'  <div class="chat-capsule {theme_class}">{safe_text}</div>'
+                f'  {badge_html}'
+                f'  {reason_html}'
                 f'</div>',
                 unsafe_allow_html=True
             )
+        st.markdown('</div>', unsafe_allow_html=True)
 
 
 # ── Initialization ──
