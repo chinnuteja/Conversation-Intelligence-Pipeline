@@ -29,92 +29,141 @@ st.set_page_config(
     initial_sidebar_state="expanded",
 )
 
+# ── World-class CSS ──
 CUSTOM_CSS = """
 <style>
-    .block-container { padding-top: 1.2rem; padding-bottom: 2rem; }
-    
-    /* Layout */
-    .review-wrapper {
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+    .block-container { padding-top: 1rem; padding-bottom: 2rem; max-width: 900px; }
+
+    /* ── Chat Thread ── */
+    .chat-thread {
         display: flex;
         flex-direction: column;
-        gap: 24px;
-        margin-bottom: 30px;
-        font-family: 'Inter', -apple-system, sans-serif;
+        gap: 6px;
+        padding: 8px 0;
     }
 
-    .msg-group {
+    /* ── Single Message Row ── */
+    .msg-row {
         display: flex;
         flex-direction: column;
-        width: 100%;
+        padding: 0 4px;
+    }
+    .msg-row.left  { align-items: flex-start; }
+    .msg-row.right { align-items: flex-end; }
+
+    /* ── Role Tag ── */
+    .role-tag {
+        font-family: 'Inter', sans-serif;
+        font-size: 0.6rem;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        color: #999;
+        margin-bottom: 3px;
+        padding-left: 6px;
+        padding-right: 6px;
     }
 
-    /* Alignment */
-    .align-left { align-items: flex-start; }
-    .align-right { align-items: flex-end; }
+    /* ── Chat Bubble ── */
+    .bubble {
+        max-width: 75%;
+        padding: 10px 14px;
+        border-radius: 16px;
+        font-family: 'Inter', sans-serif;
+        font-size: 0.88rem;
+        line-height: 1.55;
+        color: #1a1a2e;
+        word-wrap: break-word;
+    }
 
-    /* Role Label */
-    .role-label {
-        font-size: 0.65rem;
+    /* Neutral */
+    .bubble.neutral {
+        background: #f8f9fa;
+        border: 1px solid #e0e0e0;
+    }
+
+    /* Flagged Customer — soft red */
+    .bubble.flagged-customer {
+        background: #fff5f5;
+        border: 1.5px solid #ff6b6b;
+    }
+
+    /* Flagged Assistant — soft amber */
+    .bubble.flagged-assistant {
+        background: #fffbf0;
+        border: 1.5px solid #f0a500;
+    }
+
+    /* ── Audit Insight (badge + reason in one clean line) ── */
+    .audit-insight {
+        display: flex;
+        align-items: baseline;
+        gap: 8px;
+        margin-top: 4px;
+        margin-bottom: 2px;
+        padding-left: 6px;
+        padding-right: 6px;
+        flex-wrap: wrap;
+    }
+
+    .insight-badge {
+        font-family: 'Inter', sans-serif;
+        font-size: 0.62rem;
         font-weight: 800;
-        letter-spacing: 0.1rem;
-        color: #888;
-        margin-bottom: 6px;
         text-transform: uppercase;
-        margin-left: 12px;
-        margin-right: 12px;
+        letter-spacing: 0.04em;
+        padding: 2px 8px;
+        border-radius: 4px;
+        white-space: nowrap;
     }
 
-    /* The Capsule */
-    .chat-capsule {
-        max-width: 80%;
-        padding: 14px 18px;
-        border-radius: 18px;
-        font-size: 0.95rem;
-        line-height: 1.5;
-        position: relative;
-        background: rgba(255, 255, 255, 0.05);
-        border: 1px solid rgba(255, 255, 255, 0.2); /* Darkened for visibility */
-        color: inherit;
+    .insight-badge.red {
+        color: #d63031;
+        background: rgba(214, 48, 49, 0.08);
+        border: 1px solid rgba(214, 48, 49, 0.3);
     }
 
-    /* Coloring */
-    .theme-red { border-color: #ff4b4b; background: rgba(255, 75, 75, 0.05); }
-    .theme-gold { border-color: #ffbd45; background: rgba(255, 189, 69, 0.05); }
-
-    /* Audit Badge */
-    .audit-badge {
-        display: inline-block;
-        margin-top: 10px;
-        padding: 2px 10px;
-        border-radius: 6px;
-        font-size: 0.7rem;
-        font-weight: 800;
-        text-transform: uppercase;
-        border: 1px solid transparent;
-        margin-left: 4px;
+    .insight-badge.amber {
+        color: #e17055;
+        background: rgba(225, 112, 85, 0.08);
+        border: 1px solid rgba(225, 112, 85, 0.3);
     }
 
-    .badge-red { color: #ff4b4b; border-color: #ff4b4b; background: rgba(255, 75, 75, 0.1); }
-    .badge-gold { color: #ffbd45; border-color: #ffbd45; background: rgba(255, 189, 69, 0.1); }
-
-    /* Reasoning Text */
-    .audit-reason {
-        display: block;
-        margin-top: 6px;
-        font-size: 0.8rem;
+    .insight-reason {
+        font-family: 'Inter', sans-serif;
+        font-size: 0.75rem;
         font-style: italic;
-        opacity: 0.9;
-        max-width: 85%;
-        margin-left: 8px;
-        margin-right: 8px;
+        color: #666;
+        line-height: 1.4;
     }
 
-    .reason-red { color: #ff4b4b; }
-    .reason-gold { color: #ffbd45; }
+    /* ── Group Divider ── */
+    .pattern-header {
+        font-family: 'Inter', sans-serif;
+        font-size: 0.85rem;
+        font-weight: 800;
+        color: #d63031;
+        letter-spacing: 0.03em;
+        padding: 16px 0 6px 0;
+        border-bottom: 2px solid #f0f0f0;
+        margin-bottom: 8px;
+    }
+
+    .pattern-count {
+        font-weight: 500;
+        color: #999;
+        font-size: 0.78rem;
+    }
+
+    /* Links inside bubbles */
+    .bubble a { color: #0984e3; text-decoration: underline; }
 </style>
 """
 st.markdown(CUSTOM_CSS, unsafe_allow_html=True)
 
+
+# ── Data Loading ──
 
 def _output_cache_signature() -> tuple[float, float, float]:
     paths = (
@@ -171,6 +220,8 @@ def load_messages_index():
     return idx
 
 
+# ── Text Processing ──
+
 _FLAG_SCORE_MAX = 3.99
 _MIN_EVIDENCE_LEN = 10
 
@@ -185,6 +236,15 @@ def _strip_user_prefix(quote: str) -> str:
     if m:
         return q[m.end() :].strip()
     return q
+
+
+def _md_to_html(text: str) -> str:
+    """Convert basic markdown links [text](url) to HTML <a> tags and **bold** to <strong>."""
+    # Bold
+    text = re.sub(r'\*\*(.+?)\*\*', r'<strong>\1</strong>', text)
+    # Links
+    text = re.sub(r'\[(.+?)\]\((.+?)\)', r'<a href="\2" target="_blank">\1</a>', text)
+    return text
 
 
 def collect_dimension_flags(ev: dict | None) -> list[dict]:
@@ -212,11 +272,12 @@ def collect_dimension_flags(ev: dict | None) -> list[dict]:
     return out
 
 
-def match_flags_to_message(msg_text: str, flags: list[dict]) -> list[str]:
+def match_flags_to_message(msg_text: str, flags: list[dict]) -> list[dict]:
+    """Return list of {label, reason, score} for flags whose evidence matches this message."""
     nmsg = _norm_text(msg_text)
     if len(nmsg) < 5:
         return []
-    matched: list[str] = []
+    matched: list[dict] = []
     seen: set[str] = set()
     for row in flags:
         key = row["key"]
@@ -230,12 +291,10 @@ def match_flags_to_message(msg_text: str, flags: list[dict]) -> list[str]:
                     if key not in seen:
                         seen.add(key)
                         reason = row.get("issues", ["Flagged by AI"])[0]
-                        score_val = row.get("score", 0.0)
-                        # Create a premium-looking tag for the issue
                         matched.append({
-                            "label": row['label'],
+                            "label": row["label"],
                             "reason": reason,
-                            "score": score_val
+                            "score": row.get("score", 0.0),
                         })
                     break
     return matched
@@ -292,13 +351,15 @@ def _repetition_info(transcript: list[dict]) -> tuple[str, str]:
     return "", ""
 
 
-def render_review_conversation(ev: dict) -> None:
+# ── Rendering ──
+
+def render_conversation(ev: dict) -> None:
+    """Render a single conversation in the world-class audit UI."""
     score = ev.get("overall_score")
     failures = ev.get("failure_descriptions") or []
     cid = str(ev.get("conversation_id", ""))
     transcript = msg_index.get(cid, [])
 
-    # Fix 1: truncate at word boundary
     raw_reason = failures[0] if failures else (ev.get("user_intent") or "")
     reason = raw_reason[:90].rsplit(" ", 1)[0] if len(raw_reason) > 90 else raw_reason
     repeat_note, repeated_text = _repetition_info(transcript)
@@ -306,6 +367,7 @@ def render_review_conversation(ev: dict) -> None:
 
     with st.expander(label):
         st.markdown(f"**Conversation ID:** `{cid}`")
+
         merged = merge_eval_from_store(cid, ev, eval_by_id)
         flags = collect_dimension_flags(merged)
 
@@ -313,17 +375,18 @@ def render_review_conversation(ev: dict) -> None:
             st.caption("No transcript available.")
             return
 
-        # Find which messages triggered flags
-        focal_indices = []
+        # ── Step 1: Find which messages have REAL evidence matches ──
+        evidence_hits: dict[int, list[dict]] = {}
         for mi, m in enumerate(transcript):
             role = "User" if m.get("sender") == "user" else "Assistant"
             _, match_text, _, _ = prepare_transcript_turn(role, m.get("text") or "")
-            if match_flags_to_message(match_text, flags):
-                focal_indices.append(mi)
+            hits = match_flags_to_message(match_text, flags)
+            if hits:
+                evidence_hits[mi] = hits
 
-        # Pair each flagged message with its counterpart (user↔agent)
+        # ── Step 2: Mark bad indices (evidence + their counterpart) ──
         bad_indices: set[int] = set()
-        for idx in focal_indices:
+        for idx in evidence_hits:
             bad_indices.add(idx)
             if transcript[idx].get("sender") == "user":
                 nxt = idx + 1
@@ -338,7 +401,7 @@ def render_review_conversation(ev: dict) -> None:
                 if prv >= 0:
                     bad_indices.add(prv)
 
-        # Fix 3: if repetition detected, include all occurrences so the "repeated N×" note is visible
+        # Step 2b: Include repeated responses
         if repeated_text:
             for mi, m in enumerate(transcript):
                 if m.get("sender") != "user":
@@ -351,79 +414,60 @@ def render_review_conversation(ev: dict) -> None:
                         if prv >= 0:
                             bad_indices.add(prv)
 
-        bad_indices_set = bad_indices or set()
+        # ── Step 3: Render ──
+        shown_insights: set[str] = set()  # de-duplication
 
-        # Show FULL conversation — highlight the bad parts, keep the rest for context
-        st.markdown('<div class="review-wrapper">', unsafe_allow_html=True)
-        
-        # Performance/UX: Track which audit insights we've already shown for this convo 
-        # so we don't repeat the same "User Satisfaction" text 5 times.
-        shown_insights = set()
-        
-        # Get dimensions that actually failed for fallback
-        failed_assistant_dims = [f for f in flags if f.get("score", 5) < 4 and f.get("key") != "user_satisfaction_signals"]
-        assistant_fallback_shown = False
+        st.markdown('<div class="chat-thread">', unsafe_allow_html=True)
 
         for mi, m in enumerate(transcript):
-            # Skip non-text events (clicks, etc.) to keep it clean
             mtype = m.get("messageType") or "text"
             if mtype == "event":
                 continue
 
             role = "User" if m.get("sender") == "user" else "Assistant"
-            display_text, match_text, _, _ = prepare_transcript_turn(role, m.get("text") or "")
-            hits = match_flags_to_message(match_text, flags)
-            is_bad = bool(hits) or mi in bad_indices_set
+            display_text, _, _, _ = prepare_transcript_turn(role, m.get("text") or "")
+            is_bad = mi in bad_indices
+            hits = evidence_hits.get(mi, [])
 
-            # Build the components
+            # Prepare text: escape HTML then convert markdown to clickable links
             safe_text = html.escape(display_text).replace("\n", "<br/>")
-            align_class = "align-left" if role == "User" else "align-right"
+            safe_text = _md_to_html(safe_text)
+
+            # Choose bubble style
+            if is_bad and role == "User":
+                bubble_class = "flagged-customer"
+            elif is_bad:
+                bubble_class = "flagged-assistant"
+            else:
+                bubble_class = "neutral"
+
+            align = "left" if role == "User" else "right"
             display_role = "CUSTOMER" if role == "User" else "ASSISTANT"
-            
-            # Determine theme
-            theme_class = ""
-            badge_html = ""
-            reason_html = ""
-            
-            # Use Red for Customer (Frustration/Mistakes), Gold for Assistant (Logic/Tone)
-            use_red = (role == "User")
-            b_theme = "badge-red" if use_red else "badge-gold"
-            r_theme = "reason-red" if use_red else "reason-gold"
 
-            if is_bad:
-                theme_class = "theme-red" if use_red else "theme-gold"
-                
-                # Logic for audit badges
-                current_insignts = []
-                if hits:
-                    current_insignts = hits
-                elif not use_red and not assistant_fallback_shown and failed_assistant_dims and mi in bad_indices_set:
-                    # Assistant Fallback: If AI graded this convo as bad for helpfullness but 
-                    # we didn't find the exact quote match, attach it to the first assistant failure
-                    current_insignts = [{"label": failed_assistant_dims[0]["label"], "reason": failed_assistant_dims[0].get("issues", ["Logic Failure"])[0]}]
-                    assistant_fallback_shown = True
-                elif use_red and not hits and mi in bad_indices_set:
-                    # Generic User Frustration fallback
-                    current_insignts = [{"label": "FRUSTRATION", "reason": ev.get("user_satisfaction_signals_reason", "User interaction flagged for follow-up.")}]
+            # Build insight HTML — ONLY if we have real evidence, no generic fallbacks
+            insight_html = ""
+            if hits:
+                for hit in hits:
+                    dedup_key = f"{hit['label']}:{hit['reason'][:40]}"
+                    if dedup_key not in shown_insights:
+                        shown_insights.add(dedup_key)
+                        badge_color = "red" if role == "User" else "amber"
+                        insight_html += (
+                            f'<div class="audit-insight">'
+                            f'  <span class="insight-badge {badge_color}">{hit["label"]}</span>'
+                            f'  <span class="insight-reason">{html.escape(hit["reason"])}</span>'
+                            f'</div>'
+                        )
 
-                for ins in current_insignts:
-                    # DE-DUPLICATION: Only show unique insights once per conversation
-                    insight_key = (ins["label"], ins["reason"][:50])
-                    if insight_key not in shown_insights:
-                        badge_html += f'<div class="audit-badge {b_theme}">{ins["label"]}</div>'
-                        reason_html += f'<div class="audit-reason {r_theme}">{ins["reason"]}</div>'
-                        shown_insights.add(insight_key)
-
-            # Render the capsule
             st.markdown(
-                f'<div class="msg-group {align_class}">'
-                f'  <div class="role-label">{display_role}</div>'
-                f'  <div class="chat-capsule {theme_class}">{safe_text}</div>'
-                f'  {badge_html}'
-                f'  {reason_html}'
+                f'<div class="msg-row {align}">'
+                f'  <div class="role-tag">{display_role}</div>'
+                f'  <div class="bubble {bubble_class}">{safe_text}</div>'
+                f'  {insight_html}'
                 f'</div>',
                 unsafe_allow_html=True
             )
+
         st.markdown('</div>', unsafe_allow_html=True)
 
 
@@ -449,70 +493,73 @@ filtered_reviews = []
 for e in review_pool:
     if e.get("brand_name") != selected_brand:
         continue
-    
+
     # Only show bad interactions
     overall_score = float(e.get("overall_score", 0))
     if overall_score >= 4.0:
         continue
-        
+
     cid = str(e.get("conversation_id", ""))
     merged = merge_eval_from_store(cid, e, eval_by_id)
-    
+
     if is_failed_evaluation(merged):
         continue
-        
+
     transcript = msg_index.get(cid, [])
     has_text_turns = any((m.get("messageType") or "text") == "text" for m in transcript)
     if not has_text_turns:
         continue
-        
+
     filtered_reviews.append(e)
 
-# Helper to group by issue pattern semantically instead of metric name
+
+# ── Grouping by semantic issue pattern ──
+
 def get_primary_issue_type(ev: dict) -> str:
     cid = str(ev.get("conversation_id", ""))
-    
-    # Check for loops first natively from the transcript
+
+    # Check for loops first
     repeat_note, _ = _repetition_info(msg_index.get(cid, []))
     if repeat_note:
         return "Bot Stuck In Repetitive Loop"
-        
+
     failures = " ".join(ev.get("failure_descriptions") or []).lower()
-    
-    # 1. Look for semantic hints in the AI's plain English failure descriptions
+
+    # Semantic hints from AI's plain English failure descriptions
     if "wrong product" in failures or "irrelevant" in failures or "product recommendations" in failures:
-        return "Suggesting Wrong/Irrelevant Products"
+        return "Suggesting Wrong / Irrelevant Products"
     if "sign in" in failures or "login" in failures:
         return "Forcing Unhelpful Sign-In Wall"
     if "delivery" in failures or "timeline" in failures or "tracking" in failures:
-        return "Failing To Handle Delivery/Tracking"
+        return "Failing To Handle Delivery / Tracking"
     if "repeat" in failures or "loop" in failures or "same response" in failures:
         return "Bot Stuck In Repetitive Loop"
-        
-    # 2. Fallback to mapping the metric to a human behavior
+
+    # Fallback: map metric to human behavior
     merged = merge_eval_from_store(cid, ev, eval_by_id)
     dims = merged.get("dimensions", {})
     issues = []
     for dim_name, dim_data in dims.items():
         if dim_data.get("score", 5) < 5:
             issues.append((dim_name, float(dim_data.get("score", 5))))
-            
+
     if issues:
         issues.sort(key=lambda x: x[1])
         top_dim = issues[0][0]
-        
+
         dim_map = {
             "user_satisfaction_signals": "Unresolved User Frustration",
             "tone_and_helpfulness": "Unhelpful / Robotic Responses",
             "policy_compliance": "Rigid Policy Dead-Ends",
             "hallucination": "Making Up False Information",
-            "cross_brand_reference": "Suggesting Other Brands"
+            "cross_brand_reference": "Suggesting Other Brands",
         }
         return dim_map.get(top_dim, top_dim.replace("_", " ").title())
-        
+
     return "General Logic Failure"
 
-# Sort worst to best before grouping
+
+# Sort worst to best
 filtered_reviews.sort(key=lambda item: float(item.get("overall_score", 0)))
 
 st.caption(f"Showing {len(filtered_reviews)} flagged conversations for **{selected_brand}**.")
@@ -521,14 +568,18 @@ if not filtered_reviews:
     st.info("No flagged conversations found for this brand.")
 else:
     # Group by primary issue type
-    grouped = {}
+    grouped: dict[str, list] = {}
     for ev in filtered_reviews:
         issue_type = get_primary_issue_type(ev)
         grouped.setdefault(issue_type, []).append(ev)
-        
+
     # Sort groups by frequency (highest first)
     for issue_type, group_evs in sorted(grouped.items(), key=lambda x: len(x[1]), reverse=True):
-        st.markdown(f"<h4 style='color: #c0392b; margin-top: 30px; border-bottom: 1px solid #ddd; padding-bottom: 5px;'>👇 ISSUE PATTERN: {issue_type.upper()} ({len(group_evs)}) 👇</h4>", unsafe_allow_html=True)
+        st.markdown(
+            f'<div class="pattern-header">'
+            f'▸ {issue_type.upper()} <span class="pattern-count">({len(group_evs)} conversations)</span>'
+            f'</div>',
+            unsafe_allow_html=True
+        )
         for ev in group_evs:
-            render_review_conversation(ev)
-        st.markdown("<br/>", unsafe_allow_html=True)
+            render_conversation(ev)
