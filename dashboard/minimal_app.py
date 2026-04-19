@@ -292,6 +292,7 @@ def match_flags_to_message(msg_text: str, flags: list[dict]) -> list[dict]:
                         seen.add(key)
                         reason = row.get("issues", ["Flagged by AI"])[0]
                         matched.append({
+                            "key": row["key"],
                             "label": row["label"],
                             "reason": reason,
                             "score": row.get("score", 0.0),
@@ -415,8 +416,28 @@ def render_conversation(ev: dict) -> None:
                             bad_indices.add(prv)
 
         # ── Step 3: Prepare smart badge routing ──
-        # Categorize flags by who they describe
-        ASSISTANT_DIMS = {"tone_and_helpfulness", "policy_compliance", "hallucination", "cross_brand_reference"}
+        BADGE_LABEL = {
+            "user_satisfaction_signals": "FRUSTRATION",
+            "tone_and_helpfulness": "UNHELPFUL",
+            "hallucination_check": "HALLUCINATION",
+            "factual_accuracy": "WRONG INFO",
+            "cross_brand_check": "WRONG BRAND",
+            "policy_compliance": "POLICY ISSUE",
+        }
+
+        def badge_for(key: str, fallback: str, reason_text: str = "") -> str:
+            rl = (reason_text or "").lower()
+            if "irrelevant" in rl or "wrong product" in rl or "irrelevant product" in rl:
+                return "IRRELEVANT PRODUCT"
+            return BADGE_LABEL.get(key, fallback.upper())
+
+        ASSISTANT_DIMS = {
+            "tone_and_helpfulness",
+            "policy_compliance",
+            "hallucination_check",
+            "cross_brand_check",
+            "factual_accuracy",
+        }
         USER_DIMS = {"user_satisfaction_signals"}
 
         # Collect ALL assistant-facing flags (relaxed threshold - any score < 5)
@@ -431,6 +452,18 @@ def render_conversation(ev: dict) -> None:
         assistant_badge_shown = False
         user_badge_shown = False
 
+        # Pre-compute every text's positions, per role, so we can show "repeated" badges
+        # only on the LAST occurrence of a repeated text (the most damning moment).
+        user_text_positions: dict[str, list[int]] = {}
+        asst_text_positions: dict[str, list[int]] = {}
+        for _mi, _m in enumerate(transcript):
+            if (_m.get("messageType") or "text") == "event":
+                continue
+            _role = "User" if _m.get("sender") == "user" else "Assistant"
+            _text, _, _, _ = prepare_transcript_turn(_role, _m.get("text") or "")
+            _norm = " ".join(_text.lower().split())[:120]
+            (user_text_positions if _role == "User" else asst_text_positions).setdefault(_norm, []).append(_mi)
+
         st.markdown('<div class="chat-thread">', unsafe_allow_html=True)
 
         for mi, m in enumerate(transcript):
@@ -442,6 +475,22 @@ def render_conversation(ev: dict) -> None:
             display_text, _, _, _ = prepare_transcript_turn(role, m.get("text") or "")
             is_bad = mi in bad_indices
             hits = evidence_hits.get(mi, [])
+
+            norm = " ".join(display_text.lower().split())[:120]
+            positions = (user_text_positions if role == "User" else asst_text_positions).get(norm, [])
+            # "Last occurrence of a text that repeats 2+ times" — the moment the issue is undeniable
+            is_last_repeat = len(positions) >= 2 and positions[-1] == mi
+
+            def _suppress_repeated(reason_text: str) -> bool:
+                rl = (reason_text or "").lower()
+                mentions_repeat = "repeat" in rl or "multiple times" in rl or "again and again" in rl
+                if not mentions_repeat:
+                    return False
+                # Allow the badge only on the last occurrence of a repeated text
+                return not is_last_repeat
+
+            # Filter out hits whose reason describes repetition unless we're at the most damning moment
+            hits = [h for h in hits if not _suppress_repeated(h.get("reason", ""))]
 
             # Prepare text: escape HTML then convert markdown to clickable links
             safe_text = html.escape(display_text).replace("\n", "<br/>")
@@ -464,13 +513,14 @@ def render_conversation(ev: dict) -> None:
             if hits:
                 # TIER 1: Direct evidence match
                 for hit in hits:
-                    dedup_key = f"{hit['label']}:{hit['reason'][:40]}"
+                    dedup_key = f"{hit.get('key', hit['label'])}:{hit['reason'][:40]}"
                     if dedup_key not in shown_insights:
                         shown_insights.add(dedup_key)
                         badge_color = "red" if role == "User" else "amber"
+                        badge_label = badge_for(hit.get("key", ""), hit["label"], hit["reason"])
                         insight_html += (
                             f'<div class="audit-insight">'
-                            f'  <span class="insight-badge {badge_color}">{hit["label"]}</span>'
+                            f'  <span class="insight-badge {badge_color}">{badge_label}</span>'
                             f'  <span class="insight-reason">{html.escape(hit["reason"])}</span>'
                             f'</div>'
                         )
@@ -481,15 +531,22 @@ def render_conversation(ev: dict) -> None:
 
             elif is_bad and role == "Assistant" and not assistant_badge_shown:
                 # TIER 2: Use assistant-facing dimension flags
+                badge_key = ""
                 if assistant_flags:
                     flag = assistant_flags[0]
                     reason_text = flag["issues"][0] if flag.get("issues") else "Flagged by AI evaluator"
-                    badge_label = flag["label"]
+                    badge_key = flag["key"]
+                    badge_label = badge_for(badge_key, flag["label"], reason_text)
                 # TIER 3: Use failure_descriptions as ultimate fallback
                 elif fallback_reasons:
                     reason_text = fallback_reasons[0]
-                    badge_label = "Issue Detected"
+                    badge_label = badge_for("", "Issue Detected", reason_text)
                 else:
+                    reason_text = ""
+                    badge_label = ""
+
+                # Suppress "repeated" reason on the first occurrence of this assistant text
+                if _suppress_repeated(reason_text):
                     reason_text = ""
                     badge_label = ""
 
@@ -510,7 +567,11 @@ def render_conversation(ev: dict) -> None:
                 if user_flags:
                     flag = user_flags[0]
                     reason_text = flag["issues"][0] if flag.get("issues") else "User expressed frustration"
-                    badge_label = flag["label"]
+                    badge_label = badge_for(flag["key"], flag["label"], reason_text)
+                    # Suppress "repeated" reason on first occurrence of a user text
+                    if _suppress_repeated(reason_text):
+                        reason_text = ""
+                        badge_label = ""
                 else:
                     reason_text = ""
                     badge_label = ""
@@ -619,8 +680,9 @@ def get_primary_issue_type(ev: dict) -> str:
             "user_satisfaction_signals": "Unresolved User Frustration",
             "tone_and_helpfulness": "Unhelpful / Robotic Responses",
             "policy_compliance": "Rigid Policy Dead-Ends",
-            "hallucination": "Making Up False Information",
-            "cross_brand_reference": "Suggesting Other Brands",
+            "hallucination_check": "Making Up False Information",
+            "factual_accuracy": "Wrong / Inaccurate Information",
+            "cross_brand_check": "Suggesting Other Brands",
         }
         return dim_map.get(top_dim, top_dim.replace("_", " ").title())
 
