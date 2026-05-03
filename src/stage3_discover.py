@@ -28,6 +28,7 @@ from src.config import (
     CLUSTER_LABEL_MERGE_THRESHOLD,
     CLUSTER_CONVERSATION_OVERLAP_THRESHOLD,
 )
+from src.logging_config import setup_logging
 from src.auth import get_vertex_token, get_vertex_base_url
 from src.models import ConversationEvaluation, DiscoveredCluster
 from src.prompts import CLUSTER_LABELER_PROMPT
@@ -108,6 +109,13 @@ def cluster_signals(embeddings: np.ndarray) -> np.ndarray:
         return np.full(n_samples, -1)
 
     import umap
+
+    logger.info(
+        "UMAP: fitting %d points (n_neighbors=%d, n_components=%d) — no progress bar; often 1–10+ min on CPU",
+        n_samples,
+        n_neighbors,
+        n_components,
+    )
     reducer = umap.UMAP(
         n_components=n_components,
         n_neighbors=n_neighbors,
@@ -115,6 +123,7 @@ def cluster_signals(embeddings: np.ndarray) -> np.ndarray:
         random_state=42,
     )
     reduced = reducer.fit_transform(embeddings)
+    logger.info("UMAP: done; running HDBSCAN...")
 
     import hdbscan
     clusterer = hdbscan.HDBSCAN(
@@ -123,6 +132,7 @@ def cluster_signals(embeddings: np.ndarray) -> np.ndarray:
         metric="euclidean",
     )
     labels = clusterer.fit_predict(reduced)
+    logger.info("HDBSCAN: done")
     return labels
 
 
@@ -178,6 +188,7 @@ async def merge_similar_clusters(clusters: list[DiscoveredCluster]) -> list[Disc
     if len(clusters) <= 1:
         return clusters
 
+    logger.info("Merge pass: embedding similarity over %d cluster labels...", len(clusters))
     model = get_embedding_model()
     threshold = CLUSTER_LABEL_MERGE_THRESHOLD
 
@@ -206,6 +217,7 @@ async def merge_similar_clusters(clusters: list[DiscoveredCluster]) -> list[Disc
 
     all_labels = [c.auto_label for c in clusters]
     if len(all_labels) > 3:
+        logger.info("Merge pass: LLM semantic merge over %d cluster labels...", len(all_labels))
         label_list = "\n".join(f"- {l}" for l in all_labels)
         merge_prompt = f"""You merge duplicate issue themes from an e-commerce AI assistant QA system.
 
@@ -361,6 +373,7 @@ def filter_noise_clusters(clusters: list[DiscoveredCluster]) -> list[DiscoveredC
 
 async def discover_patterns(evaluations: list[ConversationEvaluation]) -> list[DiscoveredCluster]:
     """Collect signals → embed → cluster → label → merge → overlap merge → themes → filter."""
+    setup_logging()
     logger.info("Stage 3: Discovering failure patterns...")
 
     signals = collect_textual_signals(evaluations)
@@ -381,16 +394,21 @@ async def discover_patterns(evaluations: list[ConversationEvaluation]) -> list[D
     logger.info("Found %d initial clusters (%d noise points)", n_clusters, n_noise)
 
     clusters = []
-    for label in sorted(unique_labels):
-        if label == -1:
-            continue
-
+    to_label = [lb for lb in sorted(unique_labels) if lb != -1]
+    for idx, label in enumerate(to_label, start=1):
         members = [signals[i] for i, l in enumerate(labels) if l == label]
         member_texts = [m["text"] for m in members]
         member_brands = Counter(m["brand_name"] for m in members)
         avg_score = np.mean([m["overall_score"] for m in members])
         convo_ids = list({m["conversation_id"] for m in members})
 
+        logger.info(
+            "Labeling cluster %d/%d (HDBSCAN id=%s, %d member signals)...",
+            idx,
+            len(to_label),
+            label,
+            len(members),
+        )
         label_info = await label_cluster(member_texts)
 
         clusters.append(

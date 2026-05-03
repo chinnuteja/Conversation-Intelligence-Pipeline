@@ -1109,27 +1109,23 @@
     "conversation_id": "69f2bf3f42d388a446245909",
     "brand_name": "Sri Sri Tattva",
     "widget_id": "69a92ad76dcbf2da868e0f9b",
-    "reasoning_scratchpad": "The user's intent was to find the delivery status of their order. After some initial greetings, the user asked about their order. The assistant correctly requested the order number and phone number. The user provided the order number, but the bot incorrectly stated the 'phone number provided does not match' when no phone number had been given. After the user provided the phone number, the assistant successfully retrieved the order details but hallucinated an impossible future date (April 2026) for the order.",
-    "overall_score": 2.5,
+    "reasoning_scratchpad": "The user initiated the conversation with greetings and then asked for the delivery status of their order. The assistant requested the order number and phone number. After the user provided the order number, the assistant incorrectly stated that the phone number provided didn't match, even though one hadn't been given yet. Despite this confusing message, the user provided their phone number, and the assistant successfully retrieved and displayed the complete order details and tracking link.",
+    "overall_score": 4.0,
     "resolution_achieved": true,
     "dimensions": {
       "factual_accuracy": {
-        "score": 1.0,
+        "score": 3.0,
         "issues": [
-          "Assistant provided an impossible future date for the order."
+          "Assistant made a factually incorrect claim about the conversation history."
         ],
         "evidence": [
-          "Order Date: 30 April 2026"
+          "The phone number provided does not match this order. Please provide the phone number you used when placing the order."
         ]
       },
       "hallucination_check": {
-        "score": 1.0,
-        "issues": [
-          "Assistant hallucinated the order date as a future date."
-        ],
-        "evidence": [
-          "Order Date: 30 April 2026"
-        ]
+        "score": 5.0,
+        "issues": [],
+        "evidence": []
       },
       "policy_compliance": {
         "score": 5.0,
@@ -1137,12 +1133,12 @@
         "evidence": []
       },
       "tone_and_helpfulness": {
-        "score": 3.0,
+        "score": 3.5,
         "issues": [
-          "Assistant provided a confusing and incorrect error message when only partial information was given."
+          "The assistant's response was confusing and incorrectly blamed the user for providing a non-matching phone number when none was provided."
         ],
         "evidence": [
-          "[ASSISTANT]: The phone number provided does not match this order. Please provide the phone number you used when placing the order."
+          "The phone number provided does not match this order. Please provide the phone number you used when placing the order."
         ]
       },
       "user_satisfaction_signals": {
@@ -1157,12 +1153,11 @@
       }
     },
     "failure_descriptions": [
-      "Assistant hallucinated an impossible future date (2026) for the user's order.",
-      "Assistant gave a confusing error message, stating a phone number didn't match when the user had not yet provided one."
+      "Assistant incorrectly stated a phone number was provided and did not match the order, when the user had not yet provided a phone number."
     ],
-    "user_intent": "The user wanted to find the status and tracking information for their order.",
+    "user_intent": "The user wanted to know the delivery status of their order.",
     "frustration_signals": [],
-    "open_observations": "The assistant's logic for a failed order lookup appears to be flawed. It defaults to an error message about a non-matching phone number, even when the input was just an order ID. This suggests a rigid, non-contextual error-handling path that could be confusing for users.",
+    "open_observations": "The bot's logic for handling partially provided information (order number without phone number) seems to be flawed. Instead of asking for the missing piece of information, it defaulted to an error message that incorrectly claims the user has already provided invalid data. This is a poor user experience, even though the user in this case was able to proceed.",
     "has_add_to_cart": false,
     "event_counts": {}
   },
@@ -1969,27 +1964,19 @@
     "conversation_id": "69f1cadb98f9bb251e204c5a",
     "brand_name": "Sri Sri Tattva",
     "widget_id": "69a92ad76dcbf2da868e0f9b",
-    "reasoning_scratchpad": "The user reported an issue with a partially fulfilled order, providing the order number. The assistant asked for a phone number, which the user provided. The assistant then responded with a generic order summary but completely ignored the user's specific complaint about partial fulfillment and also hallucinated a future date for the order.",
-    "overall_score": 1.5,
+    "reasoning_scratchpad": "The user reported a specific problem with their order: partial fulfillment. The bot first asked for a phone number to verify the order, which the user provided. After verification, the bot provided a generic order summary but completely failed to acknowledge or address the user's original complaint about the missing items, leaving the core issue unresolved. The user's question changed from stating a problem to providing data, and the bot's response also changed, so this is not a loop. The bot's failure is procedural and one of helpfulness; it correctly retrieved data but failed to apply it to the user's stated problem.",
+    "overall_score": 2.0,
     "resolution_achieved": false,
     "dimensions": {
       "factual_accuracy": {
-        "score": 1.0,
-        "issues": [
-          "Assistant provided a future date for the order."
-        ],
-        "evidence": [
-          "Order Date: 24 April 2026"
-        ]
+        "score": 5.0,
+        "issues": [],
+        "evidence": []
       },
       "hallucination_check": {
-        "score": 1.0,
-        "issues": [
-          "The assistant hallucinated the order date, stating it as '24 April 2026', which is a future date."
-        ],
-        "evidence": [
-          "Order Date: 24 April 2026"
-        ]
+        "score": 5.0,
+        "issues": [],
+        "evidence": []
       },
       "policy_compliance": {
         "score": 5.0,
@@ -1999,17 +1986,22 @@
       "tone_and_helpfulness": {
         "score": 1.0,
         "issues": [
-          "The assistant failed to address the user's specific problem about a partially fulfilled order, instead providing a generic order status update."
+          "The assistant completely ignored the user's stated problem (partial fulfillment) and only provided a generic order status.",
+          "The assistant did not acknowledge the core complaint in its response."
         ],
         "evidence": [
-          "User: My Order #843095, only one item has been fulfilled in it",
-          "Assistant: \ud83e\uddfe **Order Details** ... \ud83d\ude9a **Shipping Status** - **Order Status:** Delivered"
+          "[CUSTOMER]: My Order #843095, only one item has been fulfilled in it",
+          "[ASSISTANT]: \ud83e\uddfe **Order Details**  \n- **Order Number:** #843095  \n- **Order Date:** 24 April 2026  \n- **Total Amount:** \u20b9538.00  \n- **Shipping Location:** Maharashtra, India  \n\n\ud83d\ude9a **Shipping Status**  \n- **Order Status:** Delivered  \n- [Track Order](https://www.delhivery.com/track/package/30550510157522)  \n\n\ud83d\uded2 **Products**  \n- **Kumari Face Wash:** \u20b9190.00, Qty: 1  \n- **Orange Face Wash:** \u20b989.00, Qty: 1  \n- **Rose Face Wash:** \u20b989.00, Qty: 1  \n- **Cucumber & Lemon Face Wash:** \u20b980.00, Qty: 1  \n\n\ud83d\udcde **Contact Us**  \n- **Email:** onlinesupport@srisritattva.com  \n- **Phone:** 1800 120 8030  \n- **WhatsApp/Call:** [Contact Doctors](https://api.whatsapp.com/send/?phone=918310160508)  "
         ]
       },
       "user_satisfaction_signals": {
-        "score": 5.0,
-        "issues": [],
-        "evidence": []
+        "score": 2.0,
+        "issues": [
+          "The user's problem was not resolved before the conversation ended."
+        ],
+        "evidence": [
+          "[CUSTOMER]: My Order #843095, only one item has been fulfilled in it"
+        ]
       },
       "cross_brand_check": {
         "score": 5.0,
@@ -2018,12 +2010,11 @@
       }
     },
     "failure_descriptions": [
-      "Assistant hallucinated a future order date (2026).",
-      "Assistant ignored the user's core complaint about a partially fulfilled order and provided a generic order status instead."
+      "The assistant ignored the user's specific complaint about a partially fulfilled order and instead provided a generic order summary."
     ],
-    "user_intent": "The user wanted to report and get help with a partially fulfilled order.",
+    "user_intent": "The user was trying to get support for an order where they believe items are missing.",
     "frustration_signals": [],
-    "open_observations": "The assistant correctly identified the order number and retrieved details, but its intent recognition was too shallow. It interpreted the query as a simple 'order status' request, completely missing the crucial context 'only one item has been fulfilled in it'. This indicates a failure to parse and understand the full user utterance, not just entities within it.",
+    "open_observations": "The assistant appears to have successfully used the order number to retrieve order data but failed to understand the context of the user's message beyond the order number itself. It treated the query as a simple 'order status' request, completely missing the 'partial fulfillment' complaint. This indicates a weakness in Natural Language Understanding for post-purchase support issues.",
     "has_add_to_cart": false,
     "event_counts": {}
   },
@@ -5197,27 +5188,19 @@
     "conversation_id": "69f3e3395cad2f55381977ff",
     "brand_name": "Blue Tea",
     "widget_id": "680a0a8b70a26f7a0e24eedd",
-    "reasoning_scratchpad": "The user initiated the conversation to find their order. The assistant asked for the order number and phone number, but the user only provided a phone number. The assistant successfully located an order using just the phone number and provided order details with a tracking link, which the user clicked. However, the assistant hallucinated an impossible future delivery date (2026) for an order marked as 'Delivered'.",
-    "overall_score": 2.0,
-    "resolution_achieved": false,
+    "reasoning_scratchpad": "The user initially asked to track their order. The assistant requested the order number and phone number. The user provided only a phone number, but the assistant was still able to successfully locate the order, provide its status and details, and offer a tracking link which the user clicked.",
+    "overall_score": 5.0,
+    "resolution_achieved": true,
     "dimensions": {
       "factual_accuracy": {
-        "score": 1.0,
-        "issues": [
-          "Assistant provided a future date for an order that was already delivered."
-        ],
-        "evidence": [
-          "Status: Delivered\nDate: April 17, 2026"
-        ]
+        "score": 5.0,
+        "issues": [],
+        "evidence": []
       },
       "hallucination_check": {
-        "score": 1.0,
-        "issues": [
-          "The assistant hallucinated a future delivery date (2026) for an order marked as delivered, which is logically impossible."
-        ],
-        "evidence": [
-          "Date: April 17, 2026"
-        ]
+        "score": 5.0,
+        "issues": [],
+        "evidence": []
       },
       "policy_compliance": {
         "score": 5.0,
@@ -5225,13 +5208,9 @@
         "evidence": []
       },
       "tone_and_helpfulness": {
-        "score": 3.0,
-        "issues": [
-          "While the assistant correctly found an order with partial information, it provided critically incorrect data (a future date), which undermines its helpfulness."
-        ],
-        "evidence": [
-          "Status: Delivered\nDate: April 17, 2026"
-        ]
+        "score": 5.0,
+        "issues": [],
+        "evidence": []
       },
       "user_satisfaction_signals": {
         "score": 5.0,
@@ -5244,12 +5223,10 @@
         "evidence": []
       }
     },
-    "failure_descriptions": [
-      "Assistant hallucinated a future delivery date (2026) for an order marked as delivered."
-    ],
-    "user_intent": "The user wanted to track their order.",
+    "failure_descriptions": [],
+    "user_intent": "The user wanted to know the status of their order.",
     "frustration_signals": [],
-    "open_observations": "The assistant demonstrated good adaptability by finding the user's order with only a phone number, even though its instructions asked for both an order number and phone number. The primary failure is a significant data error, presenting a future year as the delivery date. The user clicking the link suggests they ignored the incorrect date and found the link itself useful.",
+    "open_observations": "The assistant demonstrated robust performance by successfully fulfilling the request using only a phone number, even though it had asked for both the order number and phone number. The user's click on the tracking link is a strong behavioral signal of success.",
     "has_add_to_cart": false,
     "event_counts": {
       "link_click": 1
@@ -6310,18 +6287,14 @@
     "conversation_id": "69f37684c9c3baf2e3afa471",
     "brand_name": "Blue Tea",
     "widget_id": "680a0a8b70a26f7a0e24eedd",
-    "reasoning_scratchpad": "The user asked for their order status and provided an order number. The bot successfully retrieved the order details but displayed a factually incorrect order date from the future (2026-04-30). The user then asked follow-up questions about the shipping location, and the bot correctly answered what it knew and then escalated to support when it reached the limits of its data, which is a good procedure.",
-    "overall_score": 2.5,
-    "resolution_achieved": false,
+    "reasoning_scratchpad": "The user inquired about their order status. The assistant initially requested both an order number and phone number, but then successfully retrieved the order details using only the order number provided by the user. The user then asked two follow-up questions to get more specific information about the shipping location, drilling down from the state to the city. The assistant answered what it could and then gracefully escalated to customer support when it reached the limits of its available data.",
+    "overall_score": 4.5,
+    "resolution_achieved": true,
     "dimensions": {
       "factual_accuracy": {
-        "score": 1.0,
-        "issues": [
-          "Assistant provided an order date that is in the future."
-        ],
-        "evidence": [
-          "**Order Date:** 2026-04-30"
-        ]
+        "score": 5.0,
+        "issues": [],
+        "evidence": []
       },
       "hallucination_check": {
         "score": 5.0,
@@ -6334,13 +6307,12 @@
         "evidence": []
       },
       "tone_and_helpfulness": {
-        "score": 4.0,
+        "score": 4.5,
         "issues": [
-          "The assistant asked for a phone number but then did not use it, which is a minor procedural inefficiency."
+          "Assistant asked for information it did not end up needing."
         ],
         "evidence": [
-          "[ASSISTANT]: To track your order, please share both your order number and the phone number used when placing the order in a single message.",
-          "[CUSTOMER]: 416300"
+          "[ASSISTANT]: To track your order, please share both your order number and the phone number used when placing the order in a single message.\n[CUSTOMER]: 416300\n[ASSISTANT]: \ud83e\uddfe **Order Details**..."
         ]
       },
       "user_satisfaction_signals": {
@@ -6355,11 +6327,11 @@
       }
     },
     "failure_descriptions": [
-      "Assistant presented an order with a date from the future (2026-04-30), which is a critical factual error."
+      "The assistant requested both an order number and phone number, but then proceeded to find the order with only the number, creating minor procedural friction."
     ],
-    "user_intent": "User wants to track their order and find out its shipping location.",
+    "user_intent": "User wants to know the status and specific shipping destination of their order.",
     "frustration_signals": [],
-    "open_observations": "The bot's ability to handle follow-up questions and escalate when it doesn't have the data (the specific city) is good. However, the core data it's pulling is critically flawed (the future date), which undermines the entire interaction. The bot also asks for a phone number it doesn't seem to need, proceeding with just the order number.",
+    "open_observations": "This is a good example of a graceful failure. The assistant correctly identifies when it lacks specific information (the city) and provides a clear, correct escalation path (contact support) rather than hallucinating or looping. The only minor point of friction is asking for a phone number that it didn't actually need to use.",
     "has_add_to_cart": false,
     "event_counts": {}
   },
@@ -6463,76 +6435,66 @@
     "conversation_id": "69f36efcc9c3baf2e3ae809b",
     "brand_name": "Blue Tea",
     "widget_id": "680a0a8b70a26f7a0e24eedd",
-    "reasoning_scratchpad": "The user's intent was to find a tea for post-partum belly fat loss, understand how to use it safely while breastfeeding and with other supplements, place an order, and track it. The bot provided excellent, empathetic consultation in Hinglish, correctly advising the user to consult a doctor. However, it failed to execute an 'add to cart' command and, when asked for order status, it hallucinated an order date in the future (2026) before later claiming it couldn't find the order without a number.",
-    "overall_score": 2.5,
-    "resolution_achieved": false,
+    "reasoning_scratchpad": "The user's intent evolved significantly throughout this long conversation. It began with a product query for belly fat, then disclosed personal health information (postpartum C-section, breastfeeding) to get more specific advice. The bot correctly recommended a product and, crucially, repeatedly advised the user to consult a doctor before use, which is excellent. After the user confirmed doctor's approval, the bot provided detailed usage instructions, including integration with protein supplements and yoga, and then handled an order status query. The user's questions changed continuously, showing deep engagement. The bot's primary failures were factual/procedural: it made an inappropriate claim of \"guaranteed results\" and later forgot it had already retrieved the user's order details, asking for the information again.",
+    "overall_score": 3.0,
+    "resolution_achieved": true,
     "dimensions": {
       "factual_accuracy": {
-        "score": 2.0,
+        "score": 1.0,
         "issues": [
-          "Assistant provided a completely incorrect and impossible future date for the user's order.",
-          "Assistant provided inconsistent information about order tracking, first giving details and then stating it could not find the order."
+          "Assistant made an unsubstantiated and inappropriate health claim of \"guaranteed results\" for a weight loss product."
         ],
         "evidence": [
-          "ASSISTANT: Date: 30 April, 2026",
-          "ASSISTANT: To track your order, please share both your order number and the phone number... [Then later] I understand you don't have your order number right now. Here's how to find it..."
+          "[ASSISTANT]: Haan, bilkul! **Belly fat kam hoga aur weight loss hoga**, lekin kuch important cheezein hain:\n\n**[Belly Fat Herbal Tea - 90 Tea Bags]... **guaranteed results deta hai** agar aap consistent rahe:"
         ]
       },
       "hallucination_check": {
-        "score": 2.0,
-        "issues": [
-          "Assistant hallucinated an order delivery date in the future (year 2026)."
-        ],
-        "evidence": [
-          "ASSISTANT: Date: 30 April, 2026"
-        ]
-      },
-      "policy_compliance": {
-        "score": 4.0,
-        "issues": [
-          "Assistant made a strong claim of 'guaranteed results', which may violate company policy on making medical or performance guarantees."
-        ],
-        "evidence": [
-          "ASSISTANT: [Belly Fat Herbal Tea - 90 Tea Bags] (link) **guaranteed results deta hai** agar aap consistent rahe:"
-        ]
-      },
-      "tone_and_helpfulness": {
-        "score": 3.0,
-        "issues": [
-          "Assistant failed to perform the direct command to add an item to the cart.",
-          "Assistant was unhelpful with order tracking, providing contradictory information across turns."
-        ],
-        "evidence": [
-          "CUSTOMER: Add \"Belly Fat Herbal Tea - 90 Tea Bags\" to cart",
-          "ASSISTANT: [Answers next question instead of adding to cart] Bilkul, aap **plant-based protein ke sath Blue Tea le sakti hain**."
-        ]
-      },
-      "user_satisfaction_signals": {
-        "score": 4.0,
-        "issues": [
-          "A behavioral signal indicated the user's attempt to add an item to the cart failed."
-        ],
-        "evidence": [
-          "BEHAVIORAL SIGNALS: {'add_to_cart_failed': 1}"
-        ]
-      },
-      "cross_brand_check": {
         "score": 5.0,
         "issues": [],
         "evidence": []
+      },
+      "policy_compliance": {
+        "score": 1.0,
+        "issues": [
+          "Making a claim of \"guaranteed results\" for a health or weight loss product is a severe policy violation."
+        ],
+        "evidence": [
+          "[ASSISTANT]: **[Belly Fat Herbal Tea - 90 Tea Bags]... **guaranteed results deta hai** agar aap consistent rahe:"
+        ]
+      },
+      "tone_and_helpfulness": {
+        "score": 3.5,
+        "issues": [
+          "The assistant forgot information it had previously provided, leading to a repetitive and unhelpful response.",
+          "The assistant successfully retrieved the order status, but when asked for an update later, it acted as if it had no information and asked for the order number again."
+        ],
+        "evidence": [
+          "[USER]: Blue tea kb deliver hogi\n[ASSISTANT]: I understand you don't have your order number right now. Here's how to find it:..."
+        ]
+      },
+      "user_satisfaction_signals": {
+        "score": 5.0,
+        "issues": [],
+        "evidence": []
+      },
+      "cross_brand_check": {
+        "score": 4.0,
+        "issues": [
+          "Assistant appropriately identifies it cannot give specific advice on a competitor's product (Oziva) but then proceeds to give detailed scheduling advice on how to use it."
+        ],
+        "evidence": [
+          "[ASSISTANT]: Hey! Aapka question **Oziva protein** ke baare mein hai, lekin main **Blue Tea ke liye assistant** hu. Oziva ke baare mein specific advice main nahi de sakti.\n\n**Lekin general guideline:**\n\nPlant-based proteins usually **breakfast ke 30-45 minutes baad** lena better hota hai digestion ke liye."
+        ]
       }
     },
     "failure_descriptions": [
-      "Assistant hallucinated an order date two years in the future (April 2026).",
-      "Assistant failed to execute a direct 'add to cart' command from the user.",
-      "Assistant gave contradictory responses regarding order tracking, first providing a (hallucinated) status and then saying it needed an order number.",
-      "Assistant made a potentially non-compliant claim of 'guaranteed results' for a wellness product."
+      "Assistant made a false and non-compliant claim that the product provides \"guaranteed results\".",
+      "Assistant demonstrated a memory failure by asking for order details after it had already successfully retrieved and displayed the order status earlier in the conversation.",
+      "The assistant, after stating it cannot advise on a competitor product, proceeded to give specific usage instructions for that product."
     ],
-    "user_intent": "The user, who recently had a C-section and is breastfeeding, wants to find a tea for belly fat loss, understand how to use it with protein supplements, order it, and track the delivery.",
-    "frustration_signals": [
-      "Behavioral signal 'add_to_cart_failed' was recorded."
-    ],
-    "open_observations": "The assistant's ability to conduct a long, detailed, and empathetic consultation in Hinglish is excellent. It correctly deferred to a doctor for medical advice regarding breastfeeding, which is a critical safety and policy success. However, its transactional and data-retrieval capabilities (add to cart, order tracking) are severely flawed and include hallucinations.",
+    "user_intent": "The user wanted to find a suitable tea for postpartum weight loss, understand how to use it safely while breastfeeding, get advice on incorporating it into a routine with diet and exercise, and check their order status.",
+    "frustration_signals": [],
+    "open_observations": "The assistant's performance is impressive in handling a long, complex, multi-intent conversation in Hinglish about a sensitive health topic. Its repeated, firm advice to consult a doctor before use while breastfeeding is a critical and well-executed safety feature. The main failures are not in comprehension or tone, but in a critical policy violation ('guaranteed results') and a technical failure (context/memory loss on order status). This highlights the need for stronger guardrails against making health guarantees.",
     "has_add_to_cart": false,
     "event_counts": {
       "add_to_cart_failed": 1,
@@ -7330,30 +7292,28 @@
     "conversation_id": "69f35a79fb1f2c07945f6a37",
     "brand_name": "Blue Tea",
     "widget_id": "680a0a8b70a26f7a0e24eedd",
-    "reasoning_scratchpad": "The user initially stated their order was cancelled by Blue Tea. The assistant first claimed it could not access order details and repeatedly deflected to customer support. After getting an order ID and phone number, it suddenly contradicted itself by pulling up order details, but these details were entirely hallucinated (future date, non-existent product variant). The user's questions changed significantly, from order cancellation to product efficacy, so this was not a loop. The assistant's initial claims about its own inability to access order information were factually incorrect and procedural failures.",
-    "overall_score": 1.5,
-    "resolution_achieved": false,
+    "reasoning_scratchpad": "The user began by claiming their order was cancelled by the company. The bot initially stated it could not access order details and deflected the user to customer support, but then, after the user persisted, it contradicted itself by asking for account details and successfully retrieving the order, revealing it was 'in transit' and not cancelled. The user's intent then changed completely to a product efficacy question about 'belly fat tea', which the bot answered with advice and a cross-sell.",
+    "overall_score": 2.5,
+    "resolution_achieved": true,
     "dimensions": {
       "factual_accuracy": {
-        "score": 1.0,
+        "score": 2.0,
         "issues": [
-          "Assistant falsely claimed it could not access order details, then proceeded to access them.",
-          "Assistant provided a completely fabricated future date for the order."
+          "Assistant incorrectly stated it cannot access order details, then later accessed them.",
+          "Assistant invented a specific timeframe for product results not mentioned in the product data."
         ],
         "evidence": [
-          "I don't have access to real-time order details or cancellation records in my system.",
-          "Order Date: 15 April 2026"
+          "ASSISTANT: I don't have access to real-time order details or cancellation records in my system.",
+          "ASSISTANT: Most customers see noticeable changes within 4 to 6 weeks of consistent use."
         ]
       },
       "hallucination_check": {
-        "score": 1.0,
+        "score": 3.0,
         "issues": [
-          "Assistant hallucinated a future order date.",
-          "Assistant hallucinated a product variant that does not exist in the catalog."
+          "The assistant hallucinated a specific timeframe for product results that is not present in the provided product catalog information."
         ],
         "evidence": [
-          "Order Date: 15 April 2026",
-          "Belly Fat Herbal Tea - 60 Tea Bags"
+          "ASSISTANT: Most customers see noticeable changes within 4 to 6 weeks of consistent use."
         ]
       },
       "policy_compliance": {
@@ -7364,23 +7324,21 @@
       "tone_and_helpfulness": {
         "score": 2.0,
         "issues": [
-          "Assistant was unhelpful by repeatedly claiming it could not access order details before contradicting itself.",
-          "Providing hallucinated and incorrect order information is fundamentally unhelpful and confusing."
+          "The assistant was unhelpful and created a confusing experience by claiming it could not perform an action which it later successfully performed.",
+          "The assistant repeatedly deflected the user to other channels before finally using its own capabilities to solve the problem."
         ],
         "evidence": [
-          "[ASSISTANT]: I don't have access to real-time order details or cancellation records in my system. To get clarity on why your order was cancelled from our end, please contact our support team directly...",
-          "[ASSISTANT]: \ud83e\uddfe Order Details Order Number: #407652 Order Date: 15 April 2026..."
+          "ASSISTANT: I don't have access to real-time order details or cancellation records in my system. To get clarity on why your order was cancelled from our end, please contact our support team directly...",
+          "ASSISTANT: \ud83e\uddfe Order Details Order Number: #407652 Order Date: 15 April 2026 ... Shipping Status Order is currently in transit."
         ]
       },
       "user_satisfaction_signals": {
         "score": 3.0,
         "issues": [
-          "User repeated their initial complaint after providing the requested information, indicating impatience.",
-          "User initiated 'Clear Chat' quick actions, suggesting a desire to reset the confusing conversation."
+          "User repeated their initial complaint after being deflected by the assistant, indicating the first response was unsatisfactory."
         ],
         "evidence": [
-          "[CUSTOMER]: you had cancelled the order from your end",
-          "[EVENT] Clear Chat (type: quick_action_click)"
+          "CUSTOMER: you had cancelled the order from your end"
         ]
       },
       "cross_brand_check": {
@@ -7390,17 +7348,15 @@
       }
     },
     "failure_descriptions": [
-      "Assistant hallucinated a future order date of '15 April 2026'.",
-      "Assistant hallucinated the product 'Belly Fat Herbal Tea - 60 Tea Bags', which is not in the catalog.",
-      "Assistant contradicted itself, first stating it couldn't access order details then providing them.",
-      "Assistant provided a product link with a 'copy-of-' URL slug, indicating a technical issue."
+      "Assistant contradicted itself by first claiming it could not access order details, then proceeding to access them.",
+      "Assistant invented a specific timeframe ('4 to 6 weeks') for product efficacy that is not supported by the product data.",
+      "The assistant provided an unhelpful, confusing user journey for order status by first deflecting the user before using its own tools."
     ],
-    "user_intent": "The user wanted to understand why their order was cancelled and later asked why a product was not producing results.",
+    "user_intent": "The user had two intents: first, to find out why their order was cancelled, and second, to ask why a product wasn't working as expected.",
     "frustration_signals": [
-      "User repeated the initial complaint after providing the order ID.",
-      "User clicked 'Clear Chat' twice, possibly to reset the confusing interaction."
+      "User repeated their initial complaint ('you had cancelled the order from your end') after the bot's first attempt to deflect."
     ],
-    "open_observations": "The assistant exhibits a severe state contradiction, first denying it has a capability (order lookup) and then executing it, but with fully hallucinated data. This is worse than simply saying it cannot help. The subsequent successful handling of a language switch (English to Hinglish) and a product efficacy question is a stark contrast to the initial critical failure. The user's 'Clear Chat' clicks are a noteworthy behavioral signal.",
+    "open_observations": "This is a fascinating example of a bot with contradictory programming. It has been given a guardrail script ('I can't access order details') but also possesses the tool to do so. This leads to a frustrating loop where the user must push past the initial deflection to get a resolution. The bot's ability to handle the pivot from a post-purchase issue to a language challenge ('Mea tummu hai') and then to a product efficacy question is surprisingly robust.",
     "has_add_to_cart": false,
     "event_counts": {
       "quick_action_click": 2
@@ -8179,27 +8135,24 @@
     "conversation_id": "69f32a2c67150fce800579c2",
     "brand_name": "Blue Tea",
     "widget_id": "680a0a8b70a26f7a0e24eedd",
-    "reasoning_scratchpad": "The user started by asking to track an order, then pivoted to a product question about fat-burning tea. The bot initially failed to change topics and repeated its request for order details, creating a brief loop. After the user repeated the product question, the bot recovered and answered correctly. The user then pivoted back to order tracking, provided details, and the bot retrieved the order but hallucinated a future order date (2026). The user then reported that the provided tracking link did not work.",
-    "overall_score": 1.5,
-    "resolution_achieved": false,
+    "reasoning_scratchpad": "The user initially asked to track an order, but then immediately pivoted to a product question about fat-burning tea. The bot failed to recognize the topic change and repeated its request for order details, creating a temporary loop. After the user repeated the product question, the bot successfully recovered, provided detailed recommendations, and then fulfilled the user's original order tracking request before finally providing helpful context for a non-working tracking link.",
+    "overall_score": 3.0,
+    "resolution_achieved": true,
     "dimensions": {
       "factual_accuracy": {
-        "score": 1.0,
+        "score": 3.5,
         "issues": [
-          "Assistant hallucinated a future date for the order."
+          "Assistant provided a tracking link that was not yet active in the courier's system, leading to a 'Records Not Found' error for the user."
         ],
         "evidence": [
-          "Order Date: 2026-04-30"
+          "[ASSISTANT]: Track your order here: [Track Order](https://www.bluedart.com/web/guest/trackdartresult?trackFor=0&trackNo=80067718651)",
+          "[CUSTOMER]: Records Not Found"
         ]
       },
       "hallucination_check": {
-        "score": 1.0,
-        "issues": [
-          "The assistant fabricated an order date that is two years in the future, which is impossible."
-        ],
-        "evidence": [
-          "Order Date: 2026-04-30"
-        ]
+        "score": 5.0,
+        "issues": [],
+        "evidence": []
       },
       "policy_compliance": {
         "score": 5.0,
@@ -8207,26 +8160,19 @@
         "evidence": []
       },
       "tone_and_helpfulness": {
-        "score": 2.0,
+        "score": 2.5,
         "issues": [
-          "Assistant failed to recognize a topic change and repeated a previous, irrelevant answer.",
-          "The tracking link provided by the assistant did not work for the user."
+          "Assistant failed to recognize a change in user intent, repeating a previous response instead of addressing the new question."
         ],
         "evidence": [
-          "[CUSTOMER]: which tea use to fat burn\n[ASSISTANT]: To track your order, please share both your order number and the phone number used when placing the order in a single message.",
-          "[CUSTOMER]: Records Not Found"
+          "[CUSTOMER]: which tea use to fat burn",
+          "[ASSISTANT]: To track your order, please share both your order number and the phone number used when placing the order in a single message."
         ]
       },
       "user_satisfaction_signals": {
-        "score": 2.0,
-        "issues": [
-          "User had to repeat their question after the bot ignored it.",
-          "User reported that the provided solution (tracking link) failed."
-        ],
-        "evidence": [
-          "[CUSTOMER]: which tea use to fat burn\n[ASSISTANT]: To track your order...\n[CUSTOMER]: which tea use to fat burn",
-          "[CUSTOMER]: Records Not Found"
-        ]
+        "score": 4.0,
+        "issues": [],
+        "evidence": []
       },
       "cross_brand_check": {
         "score": 5.0,
@@ -8235,16 +8181,12 @@
       }
     },
     "failure_descriptions": [
-      "Assistant failed to recognize a topic change, repeating a previous response instead of answering the user's new question.",
-      "Assistant hallucinated a future order date (2026-04-30) when providing order details.",
-      "The tracking link provided by the assistant was invalid or not yet active, leading to a 'Records Not Found' error for the user."
+      "Assistant got stuck in a loop, repeating a request for order details after the user changed their question.",
+      "The provided courier tracking link was not active, leading to an error for the user."
     ],
-    "user_intent": "The user wanted to track their order and also ask for a product recommendation for fat-burning tea.",
-    "frustration_signals": [
-      "User repeated the question 'which tea use to fat burn' after the assistant failed to answer it.",
-      "User explicitly stated the provided tracking link failed by saying 'Records Not Found'."
-    ],
-    "open_observations": "The conversation shows the bot struggling with context switching, as seen when it failed to pivot from the 'order tracking' flow to the 'product question' flow. It also hallucinated a key piece of data (the order date). While the bot's final response to the failed tracking link was well-handled (explaining the delay and offering support), the preceding errors created a poor user experience.",
+    "user_intent": "The user wanted to track their order and also get product recommendations for a fat-burning tea.",
+    "frustration_signals": [],
+    "open_observations": "The conversation shows a significant failure followed by a strong recovery. The bot initially failed at context-switching by getting stuck in a loop. However, once it broke out of the loop, its performance on both the product query and the order tracking issue (especially handling the non-working link) was excellent. The final message explaining the tracking delay is a great example of helpful issue resolution.",
     "has_add_to_cart": false,
     "event_counts": {
       "quick_action_click": 2,
@@ -11022,27 +10964,19 @@
     "conversation_id": "69f1fb8b42d388a44613d4ee",
     "brand_name": "Blue Nectar",
     "widget_id": "6983153e1497a62e8542a0ad",
-    "reasoning_scratchpad": "The user initially asked how to add a lip balm to the cart and specified a flavor. The assistant provided correct procedural instructions. The user then pivoted to a post-purchase query, asking to track an order. After guiding the user to find their order number, the assistant successfully retrieved the order details but presented a hallucinated future date for the order (\"29 April 2026\"), which is a major factual error.",
-    "overall_score": 2.0,
-    "resolution_achieved": false,
+    "reasoning_scratchpad": "The user initially asked how to add an item to the cart, then specified a flavor. The bot provided clear procedural instructions. The user then pivoted their intent completely to a post-purchase query about tracking an existing order, and the bot seamlessly handled this by first asking for an order number, guiding the user on how to find it, and finally providing the correct order details once the number was supplied. The user's questions changed, but the bot adapted perfectly; this is not a loop.",
+    "overall_score": 5.0,
+    "resolution_achieved": true,
     "dimensions": {
       "factual_accuracy": {
-        "score": 1.0,
-        "issues": [
-          "Assistant provided an impossible, future date for the customer's order."
-        ],
-        "evidence": [
-          "- Order Date: 29 April 2026"
-        ]
+        "score": 5.0,
+        "issues": [],
+        "evidence": []
       },
       "hallucination_check": {
-        "score": 1.0,
-        "issues": [
-          "The assistant hallucinated a future order date, which cannot be correct."
-        ],
-        "evidence": [
-          "Order Date: 29 April 2026"
-        ]
+        "score": 5.0,
+        "issues": [],
+        "evidence": []
       },
       "policy_compliance": {
         "score": 5.0,
@@ -11050,13 +10984,9 @@
         "evidence": []
       },
       "tone_and_helpfulness": {
-        "score": 3.0,
-        "issues": [
-          "While the bot's conversational flow was helpful, providing critically incorrect information undermines its overall helpfulness."
-        ],
-        "evidence": [
-          "- Order Date: 29 April 2026"
-        ]
+        "score": 5.0,
+        "issues": [],
+        "evidence": []
       },
       "user_satisfaction_signals": {
         "score": 5.0,
@@ -11069,12 +10999,10 @@
         "evidence": []
       }
     },
-    "failure_descriptions": [
-      "Assistant hallucinated an impossible future date (29 April 2026) when retrieving order details."
-    ],
-    "user_intent": "The user first wanted to know how to add an item to the cart, and then wanted to track an existing order.",
+    "failure_descriptions": [],
+    "user_intent": "The user had two intents: first, to learn how to add a product to the cart, and second, to track a previously placed order.",
     "frustration_signals": [],
-    "open_observations": "The assistant demonstrated a strong ability to handle a multi-intent conversation, smoothly pivoting from a pre-purchase question to a post-purchase order lookup. The conversational flow for guiding the user to find their order number was excellent. However, this success was completely negated by a critical data hallucination (future order date) at the final step, which suggests a problem with the data retrieval or formatting logic from the backend system.",
+    "open_observations": "This is an excellent example of the assistant handling a sharp, mid-conversation topic pivot. The bot seamlessly transitioned from a pre-purchase 'add to cart' query to a post-purchase 'order tracking' query, guiding the user through each step of the new intent successfully. The final order status message is well-structured, actionable, and led to a positive behavioral signal (link click).",
     "has_add_to_cart": false,
     "event_counts": {
       "link_click": 1
@@ -13173,18 +13101,14 @@
     "conversation_id": "69eee23be22e8aec160f45fb",
     "brand_name": "Blue Nectar",
     "widget_id": "6983153e1497a62e8542a0ad",
-    "reasoning_scratchpad": "The user first successfully tracked their order. They then attempted to modify or cancel this order, but stated that the provided customer service contact methods (phone, WhatsApp) were unresponsive. The user's question and context changed across turns, but the bot fell into a loop, repeatedly suggesting the same failed contact methods and ignoring the user's explicit statements of failure, leading to clear frustration.",
-    "overall_score": 1.5,
+    "reasoning_scratchpad": "The user first successfully tracked an order. The user's intent then changed to modifying or cancelling this order. The assistant correctly stated the cancellation policy but then failed when the user reported that the provided contact channels (phone, WhatsApp) were unresponsive. The assistant fell into a loop, repeatedly suggesting the same contact methods the user said were not working, and ignored a direct command to cancel the order, ultimately failing to resolve the user's urgent request.",
+    "overall_score": 2.0,
     "resolution_achieved": false,
     "dimensions": {
       "factual_accuracy": {
-        "score": 4.0,
-        "issues": [
-          "Assistant provides a nonsensical reason for why an order cannot be cancelled"
-        ],
-        "evidence": [
-          "Since your order #130052 was placed on 26 April 2026, cancellation or modification may not be possible now."
-        ]
+        "score": 5.0,
+        "issues": [],
+        "evidence": []
       },
       "hallucination_check": {
         "score": 5.0,
@@ -13192,32 +13116,27 @@
         "evidence": []
       },
       "policy_compliance": {
-        "score": 2.0,
-        "issues": [
-          "The bot failed to escalate or provide a functional alternative when the user reported that standard support channels were failing."
-        ],
-        "evidence": [
-          "[CUSTOMER]: I\u2019ve been trying to call and I\u2019ve also texted on WhatsApp",
-          "[ASSISTANT]: We apologize for the inconvenience caused. Our team is available Monday to Saturday, 10:00 A.M. to 6:00 P.M. IST. Please share your query via email at cs@bluenectar.co.in or WhatsApp [here](https://api.whatsapp.com/send/?phone=919999519750), and we will respond promptly within 24-48 hours."
-        ]
+        "score": 5.0,
+        "issues": [],
+        "evidence": []
       },
       "tone_and_helpfulness": {
-        "score": 1.0,
+        "score": 1.5,
         "issues": [
-          "Assistant got stuck in a loop, repeating the same unhelpful advice.",
-          "The assistant ignored the user's explicit statements that the provided contact methods were not working.",
-          "The final response was a context-free template that ignored the entire preceding conversation."
+          "Assistant repeatedly provided the same unhelpful contact information after the user explicitly stated those methods were not working.",
+          "Assistant failed to provide an alternative solution or escalate the issue when the standard procedure failed.",
+          "Assistant ignored the user's direct command to cancel the order and reverted to a generic, unhelpful policy statement."
         ],
         "evidence": [
-          "[ASSISTANT]: To cancel your order, please email us immediately at cs@bluenectar.co.in or call 9999519750 within 5 hours of placing the order."
+          "[CUSTOMER]: None of your executives are receiving the call or msg\n[ASSISTANT]: I regret the difficulty you are facing in reaching us by call or message. Our customer care is available Monday to Saturday, 10:00 A.M. to 6:00 P.M. IST, at +91 9999519750 and cs@bluenectar.co.in. Please send your details via email or WhatsApp [here]...",
+          "[CUSTOMER]: I don\u2019t know, don\u2019t send me this order\n[ASSISTANT]: To cancel your order, please email us immediately at cs@bluenectar.co.in or call 9999519750 within 5 hours of placing the order."
         ]
       },
       "user_satisfaction_signals": {
         "score": 1.0,
         "issues": [
-          "User explicitly stated the bot's responses were not helpful.",
-          "User expressed frustration with inability to contact customer service.",
-          "User ended with a statement of desperation, abandoning the process."
+          "User explicitly stated the assistant's response was not helpful.",
+          "User expressed exasperation and abandoned the scripted flow."
         ],
         "evidence": [
           "It\u2019s not helping",
@@ -13232,18 +13151,17 @@
       }
     },
     "failure_descriptions": [
-      "The assistant entered a loop, repeatedly suggesting the same contact channels after the user explicitly said they were not working.",
-      "The assistant failed to escalate or provide an alternative path when the user reported a dead-end with customer support.",
-      "The assistant gave a nonsensical response about an order placed in the future ('26 April 2026'), stating cancellation may not be possible 'now'.",
-      "The assistant's final message was a templated response that completely ignored the conversation's history and the user's frustration."
+      "Assistant entered a loop, repeatedly suggesting the same contact methods even after the user stated they were unresponsive.",
+      "Assistant failed to escalate or offer an alternative path when the user reported a dead-end with customer service.",
+      "Assistant ignored the user's direct command \"don\u2019t send me this order\" and instead repeated a generic policy."
     ],
-    "user_intent": "The user initially wanted to track their order, then wanted to modify or cancel it.",
+    "user_intent": "The user initially wanted to track their order, then attempted to modify or cancel it.",
     "frustration_signals": [
       "It\u2019s not helping",
       "None of your executives are receiving the call or msg",
       "I don\u2019t know, don\u2019t send me this order"
     ],
-    "open_observations": "The bot correctly identified the order date as '26 April 2026', which is a significant data anomaly. However, its logic is not equipped to handle this impossibility. Its response, '...cancellation or modification may not be possible now,' is logically broken because of the future date. The system should have a check for impossible dates or a special handling path for pre-orders.",
+    "open_observations": "The conversation demonstrates a critical flaw in the bot's handling of support issues. When a user reports that a primary contact method is failing, the bot should have a clear alternative path, like creating a support ticket. The bot's one attempt to escalate by asking for details was a good step, but it immediately abandoned that path on the next turn and reverted to its broken script, creating a frustrating experience for a time-sensitive issue.",
     "has_add_to_cart": false,
     "event_counts": {
       "link_click": 2
@@ -13829,26 +13747,26 @@
     "conversation_id": "69edb3df4b0b63e8b8ddfb92",
     "brand_name": "Blue Nectar",
     "widget_id": "6983153e1497a62e8542a0ad",
-    "reasoning_scratchpad": "The user began by questioning the website's genuineness and then detailed a specific complaint about a friend's order that was marked 'delivered' but never received. The user's questions changed throughout the conversation, moving from a general trust query to a specific order lookup. The bot successfully retrieved the order details but hallucinated a future order date ('2026-04-02'), which is a severe factual error, before correctly advising the user to contact customer service for the delivery discrepancy.",
-    "overall_score": 2.0,
-    "resolution_achieved": false,
+    "reasoning_scratchpad": "The user began by questioning the brand's legitimacy, then escalated to a specific complaint about a friend's missing order which was marked as delivered. The user's questions changed throughout the conversation, progressing from a general query to a specific order investigation, so this was not a loop. The user expressed explicit frustration, calling the business 'fake' and threatening a complaint. The bot handled the hostility well, retrieved the order details, but hallucinated a product name ('Shubhr Kumkumadi Body Oil') that does not exist in the provided product catalog, likely by conflating terms from two different products.",
+    "overall_score": 3.0,
+    "resolution_achieved": true,
     "dimensions": {
       "factual_accuracy": {
-        "score": 1.0,
+        "score": 2.0,
         "issues": [
-          "Assistant provided a future date as the order date."
+          "The assistant stated the order contained a product that does not exist in the provided product catalog."
         ],
         "evidence": [
-          "- Order Date: 2026-04-02"
+          "Assistant listed 'Shubhr Kumkumadi Body Oil for Glowing Skin' as a product in order #127467, but no such product exists in the catalog context."
         ]
       },
       "hallucination_check": {
-        "score": 1.0,
+        "score": 2.0,
         "issues": [
-          "The assistant hallucinated a future date for an order, which is impossible."
+          "The assistant hallucinated a product name by combining attributes of multiple different products into one non-existent item."
         ],
         "evidence": [
-          "- Order Date: 2026-04-02"
+          "The order details included 'Shubhr Kumkumadi Body Oil for Glowing Skin'. The catalog has a 'Shubhr Anti Aging Cream' and a 'Kumkumadi Face Serum', but not the item listed by the assistant."
         ]
       },
       "policy_compliance": {
@@ -13857,21 +13775,17 @@
         "evidence": []
       },
       "tone_and_helpfulness": {
-        "score": 3.0,
-        "issues": [
-          "While the bot's tone was apologetic and it provided the correct escalation path, the inclusion of a major factual error (hallucinated date) makes the response fundamentally unhelpful and untrustworthy."
-        ],
-        "evidence": [
-          "[ASSISTANT]: \ud83e\uddfe **Order Details** \n- Order Number: #127467 \n- Order Date: 2026-04-02"
-        ]
+        "score": 5.0,
+        "issues": [],
+        "evidence": []
       },
       "user_satisfaction_signals": {
         "score": 1.0,
         "issues": [
-          "User explicitly called the business fake and threatened to file a complaint."
+          "User expressed extreme frustration and distrust in the brand."
         ],
         "evidence": [
-          "[CUSTOMER]: Due to all the scenarios, it seems you are fake business. Im gonna file a complaint against this company."
+          "Due to all the scenarios, it seems you are fake business. Im gonna file a complaint against this company."
         ]
       },
       "cross_brand_check": {
@@ -13881,15 +13795,15 @@
       }
     },
     "failure_descriptions": [
-      "Assistant hallucinated a future date ('2026-04-02') when retrieving order details.",
-      "The user's core issue regarding a friend's missing package was not resolved, and the interaction ended with the user still needing to contact support."
+      "Assistant hallucinated a product name ('Shubhr Kumkumadi Body Oil for Glowing Skin') when retrieving order details, as this product does not exist in the catalog."
     ],
-    "user_intent": "The user wanted to investigate a friend's missing order and confirm the legitimacy of the company.",
+    "user_intent": "To investigate a friend's missing order and challenge the brand's legitimacy.",
     "frustration_signals": [
-      "User stated 'it seems you are fake business.'",
-      "User stated 'Im gonna file a complaint against this company.'"
+      "User accused the business of being fake: 'it seems you are fake business.'",
+      "User threatened to file a complaint: 'Im gonna file a complaint against this company.'",
+      "User contradicted the bot's data after it was presented: 'But the order was never received'"
     ],
-    "open_observations": "The bot's ability to retrieve order details by ID is a powerful feature. However, the system is susceptible to hallucinating key data points within those details (like the order date). This type of bug is extremely damaging to user trust, especially in a scenario where the user already has doubts about the company's legitimacy.",
+    "open_observations": "The bot's conversational logic for handling a hostile user was excellent; it de-escalated, showed empathy, and guided the user to the correct procedural next step. The primary failure was in data accuracy, where it hallucinated a product name while successfully retrieving other correct order details. This suggests the conversational AI is strong, but its connection to the product database is flawed.",
     "has_add_to_cart": false,
     "event_counts": {}
   },

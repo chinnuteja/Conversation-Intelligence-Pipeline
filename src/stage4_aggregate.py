@@ -13,6 +13,7 @@ from datetime import datetime
 from openai import AsyncOpenAI
 
 from src.config import SUMMARY_MODEL, OUTPUT_DIR
+from src.logging_config import setup_logging
 from src.auth import get_vertex_token, get_vertex_base_url
 from src.models import (
     ConversationEvaluation,
@@ -120,6 +121,10 @@ def aggregate_by_brand(
 
 async def generate_executive_summary(report: PipelineReport) -> str:
     """Use Azure OpenAI to write a human-readable executive summary."""
+    logger.info(
+        "Executive summary: calling model %s (single request; may take 1–3+ min)...",
+        SUMMARY_MODEL,
+    )
     report_data = {
         "total_conversations": report.total_conversations,
         "brands": [
@@ -182,6 +187,7 @@ async def build_report(
     clusters: list[DiscoveredCluster],
 ) -> PipelineReport:
     """Main Stage 4 function. Aggregates everything into the final report."""
+    setup_logging()
     logger.info("Stage 4: Aggregating results...")
 
     theme_rollups = build_cluster_theme_rollups(clusters)

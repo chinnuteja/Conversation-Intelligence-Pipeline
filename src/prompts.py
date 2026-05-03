@@ -3,6 +3,8 @@ All LLM prompts used in the pipeline.
 Centralized here for easy iteration and version control.
 """
 
+from datetime import datetime, timezone
+
 # ── STAGE 2: Per-Conversation Evaluator ──
 
 EVALUATOR_SYSTEM_PROMPT = """You are a senior QA analyst for an e-commerce AI assistant platform.
@@ -45,6 +47,11 @@ CRITICAL RULES:
    - Many message timestamps in this dataset are tied to the millisecond, so positional gaps in the transcript are not always reliable.
    - Before claiming the assistant ignored a question, scan every assistant turn in the conversation. If any assistant message clearly answers the user's question on topic and intent, the question was NOT ignored — even if the reply appears slightly out of sequence.
    - Only call it "ignored" when no assistant turn ever addresses that user request anywhere in the transcript.
+9. Date sanity for order details:
+   - The prompt includes `EVALUATION_DATE`, `CONVERSATION_CREATED_AT`, and `LAST_MESSAGE_TIMESTAMP`. Use these dates as ground truth for whether an order date is future/impossible.
+   - Do NOT call a date "future", "impossible", or hallucinated just because the year is 2026. This dataset is from 2026.
+   - Only flag an order date as future/impossible if the cited date is AFTER `LAST_MESSAGE_TIMESTAMP` or AFTER `EVALUATION_DATE`.
+   - Example: if `LAST_MESSAGE_TIMESTAMP` is 2026-04-30, then "29 April 2026" is a past date and must NOT be penalized as future.
 
 CALIBRATION — score like a reasonable senior PM, not a strict auditor:
    - If the user got what they came for (a working answer, a successful action, a useful link), that is a 5, even if the conversation was short or the bot was terse.
@@ -188,8 +195,12 @@ def build_evaluator_user_prompt(thread) -> str:
     Includes the conversation transcript and any product context.
     """
     lines = []
+    last_timestamp = max((msg.timestamp for msg in thread.messages), default=thread.created_at)
     lines.append(f"BRAND: {thread.brand_name}")
     lines.append(f"CONVERSATION ID: {thread.conversation_id}")
+    lines.append(f"EVALUATION_DATE: {datetime.now(timezone.utc).date().isoformat()}")
+    lines.append(f"CONVERSATION_CREATED_AT: {thread.created_at.isoformat()}")
+    lines.append(f"LAST_MESSAGE_TIMESTAMP: {last_timestamp.isoformat()}")
     lines.append(f"BEHAVIORAL SIGNALS: {dict(thread.event_counts)}")
     lines.append(f"USER MESSAGES: {thread.user_message_count}, AGENT MESSAGES: {thread.agent_message_count}")
     lines.append("")

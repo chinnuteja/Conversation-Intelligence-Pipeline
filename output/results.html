@@ -112,26 +112,26 @@
   <h1>Conversation Intelligence Pipeline — Automated Analysis Report</h1>
   <p class="subtitle">300 conversations across 3 e-commerce brands<br/>
   Four-stage pipeline: ingest, LLM-as-judge evaluation (structured JSON), semantic clustering (UMAP + HDBSCAN), aggregate &amp; executive summary.</p>
-  <p class="meta">Generated: 2026-05-03T12:42:43.581477</p>
+  <p class="meta">Generated: 2026-05-03T13:42:35.436066</p>
 
   <section>
     <h2>At a glance</h2>
     <div class="metrics">
       <div class="metric"><div class="val">300</div><div class="lbl">Conversations</div></div>
-      <div class="metric"><div class="val">1</div><div class="lbl">Issue clusters</div></div>
+      <div class="metric"><div class="val">16</div><div class="lbl">Issue clusters</div></div>
       <div class="metric"><div class="val">0</div><div class="lbl">Failed evaluations</div></div>
-      <div class="metric"><div class="val">4.18</div><div class="lbl">Avg score (1–5)</div></div>
+      <div class="metric"><div class="val">4.23</div><div class="lbl">Avg score (1–5)</div></div>
       <div class="metric"><div class="val">100.0%</div><div class="lbl">Eval success rate</div></div>
     </div>
     <h2 style="border:none;padding:0;margin-top:0">Executive summary</h2>
-    <div class="exec">Our AI is fundamentally broken for users with order status issues, getting stuck in catastrophic loops that prevent any resolution. This week&#x27;s analysis of 300 conversations shows that a single, system-wide failure pattern is responsible for the most severe user problems, tanking</div>
+    <div class="exec">Our AI is systematically failing on basic order support queries, getting stuck in loops that force users to abandon their conversations. This week&#x27;s review of 300 conversations shows that while some top-level metrics appear stable, a catastrophic failure pattern is causing severe user frustration and undermining trust in our platform</div>
   </section>
 
   <section>
     <h2>Brand performance</h2>
     <table>
       <thead><tr><th>Brand</th><th>Overall score</th><th>Resolution</th><th>Hallucination</th><th>Frustration</th><th>Cross-brand</th><th>Factual accuracy</th><th>Add-to-cart</th></tr></thead>
-      <tbody><tr><td><strong>Sri Sri Tattva</strong></td><td>4.25 / 5.0</td><td>81%</td><td>4%</td><td>19%</td><td>5.00 / 5.0</td><td>4.77 / 5.0</td><td>15%</td></tr><tr><td><strong>Blue Tea</strong></td><td>4.25 / 5.0</td><td>80%</td><td>8%</td><td>13%</td><td>5.00 / 5.0</td><td>4.61 / 5.0</td><td>23%</td></tr><tr><td><strong>Blue Nectar</strong></td><td>4.04 / 5.0</td><td>76%</td><td>13%</td><td>14%</td><td>5.00 / 5.0</td><td>4.22 / 5.0</td><td>23%</td></tr></tbody>
+      <tbody><tr><td><strong>Blue Tea</strong></td><td>4.33 / 5.0</td><td>85%</td><td>4%</td><td>11%</td><td>4.99 / 5.0</td><td>4.71 / 5.0</td><td>23%</td></tr><tr><td><strong>Sri Sri Tattva</strong></td><td>4.27 / 5.0</td><td>81%</td><td>2%</td><td>19%</td><td>5.00 / 5.0</td><td>4.83 / 5.0</td><td>15%</td></tr><tr><td><strong>Blue Nectar</strong></td><td>4.08 / 5.0</td><td>78%</td><td>12%</td><td>14%</td><td>5.00 / 5.0</td><td>4.28 / 5.0</td><td>23%</td></tr></tbody>
     </table>
   </section>
 
@@ -142,7 +142,7 @@
       <thead>
         <tr><th>Cluster</th><th>Count</th><th>Severity avg</th><th>Brands affected</th></tr>
       </thead>
-      <tbody><tr><td>Bot omits product details from catalog</td><td class='num'>546</td><td class='num'>3.37</td><td class='small'>BN: 193 | SST: 180 | BT: 173</td></tr></tbody>
+      <tbody><tr><td>Bot lacks confirmation for &#x27;add to cart&#x27; requests</td><td class='num'>95</td><td class='num'>4.40</td><td class='small'>BT: 39 | BN: 32 | SST: 24</td></tr><tr><td>Assistant Escalates Requests It Cannot Fulfill</td><td class='num'>65</td><td class='num'>2.45</td><td class='small'>SST: 28 | BT: 20 | BN: 17</td></tr><tr><td>Users explicitly dismiss bot responses as unhelpful</td><td class='num'>63</td><td class='num'>2.85</td><td class='small'>BN: 47 | SST: 8 | BT: 8</td></tr><tr><td>Assistant provides incorrect product usage instructions</td><td class='num'>44</td><td class='num'>2.88</td><td class='small'>BN: 18 | SST: 15 | BT: 11</td></tr><tr><td>Excellent bot performance misclassified as failure</td><td class='num'>35</td><td class='num'>4.55</td><td class='small'>BN: 14 | SST: 12 | BT: 9</td></tr><tr><td>Bot fails to handle conversational follow-up</td><td class='num'>31</td><td class='num'>2.18</td><td class='small'>SST: 14 | BN: 10 | BT: 7</td></tr><tr><td>Repetitive &#x27;Consult Ayurvedic Doctors&#x27; Call-to-Action</td><td class='num'>25</td><td class='num'>4.83</td><td class='small'>SST: 18 | BT: 4 | BN: 3</td></tr><tr><td>Bot fails to match user&#x27;s input language</td><td class='num'>16</td><td class='num'>4.53</td><td class='small'>BT: 11 | SST: 3 | BN: 2</td></tr><tr><td>Bot makes prohibited health guarantees or claims</td><td class='num'>11</td><td class='num'>4.82</td><td class='small'>BT: 7 | SST: 3 | BN: 1</td></tr><tr><td>User expresses dissatisfaction and is not helped</td><td class='num'>9</td><td class='num'>2.22</td><td class='small'>SST: 5 | BN: 3 | BT: 1</td></tr><tr><td>Conversations abandoned with user&#x27;s core need unresolved</td><td class='num'>8</td><td class='num'>2.19</td><td class='small'>SST: 3 | BN: 3 | BT: 2</td></tr><tr><td>Bot repeats welcome message on repeated greeting</td><td class='num'>8</td><td class='num'>4.31</td><td class='small'>BT: 6 | SST: 2</td></tr><tr><td>Support channels are failing to respond to users</td><td class='num'>7</td><td class='num'>3.43</td><td class='small'>SST: 3 | BT: 2 | BN: 2</td></tr><tr><td>Bot provides helpful, consultative, multi-option recommendations</td><td class='num'>6</td><td class='num'>5.00</td><td class='small'>BT: 6</td></tr><tr><td>User immediately shifts chat channel to WhatsApp</td><td class='num'>5</td><td class='num'>4.90</td><td class='small'>BN: 3 | SST: 1 | BT: 1</td></tr><tr><td>Bot gets stuck in loops, unable to recover</td><td class='num'>4</td><td class='num'>3.38</td><td class='small'>BN: 3 | BT: 1</td></tr></tbody>
     </table>
   </section>
 

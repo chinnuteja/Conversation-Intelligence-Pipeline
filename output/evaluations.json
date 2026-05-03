@@ -795,68 +795,6 @@
     }
   },
   {
-    "conversation_id": "69f1cadb98f9bb251e204c5a",
-    "brand_name": "Sri Sri Tattva",
-    "widget_id": "69a92ad76dcbf2da868e0f9b",
-    "reasoning_scratchpad": "The user reported an issue with a partially fulfilled order, providing the order number. The assistant asked for a phone number, which the user provided. The assistant then responded with a generic order summary but completely ignored the user's specific complaint about partial fulfillment and also hallucinated a future date for the order.",
-    "overall_score": 1.5,
-    "resolution_achieved": false,
-    "dimensions": {
-      "factual_accuracy": {
-        "score": 1.0,
-        "issues": [
-          "Assistant provided a future date for the order."
-        ],
-        "evidence": [
-          "Order Date: 24 April 2026"
-        ]
-      },
-      "hallucination_check": {
-        "score": 1.0,
-        "issues": [
-          "The assistant hallucinated the order date, stating it as '24 April 2026', which is a future date."
-        ],
-        "evidence": [
-          "Order Date: 24 April 2026"
-        ]
-      },
-      "policy_compliance": {
-        "score": 5.0,
-        "issues": [],
-        "evidence": []
-      },
-      "tone_and_helpfulness": {
-        "score": 1.0,
-        "issues": [
-          "The assistant failed to address the user's specific problem about a partially fulfilled order, instead providing a generic order status update."
-        ],
-        "evidence": [
-          "User: My Order #843095, only one item has been fulfilled in it",
-          "Assistant: \ud83e\uddfe **Order Details** ... \ud83d\ude9a **Shipping Status** - **Order Status:** Delivered"
-        ]
-      },
-      "user_satisfaction_signals": {
-        "score": 5.0,
-        "issues": [],
-        "evidence": []
-      },
-      "cross_brand_check": {
-        "score": 5.0,
-        "issues": [],
-        "evidence": []
-      }
-    },
-    "failure_descriptions": [
-      "Assistant hallucinated a future order date (2026).",
-      "Assistant ignored the user's core complaint about a partially fulfilled order and provided a generic order status instead."
-    ],
-    "user_intent": "The user wanted to report and get help with a partially fulfilled order.",
-    "frustration_signals": [],
-    "open_observations": "The assistant correctly identified the order number and retrieved details, but its intent recognition was too shallow. It interpreted the query as a simple 'order status' request, completely missing the crucial context 'only one item has been fulfilled in it'. This indicates a failure to parse and understand the full user utterance, not just entities within it.",
-    "has_add_to_cart": false,
-    "event_counts": {}
-  },
-  {
     "conversation_id": "69f05c09089867045ac74be6",
     "brand_name": "Sri Sri Tattva",
     "widget_id": "69a92ad76dcbf2da868e0f9b",
@@ -914,162 +852,6 @@
     "open_observations": "The bot's initial intent detection and multilingual (Hindi) response were good. However, the core failure is its inability to handle state in a multi-turn conversation. After receiving the requested order number, it should have either used it to look up order details or, if not capable, stated its limitation and immediately escalated. Instead, it reset the conversation flow, which is a critical procedural flaw.",
     "has_add_to_cart": false,
     "event_counts": {}
-  },
-  {
-    "conversation_id": "69f35a79fb1f2c07945f6a37",
-    "brand_name": "Blue Tea",
-    "widget_id": "680a0a8b70a26f7a0e24eedd",
-    "reasoning_scratchpad": "The user initially stated their order was cancelled by Blue Tea. The assistant first claimed it could not access order details and repeatedly deflected to customer support. After getting an order ID and phone number, it suddenly contradicted itself by pulling up order details, but these details were entirely hallucinated (future date, non-existent product variant). The user's questions changed significantly, from order cancellation to product efficacy, so this was not a loop. The assistant's initial claims about its own inability to access order information were factually incorrect and procedural failures.",
-    "overall_score": 1.5,
-    "resolution_achieved": false,
-    "dimensions": {
-      "factual_accuracy": {
-        "score": 1.0,
-        "issues": [
-          "Assistant falsely claimed it could not access order details, then proceeded to access them.",
-          "Assistant provided a completely fabricated future date for the order."
-        ],
-        "evidence": [
-          "I don't have access to real-time order details or cancellation records in my system.",
-          "Order Date: 15 April 2026"
-        ]
-      },
-      "hallucination_check": {
-        "score": 1.0,
-        "issues": [
-          "Assistant hallucinated a future order date.",
-          "Assistant hallucinated a product variant that does not exist in the catalog."
-        ],
-        "evidence": [
-          "Order Date: 15 April 2026",
-          "Belly Fat Herbal Tea - 60 Tea Bags"
-        ]
-      },
-      "policy_compliance": {
-        "score": 5.0,
-        "issues": [],
-        "evidence": []
-      },
-      "tone_and_helpfulness": {
-        "score": 2.0,
-        "issues": [
-          "Assistant was unhelpful by repeatedly claiming it could not access order details before contradicting itself.",
-          "Providing hallucinated and incorrect order information is fundamentally unhelpful and confusing."
-        ],
-        "evidence": [
-          "[ASSISTANT]: I don't have access to real-time order details or cancellation records in my system. To get clarity on why your order was cancelled from our end, please contact our support team directly...",
-          "[ASSISTANT]: \ud83e\uddfe Order Details Order Number: #407652 Order Date: 15 April 2026..."
-        ]
-      },
-      "user_satisfaction_signals": {
-        "score": 3.0,
-        "issues": [
-          "User repeated their initial complaint after providing the requested information, indicating impatience.",
-          "User initiated 'Clear Chat' quick actions, suggesting a desire to reset the confusing conversation."
-        ],
-        "evidence": [
-          "[CUSTOMER]: you had cancelled the order from your end",
-          "[EVENT] Clear Chat (type: quick_action_click)"
-        ]
-      },
-      "cross_brand_check": {
-        "score": 5.0,
-        "issues": [],
-        "evidence": []
-      }
-    },
-    "failure_descriptions": [
-      "Assistant hallucinated a future order date of '15 April 2026'.",
-      "Assistant hallucinated the product 'Belly Fat Herbal Tea - 60 Tea Bags', which is not in the catalog.",
-      "Assistant contradicted itself, first stating it couldn't access order details then providing them.",
-      "Assistant provided a product link with a 'copy-of-' URL slug, indicating a technical issue."
-    ],
-    "user_intent": "The user wanted to understand why their order was cancelled and later asked why a product was not producing results.",
-    "frustration_signals": [
-      "User repeated the initial complaint after providing the order ID.",
-      "User clicked 'Clear Chat' twice, possibly to reset the confusing interaction."
-    ],
-    "open_observations": "The assistant exhibits a severe state contradiction, first denying it has a capability (order lookup) and then executing it, but with fully hallucinated data. This is worse than simply saying it cannot help. The subsequent successful handling of a language switch (English to Hinglish) and a product efficacy question is a stark contrast to the initial critical failure. The user's 'Clear Chat' clicks are a noteworthy behavioral signal.",
-    "has_add_to_cart": false,
-    "event_counts": {
-      "quick_action_click": 2
-    }
-  },
-  {
-    "conversation_id": "69f32a2c67150fce800579c2",
-    "brand_name": "Blue Tea",
-    "widget_id": "680a0a8b70a26f7a0e24eedd",
-    "reasoning_scratchpad": "The user started by asking to track an order, then pivoted to a product question about fat-burning tea. The bot initially failed to change topics and repeated its request for order details, creating a brief loop. After the user repeated the product question, the bot recovered and answered correctly. The user then pivoted back to order tracking, provided details, and the bot retrieved the order but hallucinated a future order date (2026). The user then reported that the provided tracking link did not work.",
-    "overall_score": 1.5,
-    "resolution_achieved": false,
-    "dimensions": {
-      "factual_accuracy": {
-        "score": 1.0,
-        "issues": [
-          "Assistant hallucinated a future date for the order."
-        ],
-        "evidence": [
-          "Order Date: 2026-04-30"
-        ]
-      },
-      "hallucination_check": {
-        "score": 1.0,
-        "issues": [
-          "The assistant fabricated an order date that is two years in the future, which is impossible."
-        ],
-        "evidence": [
-          "Order Date: 2026-04-30"
-        ]
-      },
-      "policy_compliance": {
-        "score": 5.0,
-        "issues": [],
-        "evidence": []
-      },
-      "tone_and_helpfulness": {
-        "score": 2.0,
-        "issues": [
-          "Assistant failed to recognize a topic change and repeated a previous, irrelevant answer.",
-          "The tracking link provided by the assistant did not work for the user."
-        ],
-        "evidence": [
-          "[CUSTOMER]: which tea use to fat burn\n[ASSISTANT]: To track your order, please share both your order number and the phone number used when placing the order in a single message.",
-          "[CUSTOMER]: Records Not Found"
-        ]
-      },
-      "user_satisfaction_signals": {
-        "score": 2.0,
-        "issues": [
-          "User had to repeat their question after the bot ignored it.",
-          "User reported that the provided solution (tracking link) failed."
-        ],
-        "evidence": [
-          "[CUSTOMER]: which tea use to fat burn\n[ASSISTANT]: To track your order...\n[CUSTOMER]: which tea use to fat burn",
-          "[CUSTOMER]: Records Not Found"
-        ]
-      },
-      "cross_brand_check": {
-        "score": 5.0,
-        "issues": [],
-        "evidence": []
-      }
-    },
-    "failure_descriptions": [
-      "Assistant failed to recognize a topic change, repeating a previous response instead of answering the user's new question.",
-      "Assistant hallucinated a future order date (2026-04-30) when providing order details.",
-      "The tracking link provided by the assistant was invalid or not yet active, leading to a 'Records Not Found' error for the user."
-    ],
-    "user_intent": "The user wanted to track their order and also ask for a product recommendation for fat-burning tea.",
-    "frustration_signals": [
-      "User repeated the question 'which tea use to fat burn' after the assistant failed to answer it.",
-      "User explicitly stated the provided tracking link failed by saying 'Records Not Found'."
-    ],
-    "open_observations": "The conversation shows the bot struggling with context switching, as seen when it failed to pivot from the 'order tracking' flow to the 'product question' flow. It also hallucinated a key piece of data (the order date). While the bot's final response to the failed tracking link was well-handled (explaining the delay and offering support), the preceding errors created a poor user experience.",
-    "has_add_to_cart": false,
-    "event_counts": {
-      "quick_action_click": 2,
-      "link_click": 1
-    }
   },
   {
     "conversation_id": "69f301be61498ecf96076f15",
@@ -1339,6 +1121,193 @@
     "user_intent": "The user wanted to understand the usage, effects, ingredients, and differences between several Blue Nectar products.",
     "frustration_signals": [],
     "open_observations": "The assistant is confidently fabricating specific details like ingredient lists and result timelines. This is a significant issue, as the user is likely to trust this false information. The hallucination was compounded when the bot re-used a fabricated ingredient ('Moringa') in a subsequent answer to explain product differences.",
+    "has_add_to_cart": false,
+    "event_counts": {}
+  },
+  {
+    "conversation_id": "69ee504ee22e8aec1604286d",
+    "brand_name": "Blue Nectar",
+    "widget_id": "6983153e1497a62e8542a0ad",
+    "reasoning_scratchpad": "The user first asked about the time it takes for an anti-aging cream to show results. The bot gave a reasonable answer. The user's question then CHANGED to ask if the cream can be used with kumkumadi oil. The bot responded 'Yes' and advised applying the oil first, then the cream. This directly contradicts the product catalog's FAQ, which states for combination skin, 'will not recommend using serum before applying the cream. One of them should be enough.' This is a factual error and a hallucination, as the bot provided incorrect usage advice without the necessary qualifications about skin type. No frustration was signaled by the user.",
+    "overall_score": 1.5,
+    "resolution_achieved": false,
+    "dimensions": {
+      "factual_accuracy": {
+        "score": 1.0,
+        "issues": [
+          "Assistant provided incorrect product usage advice that contradicts the product's FAQ."
+        ],
+        "evidence": [
+          "ASSISTANT: Yes, you can use the Shubhr Anti Aging Cream along with Kumkumadi Face Serum and Oil...Apply the oil first, then follow with the cream for best results."
+        ]
+      },
+      "hallucination_check": {
+        "score": 1.0,
+        "issues": [
+          "Assistant hallucinated product usage instructions that directly contradict the provided product catalog's FAQ."
+        ],
+        "evidence": [
+          "The assistant advised to use the cream and oil together, but the product catalog FAQ Q3 states: 'For combination skin, will not recommend using serum before applying the cream. One of them should be enough.'"
+        ]
+      },
+      "policy_compliance": {
+        "score": 2.0,
+        "issues": [
+          "Assistant provided potentially harmful advice by recommending product layering that is explicitly advised against for a specific skin type in the documentation."
+        ],
+        "evidence": [
+          "ASSISTANT: Apply the oil first, then follow with the cream for best results."
+        ]
+      },
+      "tone_and_helpfulness": {
+        "score": 2.0,
+        "issues": [
+          "The assistant was confidently incorrect, providing harmful advice which is unhelpful."
+        ],
+        "evidence": [
+          "ASSISTANT: Yes, you can use the Shubhr Anti Aging Cream along with Kumkumadi Face Serum and Oil."
+        ]
+      },
+      "user_satisfaction_signals": {
+        "score": 5.0,
+        "issues": [],
+        "evidence": []
+      },
+      "cross_brand_check": {
+        "score": 5.0,
+        "issues": [],
+        "evidence": []
+      }
+    },
+    "failure_descriptions": [
+      "Assistant provided incorrect product usage advice, stating the cream and kumkumadi oil can be used together, which contradicts a warning in the product's FAQ for combination skin."
+    ],
+    "user_intent": "The user wanted to know how long the anti-aging cream takes to work and whether it could be used in combination with kumkumadi oil.",
+    "frustration_signals": [],
+    "open_observations": "This is a critical failure. The bot gave product usage advice that is explicitly contradicted by the provided ground truth for a specific skin type (combination). The bot should have either known this caveat or, failing that, should not have given a blanket 'yes' without asking for the user's skin type. This incorrect advice could lead to a poor product experience (e.g., breakouts) for the customer.",
+    "has_add_to_cart": false,
+    "event_counts": {}
+  },
+  {
+    "conversation_id": "69f32af0de0a8af97c17332b",
+    "brand_name": "Sri Sri Tattva",
+    "widget_id": "69a92ad76dcbf2da868e0f9b",
+    "reasoning_scratchpad": "The user first asked how to use Narayana Taila daily. The bot provided instructions for body massage. The user then asked a follow-up question if it could be used for hair. The bot incorrectly stated that the product is not for hair care, which directly contradicts the product's own FAQ in the provided context, and then recommended alternative products.",
+    "overall_score": 2.0,
+    "resolution_achieved": false,
+    "dimensions": {
+      "factual_accuracy": {
+        "score": 2.0,
+        "issues": [
+          "Assistant incorrectly stated the product cannot be used for hair.",
+          "Assistant provided an incorrect duration for how long to leave the oil on the skin."
+        ],
+        "evidence": [
+          "CUSTOMER: can it be used for hair?\nASSISTANT: Narayana Taila is formulated for body pain, muscle tension, and joint stiffness rather than hair care. It's not designed as a hair treatment oil.",
+          "ASSISTANT: ...leave it on for 15-20 minutes before bathing."
+        ]
+      },
+      "hallucination_check": {
+        "score": 1.0,
+        "issues": [
+          "Assistant hallucinated that the product cannot be used for hair, directly contradicting the provided product catalog's FAQ.",
+          "Assistant provided an incorrect application time that is not supported by the product details."
+        ],
+        "evidence": [
+          "Bot's claim: \"Narayana Taila... is not designed as a hair treatment oil.\" vs. Product FAQ: \"8. Can I use it on the scalp? Yes, Narayana Taila may be gently massaged into the scalp...\"",
+          "Bot's claim: \"...leave it on for 15-20 minutes before bathing.\" vs. Product FAQ: \"It is best to leave the oil on for at least 30 to 45 minutes before bathing.\""
+        ]
+      },
+      "policy_compliance": {
+        "score": 5.0,
+        "issues": [],
+        "evidence": []
+      },
+      "tone_and_helpfulness": {
+        "score": 2.5,
+        "issues": [
+          "The assistant provided factually incorrect information which made its response unhelpful, despite recommending alternative products."
+        ],
+        "evidence": [
+          "ASSISTANT: Narayana Taila is formulated for body pain, muscle tension, and joint stiffness rather than hair care. It's not designed as a hair treatment oil."
+        ]
+      },
+      "user_satisfaction_signals": {
+        "score": 5.0,
+        "issues": [],
+        "evidence": []
+      },
+      "cross_brand_check": {
+        "score": 5.0,
+        "issues": [],
+        "evidence": []
+      }
+    },
+    "failure_descriptions": [
+      "The assistant incorrectly stated that Narayana Taila cannot be used for hair, which contradicts the product's own FAQ which explicitly states it can be used on the scalp.",
+      "The assistant gave an incorrect instruction for how long to leave the oil on (15-20 mins vs. catalog's 30-45 mins)."
+    ],
+    "user_intent": "The user wanted to know how to use Narayana Taila and if it was suitable for hair application.",
+    "frustration_signals": [],
+    "open_observations": "This is a significant retrieval failure. The bot correctly identified the primary use of the product (body pain) but failed to retrieve secondary use information from the FAQ section of the product data. It gave a definitive 'no' to the user's question when the correct answer, according to the provided context, was 'yes, it can be used on the scalp'.",
+    "has_add_to_cart": false,
+    "event_counts": {}
+  },
+  {
+    "conversation_id": "69f1cadb98f9bb251e204c5a",
+    "brand_name": "Sri Sri Tattva",
+    "widget_id": "69a92ad76dcbf2da868e0f9b",
+    "reasoning_scratchpad": "The user reported a specific problem with their order: partial fulfillment. The bot first asked for a phone number to verify the order, which the user provided. After verification, the bot provided a generic order summary but completely failed to acknowledge or address the user's original complaint about the missing items, leaving the core issue unresolved. The user's question changed from stating a problem to providing data, and the bot's response also changed, so this is not a loop. The bot's failure is procedural and one of helpfulness; it correctly retrieved data but failed to apply it to the user's stated problem.",
+    "overall_score": 2.0,
+    "resolution_achieved": false,
+    "dimensions": {
+      "factual_accuracy": {
+        "score": 5.0,
+        "issues": [],
+        "evidence": []
+      },
+      "hallucination_check": {
+        "score": 5.0,
+        "issues": [],
+        "evidence": []
+      },
+      "policy_compliance": {
+        "score": 5.0,
+        "issues": [],
+        "evidence": []
+      },
+      "tone_and_helpfulness": {
+        "score": 1.0,
+        "issues": [
+          "The assistant completely ignored the user's stated problem (partial fulfillment) and only provided a generic order status.",
+          "The assistant did not acknowledge the core complaint in its response."
+        ],
+        "evidence": [
+          "[CUSTOMER]: My Order #843095, only one item has been fulfilled in it",
+          "[ASSISTANT]: \ud83e\uddfe **Order Details**  \n- **Order Number:** #843095  \n- **Order Date:** 24 April 2026  \n- **Total Amount:** \u20b9538.00  \n- **Shipping Location:** Maharashtra, India  \n\n\ud83d\ude9a **Shipping Status**  \n- **Order Status:** Delivered  \n- [Track Order](https://www.delhivery.com/track/package/30550510157522)  \n\n\ud83d\uded2 **Products**  \n- **Kumari Face Wash:** \u20b9190.00, Qty: 1  \n- **Orange Face Wash:** \u20b989.00, Qty: 1  \n- **Rose Face Wash:** \u20b989.00, Qty: 1  \n- **Cucumber & Lemon Face Wash:** \u20b980.00, Qty: 1  \n\n\ud83d\udcde **Contact Us**  \n- **Email:** onlinesupport@srisritattva.com  \n- **Phone:** 1800 120 8030  \n- **WhatsApp/Call:** [Contact Doctors](https://api.whatsapp.com/send/?phone=918310160508)  "
+        ]
+      },
+      "user_satisfaction_signals": {
+        "score": 2.0,
+        "issues": [
+          "The user's problem was not resolved before the conversation ended."
+        ],
+        "evidence": [
+          "[CUSTOMER]: My Order #843095, only one item has been fulfilled in it"
+        ]
+      },
+      "cross_brand_check": {
+        "score": 5.0,
+        "issues": [],
+        "evidence": []
+      }
+    },
+    "failure_descriptions": [
+      "The assistant ignored the user's specific complaint about a partially fulfilled order and instead provided a generic order summary."
+    ],
+    "user_intent": "The user was trying to get support for an order where they believe items are missing.",
+    "frustration_signals": [],
+    "open_observations": "The assistant appears to have successfully used the order number to retrieve order data but failed to understand the context of the user's message beyond the order number itself. It treated the query as a simple 'order status' request, completely missing the 'partial fulfillment' complaint. This indicates a weakness in Natural Language Understanding for post-purchase support issues.",
     "has_add_to_cart": false,
     "event_counts": {}
   }
