@@ -54,24 +54,26 @@ CUSTOM_CSS = """
     /* ── Compact Executive Verdict ── */
     .eval-summary {
         border: 1px solid rgba(255, 255, 255, 0.12);
-        border-radius: 8px;
-        padding: 7px 9px;
-        margin: 4px 0 9px 0;
+        border-radius: 6px;
+        padding: 5px 7px;
+        margin: 3px 0 7px 0;
+        max-width: min(100%, 620px);
+        box-sizing: border-box;
         background: rgba(255, 255, 255, 0.025);
         font-family: 'Inter', sans-serif;
     }
     .eval-meta {
         display: flex;
         flex-wrap: wrap;
-        gap: 5px;
-        margin-bottom: 6px;
+        gap: 4px;
+        margin-bottom: 4px;
     }
     .eval-chip {
-        font-size: 0.6rem;
+        font-size: 0.56rem;
         font-weight: 800;
         letter-spacing: 0.04em;
         text-transform: uppercase;
-        padding: 1px 7px;
+        padding: 1px 6px;
         border-radius: 999px;
         color: #bbb;
         border: 1px solid rgba(255, 255, 255, 0.12);
@@ -88,11 +90,11 @@ CUSTOM_CSS = """
         background: rgba(0, 184, 148, 0.08);
     }
     .eval-alert {
-        font-size: 0.7rem;
-        line-height: 1.3;
-        padding: 4px 7px;
-        margin: 3px 0;
-        border-radius: 6px;
+        font-size: 0.65rem;
+        line-height: 1.28;
+        padding: 3px 6px;
+        margin: 2px 0;
+        border-radius: 5px;
         color: #ffe4e4;
         background: rgba(214, 48, 49, 0.20);
         border: 1px solid rgba(214, 48, 49, 0.28);
@@ -108,9 +110,9 @@ CUSTOM_CSS = """
         border-color: rgba(0, 184, 148, 0.24);
     }
     .eval-reason {
-        margin-top: 6px;
-        font-size: 0.74rem;
-        line-height: 1.38;
+        margin-top: 5px;
+        font-size: 0.69rem;
+        line-height: 1.34;
         color: rgba(255, 255, 255, 0.86);
     }
     .eval-reason strong {
