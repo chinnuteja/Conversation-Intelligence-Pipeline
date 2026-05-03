@@ -98,6 +98,9 @@ CUSTOM_CSS = """
         color: #ffe4e4;
         background: rgba(214, 48, 49, 0.20);
         border: 1px solid rgba(214, 48, 49, 0.28);
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
     }
     .eval-alert.warning {
         color: #ffe9c5;
@@ -109,16 +112,6 @@ CUSTOM_CSS = """
         background: rgba(0, 184, 148, 0.14);
         border-color: rgba(0, 184, 148, 0.24);
     }
-    .eval-reason {
-        margin-top: 5px;
-        font-size: 0.69rem;
-        line-height: 1.34;
-        color: rgba(255, 255, 255, 0.86);
-    }
-    .eval-reason strong {
-        color: rgba(255, 255, 255, 0.96);
-    }
-
     /* ── Chat Thread ── */
     .chat-thread {
         display: flex;
@@ -646,20 +639,25 @@ def render_evaluation_metadata(ev: dict, merged: dict) -> None:
     score_class = "score-ok" if score >= 4.5 else "score-bad"
     res_label = "Resolved" if resolution is True else "Unresolved" if resolution is False else "Unknown"
 
+    def _alert_title(text: str) -> str:
+        t = " ".join((text or "").split())
+        return html.escape(t, quote=True)
+
     alert_rows: list[str] = []
     if failure_list:
         for fd in failure_list:
+            tip = _alert_title(fd)
             if _failure_is_critical(fd, score):
                 alert_rows.append(
-                    f'<div class="eval-alert"><strong>Critical:</strong> {html.escape(fd)}</div>'
+                    f'<div class="eval-alert" title="{tip}"><strong>Critical:</strong> {html.escape(fd)}</div>'
                 )
             elif score < 4.0:
                 alert_rows.append(
-                    f'<div class="eval-alert warning"><strong>Friction:</strong> {html.escape(fd)}</div>'
+                    f'<div class="eval-alert warning" title="{tip}"><strong>Friction:</strong> {html.escape(fd)}</div>'
                 )
             else:
                 alert_rows.append(
-                    f'<div class="eval-alert warning"><strong>Note:</strong> {html.escape(fd)}</div>'
+                    f'<div class="eval-alert warning" title="{tip}"><strong>Note:</strong> {html.escape(fd)}</div>'
                 )
     elif score >= 4.5:
         alert_rows.append(
@@ -667,13 +665,6 @@ def render_evaluation_metadata(ev: dict, merged: dict) -> None:
         )
 
     scratch = (merged.get("reasoning_scratchpad") or ev.get("reasoning_scratchpad") or "").strip()
-    reason_html = ""
-    if scratch:
-        reason_html = (
-            '<div class="eval-reason">'
-            f'<strong>Why this score:</strong> {html.escape(scratch)}'
-            '</div>'
-        )
 
     st.markdown(
         '<div class="eval-summary">'
@@ -683,10 +674,13 @@ def render_evaluation_metadata(ev: dict, merged: dict) -> None:
         f'<span class="eval-chip">{len(failure_list)} failure{"s" if len(failure_list) != 1 else ""}</span>'
         '</div>'
         f'{"".join(alert_rows)}'
-        f'{reason_html}'
         '</div>',
         unsafe_allow_html=True,
     )
+
+    if scratch:
+        with st.expander("Why this score?", expanded=False):
+            st.markdown(scratch)
 
 
 def render_dimension_grid(dimensions: dict | None, n_cols: int = 3) -> None:
