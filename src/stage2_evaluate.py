@@ -9,16 +9,14 @@ import json
 import asyncio
 import logging
 import openai
-from openai import AsyncAzureOpenAI
+from openai import AsyncOpenAI
 from tqdm.asyncio import tqdm_asyncio
 
 from src.config import (
-    OAI_BASE_LLM,
-    OAI_KEY_LLM,
-    OAI_VERSION,
     EVAL_MODEL,
     MAX_CONCURRENT_EVALS,
 )
+from src.auth import get_vertex_token, get_vertex_base_url
 from src.evaluation_schema import build_conversation_evaluation_json_schema
 from src.models import ConversationThread, ConversationEvaluation, DimensionEval
 from src.prompts import (
@@ -29,10 +27,9 @@ from src.prompts import (
 
 logger = logging.getLogger(__name__)
 
-client = AsyncAzureOpenAI(
-    azure_endpoint=OAI_BASE_LLM,
-    api_key=OAI_KEY_LLM,
-    api_version=OAI_VERSION,
+client = AsyncOpenAI(
+    base_url=get_vertex_base_url(),
+    api_key=get_vertex_token(),
 )
 semaphore = asyncio.Semaphore(MAX_CONCURRENT_EVALS)
 
@@ -93,6 +90,7 @@ async def evaluate_single_conversation(thread: ConversationThread) -> Conversati
                     conversation_id=thread.conversation_id,
                     brand_name=thread.brand_name,
                     widget_id=thread.widget_id,
+                    reasoning_scratchpad=eval_data.get("reasoning_scratchpad", ""),
                     overall_score=eval_data.get("overall_score", 3.0),
                     resolution_achieved=eval_data.get("resolution_achieved", False),
                     dimensions=dimensions,

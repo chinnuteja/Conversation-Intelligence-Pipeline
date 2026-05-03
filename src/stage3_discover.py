@@ -13,16 +13,13 @@ import asyncio
 import numpy as np
 from collections import Counter
 
-from openai import AsyncAzureOpenAI
+from openai import AsyncOpenAI
 from sklearn.metrics.pairwise import cosine_similarity
 # Heavy imports moved inside functions to allow logging to start first
 # import umap
 # import hdbscan
 
 from src.config import (
-    OAI_BASE_LLM,
-    OAI_KEY_LLM,
-    OAI_VERSION,
     LABEL_MODEL,
     UMAP_N_COMPONENTS,
     UMAP_METRIC,
@@ -31,16 +28,16 @@ from src.config import (
     CLUSTER_LABEL_MERGE_THRESHOLD,
     CLUSTER_CONVERSATION_OVERLAP_THRESHOLD,
 )
+from src.auth import get_vertex_token, get_vertex_base_url
 from src.models import ConversationEvaluation, DiscoveredCluster
 from src.prompts import CLUSTER_LABELER_PROMPT
 from src.text_utils import strip_code_fences
 
 logger = logging.getLogger(__name__)
 
-client = AsyncAzureOpenAI(
-    azure_endpoint=OAI_BASE_LLM,
-    api_key=OAI_KEY_LLM,
-    api_version=OAI_VERSION,
+client = AsyncOpenAI(
+    base_url=get_vertex_base_url(),
+    api_key=get_vertex_token(),
 )
 
 _embedding_model = None
@@ -51,7 +48,7 @@ def get_embedding_model():
     if _embedding_model is None:
         from sentence_transformers import SentenceTransformer
 
-        _embedding_model = SentenceTransformer("all-MiniLM-L6-v2")
+        _embedding_model = SentenceTransformer("BAAI/bge-small-en-v1.5")
     return _embedding_model
 
 

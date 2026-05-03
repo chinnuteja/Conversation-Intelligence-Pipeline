@@ -181,9 +181,11 @@ def build_conversation_threads() -> list[ConversationThread]:
 
     threads = []
     for convo_id, convo in convo_map.items():
+        # Sort by timestamp first; fall back to MongoDB _id (encodes creation time + counter)
+        # so messages with identical timestamps still appear in true chronological order.
         raw_messages = sorted(
             msg_groups.get(convo_id, []),
-            key=lambda m: m["timestamp"],
+            key=lambda m: (m["timestamp"], str(m.get("_id", ""))),
         )
 
         normalized_messages = []

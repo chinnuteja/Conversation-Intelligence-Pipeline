@@ -8,9 +8,9 @@ OAI_KEY_LLM = os.getenv("OAI_KEY_LLM")
 OAI_VERSION = os.getenv("OAI_VERSION")
 
 # Model config
-EVAL_MODEL = "gpt-4o-mini"
-LABEL_MODEL = "gpt-4o-mini"
-SUMMARY_MODEL = "gpt-4o-mini"
+EVAL_MODEL = "google/gemini-2.5-pro"
+LABEL_MODEL = "google/gemini-2.5-pro"
+SUMMARY_MODEL = "google/gemini-2.5-pro"
 
 # Paths
 DATA_DIR = "data"

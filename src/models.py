@@ -51,6 +51,7 @@ class ConversationEvaluation(BaseModel):
     conversation_id: str
     brand_name: str
     widget_id: str
+    reasoning_scratchpad: str = ""     # LLM's chain-of-thought before scoring
     overall_score: float = Field(ge=0, le=5)
     resolution_achieved: bool
     dimensions: dict[str, DimensionEval]   # Keys: factual_accuracy, policy_compliance, etc.

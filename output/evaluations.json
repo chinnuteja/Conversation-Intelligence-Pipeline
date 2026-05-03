@@ -1,8 +1,9 @@
 [
   {
-    "conversation_id": "69c40d37b69374161c4e7cad",
+    "conversation_id": "69f06950e8681adac91262b2",
     "brand_name": "Sri Sri Tattva",
     "widget_id": "69a92ad76dcbf2da868e0f9b",
+    "reasoning_scratchpad": "The user stated their recent order was not showing in their order list, implying they were logged in. The bot responded by telling them to sign in. The user then explicitly stated they were already signed in, but the bot repeated the exact same 'sign in' message, ignoring the new information. This pattern of the user providing new context and the bot giving the same non-responsive answer repeated two more times, resulting in a severe stuck loop and a complete failure to address the user's problem.",
     "overall_score": 1.0,
     "resolution_achieved": false,
     "dimensions": {
@@ -19,28 +20,31 @@
       "policy_compliance": {
         "score": 1.0,
         "issues": [
-          "User was repeatedly asked to sign in despite being already signed in."
+          "The bot failed to escalate or provide an alternative contact method (like customer support email/phone) when it was clearly unable to resolve the user's issue, instead getting stuck in a loop."
         ],
         "evidence": [
-          "To view your order details, please sign in to your account first."
+          "[ASSISTANT]: To view your order details, please [**sign in to your account**](https://www.srisritattva.com/account/login) first.\n[CUSTOMER]: Even after sign in not showing order details.\n[ASSISTANT]: To view your order details, please [**sign in to your account**](https://www.srisritattva.com/account/login) first."
         ]
       },
       "tone_and_helpfulness": {
         "score": 1.0,
         "issues": [
-          "Responses were unhelpful and did not acknowledge the user's need for order tracking."
+          "The assistant was completely unhelpful, getting stuck in a loop and ignoring direct user input.",
+          "The assistant repeatedly provided the same useless instruction even after the user explicitly stated it was not working."
         ],
         "evidence": [
-          "To view your order details, please sign in to your account first."
+          "[CUSTOMER]: Already sign in\n[ASSISTANT]: To view your order details, please [**sign in to your account**](https://www.srisritattva.com/account/login) first."
         ]
       },
       "user_satisfaction_signals": {
         "score": 1.0,
         "issues": [
-          "User's frustration was evident through repeated questions."
+          "User had to repeatedly state that they were already signed in, indicating the bot's suggestions were not helpful."
         ],
         "evidence": [
-          "I'm already signed in"
+          "Already sign in",
+          "Not showing order details",
+          "Even after sign in not showing order details."
         ]
       },
       "cross_brand_check": {
@@ -50,318 +54,103 @@
       }
     },
     "failure_descriptions": [
-      "Assistant repeatedly provided the same unhelpful answer without addressing the user's situation, leading to user frustration."
+      "Assistant is stuck in a loop, repeating the same 'sign in' instruction in response to different user inputs.",
+      "Assistant completely ignored the user's explicit statement that they were 'Already sign in'.",
+      "The user's problem of a missing order was never addressed or escalated, leading to total non-resolution."
     ],
-    "user_intent": "The user was trying to track their order status.",
+    "user_intent": "The user is trying to find a recent order that is not appearing in their account's order history.",
     "frustration_signals": [
-      "User asked the same question multiple times without receiving a relevant answer."
+      "User stated 'Already sign in' which was ignored by the bot.",
+      "User had to repeat their problem multiple times, each time with more detail (e.g., 'Even after sign in not showing order details')."
     ],
-    "open_observations": "The assistant seems to lack the contextual awareness to recognize when a user is already signed in, leading to repetitive and unresponsive interactions.",
-    "has_add_to_cart": false,
-    "event_counts": {
-      "link_click": 24,
-      "quick_action_click": 1
-    }
-  },
-  {
-    "conversation_id": "69c4058ab69374161c4de171",
-    "brand_name": "Sri Sri Tattva",
-    "widget_id": "69a92ad76dcbf2da868e0f9b",
-    "overall_score": 1.0,
-    "resolution_achieved": false,
-    "dimensions": {
-      "factual_accuracy": {
-        "score": 5.0,
-        "issues": [],
-        "evidence": []
-      },
-      "hallucination_check": {
-        "score": 5.0,
-        "issues": [],
-        "evidence": []
-      },
-      "policy_compliance": {
-        "score": 5.0,
-        "issues": [],
-        "evidence": []
-      },
-      "tone_and_helpfulness": {
-        "score": 1.0,
-        "issues": [
-          "Bot repeated the same unhelpful response multiple times without addressing the user's request"
-        ],
-        "evidence": [
-          "To view your order details, please [**sign in to your account**](https://www.srisritattva.com/account/login) first."
-        ]
-      },
-      "user_satisfaction_signals": {
-        "score": 1.0,
-        "issues": [
-          "User expressed frustration with repeated queries without redirection or relevant help"
-        ],
-        "evidence": [
-          "Where is my order?",
-          "8918768423"
-        ]
-      },
-      "cross_brand_check": {
-        "score": 5.0,
-        "issues": [],
-        "evidence": []
-      }
-    },
-    "failure_descriptions": [
-      "The assistant failed to provide any useful information or resolution regarding the user's order queries, resulting in a frustrating experience."
-    ],
-    "user_intent": "The user was trying to inquire about the status of their order.",
-    "frustration_signals": [
-      "User asked about their order multiple times without receiving a satisfactory response",
-      "User provided their order number but still received the same generic response"
-    ],
-    "open_observations": "The assistant's responses lack escalation options or alternatives for users who may not be able to sign in, which is a critical gap in handling order queries.",
-    "has_add_to_cart": false,
-    "event_counts": {
-      "link_click": 36,
-      "quick_action_click": 1
-    }
-  },
-  {
-    "conversation_id": "69c3e34316599deb6989a143",
-    "brand_name": "Sri Sri Tattva",
-    "widget_id": "69a92ad76dcbf2da868e0f9b",
-    "overall_score": 1.0,
-    "resolution_achieved": false,
-    "dimensions": {
-      "factual_accuracy": {
-        "score": 5.0,
-        "issues": [],
-        "evidence": []
-      },
-      "hallucination_check": {
-        "score": 5.0,
-        "issues": [],
-        "evidence": []
-      },
-      "policy_compliance": {
-        "score": 5.0,
-        "issues": [],
-        "evidence": []
-      },
-      "tone_and_helpfulness": {
-        "score": 1.0,
-        "issues": [
-          "Bot is unhelpful and repetitive without offering any alternative insights"
-        ],
-        "evidence": [
-          "To view your order details, please sign in to your account first."
-        ]
-      },
-      "user_satisfaction_signals": {
-        "score": 1.0,
-        "issues": [
-          "User repeated the same question multiple times without receiving assistance"
-        ],
-        "evidence": [
-          "Where is my order?"
-        ]
-      },
-      "cross_brand_check": {
-        "score": 5.0,
-        "issues": [],
-        "evidence": []
-      }
-    },
-    "failure_descriptions": [
-      "The assistant fails to address the user's tracking need and gets stuck in a loop providing the same unhelpful response."
-    ],
-    "user_intent": "The user was trying to track their order status.",
-    "frustration_signals": [
-      "User asked the same question 3 times with no change in response"
-    ],
-    "open_observations": "The assistant did not escalate the issue or provide any alternative ways to address the user's order inquiry.",
-    "has_add_to_cart": false,
-    "event_counts": {
-      "quick_action_click": 4,
-      "link_click": 27
-    }
-  },
-  {
-    "conversation_id": "69c501c506069052a32e3bb4",
-    "brand_name": "Blue Nectar",
-    "widget_id": "6983153e1497a62e8542a0ad",
-    "overall_score": 2.0,
-    "resolution_achieved": false,
-    "dimensions": {
-      "factual_accuracy": {
-        "score": 5.0,
-        "issues": [],
-        "evidence": []
-      },
-      "hallucination_check": {
-        "score": 5.0,
-        "issues": [],
-        "evidence": []
-      },
-      "policy_compliance": {
-        "score": 5.0,
-        "issues": [],
-        "evidence": []
-      },
-      "tone_and_helpfulness": {
-        "score": 2.0,
-        "issues": [
-          "The assistant is unhelpful, providing the same response without escalation or alternative solutions."
-        ],
-        "evidence": [
-          "I couldn't find order 117356. Please double-check the number and try again."
-        ]
-      },
-      "user_satisfaction_signals": {
-        "score": 1.0,
-        "issues": [
-          "User repeated the order number without receiving a different or helpful response."
-        ],
-        "evidence": [
-          "I couldn't find order 117356. Please double-check the number and try again."
-        ]
-      },
-      "cross_brand_check": {
-        "score": 5.0,
-        "issues": [],
-        "evidence": []
-      }
-    },
-    "failure_descriptions": [
-      "The assistant failed to provide any useful information about the order, repeating an unhelpful response.",
-      "User's repeated request for order information went unresolved."
-    ],
-    "user_intent": "The user was trying to obtain details about their order using the provided order number.",
-    "frustration_signals": [
-      "User repeated the same order number twice without a change in response."
-    ],
-    "open_observations": "The assistant does not appear to have mechanisms in place for order verification or escalation for issues like this, leading to user frustration.",
-    "has_add_to_cart": false,
-    "event_counts": {}
-  },
-  {
-    "conversation_id": "69c4e86c06069052a32a443f",
-    "brand_name": "Blue Nectar",
-    "widget_id": "6983153e1497a62e8542a0ad",
-    "overall_score": 2.0,
-    "resolution_achieved": false,
-    "dimensions": {
-      "factual_accuracy": {
-        "score": 5.0,
-        "issues": [],
-        "evidence": []
-      },
-      "hallucination_check": {
-        "score": 5.0,
-        "issues": [],
-        "evidence": []
-      },
-      "policy_compliance": {
-        "score": 5.0,
-        "issues": [],
-        "evidence": []
-      },
-      "tone_and_helpfulness": {
-        "score": 2.0,
-        "issues": [
-          "The assistant repeated the same response without adapting to the user's needs."
-        ],
-        "evidence": [
-          "Please share your order number starting with # to track your order."
-        ]
-      },
-      "user_satisfaction_signals": {
-        "score": 2.0,
-        "issues": [
-          "User did not receive help as intended and provided an alternative response which was not acknowledged."
-        ],
-        "evidence": [
-          "Customer care"
-        ]
-      },
-      "cross_brand_check": {
-        "score": 5.0,
-        "issues": [],
-        "evidence": []
-      }
-    },
-    "failure_descriptions": [
-      "The assistant failed to address the user's need to track their order and repeated the same unhelpful prompt."
-    ],
-    "user_intent": "The user wanted to track their order using an order number.",
-    "frustration_signals": [
-      "User provided an alternative response (Customer care) indicating possible frustration."
-    ],
-    "open_observations": "The assistant should have offered more help or alternative solutions when the user mentioned 'Customer care', indicating a desire for assistance.",
-    "has_add_to_cart": false,
-    "event_counts": {}
-  },
-  {
-    "conversation_id": "69c3d72fb69374161c4924d3",
-    "brand_name": "Sri Sri Tattva",
-    "widget_id": "69a92ad76dcbf2da868e0f9b",
-    "overall_score": 2.0,
-    "resolution_achieved": false,
-    "dimensions": {
-      "factual_accuracy": {
-        "score": 5.0,
-        "issues": [],
-        "evidence": []
-      },
-      "hallucination_check": {
-        "score": 5.0,
-        "issues": [],
-        "evidence": []
-      },
-      "policy_compliance": {
-        "score": 5.0,
-        "issues": [],
-        "evidence": []
-      },
-      "tone_and_helpfulness": {
-        "score": 2.0,
-        "issues": [
-          "Response does not address the user's inquiry regarding order status."
-        ],
-        "evidence": [
-          "To view your order details, please sign in to your account first."
-        ]
-      },
-      "user_satisfaction_signals": {
-        "score": 2.0,
-        "issues": [
-          "User's question about their order was not directly addressed."
-        ],
-        "evidence": [
-          "My order is not moving after reaching my city."
-        ]
-      },
-      "cross_brand_check": {
-        "score": 5.0,
-        "issues": [],
-        "evidence": []
-      }
-    },
-    "failure_descriptions": [
-      "User's inquiry about the status of their order was not addressed, as the assistant directed them to sign in without providing any relevant information about the order."
-    ],
-    "user_intent": "The user was trying to find out the status of their order that has not progressed after reaching their city.",
-    "frustration_signals": [],
-    "open_observations": "The assistant should provide more informative responses regarding order progress instead of redirecting users to sign in without addressing their concerns.",
+    "open_observations": "This is a classic example of a stateless bot. Its logic seems to be a simple keyword trigger for 'order' which defaults to the 'sign in' response. It lacks the ability to understand conversational context, such as the user's follow-up message stating they are already signed in. This is a critical logic failure, as it guarantees a loop for any signed-in user with an order issue.",
     "has_add_to_cart": false,
     "event_counts": {
       "link_click": 2
     }
   },
   {
-    "conversation_id": "69c39133b69374161c3f5d11",
+    "conversation_id": "69f06774e8681adac911e43d",
     "brand_name": "Sri Sri Tattva",
     "widget_id": "69a92ad76dcbf2da868e0f9b",
-    "overall_score": 2.0,
+    "reasoning_scratchpad": "The user reported a delayed shipment. The assistant's first response was empathetic and correctly asked for an order/tracking number. However, after the user provided a number, the assistant fell into a severe loop, repeating the same 'please sign in' message eight consecutive times, ignoring all subsequent, changing user inputs which included a different number, pleas for help, and statements of frustration. The user's questions and statements CHANGED significantly across turns, but the bot's reply remained identical, confirming this is a true stuck loop. The user explicitly expressed frustration with 'Pl reply' and 'reply me dear dear'.",
+    "overall_score": 1.0,
+    "resolution_achieved": false,
+    "dimensions": {
+      "factual_accuracy": {
+        "score": 5.0,
+        "issues": [],
+        "evidence": []
+      },
+      "hallucination_check": {
+        "score": 5.0,
+        "issues": [],
+        "evidence": []
+      },
+      "policy_compliance": {
+        "score": 1.0,
+        "issues": [
+          "The assistant asked for information (order number) that it was unable to process, leading to a conversational dead-end.",
+          "The assistant failed to escalate or offer an alternative path when it was clearly unable to resolve the user's issue."
+        ],
+        "evidence": [
+          "ASSISTANT: To help you better, I'd need your order number or tracking ID. ... CUSTOMER: 8431119 ASSISTANT: To view your order details, please sign in to your account first.",
+          "CUSTOMER: Please take action and reply me dear dear ASSISTANT: To view your order details, please sign in to your account first."
+        ]
+      },
+      "tone_and_helpfulness": {
+        "score": 1.0,
+        "issues": [
+          "Assistant is stuck in a loop, repeating the exact same unhelpful response multiple times.",
+          "Assistant ignored direct user input, including provided order/tracking numbers and pleas for a response."
+        ],
+        "evidence": [
+          "CUSTOMER: 30550510157710 lying at Vadodara since 2 days. Unnecessary delaying shipment ASSISTANT: To view your order details, please sign in to your account first.",
+          "CUSTOMER: I have seen message but shipment is at Vadodara why delaying such delay ASSISTANT: To view your order details, please sign in to your account first."
+        ]
+      },
+      "user_satisfaction_signals": {
+        "score": 1.0,
+        "issues": [
+          "User expressed frustration and pleaded for a proper response.",
+          "User had to repeat their issue and tracking information multiple times because the assistant ignored it."
+        ],
+        "evidence": [
+          "CUSTOMER: Pl reply",
+          "CUSTOMER: Please take action and reply me dear dear",
+          "CUSTOMER: I have seen message but shipment is at Vadodara why delaying such delay"
+        ]
+      },
+      "cross_brand_check": {
+        "score": 5.0,
+        "issues": [],
+        "evidence": []
+      }
+    },
+    "failure_descriptions": [
+      "The assistant got stuck in a loop, repeating 'please sign in' eight times despite changing user input.",
+      "The assistant asked for an order number but then ignored it when the user provided it, breaking the conversational flow.",
+      "The assistant failed to recognize clear signals of user frustration and did not escalate or change its response."
+    ],
+    "user_intent": "The user wanted to get information about a delayed shipment and prompt action to resolve the delay.",
+    "frustration_signals": [
+      "User repeated their issue and tracking number multiple times.",
+      "User pleaded for a response: 'Pl reply'",
+      "User expressed exasperation and pleaded for action: 'Please take action and reply me dear dear'",
+      "User explicitly stated the bot's message was not helpful: 'I have seen message but...'"
+    ],
+    "open_observations": "This is a critical failure. The bot's initial response was excellent, which makes the subsequent collapse into a repetitive loop even more jarring. The core issue is that the bot asks for information (order/tracking number) that it is not equipped to handle, which is a major design flaw. This interaction likely caused more frustration than if the bot had simply said 'I cannot track orders' from the start.",
+    "has_add_to_cart": false,
+    "event_counts": {
+      "link_click": 3
+    }
+  },
+  {
+    "conversation_id": "69f01f497149e4aa909557f4",
+    "brand_name": "Sri Sri Tattva",
+    "widget_id": "69a92ad76dcbf2da868e0f9b",
+    "reasoning_scratchpad": "The user initially asks to see their current order. The bot provides a login link, which the user clicks many times. The user then clarifies their query, stating 'Ghee order today nit shiw' (Ghee order today not showing), indicating the login process did not resolve their issue. The bot ignores this new, specific information and repeats the exact same login link response, creating a classic stuck loop. The user's query changed, but the bot's response stayed identical and unhelpful.",
+    "overall_score": 1.0,
     "resolution_achieved": false,
     "dimensions": {
       "factual_accuracy": {
@@ -380,21 +169,23 @@
         "evidence": []
       },
       "tone_and_helpfulness": {
-        "score": 2.0,
+        "score": 1.0,
         "issues": [
-          "The assistant provided a non-helpful, procedural response that did not address the user's immediate query about order status."
+          "Assistant is stuck in a loop, repeating the same response even after the user provided new, specific information."
         ],
         "evidence": [
-          "To view your order details, please sign in to your account first."
+          "User: 'Ghee order today nit shiw' Assistant: 'To view your order details, please sign in to your account first.'"
         ]
       },
       "user_satisfaction_signals": {
-        "score": 2.0,
+        "score": 1.0,
         "issues": [
-          "User's intent to inquire about their order status was not fulfilled, likely indicating dissatisfaction."
+          "User provided new information that was ignored, indicating the first answer was insufficient.",
+          "User clicked the provided link 24 times, which is a very strong behavioral signal of frustration or a broken user journey."
         ],
         "evidence": [
-          "Hi where is my order"
+          "User's second message: 'Ghee order today nit shiw'",
+          "Behavioral Signal: 'link_click': 24"
         ]
       },
       "cross_brand_check": {
@@ -404,21 +195,542 @@
       }
     },
     "failure_descriptions": [
-      "The assistant failed to address the user's inquiry about their order status and only redirected the user to sign in, providing no immediate help."
+      "Assistant got stuck in a loop, repeating the same response after the user provided new information about their specific order.",
+      "The assistant failed to recognize the user's problem was not solved by the initial suggestion and did not offer any alternative help or escalation path."
     ],
-    "user_intent": "The user was trying to check the status of their order.",
+    "user_intent": "The user wants to find their recent order for Ghee, which they believe is not showing in their account.",
+    "frustration_signals": [
+      "User rephrased their request with more detail ('Ghee order today nit shiw'), indicating the first response was not sufficient.",
+      "The user clicked the same link 24 times, which is an extreme behavioral indicator of a problem or frustration."
+    ],
+    "open_observations": "The 24 link clicks are a critical behavioral signal that the user journey is broken. This could mean the link itself led to a confusing page, the login was not working, or the user was simply clicking repeatedly out of frustration. The bot's inability to offer any alternative to 'log in' for order status queries is a severe limitation; it should be able to ask for an order number or email as a fallback.",
+    "has_add_to_cart": false,
+    "event_counts": {
+      "link_click": 24
+    }
+  },
+  {
+    "conversation_id": "69ef8a807149e4aa908a645d",
+    "brand_name": "Sri Sri Tattva",
+    "widget_id": "69a92ad76dcbf2da868e0f9b",
+    "reasoning_scratchpad": "The user reported a complex order issue: their order wasn't showing in their list and was only partially delivered. The bot responded with a generic 'sign in' link. The user then provided new information, expressing concern about the order value, but the bot ignored this and repeated the exact same 'sign in' response. This constitutes a true stuck loop, as the user's input changed but the bot's response remained identical and unhelpful, leading to zero resolution for a high-urgency problem.",
+    "overall_score": 1.0,
+    "resolution_achieved": false,
+    "dimensions": {
+      "factual_accuracy": {
+        "score": 5.0,
+        "issues": [],
+        "evidence": []
+      },
+      "hallucination_check": {
+        "score": 5.0,
+        "issues": [],
+        "evidence": []
+      },
+      "policy_compliance": {
+        "score": 1.0,
+        "issues": [
+          "The assistant failed to follow an escalation or alternative path policy when it was clear the initial suggestion was not working."
+        ],
+        "evidence": [
+          "User: Is there s issue in the order , I hv paid 30000 rs and can't see the\nAssistant: To view your order details, please [**sign in to your account**](https://www.srisritattva.com/account/login) first."
+        ]
+      },
+      "tone_and_helpfulness": {
+        "score": 1.0,
+        "issues": [
+          "The assistant is stuck in a loop, repeating the same unhelpful answer three times.",
+          "The assistant ignored new information provided by the user, such as the order value and the fact the order was not visible."
+        ],
+        "evidence": [
+          "ASSISTANT]: To view your order details, please [**sign in to your account**](https://www.srisritattva.com/account/login) first.",
+          "ASSISTANT]: To view your order details, please [**sign in to your account**](https://www.srisritattva.com/account/login) first.",
+          "ASSISTANT]: To view your order details, please [**sign in to your account**](https://www.srisritattva.com/account/login) first."
+        ]
+      },
+      "user_satisfaction_signals": {
+        "score": 1.0,
+        "issues": [
+          "User had to re-explain their problem with new details because the bot was not providing a useful response."
+        ],
+        "evidence": [
+          "Initial query: My cmy order is not showing in the list and partial order is delivered",
+          "Follow-up: Is there s issue in the order , I hv paid 30000 rs and can't see the"
+        ]
+      },
+      "cross_brand_check": {
+        "score": 5.0,
+        "issues": [],
+        "evidence": []
+      }
+    },
+    "failure_descriptions": [
+      "Assistant got stuck in a loop, repeating the same 'sign in' link three times despite the user providing new information.",
+      "Assistant failed to recognize and escalate a high-urgency order issue (missing order, partial delivery).",
+      "Assistant ignored specific details from the user, such as the order value and the changing nature of their query."
+    ],
+    "user_intent": "The user is trying to get information about an order that is not showing up in their account and was only partially delivered.",
+    "frustration_signals": [
+      "User provided new, different information in subsequent turns ('I hv paid 30000 rs'), but the bot ignored it and repeated its previous answer."
+    ],
+    "open_observations": "The bot's logic appears to be stuck on a simple keyword match for 'order', triggering the 'sign in' response without any deeper understanding. It completely misses the nuance that the user's problem is that they *can't see the order*, which may imply they are already signed in. This is a critical failure for a core e-commerce function.",
+    "has_add_to_cart": false,
+    "event_counts": {}
+  },
+  {
+    "conversation_id": "69ef1382e22e8aec1619d4b7",
+    "brand_name": "Sri Sri Tattva",
+    "widget_id": "69a92ad76dcbf2da868e0f9b",
+    "reasoning_scratchpad": "The user reported an incomplete order with a specific order number and item details. The bot responded with a generic 'sign in' link. The user then provided new, more specific information about the partial delivery, but the bot ignored this and repeated the exact same 'sign in' response, indicating a stuck loop.",
+    "overall_score": 1.0,
+    "resolution_achieved": false,
+    "dimensions": {
+      "factual_accuracy": {
+        "score": 5.0,
+        "issues": [],
+        "evidence": []
+      },
+      "hallucination_check": {
+        "score": 5.0,
+        "issues": [],
+        "evidence": []
+      },
+      "policy_compliance": {
+        "score": 5.0,
+        "issues": [],
+        "evidence": []
+      },
+      "tone_and_helpfulness": {
+        "score": 1.0,
+        "issues": [
+          "Assistant is stuck in a loop, repeating the same unhelpful response.",
+          "Assistant ignored new information provided by the user in their second message."
+        ],
+        "evidence": [
+          "USER: My order no. 842803 was for 8 cow ghee 4 kg and rock salt 4 kg. But today I recieved only the ne kg of cow ghee. Where is my ret of the order 842803\nASSISTANT: To view your order details, please [**sign in to your account**](https://www.srisritattva.com/account/login) first.\nUSER: One of ghee recieved today.  With Tax invoice too for 1 kg.\nASSISTANT: To view your order details, please [**sign in to your account**](https://www.srisritattva.com/account/login) first."
+        ]
+      },
+      "user_satisfaction_signals": {
+        "score": 1.0,
+        "issues": [
+          "User had to re-engage with more information after receiving a generic, unhelpful response, indicating the first response was insufficient."
+        ],
+        "evidence": [
+          "One of ghee recieved today.  With Tax invoice too for 1 kg."
+        ]
+      },
+      "cross_brand_check": {
+        "score": 5.0,
+        "issues": [],
+        "evidence": []
+      }
+    },
+    "failure_descriptions": [
+      "Assistant is stuck in a loop, repeating the same response even when the user provides new information.",
+      "Assistant failed to address the user's specific query about an incomplete order, providing only a generic login link."
+    ],
+    "user_intent": "User is trying to find out why their order was only partially fulfilled and where the rest of the items are.",
     "frustration_signals": [],
-    "open_observations": "The assistant could enhance user experience by providing order status information directly or additional guidance for users without an account.",
+    "open_observations": "This is a classic example of a brittle intent detection system. The bot correctly identifies the 'order' keyword but falls back to a generic, un-gated response. It completely lacks the ability to parse follow-up information or context, immediately creating a frustrating loop for the user.",
+    "has_add_to_cart": false,
+    "event_counts": {}
+  },
+  {
+    "conversation_id": "69f32a3767150fce80057aec",
+    "brand_name": "Blue Tea",
+    "widget_id": "680a0a8b70a26f7a0e24eedd",
+    "reasoning_scratchpad": "The user wants to track their order. The bot asks for the order number and phone number. The user provides them in separate messages, but the bot enters a loop, repeatedly claiming the phone number doesn't match the order, even after the user provides both pieces of information correctly. The user's input changes (providing the phone number, then re-providing the order number), but the bot's response remains identical and unhelpful, indicating a true stuck loop. The user's need is never resolved.",
+    "overall_score": 1.0,
+    "resolution_achieved": false,
+    "dimensions": {
+      "factual_accuracy": {
+        "score": 5.0,
+        "issues": [],
+        "evidence": []
+      },
+      "hallucination_check": {
+        "score": 5.0,
+        "issues": [],
+        "evidence": []
+      },
+      "policy_compliance": {
+        "score": 5.0,
+        "issues": [],
+        "evidence": []
+      },
+      "tone_and_helpfulness": {
+        "score": 1.0,
+        "issues": [
+          "Assistant is stuck in a loop and repeats the same unhelpful response.",
+          "Assistant fails to provide any alternative path for resolution (e.g., contact support, try email).",
+          "Assistant gives a logically incorrect response by claiming a phone number doesn't match before one was provided."
+        ],
+        "evidence": [
+          "ASSISTANT: The phone number provided does not match this order. Please provide the phone number you used when placing the order.",
+          "CUSTOMER: this was the phone number i used 8252904257\nASSISTANT: The phone number provided does not match this order. Please provide the phone number you used when placing the order.",
+          "CUSTOMER: 396019\nASSISTANT: The phone number provided does not match this order. Please provide the phone number you used when placing the order."
+        ]
+      },
+      "user_satisfaction_signals": {
+        "score": 1.0,
+        "issues": [
+          "User has to repeat information they have already provided, indicating a breakdown in the conversation flow."
+        ],
+        "evidence": [
+          "CUSTOMER: 396019\n... \nCUSTOMER: and my order number is 396019"
+        ]
+      },
+      "cross_brand_check": {
+        "score": 5.0,
+        "issues": [],
+        "evidence": []
+      }
+    },
+    "failure_descriptions": [
+      "Assistant gets stuck in a loop, repeating the same error message that the phone number does not match.",
+      "Assistant fails to process information provided across multiple turns, leading to a conversational breakdown.",
+      "Assistant provides no escape hatch or alternative resolution path when its primary flow fails."
+    ],
+    "user_intent": "The user wants to track their order status.",
+    "frustration_signals": [
+      "User re-states their order number after the bot failed to process the information, indicating a conversational breakdown."
+    ],
+    "open_observations": "The bot's initial error is a significant logic failure. After the user provides only the order number ('396019'), the bot responds, 'The phone number provided does not match this order.' This is impossible, as no phone number had been provided yet. This suggests the bot's error handling is flawed and defaults to a single error message regardless of the actual missing or incorrect data.",
+    "has_add_to_cart": false,
+    "event_counts": {}
+  },
+  {
+    "conversation_id": "69f38d6a5cad2f55381238cb",
+    "brand_name": "Blue Nectar",
+    "widget_id": "6983153e1497a62e8542a0ad",
+    "reasoning_scratchpad": "The user asked for a product for 'oil pulling'. The bot recommended the 'Triphaladi Ayurvedic Fat Burning & Slimming Oil', suggesting it's a 'good natural oil option' for this purpose despite being primarily for body massage. This is a dangerous, off-label recommendation, as the product's official description is for external anti-cellulite and massage use only, with no mention of oral applications. The user trusted this flawed advice and added the product to their cart, as shown by the behavioral signals.",
+    "overall_score": 1.0,
+    "resolution_achieved": false,
+    "dimensions": {
+      "factual_accuracy": {
+        "score": 1.0,
+        "issues": [
+          "Bot recommended a product for an off-label use that is not supported by the product's description and could be unsafe."
+        ],
+        "evidence": [
+          "For oil pulling, you can use natural Ayurvedic oils that are gentle and nourishing for the mouth.",
+          "Blue Nectar currently offers the [**Triphaladi Ayurvedic Fat Burning & Slimming Oil**]... While primarily for body massage, its pure herbal ingredients make it a good natural oil option."
+        ]
+      },
+      "hallucination_check": {
+        "score": 1.0,
+        "issues": [
+          "The assistant hallucinated a use case (oil pulling) for a product that is described in the catalog only as a body massage and slimming oil."
+        ],
+        "evidence": [
+          "While primarily for body massage, its pure herbal ingredients make it a good natural oil option."
+        ]
+      },
+      "policy_compliance": {
+        "score": 1.0,
+        "issues": [
+          "Recommending a product for a potentially unsafe, off-label use (oral use of a body slimming oil) is a severe safety and policy violation."
+        ],
+        "evidence": [
+          "[ASSISTANT]: Hello! For oil pulling, you can use natural Ayurvedic oils that are gentle and nourishing for the mouth.\n\nBlue Nectar currently offers the [**Triphaladi Ayurvedic Fat Burning & Slimming Oil**]..."
+        ]
+      },
+      "tone_and_helpfulness": {
+        "score": 1.0,
+        "issues": [
+          "Providing a potentially harmful recommendation is fundamentally unhelpful, regardless of the polite tone."
+        ],
+        "evidence": [
+          "Blue Nectar currently offers the [**Triphaladi Ayurvedic Fat Burning & Slimming Oil**] priced at \u20b9494.00. While primarily for body massage, its pure herbal ingredients make it a good natural oil option."
+        ]
+      },
+      "user_satisfaction_signals": {
+        "score": 5.0,
+        "issues": [],
+        "evidence": []
+      },
+      "cross_brand_check": {
+        "score": 5.0,
+        "issues": [],
+        "evidence": []
+      }
+    },
+    "failure_descriptions": [
+      "Assistant recommended a body slimming oil for oral use (oil pulling), a dangerous off-label suggestion not supported by product data.",
+      "Assistant hallucinated that a product for external anti-cellulite massage was suitable for oil pulling."
+    ],
+    "user_intent": "The user wanted to find and purchase a product for oil pulling.",
+    "frustration_signals": [],
+    "open_observations": "This is a critical safety failure. The bot recommended a product for oral use that is explicitly marketed for external body application (slimming/anti-cellulite). The fact that the user trusted this recommendation and added the item to the cart (`add_to_cart_success`: 1) makes this a particularly dangerous type of hallucination. The system needs urgent checks to prevent off-label recommendations, especially those involving ingestion or application to sensitive areas.",
+    "has_add_to_cart": true,
+    "event_counts": {
+      "add_to_cart_success": 1
+    }
+  },
+  {
+    "conversation_id": "69ec332149f035ad8161df10",
+    "brand_name": "Blue Nectar",
+    "widget_id": "6983153e1497a62e8542a0ad",
+    "reasoning_scratchpad": "The user first asked a general question about how and when to apply a product. The bot asked for more details, which is appropriate. However, when the user specified the product ('Kumkumadi gold tailam') and repeated the question, the bot got stuck in a loop, giving the same canned response asking for more details, even when the user rephrased the product name slightly. The user's question CHANGED and was refined, but the bot's response stayed identical and unhelpful, constituting a true stuck loop. No explicit frustration words were used, but the repeated, refined attempts to ask the same question signal a failed interaction.",
+    "overall_score": 1.0,
+    "resolution_achieved": false,
+    "dimensions": {
+      "factual_accuracy": {
+        "score": 5.0,
+        "issues": [],
+        "evidence": []
+      },
+      "hallucination_check": {
+        "score": 5.0,
+        "issues": [],
+        "evidence": []
+      },
+      "policy_compliance": {
+        "score": 5.0,
+        "issues": [],
+        "evidence": []
+      },
+      "tone_and_helpfulness": {
+        "score": 1.0,
+        "issues": [
+          "Assistant is stuck in a loop, repeating the same unhelpful response.",
+          "Assistant failed to recognize a clear product name and a common user intent (application instructions).",
+          "Assistant asked for more details but then ignored the details when the user provided them."
+        ],
+        "evidence": [
+          "CUSTOMER: Kumkumadi gold tailam what is time to apply and how to apply\nASSISTANT: I'd be happy to help answer your question. Could you rephrase it or provide more details?",
+          "CUSTOMER: How to apply kumkumadi  24 k serum\nASSISTANT: I'd be happy to help answer your question. Could you rephrase it or provide more details?"
+        ]
+      },
+      "user_satisfaction_signals": {
+        "score": 1.0,
+        "issues": [
+          "User had to repeat and rephrase their question multiple times without getting an answer."
+        ],
+        "evidence": [
+          "CUSTOMER: How to apply and when to apply",
+          "CUSTOMER: Kumkumadi gold tailam what is time to apply and how to apply",
+          "CUSTOMER: How to apply kumkumadi  24 k serum"
+        ]
+      },
+      "cross_brand_check": {
+        "score": 5.0,
+        "issues": [],
+        "evidence": []
+      }
+    },
+    "failure_descriptions": [
+      "Assistant is stuck in a loop, repeatedly asking the user to rephrase their question instead of answering.",
+      "Assistant failed to understand a direct question about product application instructions for 'Kumkumadi gold tailam'.",
+      "The assistant ignored the specific product details provided by the user and continued its loop."
+    ],
+    "user_intent": "To learn how and when to apply the Blue Nectar Kumkumadi serum/tailam.",
+    "frustration_signals": [
+      "User rephrased their question multiple times in an attempt to get an answer.",
+      "User provided specific product details as requested by the bot, but the bot ignored the new information."
+    ],
+    "open_observations": "The bot's Natural Language Understanding (NLU) completely failed to parse a very standard e-commerce query combining a product name with 'how to apply'. This is a critical failure, as product usage instructions are a frequent and basic user need. The bot's fallback response (asking for clarification) is not helpful when it's unable to process the clarification provided.",
+    "has_add_to_cart": false,
+    "event_counts": {}
+  },
+  {
+    "conversation_id": "69ec230949f035ad81607cd2",
+    "brand_name": "Blue Nectar",
+    "widget_id": "6983153e1497a62e8542a0ad",
+    "reasoning_scratchpad": "The user initially asked how long it takes to see results for a specific product. The bot gave a generic 'please rephrase' response. The user then rephrased their question AND added a new one about suitability for oily skin, but the bot repeated the exact same unhelpful response, triggering a loop. This pattern repeated, leading the user to express explicit frustration, which the bot also ignored, replying with the same canned message for a fourth time.",
+    "overall_score": 1.0,
+    "resolution_achieved": false,
+    "dimensions": {
+      "factual_accuracy": {
+        "score": 5.0,
+        "issues": [],
+        "evidence": []
+      },
+      "hallucination_check": {
+        "score": 5.0,
+        "issues": [],
+        "evidence": []
+      },
+      "policy_compliance": {
+        "score": 5.0,
+        "issues": [],
+        "evidence": []
+      },
+      "tone_and_helpfulness": {
+        "score": 1.0,
+        "issues": [
+          "Assistant is stuck in a loop, repeating the same unhelpful response.",
+          "Assistant failed to recognize that the user rephrased their question and provided more details.",
+          "Assistant failed to recognize and respond appropriately to the user's explicit frustration."
+        ],
+        "evidence": [
+          "User: How long it takes to make skin glow. And is that suitable for oily skin.\nAssistant: I'd be happy to help answer your question. Could you rephrase it or provide more details?",
+          "User: You're worst\nAssistant: I'd be happy to help answer your question. Could you rephrase it or provide more details?"
+        ]
+      },
+      "user_satisfaction_signals": {
+        "score": 1.0,
+        "issues": [
+          "User expressed explicit frustration and insulted the bot."
+        ],
+        "evidence": [
+          "You're worst"
+        ]
+      },
+      "cross_brand_check": {
+        "score": 5.0,
+        "issues": [],
+        "evidence": []
+      }
+    },
+    "failure_descriptions": [
+      "Assistant is stuck in a loop, repeatedly asking the user to rephrase their question.",
+      "Assistant ignored the user's added question about suitability for oily skin.",
+      "Assistant failed to understand a clear, specific question about a product.",
+      "Assistant responded inappropriately to an explicit frustration signal ('You're worst') by repeating its canned failure message."
+    ],
+    "user_intent": "To find out how long a specific skin oil takes to show results and if it is suitable for oily skin.",
+    "frustration_signals": [
+      "User insulted the bot: 'You're worst'",
+      "User repeated their question after the bot failed to answer"
+    ],
+    "open_observations": "This is a severe loop failure. The bot's dialogue manager is completely brittle, unable to break its 'please rephrase' script even when the user's input changes significantly (from a question to an insult). The bot should have either attempted an answer or escalated after the first failure, not repeated the same error four times.",
+    "has_add_to_cart": false,
+    "event_counts": {}
+  },
+  {
+    "conversation_id": "69f3578dc9c3baf2e3aae908",
+    "brand_name": "Sri Sri Tattva",
+    "widget_id": "69a92ad76dcbf2da868e0f9b",
+    "reasoning_scratchpad": "The user initially inquired about order #843412. The assistant responded with a generic prompt to sign in. The user then provided a different order number, #843411, but the assistant gave the exact same, non-contextual 'sign in' response, ignoring the new information. This constitutes a true stuck loop because the user's input changed but the bot's unhelpful reply remained identical.",
+    "overall_score": 1.5,
+    "resolution_achieved": false,
+    "dimensions": {
+      "factual_accuracy": {
+        "score": 5.0,
+        "issues": [],
+        "evidence": []
+      },
+      "hallucination_check": {
+        "score": 5.0,
+        "issues": [],
+        "evidence": []
+      },
+      "policy_compliance": {
+        "score": 5.0,
+        "issues": [],
+        "evidence": []
+      },
+      "tone_and_helpfulness": {
+        "score": 1.0,
+        "issues": [
+          "The assistant is stuck in a loop, providing the same unhelpful response even when the user provided new information (a different order number)."
+        ],
+        "evidence": [
+          "User: 'Regarding my order 843412' -> Assistant: 'To view your order details, please [sign in to your account](https://www.srisritattva.com/account/login) first.' -> User: '843411' -> Assistant: 'To view your order details, please [sign in to your account](https://www.srisritattva.com/account/login) first.'"
+        ]
+      },
+      "user_satisfaction_signals": {
+        "score": 2.0,
+        "issues": [
+          "The user attempted to provide new information (a different order number) after the initial failure, indicating the first response was insufficient, and then abandoned the conversation."
+        ],
+        "evidence": [
+          "CUSTOMER: Regarding my order 843412",
+          "ASSISTANT: To view your order details, please [**sign in to your account**](https://www.srisritattva.com/account/login) first.",
+          "CUSTOMER: 843411"
+        ]
+      },
+      "cross_brand_check": {
+        "score": 5.0,
+        "issues": [],
+        "evidence": []
+      }
+    },
+    "failure_descriptions": [
+      "Assistant gets stuck in a loop, repeating the same generic 'sign in' response.",
+      "Assistant ignored the user's second message containing a new order number, treating it the same as the first.",
+      "Assistant was unable to fulfill the core user intent of checking an order status."
+    ],
+    "user_intent": "To get information or status about two different order numbers.",
+    "frustration_signals": [],
+    "open_observations": "The bot's inability to handle direct order number queries is a significant capability gap for an e-commerce assistant. The fact that the user provided two different order numbers (perhaps correcting a typo in the first message) and the bot ignored the change highlights a brittle intent recognition system. It treats any number as a trigger for the same generic, unhelpful login response.",
+    "has_add_to_cart": false,
+    "event_counts": {}
+  },
+  {
+    "conversation_id": "69f2c44842d388a44624d1be",
+    "brand_name": "Sri Sri Tattva",
+    "widget_id": "69a92ad76dcbf2da868e0f9b",
+    "reasoning_scratchpad": "The user's intent was to find their order's delivery date. The bot responded by asking the user to sign in. The user's query then changed across multiple turns, stating they were 'Already signed in' and 'After sign in can't view order', but the bot ignored this new information and repeated the same 'sign in' response three more times, creating a clear stuck loop. The user expressed explicit frustration ('You are not helping'), which finally triggered a different, apologetic response from the bot that escalated to customer support.",
+    "overall_score": 1.5,
+    "resolution_achieved": false,
+    "dimensions": {
+      "factual_accuracy": {
+        "score": 5.0,
+        "issues": [],
+        "evidence": []
+      },
+      "hallucination_check": {
+        "score": 5.0,
+        "issues": [],
+        "evidence": []
+      },
+      "policy_compliance": {
+        "score": 5.0,
+        "issues": [],
+        "evidence": []
+      },
+      "tone_and_helpfulness": {
+        "score": 1.0,
+        "issues": [
+          "The assistant was stuck in a repetitive loop, ignoring new information from the user.",
+          "The assistant failed to provide a helpful path forward until the user expressed explicit frustration."
+        ],
+        "evidence": [
+          "USER: Already signed in\nASSISTANT: To view your order details, please sign in to your account first.",
+          "USER: After sign in can't view order\nASSISTANT: To view your order details, please sign in to your account first."
+        ]
+      },
+      "user_satisfaction_signals": {
+        "score": 1.0,
+        "issues": [
+          "User explicitly stated the assistant was not helpful.",
+          "User had to change their query multiple times to try and get past the bot's repetitive response."
+        ],
+        "evidence": [
+          "You are not helping"
+        ]
+      },
+      "cross_brand_check": {
+        "score": 5.0,
+        "issues": [],
+        "evidence": []
+      }
+    },
+    "failure_descriptions": [
+      "Assistant is stuck in a loop, repeating the 'sign in' prompt despite the user stating they are already signed in.",
+      "Assistant failed to recognize and adapt to new information provided by the user ('Already signed in', 'After sign in can't view order').",
+      "The assistant only escalated to a support email after the user expressed direct frustration, not after failing to resolve the query."
+    ],
+    "user_intent": "The user wanted to find out when their order would be delivered.",
+    "frustration_signals": [
+      "User stated 'Already signed in' after being told to sign in.",
+      "User stated 'After sign in can't view order'.",
+      "User stated 'You are not helping'."
+    ],
+    "open_observations": "The bot was able to break the loop and provide a well-worded apology and escalation path, but only after the user explicitly complained ('You are not helping'). This suggests the loop-breaking logic is triggered by user sentiment rather than by the bot's own failure to progress the conversation. The bot should have detected its own repetitive failure after the user first said 'Already signed in'.",
     "has_add_to_cart": false,
     "event_counts": {
       "link_click": 1
     }
   },
   {
-    "conversation_id": "69c4f8e516599deb6989affe",
-    "brand_name": "Blue Tea",
-    "widget_id": "680a0a8b70a26f7a0e24eedd",
-    "overall_score": 2.5,
+    "conversation_id": "69f1d49698f9bb251e223ac2",
+    "brand_name": "Sri Sri Tattva",
+    "widget_id": "69a92ad76dcbf2da868e0f9b",
+    "reasoning_scratchpad": "The user began by asking a general question about how to make a purchase, and the assistant provided a good, comprehensive answer. The user's intent then became specific, requesting to add 'Superior Choice Premium Basmati Rice, 1 kg' to the cart. The assistant completely failed to respond to this command, went silent, and the user repeated the request, which was also ignored, resulting in two failed add-to-cart signals.",
+    "overall_score": 1.5,
     "resolution_achieved": false,
     "dimensions": {
       "factual_accuracy": {
@@ -432,26 +744,33 @@
         "evidence": []
       },
       "policy_compliance": {
-        "score": 5.0,
-        "issues": [],
-        "evidence": []
-      },
-      "tone_and_helpfulness": {
-        "score": 3.0,
+        "score": 1.0,
         "issues": [
-          "Response didn't provide direct assistance based on the user's urgency about tracking an order"
+          "The assistant failed to perform a core transactional function (add to cart) when explicitly requested."
         ],
         "evidence": [
-          "To track your order, please share both your order number and the phone number used when placing the order in a single message."
+          "User: Add \"Superior Choice Premium Basmati Rice, 1 kg\" to cart"
+        ]
+      },
+      "tone_and_helpfulness": {
+        "score": 1.0,
+        "issues": [
+          "The assistant became completely unresponsive after the user made a specific, actionable request.",
+          "The assistant abandoned the user without any error message or alternative."
+        ],
+        "evidence": [
+          "User: Add \"Superior Choice Premium Basmati Rice, 1 kg\" to cart\n(No subsequent assistant response)"
         ]
       },
       "user_satisfaction_signals": {
-        "score": 3.0,
+        "score": 1.0,
         "issues": [
-          "User repeated their request indicating frustration"
+          "User had to repeat their command verbatim because the assistant did not respond.",
+          "The system logged two failed add-to-cart attempts, indicating the user's action was blocked."
         ],
         "evidence": [
-          "Where is my order?"
+          "User (message 2): Add \"Superior Choice Premium Basmati Rice, 1 kg\" to cart\nUser (message 3): Add \"Superior Choice Premium Basmati Rice, 1 kg\" to cart",
+          "BEHAVIORAL SIGNALS: {'add_to_cart_failed': 2}"
         ]
       },
       "cross_brand_check": {
@@ -461,35 +780,170 @@
       }
     },
     "failure_descriptions": [
-      "The same response was repeated to the user causing confusion instead of providing a solution."
+      "Assistant failed to respond to a direct user command to add a product to the cart.",
+      "The assistant abandoned the conversation after the user made a transactional request."
     ],
-    "user_intent": "The user was trying to get information about their order status.",
+    "user_intent": "The user wanted to add a specific product, 'Superior Choice Premium Basmati Rice, 1 kg', to their shopping cart.",
     "frustration_signals": [
-      "User repeated the same question without variation."
+      "User repeated the 'add to cart' command after the assistant failed to respond.",
+      "Behavioral signal 'add_to_cart_failed: 2' confirms the user's action failed twice."
     ],
-    "open_observations": "The assistant did not acknowledge the user's urgency or provide alternative options for retrieving the order status.",
+    "open_observations": "The assistant's initial response to a general query was very good, but it completely failed when faced with a specific, transactional command. The total silence is a critical failure, as it provides no feedback to the user (e.g., 'I can't do that yet' or 'Product not found'). The existence of the `add_to_cart_failed` behavioral signal is a good diagnostic tool, but it confirms a complete breakdown in the user-facing experience.",
     "has_add_to_cart": false,
     "event_counts": {
-      "quick_action_click": 1,
-      "menu_action_click": 1
+      "add_to_cart_failed": 2
     }
   },
   {
-    "conversation_id": "69c3489e5287f2ec7834911c",
+    "conversation_id": "69f1cadb98f9bb251e204c5a",
+    "brand_name": "Sri Sri Tattva",
+    "widget_id": "69a92ad76dcbf2da868e0f9b",
+    "reasoning_scratchpad": "The user reported an issue with a partially fulfilled order, providing the order number. The assistant asked for a phone number, which the user provided. The assistant then responded with a generic order summary but completely ignored the user's specific complaint about partial fulfillment and also hallucinated a future date for the order.",
+    "overall_score": 1.5,
+    "resolution_achieved": false,
+    "dimensions": {
+      "factual_accuracy": {
+        "score": 1.0,
+        "issues": [
+          "Assistant provided a future date for the order."
+        ],
+        "evidence": [
+          "Order Date: 24 April 2026"
+        ]
+      },
+      "hallucination_check": {
+        "score": 1.0,
+        "issues": [
+          "The assistant hallucinated the order date, stating it as '24 April 2026', which is a future date."
+        ],
+        "evidence": [
+          "Order Date: 24 April 2026"
+        ]
+      },
+      "policy_compliance": {
+        "score": 5.0,
+        "issues": [],
+        "evidence": []
+      },
+      "tone_and_helpfulness": {
+        "score": 1.0,
+        "issues": [
+          "The assistant failed to address the user's specific problem about a partially fulfilled order, instead providing a generic order status update."
+        ],
+        "evidence": [
+          "User: My Order #843095, only one item has been fulfilled in it",
+          "Assistant: \ud83e\uddfe **Order Details** ... \ud83d\ude9a **Shipping Status** - **Order Status:** Delivered"
+        ]
+      },
+      "user_satisfaction_signals": {
+        "score": 5.0,
+        "issues": [],
+        "evidence": []
+      },
+      "cross_brand_check": {
+        "score": 5.0,
+        "issues": [],
+        "evidence": []
+      }
+    },
+    "failure_descriptions": [
+      "Assistant hallucinated a future order date (2026).",
+      "Assistant ignored the user's core complaint about a partially fulfilled order and provided a generic order status instead."
+    ],
+    "user_intent": "The user wanted to report and get help with a partially fulfilled order.",
+    "frustration_signals": [],
+    "open_observations": "The assistant correctly identified the order number and retrieved details, but its intent recognition was too shallow. It interpreted the query as a simple 'order status' request, completely missing the crucial context 'only one item has been fulfilled in it'. This indicates a failure to parse and understand the full user utterance, not just entities within it.",
+    "has_add_to_cart": false,
+    "event_counts": {}
+  },
+  {
+    "conversation_id": "69f05c09089867045ac74be6",
+    "brand_name": "Sri Sri Tattva",
+    "widget_id": "69a92ad76dcbf2da868e0f9b",
+    "reasoning_scratchpad": "The user states in Hindi that they want to return a product. The assistant correctly understands, replies in Hindi, and asks for the order number and reason for return. The user provides the order number, but the assistant ignores this new information and asks for the same details again, creating a procedural loop and failing to resolve the user's request. The user's questions/inputs changed from a general request to providing specific data, but the bot's reply regressed and repeated itself, which is a true loop. No explicit frustration words were used, but the user abandoned the chat after the bot's failure. The failure is procedural.",
+    "overall_score": 1.5,
+    "resolution_achieved": false,
+    "dimensions": {
+      "factual_accuracy": {
+        "score": 5.0,
+        "issues": [],
+        "evidence": []
+      },
+      "hallucination_check": {
+        "score": 5.0,
+        "issues": [],
+        "evidence": []
+      },
+      "policy_compliance": {
+        "score": 5.0,
+        "issues": [],
+        "evidence": []
+      },
+      "tone_and_helpfulness": {
+        "score": 1.0,
+        "issues": [
+          "The assistant ignored the user-provided order number and repeated its request for information, getting stuck in a loop."
+        ],
+        "evidence": [
+          "User: 'ORDER NUMBER 842946'\nAssistant: 'Shukriya order number share karne ke liye. Mujhe kripaya batayiye: 1. **Kya issue hai?** (Damaged packaging, defective product, wrong item, ya kuch aur?) 2. **Package khola gaya hai ya sealed hai?** ...'"
+        ]
+      },
+      "user_satisfaction_signals": {
+        "score": 2.0,
+        "issues": [
+          "User abandoned the conversation after the bot failed to process the provided information and repeated its questions."
+        ],
+        "evidence": [
+          "The conversation transcript ends after the bot's second, unhelpful response, indicating the user gave up."
+        ]
+      },
+      "cross_brand_check": {
+        "score": 5.0,
+        "issues": [],
+        "evidence": []
+      }
+    },
+    "failure_descriptions": [
+      "The assistant ignored the order number provided by the user and asked for the same information again.",
+      "The assistant failed to advance the conversation, creating a loop that prevented the user's return request from being processed."
+    ],
+    "user_intent": "The user wanted to initiate a return for a product.",
+    "frustration_signals": [
+      "User abandoned the conversation after the assistant failed to process the provided order number."
+    ],
+    "open_observations": "The bot's initial intent detection and multilingual (Hindi) response were good. However, the core failure is its inability to handle state in a multi-turn conversation. After receiving the requested order number, it should have either used it to look up order details or, if not capable, stated its limitation and immediately escalated. Instead, it reset the conversation flow, which is a critical procedural flaw.",
+    "has_add_to_cart": false,
+    "event_counts": {}
+  },
+  {
+    "conversation_id": "69f35a79fb1f2c07945f6a37",
     "brand_name": "Blue Tea",
     "widget_id": "680a0a8b70a26f7a0e24eedd",
-    "overall_score": 2.5,
+    "reasoning_scratchpad": "The user initially stated their order was cancelled by Blue Tea. The assistant first claimed it could not access order details and repeatedly deflected to customer support. After getting an order ID and phone number, it suddenly contradicted itself by pulling up order details, but these details were entirely hallucinated (future date, non-existent product variant). The user's questions changed significantly, from order cancellation to product efficacy, so this was not a loop. The assistant's initial claims about its own inability to access order information were factually incorrect and procedural failures.",
+    "overall_score": 1.5,
     "resolution_achieved": false,
     "dimensions": {
       "factual_accuracy": {
-        "score": 5.0,
-        "issues": [],
-        "evidence": []
+        "score": 1.0,
+        "issues": [
+          "Assistant falsely claimed it could not access order details, then proceeded to access them.",
+          "Assistant provided a completely fabricated future date for the order."
+        ],
+        "evidence": [
+          "I don't have access to real-time order details or cancellation records in my system.",
+          "Order Date: 15 April 2026"
+        ]
       },
       "hallucination_check": {
-        "score": 5.0,
-        "issues": [],
-        "evidence": []
+        "score": 1.0,
+        "issues": [
+          "Assistant hallucinated a future order date.",
+          "Assistant hallucinated a product variant that does not exist in the catalog."
+        ],
+        "evidence": [
+          "Order Date: 15 April 2026",
+          "Belly Fat Herbal Tea - 60 Tea Bags"
+        ]
       },
       "policy_compliance": {
         "score": 5.0,
@@ -497,21 +951,25 @@
         "evidence": []
       },
       "tone_and_helpfulness": {
+        "score": 2.0,
+        "issues": [
+          "Assistant was unhelpful by repeatedly claiming it could not access order details before contradicting itself.",
+          "Providing hallucinated and incorrect order information is fundamentally unhelpful and confusing."
+        ],
+        "evidence": [
+          "[ASSISTANT]: I don't have access to real-time order details or cancellation records in my system. To get clarity on why your order was cancelled from our end, please contact our support team directly...",
+          "[ASSISTANT]: \ud83e\uddfe Order Details Order Number: #407652 Order Date: 15 April 2026..."
+        ]
+      },
+      "user_satisfaction_signals": {
         "score": 3.0,
         "issues": [
-          "Repetition led to a robotic feel; could have provided better engagement."
+          "User repeated their initial complaint after providing the requested information, indicating impatience.",
+          "User initiated 'Clear Chat' quick actions, suggesting a desire to reset the confusing conversation."
         ],
         "evidence": [
-          "For **Belly Fat Herbal Tea**, drink **three times daily** with a balanced diet. Here's the ideal timing:"
-        ]
-      },
-      "user_satisfaction_signals": {
-        "score": 2.0,
-        "issues": [
-          "User repeated the same question twice, indicating frustration."
-        ],
-        "evidence": [
-          "How many times i have to consume the belly fat blue tea in day"
+          "[CUSTOMER]: you had cancelled the order from your end",
+          "[EVENT] Clear Chat (type: quick_action_click)"
         ]
       },
       "cross_brand_check": {
@@ -521,158 +979,47 @@
       }
     },
     "failure_descriptions": [
-      "Assistant repeated the same response to the user's identical question, contributing to a frustrating experience without addressing the user's concern."
+      "Assistant hallucinated a future order date of '15 April 2026'.",
+      "Assistant hallucinated the product 'Belly Fat Herbal Tea - 60 Tea Bags', which is not in the catalog.",
+      "Assistant contradicted itself, first stating it couldn't access order details then providing them.",
+      "Assistant provided a product link with a 'copy-of-' URL slug, indicating a technical issue."
     ],
-    "user_intent": "The user wanted to know how many times the belly fat tea should be consumed in a day.",
+    "user_intent": "The user wanted to understand why their order was cancelled and later asked why a product was not producing results.",
     "frustration_signals": [
-      "User asked the same question twice."
+      "User repeated the initial complaint after providing the order ID.",
+      "User clicked 'Clear Chat' twice, possibly to reset the confusing interaction."
     ],
-    "open_observations": "The assistant's response lacked variety despite the user's repeated questions, which can lead to user dissatisfaction. More engagement or alternative suggestions could help in such scenarios.",
-    "has_add_to_cart": false,
-    "event_counts": {}
-  },
-  {
-    "conversation_id": "69c502f306069052a32e5841",
-    "brand_name": "Sri Sri Tattva",
-    "widget_id": "69a92ad76dcbf2da868e0f9b",
-    "overall_score": 2.5,
-    "resolution_achieved": false,
-    "dimensions": {
-      "factual_accuracy": {
-        "score": 5.0,
-        "issues": [],
-        "evidence": []
-      },
-      "hallucination_check": {
-        "score": 5.0,
-        "issues": [],
-        "evidence": []
-      },
-      "policy_compliance": {
-        "score": 4.0,
-        "issues": [
-          "The assistant repeated the email instruction without exploring alternative solutions or escalating the issue further."
-        ],
-        "evidence": [
-          "Please email your Order ID and details to onlinesupport@srisritattva.com for prompt assistance."
-        ]
-      },
-      "tone_and_helpfulness": {
-        "score": 3.0,
-        "issues": [
-          "The responses became repetitive and did not adequately address the user's pressing concern."
-        ],
-        "evidence": [
-          "For missing items in your order, please email the details along with your Order ID to onlinesupport@srisritattva.com."
-        ]
-      },
-      "user_satisfaction_signals": {
-        "score": 2.0,
-        "issues": [
-          "User expressed frustration regarding both the phone number and email support not working."
-        ],
-        "evidence": [
-          "bladifool nomber not working",
-          "Mail s also not responding"
-        ]
-      },
-      "cross_brand_check": {
-        "score": 5.0,
-        "issues": [],
-        "evidence": []
-      }
-    },
-    "failure_descriptions": [
-      "The assistant failed to provide immediate resolution for the user's order issue and repeated the same email suggestion without escalation.",
-      "The user expressed frustration multiple times, indicating that traditional support channels were unresponsive."
-    ],
-    "user_intent": "The user was trying to find out the status of their order and resolve the issue of a missing item.",
-    "frustration_signals": [
-      "User indicated the customer care number isn't working.",
-      "User stated that the email support is also not responding."
-    ],
-    "open_observations": "The assistant could improve by suggesting alternative methods of support or providing direct options for order tracking rather than strictly referring to email, especially given the user's frustrations.",
-    "has_add_to_cart": false,
-    "event_counts": {}
-  },
-  {
-    "conversation_id": "69c4e3cf06069052a329bcf9",
-    "brand_name": "Sri Sri Tattva",
-    "widget_id": "69a92ad76dcbf2da868e0f9b",
-    "overall_score": 2.5,
-    "resolution_achieved": false,
-    "dimensions": {
-      "factual_accuracy": {
-        "score": 5.0,
-        "issues": [],
-        "evidence": []
-      },
-      "hallucination_check": {
-        "score": 5.0,
-        "issues": [],
-        "evidence": []
-      },
-      "policy_compliance": {
-        "score": 5.0,
-        "issues": [],
-        "evidence": []
-      },
-      "tone_and_helpfulness": {
-        "score": 2.0,
-        "issues": [
-          "Repeated apologies but did not offer a solution or escalate the issue effectively."
-        ],
-        "evidence": [
-          "We apologize for the delay in response.",
-          "We sincerely apologize for the delay in responding to your email regarding the damaged order."
-        ]
-      },
-      "user_satisfaction_signals": {
-        "score": 2.0,
-        "issues": [
-          "User expressed dissatisfaction with the delay of email replies."
-        ],
-        "evidence": [
-          "But no reply received yet",
-          "Email reply not yet received"
-        ]
-      },
-      "cross_brand_check": {
-        "score": 5.0,
-        "issues": [],
-        "evidence": []
-      }
-    },
-    "failure_descriptions": [
-      "The assistant repeatedly apologized for delays but did not provide a satisfactory resolution to the user's issue.",
-      "The user indicated dissatisfaction due to lack of response from support, which was not addressed appropriately."
-    ],
-    "user_intent": "The user was trying to resolve an issue with a damaged product and was looking for a prompt response from customer support.",
-    "frustration_signals": [
-      "User mentioned not receiving replies to their email multiple times."
-    ],
-    "open_observations": "The assistant needs to better manage expectations regarding response times and consider escalating the unresolved issues to human support to provide better user satisfaction.",
+    "open_observations": "The assistant exhibits a severe state contradiction, first denying it has a capability (order lookup) and then executing it, but with fully hallucinated data. This is worse than simply saying it cannot help. The subsequent successful handling of a language switch (English to Hinglish) and a product efficacy question is a stark contrast to the initial critical failure. The user's 'Clear Chat' clicks are a noteworthy behavioral signal.",
     "has_add_to_cart": false,
     "event_counts": {
-      "link_click": 1
+      "quick_action_click": 2
     }
   },
   {
-    "conversation_id": "69c4988280af262206b8858d",
+    "conversation_id": "69f32a2c67150fce800579c2",
     "brand_name": "Blue Tea",
     "widget_id": "680a0a8b70a26f7a0e24eedd",
-    "overall_score": 3.0,
+    "reasoning_scratchpad": "The user started by asking to track an order, then pivoted to a product question about fat-burning tea. The bot initially failed to change topics and repeated its request for order details, creating a brief loop. After the user repeated the product question, the bot recovered and answered correctly. The user then pivoted back to order tracking, provided details, and the bot retrieved the order but hallucinated a future order date (2026). The user then reported that the provided tracking link did not work.",
+    "overall_score": 1.5,
     "resolution_achieved": false,
     "dimensions": {
       "factual_accuracy": {
-        "score": 5.0,
-        "issues": [],
-        "evidence": []
+        "score": 1.0,
+        "issues": [
+          "Assistant hallucinated a future date for the order."
+        ],
+        "evidence": [
+          "Order Date: 2026-04-30"
+        ]
       },
       "hallucination_check": {
-        "score": 5.0,
-        "issues": [],
-        "evidence": []
+        "score": 1.0,
+        "issues": [
+          "The assistant fabricated an order date that is two years in the future, which is impossible."
+        ],
+        "evidence": [
+          "Order Date: 2026-04-30"
+        ]
       },
       "policy_compliance": {
         "score": 5.0,
@@ -680,22 +1027,25 @@
         "evidence": []
       },
       "tone_and_helpfulness": {
-        "score": 3.0,
+        "score": 2.0,
         "issues": [
-          "Responses were repeated with no progress towards resolving the user's question."
+          "Assistant failed to recognize a topic change and repeated a previous, irrelevant answer.",
+          "The tracking link provided by the assistant did not work for the user."
         ],
         "evidence": [
-          "Are you interested in: ...",
-          "Are you interested in: ..."
+          "[CUSTOMER]: which tea use to fat burn\n[ASSISTANT]: To track your order, please share both your order number and the phone number used when placing the order in a single message.",
+          "[CUSTOMER]: Records Not Found"
         ]
       },
       "user_satisfaction_signals": {
         "score": 2.0,
         "issues": [
-          "User repeated the same question, indicating dissatisfaction with the assistant's responses."
+          "User had to repeat their question after the bot ignored it.",
+          "User reported that the provided solution (tracking link) failed."
         ],
         "evidence": [
-          "Which team should I take"
+          "[CUSTOMER]: which tea use to fat burn\n[ASSISTANT]: To track your order...\n[CUSTOMER]: which tea use to fat burn",
+          "[CUSTOMER]: Records Not Found"
         ]
       },
       "cross_brand_check": {
@@ -705,90 +1055,109 @@
       }
     },
     "failure_descriptions": [
-      "The assistant repeated the same non-responsive answer rather than addressing the user's request."
+      "Assistant failed to recognize a topic change, repeating a previous response instead of answering the user's new question.",
+      "Assistant hallucinated a future order date (2026-04-30) when providing order details.",
+      "The tracking link provided by the assistant was invalid or not yet active, leading to a 'Records Not Found' error for the user."
     ],
-    "user_intent": "The user was seeking to understand which team they should choose.",
+    "user_intent": "The user wanted to track their order and also ask for a product recommendation for fat-burning tea.",
     "frustration_signals": [
-      "User asked the same question twice without receiving a relevant response."
+      "User repeated the question 'which tea use to fat burn' after the assistant failed to answer it.",
+      "User explicitly stated the provided tracking link failed by saying 'Records Not Found'."
     ],
-    "open_observations": "The assistant could benefit from asking clarifying questions more tailored to the user's intent rather than presenting product options repetitively.",
-    "has_add_to_cart": false,
-    "event_counts": {}
-  },
-  {
-    "conversation_id": "69c3cfb516599deb69899fb5",
-    "brand_name": "Blue Tea",
-    "widget_id": "680a0a8b70a26f7a0e24eedd",
-    "overall_score": 3.0,
-    "resolution_achieved": false,
-    "dimensions": {
-      "factual_accuracy": {
-        "score": 3.0,
-        "issues": [
-          "Order details provided do not match standard user expectations for clarity or correct product naming."
-        ],
-        "evidence": [
-          "**Order Number:** #391427 *Total Amount:** \u20b91148.20 *Shipping Location:** Karnataka, India"
-        ]
-      },
-      "hallucination_check": {
-        "score": 5.0,
-        "issues": [],
-        "evidence": []
-      },
-      "policy_compliance": {
-        "score": 4.0,
-        "issues": [
-          "The assistant should confirm the user's identity or provide better alternatives instead of insisting on a matching phone number."
-        ],
-        "evidence": [
-          "The phone number provided does not match this order."
-        ]
-      },
-      "tone_and_helpfulness": {
-        "score": 3.0,
-        "issues": [
-          "The assistant was somewhat unhelpful, repeating prompts without exploring additional avenues for assistance."
-        ],
-        "evidence": [
-          "Please provide the phone number you used when placing the order."
-        ]
-      },
-      "user_satisfaction_signals": {
-        "score": 2.0,
-        "issues": [
-          "User repeated their question multiple times with no resolution."
-        ],
-        "evidence": [
-          "Where is my order? (repeated questions)"
-        ]
-      },
-      "cross_brand_check": {
-        "score": 5.0,
-        "issues": [],
-        "evidence": []
-      }
-    },
-    "failure_descriptions": [
-      "The assistant failed to link the user\u2019s provided order number with their phone number, leading to a lack of resolution for the user.",
-      "User's need for tracking their order was not adequately addressed, resulting in frustration."
-    ],
-    "user_intent": "The user was trying to track their order status.",
-    "frustration_signals": [
-      "User repeated their question several times."
-    ],
-    "open_observations": "The assistant could potentially improve user experience by not only confirming order details but also offering help with alternate verification methods or showing a friendly demeanor while confirming order details.",
+    "open_observations": "The conversation shows the bot struggling with context switching, as seen when it failed to pivot from the 'order tracking' flow to the 'product question' flow. It also hallucinated a key piece of data (the order date). While the bot's final response to the failed tracking link was well-handled (explaining the delay and offering support), the preceding errors created a poor user experience.",
     "has_add_to_cart": false,
     "event_counts": {
       "quick_action_click": 2,
-      "link_click": 2
+      "link_click": 1
     }
   },
   {
-    "conversation_id": "69c3716816599deb698963f6",
+    "conversation_id": "69f301be61498ecf96076f15",
     "brand_name": "Blue Tea",
     "widget_id": "680a0a8b70a26f7a0e24eedd",
-    "overall_score": 3.0,
+    "reasoning_scratchpad": "The user asked for instructions on when to drink a tea. The bot provided instructions that were internally contradictory (3 times vs. 4 times per day) and changed between 'and' and 'or' for meal timings. The user became explicitly frustrated by these inconsistencies, and the bot, unable to resolve its own logic paradox, repeatedly deflected the user to customer care, providing an incorrect phone number that mismatched the product catalog.",
+    "overall_score": 1.5,
+    "resolution_achieved": false,
+    "dimensions": {
+      "factual_accuracy": {
+        "score": 1.0,
+        "issues": [
+          "Assistant gave contradictory instructions on product dosage, first stating 3 times daily, then providing a schedule that added up to 4 times daily.",
+          "Assistant provided an incorrect customer care phone number."
+        ],
+        "evidence": [
+          "First, the bot states: 'Drink ... three times daily'. Later, it confirms a schedule that is 'actually four servings daily'.",
+          "The assistant provided the phone number '+91 7980528437', but the product catalog lists '+91 6291879668'."
+        ]
+      },
+      "hallucination_check": {
+        "score": 2.0,
+        "issues": [
+          "Assistant provided a customer care phone number that is not present in the provided product catalog, indicating a data error or hallucination."
+        ],
+        "evidence": [
+          "Assistant: 'please contact our Customer Care at +91 7980528437'",
+          "Product Catalog Context: 'Customer Care Contact: +91 6291879668'"
+        ]
+      },
+      "policy_compliance": {
+        "score": 2.0,
+        "issues": [
+          "Assistant failed to provide clear and consistent product usage instructions, which is a primary responsibility.",
+          "Assistant correctly stated there is no weight loss guarantee, which is compliant."
+        ],
+        "evidence": [
+          "You've caught a genuine inconsistency, and I apologize. Looking back at our guidance, the official recommendation states three times daily... However, the specific timing... actually results in four cups daily."
+        ]
+      },
+      "tone_and_helpfulness": {
+        "score": 2.0,
+        "issues": [
+          "While apologetic, the assistant was ultimately unhelpful as it could not resolve the simple product question it created confusion around.",
+          "The repeated escalations to customer care without resolving the basic question made the assistant seem incapable and unhelpful."
+        ],
+        "evidence": [
+          "For absolute clarity on whether the recommendation is three or four cups daily and the exact timing that works best for your goals, please contact our Customer Care..."
+        ]
+      },
+      "user_satisfaction_signals": {
+        "score": 1.0,
+        "issues": [
+          "User showed clear, explicit frustration through sarcasm and direct accusations."
+        ],
+        "evidence": [
+          "aren\u2019t u not know English dear !!!",
+          "Just its waste of money of costumers"
+        ]
+      },
+      "cross_brand_check": {
+        "score": 5.0,
+        "issues": [],
+        "evidence": []
+      }
+    },
+    "failure_descriptions": [
+      "Assistant provided contradictory instructions on product usage (3 times vs. 4 times per day).",
+      "Assistant provided an incorrect customer care phone number that did not match the product catalog.",
+      "Assistant was unable to resolve its own contradictory statements, leading to user frustration and requiring escalation for a basic product question."
+    ],
+    "user_intent": "To understand the correct dosage and schedule for drinking the Belly Fat Herbal Tea.",
+    "frustration_signals": [
+      "User sarcastically questions the bot's language ability: 'aren\u2019t u not know English dear !!!'",
+      "User directly calls out the bot's contradiction: 'Then why re u saying that your recommended consumption is 3times earlier'",
+      "User expresses dissatisfaction with a dismissive 'Hmm'",
+      "User questions the product's value: 'Are u giving granty for weight loss or ??!! Just its waste of money of costumers'"
+    ],
+    "open_observations": "The root cause of this failure is a logical conflict in the bot's knowledge base. The high-level instruction ('3 times a day') conflicts with the detailed instruction ('morning, after breakfast, after lunch, before bed' which equals 4). The bot correctly identifies the user's complaint about the inconsistency but lacks the ability to resolve the underlying data conflict, leading to a complete breakdown of the conversation.",
+    "has_add_to_cart": false,
+    "event_counts": {}
+  },
+  {
+    "conversation_id": "69f1ee9642d388a446119d84",
+    "brand_name": "Blue Nectar",
+    "widget_id": "6983153e1497a62e8542a0ad",
+    "reasoning_scratchpad": "The user engaged in a long, multi-turn diagnostic quiz initiated by the assistant. The assistant asked 13 detailed questions about the user's hair concerns and habits, and the user answered each one. After the final answer, the assistant stated 'Here are the products' but then failed to provide any, ending the conversation without fulfilling the implied promise of the quiz.",
+    "overall_score": 1.5,
     "resolution_achieved": false,
     "dimensions": {
       "factual_accuracy": {
@@ -802,380 +1171,21 @@
         "evidence": []
       },
       "policy_compliance": {
+        "score": 5.0,
+        "issues": [],
+        "evidence": []
+      },
+      "tone_and_helpfulness": {
+        "score": 1.0,
+        "issues": [
+          "The assistant led the user through a 13-question quiz and then failed to provide the promised recommendations, making the entire interaction unhelpful."
+        ],
+        "evidence": [
+          "[ASSISTANT]: Here are the products"
+        ]
+      },
+      "user_satisfaction_signals": {
         "score": 4.0,
-        "issues": [
-          "The assistant stated that requests to edit or cancel an order can be considered in exceptional cases, which might not align with established policy if not consistently communicated."
-        ],
-        "evidence": [
-          "Requests may be considered in **exceptional cases**."
-        ]
-      },
-      "tone_and_helpfulness": {
-        "score": 3.0,
-        "issues": [
-          "The assistant did not provide adequate clarification when the customer expressed confusion."
-        ],
-        "evidence": [
-          "I'd like to help clarify! To assist you better, could you tell me: What specifically are you confused about?"
-        ]
-      },
-      "user_satisfaction_signals": {
-        "score": 2.0,
-        "issues": [
-          "User expressed confusion and requested a call, indicating dissatisfaction with the provided information."
-        ],
-        "evidence": [
-          "I am very confused about this.",
-          "Call me"
-        ]
-      },
-      "cross_brand_check": {
-        "score": 5.0,
-        "issues": [],
-        "evidence": []
-      }
-    },
-    "failure_descriptions": [
-      "User's confusion was not adequately addressed, leading to a request for a call which the assistant cannot fulfill."
-    ],
-    "user_intent": "The user wanted to edit their order and needed clarification about the process.",
-    "frustration_signals": [
-      "User indicated confusion about the order editing process.",
-      "User requested a phone call indicating a lack of satisfaction with text communication."
-    ],
-    "open_observations": "The assistant could improve by providing more proactive guidance on what to expect during the order editing process, especially after the user expressed confusion.",
-    "has_add_to_cart": false,
-    "event_counts": {
-      "quick_action_click": 1
-    }
-  },
-  {
-    "conversation_id": "69c413a5b69374161c4f1519",
-    "brand_name": "Blue Nectar",
-    "widget_id": "6983153e1497a62e8542a0ad",
-    "overall_score": 3.0,
-    "resolution_achieved": false,
-    "dimensions": {
-      "factual_accuracy": {
-        "score": 5.0,
-        "issues": [],
-        "evidence": []
-      },
-      "hallucination_check": {
-        "score": 5.0,
-        "issues": [],
-        "evidence": []
-      },
-      "policy_compliance": {
-        "score": 5.0,
-        "issues": [],
-        "evidence": []
-      },
-      "tone_and_helpfulness": {
-        "score": 3.0,
-        "issues": [
-          "The assistant repeated the same response without acknowledging that the user had already asked the same question."
-        ],
-        "evidence": [
-          "Yes, the Devtvakadi Herbal Compress Potli Massage can be safely incorporated into your daily routine."
-        ]
-      },
-      "user_satisfaction_signals": {
-        "score": 2.0,
-        "issues": [
-          "The user asked the same question again, indicating potential frustration."
-        ],
-        "evidence": [
-          "Can this be used in a daily routine?"
-        ]
-      },
-      "cross_brand_check": {
-        "score": 5.0,
-        "issues": [],
-        "evidence": []
-      }
-    },
-    "failure_descriptions": [
-      "User's need for confirmation regarding daily usage was not resolved, as the assistant repeated an identical response."
-    ],
-    "user_intent": "The user wanted to confirm if the product could be used daily.",
-    "frustration_signals": [
-      "User repeated the same question"
-    ],
-    "open_observations": "The assistant's repetition indicates a lack of contextual awareness, which may be an area for improvement in handling such queries effectively.",
-    "has_add_to_cart": false,
-    "event_counts": {}
-  },
-  {
-    "conversation_id": "69c40c10b69374161c4e627c",
-    "brand_name": "Blue Nectar",
-    "widget_id": "6983153e1497a62e8542a0ad",
-    "overall_score": 3.0,
-    "resolution_achieved": false,
-    "dimensions": {
-      "factual_accuracy": {
-        "score": 5.0,
-        "issues": [],
-        "evidence": []
-      },
-      "hallucination_check": {
-        "score": 5.0,
-        "issues": [],
-        "evidence": []
-      },
-      "policy_compliance": {
-        "score": 5.0,
-        "issues": [],
-        "evidence": []
-      },
-      "tone_and_helpfulness": {
-        "score": 3.0,
-        "issues": [
-          "Assistant's questions were overly structured and may not have felt engaging or tailored to the user's needs."
-        ],
-        "evidence": [
-          "Does your hair reflect light or show a soft natural shine even without styling products?"
-        ]
-      },
-      "user_satisfaction_signals": {
-        "score": 2.0,
-        "issues": [
-          "User did not seem satisfied with the interaction as they had to answer multiple questions which felt mechanical."
-        ],
-        "evidence": [
-          "No"
-        ]
-      },
-      "cross_brand_check": {
-        "score": 5.0,
-        "issues": [],
-        "evidence": []
-      }
-    },
-    "failure_descriptions": [
-      "The conversation ended without resolution for the user's intent, as the Assistant provided product recommendations but did not confirm any specific products."
-    ],
-    "user_intent": "The user appeared to be looking for product recommendations suitable for their hair care needs.",
-    "frustration_signals": [
-      "User had to answer several structured questions without receiving appropriate product recommendations or guidance."
-    ],
-    "open_observations": "The assistant could improve the conversation flow by not only asking structured questions but also acknowledging the user's responses more directly to build engagement.",
-    "has_add_to_cart": false,
-    "event_counts": {}
-  },
-  {
-    "conversation_id": "69c2a7455287f2ec782cb251",
-    "brand_name": "Blue Nectar",
-    "widget_id": "6983153e1497a62e8542a0ad",
-    "overall_score": 3.0,
-    "resolution_achieved": false,
-    "dimensions": {
-      "factual_accuracy": {
-        "score": 5.0,
-        "issues": [],
-        "evidence": []
-      },
-      "hallucination_check": {
-        "score": 5.0,
-        "issues": [],
-        "evidence": []
-      },
-      "policy_compliance": {
-        "score": 4.0,
-        "issues": [
-          "The assistant did not clearly communicate the need for urgency in ordering to meet the user's deadline, which is crucial given the context."
-        ],
-        "evidence": [
-          "'To ensure your order arrives before your trip on the 27th, it is best to place your order as soon as possible.'"
-        ]
-      },
-      "tone_and_helpfulness": {
-        "score": 3.0,
-        "issues": [
-          "Responses are polite but overly rigid, indicating a lack of understanding of user urgency."
-        ],
-        "evidence": [
-          "'A specific delivery date for Mumbai cannot be guaranteed as per the shipping policy.'"
-        ]
-      },
-      "user_satisfaction_signals": {
-        "score": 2.0,
-        "issues": [
-          "User expressed frustration due to lack of specific information."
-        ],
-        "evidence": [
-          "'I cannot second guess. And you are not giving a specific date'"
-        ]
-      },
-      "cross_brand_check": {
-        "score": 5.0,
-        "issues": [],
-        "evidence": []
-      }
-    },
-    "failure_descriptions": [
-      "The assistant failed to provide a satisfactory level of information regarding delivery timelines, leading to user frustration.",
-      "The need for urgency was not adequately acknowledged or addressed in the responses."
-    ],
-    "user_intent": "The user wanted to know the specific delivery date for products they need before their trip on the 27th.",
-    "frustration_signals": [
-      "User expressed frustration at not receiving a specific delivery date."
-    ],
-    "open_observations": "The assistant could improve by providing general estimates for the delivery timeframe to the user's location based on common shipping times to Mumbai.",
-    "has_add_to_cart": false,
-    "event_counts": {}
-  },
-  {
-    "conversation_id": "69c1287f1866ef69c6137bf9",
-    "brand_name": "Blue Nectar",
-    "widget_id": "6983153e1497a62e8542a0ad",
-    "overall_score": 3.0,
-    "resolution_achieved": false,
-    "dimensions": {
-      "factual_accuracy": {
-        "score": 5.0,
-        "issues": [],
-        "evidence": []
-      },
-      "hallucination_check": {
-        "score": 5.0,
-        "issues": [],
-        "evidence": []
-      },
-      "policy_compliance": {
-        "score": 5.0,
-        "issues": [],
-        "evidence": []
-      },
-      "tone_and_helpfulness": {
-        "score": 3.0,
-        "issues": [
-          "Responses were somewhat generic and did not address user questions effectively."
-        ],
-        "evidence": [
-          "If you need help with something specific regarding your order or have a different question, please let me know how I can assist you."
-        ]
-      },
-      "user_satisfaction_signals": {
-        "score": 2.0,
-        "issues": [
-          "User expressed frustration with unclear instructions on checking out."
-        ],
-        "evidence": [
-          "Need to check out but no option"
-        ]
-      },
-      "cross_brand_check": {
-        "score": 5.0,
-        "issues": [],
-        "evidence": []
-      }
-    },
-    "failure_descriptions": [
-      "User's intent to receive clear and immediate help with checkout was not adequately addressed.",
-      "Assistant's responses were often repetitive and generic rather than specifically helpful."
-    ],
-    "user_intent": "The user wanted assistance placing an order without an OTP and needed help with checkout.",
-    "frustration_signals": [
-      "User expressed dissatisfaction with responses indicating they were unhelpful."
-    ],
-    "open_observations": "The assistant failed to engage in an interactive way to resolve the user's checkout issue, leading to a lack of resolution.",
-    "has_add_to_cart": false,
-    "event_counts": {
-      "link_click": 2
-    }
-  },
-  {
-    "conversation_id": "69c3f312b69374161c4c7e01",
-    "brand_name": "Sri Sri Tattva",
-    "widget_id": "69a92ad76dcbf2da868e0f9b",
-    "overall_score": 3.0,
-    "resolution_achieved": false,
-    "dimensions": {
-      "factual_accuracy": {
-        "score": 5.0,
-        "issues": [],
-        "evidence": []
-      },
-      "hallucination_check": {
-        "score": 5.0,
-        "issues": [],
-        "evidence": []
-      },
-      "policy_compliance": {
-        "score": 5.0,
-        "issues": [],
-        "evidence": []
-      },
-      "tone_and_helpfulness": {
-        "score": 2.0,
-        "issues": [
-          "Assistant repeated unhelpful information without providing alternative solutions."
-        ],
-        "evidence": [
-          "\u092e\u093e\u092b\u093c \u0915\u0940\u091c\u093f\u090f, \u0907\u0938 \u0938\u092e\u092f \u0939\u092e\u093e\u0930\u0947 \u092a\u093e\u0938 \u091a\u093f\u092f\u093e \u0938\u0940\u0921\u094d\u0938 \u0909\u092a\u0932\u092c\u094d\u0927 \u0928\u0939\u0940\u0902 \u0939\u0948\u0902."
-        ]
-      },
-      "user_satisfaction_signals": {
-        "score": 3.0,
-        "issues": [
-          "Customer expressed a persistent desire for chia seeds without receiving satisfying information."
-        ],
-        "evidence": [
-          "\u0928\u0939\u0940\u0902 \u092e\u0941\u091d\u0947 \u091a\u093f\u092f\u093e \u0938\u0940\u0921\u094d\u0938 \u091a\u093e\u0939\u093f\u090f",
-          "Kab tak mil jayega"
-        ]
-      },
-      "cross_brand_check": {
-        "score": 5.0,
-        "issues": [],
-        "evidence": []
-      }
-    },
-    "failure_descriptions": [
-      "The assistant did not effectively address the user's inquiry about the availability of chia seeds, leading to user frustration."
-    ],
-    "user_intent": "The user was attempting to find out if chia seeds were available for purchase.",
-    "frustration_signals": [
-      "User insisted on wanting chia seeds after being told they were unavailable."
-    ],
-    "open_observations": "The assistant could have provided additional options or alternatives explicitly, rather than repeating the lack of availability.",
-    "has_add_to_cart": false,
-    "event_counts": {}
-  },
-  {
-    "conversation_id": "69c3a321b69374161c41768c",
-    "brand_name": "Sri Sri Tattva",
-    "widget_id": "69a92ad76dcbf2da868e0f9b",
-    "overall_score": 3.0,
-    "resolution_achieved": false,
-    "dimensions": {
-      "factual_accuracy": {
-        "score": 5.0,
-        "issues": [],
-        "evidence": []
-      },
-      "hallucination_check": {
-        "score": 5.0,
-        "issues": [],
-        "evidence": []
-      },
-      "policy_compliance": {
-        "score": 5.0,
-        "issues": [],
-        "evidence": []
-      },
-      "tone_and_helpfulness": {
-        "score": 3.0,
-        "issues": [
-          "Agent provided a detailed response but incorrectly referenced a product (Kansa Massage & Marma Wand) instead of the Hydrating Hand Wash."
-        ],
-        "evidence": [
-          "To use the [**Kansa Massage & Marma Wand by Shankara**]"
-        ]
-      },
-      "user_satisfaction_signals": {
-        "score": 3.0,
         "issues": [],
         "evidence": []
       },
@@ -1186,11 +1196,149 @@
       }
     },
     "failure_descriptions": [
-      "The assistant provided usage instructions for the wrong product, leading to potential confusion for the user who inquired about the Hydrating Hand Wash."
+      "The assistant failed to provide product recommendations after the user completed a lengthy 13-question diagnostic quiz.",
+      "The conversation ended abruptly with an unfulfilled promise ('Here are the products') after the user had invested significant time and information."
     ],
-    "user_intent": "The user was asking for instructions on how to use the Hydrating Hand Wash daily.",
+    "user_intent": "To get personalized hair product recommendations by completing the assistant's diagnostic quiz.",
     "frustration_signals": [],
-    "open_observations": "The assistant should ensure it references the correct product context based on user inquiries to avoid confusion.",
+    "open_observations": "This is a critical 'last-mile' failure. The system successfully executed a complex, multi-turn data collection process (the quiz) but failed at the most crucial step: delivering the result. This type of failure, where a user invests significant effort for no payoff, is likely to be more damaging to user trust than an immediate failure. The final message 'Here are the products' followed by nothing suggests a backend integration bug where the recommendation engine's output was not successfully passed back to the chat interface.",
+    "has_add_to_cart": false,
+    "event_counts": {}
+  },
+  {
+    "conversation_id": "69ef49e7bd8b63ad6cb1407a",
+    "brand_name": "Blue Nectar",
+    "widget_id": "6983153e1497a62e8542a0ad",
+    "reasoning_scratchpad": "The user asked about the time to see results for a specific product. The assistant provided an answer stating results could be seen in '2-3 weeks'. The user then repeated the exact same question, and the assistant gave the exact same reply. The user's questions were identical, so this is not a stuck loop. The core issue is that the '2-3 weeks' timeframe is not mentioned in the provided product catalog, making it a factual hallucination.",
+    "overall_score": 1.5,
+    "resolution_achieved": false,
+    "dimensions": {
+      "factual_accuracy": {
+        "score": 1.0,
+        "issues": [
+          "The assistant stated a specific time-to-results ('2-3 weeks') which is not backed by the provided product information."
+        ],
+        "evidence": [
+          "With the Almond Flax Seed Anti Aging Face Ubtan Powder, you may start noticing skin firming, reduced redness, and improved tone within 2-3 weeks of regular use..."
+        ]
+      },
+      "hallucination_check": {
+        "score": 1.0,
+        "issues": [
+          "The assistant hallucinated a specific timeframe for product efficacy ('2-3 weeks') which is not present in the product catalog context."
+        ],
+        "evidence": [
+          "With the Almond Flax Seed Anti Aging Face Ubtan Powder, you may start noticing skin firming, reduced redness, and improved tone within 2-3 weeks of regular use..."
+        ]
+      },
+      "policy_compliance": {
+        "score": 5.0,
+        "issues": [],
+        "evidence": []
+      },
+      "tone_and_helpfulness": {
+        "score": 2.0,
+        "issues": [
+          "The assistant provided a factually incorrect and therefore unhelpful answer, setting a false expectation for the customer."
+        ],
+        "evidence": [
+          "With the Almond Flax Seed Anti Aging Face Ubtan Powder, you may start noticing skin firming, reduced redness, and improved tone within 2-3 weeks of regular use..."
+        ]
+      },
+      "user_satisfaction_signals": {
+        "score": 3.0,
+        "issues": [
+          "User repeated the identical question, which can indicate the first answer was not seen, was not satisfactory, or a system glitch."
+        ],
+        "evidence": [
+          "[CUSTOMER]: How long does it take to see results? almond-flax-seed-powder-face-cleanser-for-skin-firming-anti-aging",
+          "[CUSTOMER]: How long does it take to see results? almond-flax-seed-powder-face-cleanser-for-skin-firming-anti-aging"
+        ]
+      },
+      "cross_brand_check": {
+        "score": 5.0,
+        "issues": [],
+        "evidence": []
+      }
+    },
+    "failure_descriptions": [
+      "Assistant hallucinated a specific timeframe for product results ('2-3 weeks') which is not present in the product data."
+    ],
+    "user_intent": "To understand how long it will take to see results from using the Almond Flax Seed Powder Face Cleanser.",
+    "frustration_signals": [
+      "User repeated the identical question."
+    ],
+    "open_observations": "The bot's answer is a dangerous type of hallucination because it sounds very plausible and specific, setting a customer expectation that the brand may not be able to meet. While the user repeating the identical question is not a bot failure, the fact that the bot's answer was confidently incorrect is the primary issue.",
+    "has_add_to_cart": false,
+    "event_counts": {}
+  },
+  {
+    "conversation_id": "69ef4895bd8b63ad6cb0f1c9",
+    "brand_name": "Blue Nectar",
+    "widget_id": "6983153e1497a62e8542a0ad",
+    "reasoning_scratchpad": "The user asked a series of questions about the features, usage, and ingredients of the men's and women's Shata Dhauta Ghrita creams, and then about a coffee cleanser. The user's questions changed in each turn, so there was no loop. The bot's failures were factual; it hallucinated a list of key ingredients for the men's cream and also invented specific result timelines for two different products that were not present in the catalog data.",
+    "overall_score": 1.5,
+    "resolution_achieved": false,
+    "dimensions": {
+      "factual_accuracy": {
+        "score": 1.0,
+        "issues": [
+          "Assistant provided an incorrect list of key ingredients for the men's face cream.",
+          "Assistant provided a specific timeframe for results that is not mentioned in the product data for two different products."
+        ],
+        "evidence": [
+          "ASSISTANT: The key ingredients are Lodhra, Licorice, Moringa, Tejpatta (Bay Leaf), Usira, Vatankur, and Vanilla, combined with 100 times cleansed pure cow ghee for deep nourishment and skin renewal.",
+          "ASSISTANT: You can start noticing hydration and glow within a few days, while visible improvement in fine lines and skin renewal typically appears with consistent use over 3 to 4 weeks.",
+          "ASSISTANT: You can expect to see visible tan removal and brighter skin within 2 to 3 weeks of regular use, as the coffee bean powder gently exfoliates and promotes skin renewal."
+        ]
+      },
+      "hallucination_check": {
+        "score": 1.0,
+        "issues": [
+          "The assistant hallucinated a list of key ingredients for the 'Men's Shata Dhauta Ghrita Face Cream'. The catalog does not list Moringa, Tejpatta, Usira, Vatankur, or Vanilla as ingredients.",
+          "The assistant hallucinated that results for the men's cream appear in '3 to 4 weeks'; the catalog provides no such timeline.",
+          "The assistant hallucinated that results for the coffee cleanser appear in '2 to 3 weeks'; the catalog provides no such timeline."
+        ],
+        "evidence": [
+          "ASSISTANT: The key ingredients are Lodhra, Licorice, Moringa, Tejpatta (Bay Leaf), Usira, Vatankur, and Vanilla...",
+          "ASSISTANT: ...visible improvement in fine lines and skin renewal typically appears with consistent use over 3 to 4 weeks.",
+          "ASSISTANT: You can expect to see visible tan removal and brighter skin within 2 to 3 weeks of regular use..."
+        ]
+      },
+      "policy_compliance": {
+        "score": 5.0,
+        "issues": [],
+        "evidence": []
+      },
+      "tone_and_helpfulness": {
+        "score": 2.0,
+        "issues": [
+          "The assistant provided factually incorrect information which is fundamentally unhelpful, despite its confident and polite tone."
+        ],
+        "evidence": [
+          "ASSISTANT: The key ingredients are Lodhra, Licorice, Moringa, Tejpatta (Bay Leaf), Usira, Vatankur, and Vanilla, combined with 100 times cleansed pure cow ghee for deep nourishment and skin renewal."
+        ]
+      },
+      "user_satisfaction_signals": {
+        "score": 5.0,
+        "issues": [],
+        "evidence": []
+      },
+      "cross_brand_check": {
+        "score": 5.0,
+        "issues": [],
+        "evidence": []
+      }
+    },
+    "failure_descriptions": [
+      "The assistant hallucinated a list of key ingredients for the men's face cream that are not present in the product catalog.",
+      "The assistant invented a specific results timeline (3-4 weeks) for the Shata Dhauta Ghrita cream, which is not supported by the product data.",
+      "The assistant invented a specific results timeline (2-3 weeks) for the coffee cleanser, which is not supported by the product data.",
+      "The assistant incorrectly used a hallucinated ingredient (Moringa) to explain the difference between the men's and women's creams."
+    ],
+    "user_intent": "The user wanted to understand the usage, effects, ingredients, and differences between several Blue Nectar products.",
+    "frustration_signals": [],
+    "open_observations": "The assistant is confidently fabricating specific details like ingredient lists and result timelines. This is a significant issue, as the user is likely to trust this false information. The hallucination was compounded when the bot re-used a fabricated ingredient ('Moringa') in a subsequent answer to explain product differences.",
     "has_add_to_cart": false,
     "event_counts": {}
   }

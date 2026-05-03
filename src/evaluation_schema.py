@@ -32,6 +32,10 @@ def build_conversation_evaluation_json_schema() -> dict:
     inner = {
         "type": "object",
         "properties": {
+            "reasoning_scratchpad": {
+                "type": "string",
+                "description": "MANDATORY: Write a 2-3 sentence chronological summary of the user's intent path and the bot's state changes. Reason through what happened BEFORE scoring. If you are penalizing the bot for a loop, you MUST explicitly state here whether the user's intent changed or remained identical.",
+            },
             "overall_score": {
                 "type": "number",
                 "description": "1.0-5.0 overall quality score",
@@ -62,6 +66,7 @@ def build_conversation_evaluation_json_schema() -> dict:
             },
         },
         "required": [
+            "reasoning_scratchpad",
             "overall_score",
             "resolution_achieved",
             "dimensions",

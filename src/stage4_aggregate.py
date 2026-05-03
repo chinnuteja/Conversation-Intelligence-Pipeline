@@ -10,9 +10,10 @@ import logging
 from collections import defaultdict
 from datetime import datetime
 
-from openai import AsyncAzureOpenAI
+from openai import AsyncOpenAI
 
-from src.config import OAI_BASE_LLM, OAI_KEY_LLM, OAI_VERSION, SUMMARY_MODEL, OUTPUT_DIR
+from src.config import SUMMARY_MODEL, OUTPUT_DIR
+from src.auth import get_vertex_token, get_vertex_base_url
 from src.models import (
     ConversationEvaluation,
     DiscoveredCluster,
@@ -24,10 +25,9 @@ from src.prompts import EXECUTIVE_SUMMARY_PROMPT
 
 logger = logging.getLogger(__name__)
 
-client = AsyncAzureOpenAI(
-    azure_endpoint=OAI_BASE_LLM,
-    api_key=OAI_KEY_LLM,
-    api_version=OAI_VERSION,
+client = AsyncOpenAI(
+    base_url=get_vertex_base_url(),
+    api_key=get_vertex_token(),
 )
 
 
@@ -173,7 +173,8 @@ async def generate_executive_summary(report: PipelineReport) -> str:
         messages=[{"role": "user", "content": prompt}],
         max_tokens=1500,
     )
-    return response.choices[0].message.content.strip()
+    content = response.choices[0].message.content
+    return content.strip() if content else "Executive summary could not be generated (empty response or safety filter triggered)."
 
 
 async def build_report(
