@@ -112,6 +112,29 @@ CUSTOM_CSS = """
         background: rgba(0, 184, 148, 0.14);
         border-color: rgba(0, 184, 148, 0.24);
     }
+    /* Native <details> — works inside Streamlit expanders (no nested st.expander). */
+    .eval-scratch-details {
+        margin-top: 6px;
+        max-width: min(100%, 620px);
+        box-sizing: border-box;
+        font-family: 'Inter', sans-serif;
+        font-size: 0.69rem;
+        line-height: 1.34;
+        color: rgba(255, 255, 255, 0.86);
+    }
+    .eval-scratch-details summary {
+        cursor: pointer;
+        font-weight: 600;
+        color: rgba(255, 255, 255, 0.92);
+        user-select: none;
+        list-style: none;
+    }
+    .eval-scratch-details summary::-webkit-details-marker { display: none; }
+    .eval-scratch-body {
+        margin-top: 6px;
+        padding-top: 4px;
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
+    }
     /* ── Chat Thread ── */
     .chat-thread {
         display: flex;
@@ -679,8 +702,14 @@ def render_evaluation_metadata(ev: dict, merged: dict) -> None:
     )
 
     if scratch:
-        with st.expander("Why this score?", expanded=False):
-            st.markdown(scratch)
+        safe_scratch = html.escape(scratch).replace("\n", "<br/>")
+        st.markdown(
+            '<details class="eval-scratch-details">'
+            "<summary>Why this score?</summary>"
+            f'<div class="eval-scratch-body">{safe_scratch}</div>'
+            "</details>",
+            unsafe_allow_html=True,
+        )
 
 
 def render_dimension_grid(dimensions: dict | None, n_cols: int = 3) -> None:
