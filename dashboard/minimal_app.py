@@ -114,7 +114,7 @@ CUSTOM_CSS = """
     }
     /* Native <details> — works inside Streamlit expanders (no nested st.expander). */
     .eval-scratch-details {
-        margin-top: 6px;
+        margin-top: 8px;
         max-width: min(100%, 620px);
         box-sizing: border-box;
         font-family: 'Inter', sans-serif;
@@ -124,16 +124,53 @@ CUSTOM_CSS = """
     }
     .eval-scratch-details summary {
         cursor: pointer;
-        font-weight: 600;
-        color: rgba(255, 255, 255, 0.92);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+        padding: 7px 11px;
+        border-radius: 8px;
+        border: 1px solid rgba(255, 255, 255, 0.22);
+        background: rgba(255, 255, 255, 0.07);
+        font-weight: 700;
+        font-size: 0.72rem;
+        letter-spacing: 0.02em;
+        color: rgba(255, 255, 255, 0.95);
         user-select: none;
         list-style: none;
+        transition: background 0.15s ease, border-color 0.15s ease;
+    }
+    .eval-scratch-details summary:hover {
+        background: rgba(255, 255, 255, 0.11);
+        border-color: rgba(255, 255, 255, 0.32);
     }
     .eval-scratch-details summary::-webkit-details-marker { display: none; }
+    /* Chevron: reads as a dropdown control */
+    .eval-scratch-details summary::after {
+        content: "";
+        flex-shrink: 0;
+        width: 0;
+        height: 0;
+        border-left: 5px solid transparent;
+        border-right: 5px solid transparent;
+        border-top: 6px solid rgba(255, 255, 255, 0.65);
+        margin-left: 4px;
+        transition: transform 0.18s ease;
+    }
+    .eval-scratch-details[open] summary::after {
+        transform: rotate(180deg);
+    }
+    .eval-scratch-details[open] summary {
+        border-radius: 8px 8px 0 0;
+        border-bottom-color: transparent;
+    }
     .eval-scratch-body {
-        margin-top: 6px;
-        padding-top: 4px;
-        border-top: 1px solid rgba(255, 255, 255, 0.08);
+        margin-top: 0;
+        padding: 8px 11px 10px 11px;
+        border-radius: 0 0 8px 8px;
+        border: 1px solid rgba(255, 255, 255, 0.22);
+        border-top: 1px dashed rgba(255, 255, 255, 0.12);
+        background: rgba(0, 0, 0, 0.18);
     }
     /* ── Chat Thread ── */
     .chat-thread {
