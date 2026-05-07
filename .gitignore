@@ -12,6 +12,9 @@ run_log.txt
 .DS_Store
 .idea/
 .vscode/
+.claude/
+.kilo/
+analysis_log.txt
 
 # Google / Vertex service account keys (never commit)
 pipeline-bot-*.json

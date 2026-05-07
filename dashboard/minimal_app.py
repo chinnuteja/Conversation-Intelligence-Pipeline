@@ -6,7 +6,6 @@ Focuses entirely on reviewing bad interactions per brand.
 from __future__ import annotations
 
 import html
-import json
 import re
 import sys
 from pathlib import Path
@@ -41,6 +40,25 @@ DIMENSION_LABELS: dict[str, str] = {
 
 def humanize_dimension(key: str) -> str:
     return DIMENSION_LABELS.get(key, key.replace("_", " ").title())
+
+
+BADGE_LABEL: dict[str, str] = {
+    "user_satisfaction_signals": "FRUSTRATION",
+    "tone_and_helpfulness": "UNHELPFUL",
+    "hallucination_check": "HALLUCINATION",
+    "factual_accuracy": "WRONG INFO",
+    "cross_brand_check": "WRONG BRAND",
+    "policy_compliance": "POLICY ISSUE",
+}
+
+ASSISTANT_DIMS: set[str] = {
+    "tone_and_helpfulness",
+    "policy_compliance",
+    "hallucination_check",
+    "cross_brand_check",
+    "factual_accuracy",
+}
+USER_DIMS: set[str] = {"user_satisfaction_signals"}
 
 
 st.set_page_config(
@@ -96,28 +114,14 @@ CUSTOM_CSS = """
         background: rgba(0, 184, 148, 0.08);
     }
     .eval-alert {
-        font-size: 0.65rem;
-        line-height: 1.28;
-        padding: 3px 6px;
-        margin: 2px 0;
-        border-radius: 5px;
-        color: #ffe4e4;
-        background: rgba(214, 48, 49, 0.20);
-        border: 1px solid rgba(214, 48, 49, 0.28);
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
+        font-size: 0.68rem;
+        line-height: 1.45;
+        padding: 1px 0;
+        margin: 1px 0;
+        color: rgba(255, 255, 255, 0.55);
     }
-    .eval-alert.warning {
-        color: #ffe9c5;
-        background: rgba(240, 165, 0, 0.16);
-        border-color: rgba(240, 165, 0, 0.26);
-    }
-    .eval-alert.success {
-        color: #ccf7d4;
-        background: rgba(0, 184, 148, 0.14);
-        border-color: rgba(0, 184, 148, 0.24);
-    }
+    .eval-alert::before { content: "· "; }
+    .eval-alert.success { color: rgba(180, 240, 195, 0.7); }
     /* Native <details> — works inside Streamlit expanders (no nested st.expander). */
     .eval-scratch-details {
         margin-top: 8px;
@@ -224,133 +228,50 @@ CUSTOM_CSS = """
         line-height: 1.55;
         color: #1a1a2e;
         word-wrap: break-word;
-    }
-
-    /* Neutral */
-    .bubble.neutral {
         background: #f8f9fa;
         border: 1px solid #e0e0e0;
     }
 
-    /* Flagged Customer — soft red */
-    .bubble.flagged-customer {
-        background: #fff5f5;
-        border: 1.5px solid #ff6b6b;
-    }
-
-    /* Flagged Assistant — soft amber */
-    .bubble.flagged-assistant {
-        background: #fffbf0;
-        border: 1.5px solid #f0a500;
-    }
-
-    /* ── Flagged bundle: weld bubble + badges into one card ── */
-    .flagged-bundle {
+    /* ── Turn Verdict Bar (represents the whole user+agent exchange) ── */
+    .turn-verdict {
         display: flex;
-        flex-direction: column;
-        gap: 0;
-        border-radius: 16px;
-        overflow: hidden;
-        border: 1.5px solid #e0e0e0;
-        box-sizing: border-box;
-    }
-    .flagged-bundle.assistant {
-        border-color: #f0a500;
-    }
-    .flagged-bundle.user {
-        border-color: #ff6b6b;
-    }
-    /* Inside bundle: bubble connects to badge strip (no gap, flat bottom on bubble) */
-    .msg-card.has-insights .flagged-bundle .bubble.flagged-assistant,
-    .msg-card.has-insights .flagged-bundle .bubble.flagged-customer {
-        border-radius: 14px 14px 0 0;
-        border-bottom: none;
-        margin: 0;
-    }
-    .msg-card.has-insights .flagged-bundle .bubble.neutral {
-        border-radius: 14px 14px 0 0;
-        border-bottom: none;
-        margin: 0;
-    }
-
-    /* ── Audit Insight (badge + reason in one clean line) ── */
-    .audit-insight {
-        display: flex;
-        align-items: baseline;
-        gap: 8px;
-        margin: 0;
-        padding: 6px 10px;
-        border-radius: 0;
+        align-items: center;
+        gap: 6px;
         flex-wrap: wrap;
-        position: relative;
-        border-top: 1px dashed rgba(0, 0, 0, 0.08);
-    }
-    .flagged-bundle.assistant .audit-insight {
-        background: #fffbf0;
-    }
-    .flagged-bundle.user .audit-insight {
-        background: #fff5f5;
-    }
-    /* Standalone insights (should not occur when bundle used): neutral fallback */
-    .msg-card:not(.has-insights) .audit-insight {
-        background: rgba(255, 255, 255, 0.02);
+        padding: 5px 14px;
+        margin: 2px 0 10px 0;
         border-radius: 6px;
-        border-top: none;
+        background: rgba(214, 48, 49, 0.06);
+        border: 1px dashed rgba(214, 48, 49, 0.22);
     }
-    /* Upward pointer: first badge row sits directly under .bubble */
-    .flagged-bundle.assistant .bubble + .audit-insight::before {
-        content: "";
-        position: absolute;
-        top: -5px;
-        right: 18px;
-        width: 0;
-        height: 0;
-        border-left: 6px solid transparent;
-        border-right: 6px solid transparent;
-        border-bottom: 6px solid #fffbf0;
-        filter: drop-shadow(0 -1px 0 rgba(240, 165, 0, 0.35));
+    .turn-verdict.amber {
+        background: rgba(240, 165, 0, 0.06);
+        border-color: rgba(240, 165, 0, 0.22);
     }
-    .flagged-bundle.user .bubble + .audit-insight::before {
-        content: "";
-        position: absolute;
-        top: -5px;
-        left: 18px;
-        width: 0;
-        height: 0;
-        border-left: 6px solid transparent;
-        border-right: 6px solid transparent;
-        border-bottom: 6px solid #fff5f5;
-        filter: drop-shadow(0 -1px 0 rgba(255, 107, 107, 0.35));
-    }
-
-    .insight-badge {
+    .verdict-badge {
         font-family: 'Inter', sans-serif;
-        font-size: 0.62rem;
+        font-size: 0.60rem;
         font-weight: 800;
         text-transform: uppercase;
         letter-spacing: 0.04em;
-        padding: 2px 8px;
+        padding: 2px 7px;
         border-radius: 4px;
         white-space: nowrap;
     }
-
-    .insight-badge.red {
+    .verdict-badge.red {
         color: #d63031;
-        background: rgba(214, 48, 49, 0.08);
-        border: 1px solid rgba(214, 48, 49, 0.3);
+        background: rgba(214, 48, 49, 0.10);
+        border: 1px solid rgba(214, 48, 49, 0.30);
     }
-
-    .insight-badge.amber {
+    .verdict-badge.amber {
         color: #e17055;
-        background: rgba(225, 112, 85, 0.08);
-        border: 1px solid rgba(225, 112, 85, 0.3);
+        background: rgba(225, 112, 85, 0.10);
+        border: 1px solid rgba(225, 112, 85, 0.30);
     }
-
-    .insight-reason {
+    .verdict-reason {
         font-family: 'Inter', sans-serif;
-        font-size: 0.75rem;
-        font-style: italic;
-        color: #666;
+        font-size: 0.73rem;
+        color: #888;
         line-height: 1.4;
     }
 
@@ -615,18 +536,6 @@ def _repetition_info(transcript: list[dict]) -> tuple[str, str]:
     return "", ""
 
 
-def _failure_is_critical(failure_text: str, overall_score: float) -> bool:
-    """Classify a single failure line for st.error vs st.warning."""
-    if overall_score <= 2.0:
-        return True
-    t = (failure_text or "").lower()
-    if "hallucinat" in t or "made up" in t:
-        return True
-    if "wrong" in t:
-        return True
-    return False
-
-
 def render_evaluation_metadata(ev: dict, merged: dict) -> None:
     """Compact verdict-first block: failures + reasoning without heavy score UI."""
     score_raw = merged.get("overall_score", ev.get("overall_score"))
@@ -644,30 +553,14 @@ def render_evaluation_metadata(ev: dict, merged: dict) -> None:
     score_class = "score-ok" if score >= 4.5 else "score-bad"
     res_label = "Resolved" if resolution is True else "Unresolved" if resolution is False else "Unknown"
 
-    def _alert_title(text: str) -> str:
-        t = " ".join((text or "").split())
-        return html.escape(t, quote=True)
-
     alert_rows: list[str] = []
     if failure_list:
         for fd in failure_list:
-            tip = _alert_title(fd)
-            if _failure_is_critical(fd, score):
-                alert_rows.append(
-                    f'<div class="eval-alert" title="{tip}"><strong>Critical:</strong> {html.escape(fd)}</div>'
-                )
-            elif score < 4.0:
-                alert_rows.append(
-                    f'<div class="eval-alert warning" title="{tip}"><strong>Friction:</strong> {html.escape(fd)}</div>'
-                )
-            else:
-                alert_rows.append(
-                    f'<div class="eval-alert warning" title="{tip}"><strong>Note:</strong> {html.escape(fd)}</div>'
-                )
+            alert_rows.append(
+                f'<div class="eval-alert">{html.escape(fd)}</div>'
+            )
     elif score >= 4.5:
-        alert_rows.append(
-            '<div class="eval-alert success"><strong>Clean:</strong> No failures detected.</div>'
-        )
+        alert_rows.append('<div class="eval-alert success">No failures detected.</div>')
 
     scratch = (merged.get("reasoning_scratchpad") or ev.get("reasoning_scratchpad") or "").strip()
 
@@ -719,6 +612,55 @@ def render_dimension_grid(dimensions: dict | None, n_cols: int = 3) -> None:
                 st.caption(snippet)
 
 
+def _badge_for(key: str, fallback: str, reason_text: str = "") -> str:
+    rl = (reason_text or "").lower()
+    if "irrelevant" in rl or "wrong product" in rl or "irrelevant product" in rl:
+        return "IRRELEVANT PRODUCT"
+    return BADGE_LABEL.get(key, fallback.upper())
+
+
+def _group_into_turns(transcript: list[dict]) -> list[tuple[list[dict], list[dict]]]:
+    """Group transcript into (user_messages, assistant_messages) exchange pairs."""
+    turns: list[tuple[list[dict], list[dict]]] = []
+    cur_user: list[dict] = []
+    cur_asst: list[dict] = []
+    for m in transcript:
+        if (m.get("messageType") or "text") == "event":
+            continue
+        if m.get("sender") == "user":
+            if cur_asst:
+                turns.append((cur_user, cur_asst))
+                cur_user, cur_asst = [], []
+            cur_user.append(m)
+        else:
+            cur_asst.append(m)
+    if cur_user or cur_asst:
+        turns.append((cur_user, cur_asst))
+    return turns
+
+
+def _collect_turn_flags(
+    user_msgs: list[dict],
+    asst_msgs: list[dict],
+    evidence_hits: dict[int, list[dict]],
+    mi_to_m: dict[int, dict],
+) -> list[dict]:
+    """Collect deduplicated flags for all messages in this turn."""
+    turn_set = {id(m) for m in user_msgs + asst_msgs}
+    seen: set[str] = set()
+    result: list[dict] = []
+    for mi, hits in evidence_hits.items():
+        m = mi_to_m.get(mi)
+        if m is None or id(m) not in turn_set:
+            continue
+        for hit in hits:
+            dk = f"{hit['key']}:{hit['reason'][:40]}"
+            if dk not in seen:
+                seen.add(dk)
+                result.append(hit)
+    return result
+
+
 # ── Rendering ──
 
 def render_conversation(ev: dict) -> None:
@@ -730,7 +672,7 @@ def render_conversation(ev: dict) -> None:
 
     raw_reason = failures[0] if failures else (ev.get("user_intent") or "")
     reason = raw_reason[:90].rsplit(" ", 1)[0] if len(raw_reason) > 90 else raw_reason
-    repeat_note, repeated_text = _repetition_info(transcript)
+    repeat_note, _ = _repetition_info(transcript)
     label = f"Score {score}/5 — {reason}{repeat_note}"
 
     with st.expander(label):
@@ -748,140 +690,80 @@ def render_conversation(ev: dict) -> None:
             st.caption("No transcript available.")
             return
 
-        # ── Step 1: Find which messages have REAL evidence matches ──
+        # Pre-compute evidence hits per message (role-filtered)
         evidence_hits: dict[int, list[dict]] = {}
+        mi_to_m: dict[int, dict] = {}
         for mi, m in enumerate(transcript):
+            mi_to_m[mi] = m
             role = "User" if m.get("sender") == "user" else "Assistant"
             _, match_text, _, _ = prepare_transcript_turn(role, m.get("text") or "")
-            hits = match_flags_to_message(match_text, role, flags)
+            allowed_dims = ASSISTANT_DIMS if role == "Assistant" else USER_DIMS
+            hits = [
+                h for h in match_flags_to_message(match_text, role, flags)
+                if h.get("key", "") in allowed_dims
+            ]
             if hits:
                 evidence_hits[mi] = hits
 
-        # ── Step 3: Prepare smart badge routing ──
-        BADGE_LABEL = {
-            "user_satisfaction_signals": "FRUSTRATION",
-            "tone_and_helpfulness": "UNHELPFUL",
-            "hallucination_check": "HALLUCINATION",
-            "factual_accuracy": "WRONG INFO",
-            "cross_brand_check": "WRONG BRAND",
-            "policy_compliance": "POLICY ISSUE",
-        }
-
-        def badge_for(key: str, fallback: str, reason_text: str = "") -> str:
-            rl = (reason_text or "").lower()
-            if "irrelevant" in rl or "wrong product" in rl or "irrelevant product" in rl:
-                return "IRRELEVANT PRODUCT"
-            return BADGE_LABEL.get(key, fallback.upper())
-
-        ASSISTANT_DIMS = {
-            "tone_and_helpfulness",
-            "policy_compliance",
-            "hallucination_check",
-            "cross_brand_check",
-            "factual_accuracy",
-        }
-        USER_DIMS = {"user_satisfaction_signals"}
-
-        # Pre-compute every text's positions, per role, so we can show "repeated" badges
-        # only on the LAST occurrence of a repeated text (the most damning moment).
-        user_text_positions: dict[str, list[int]] = {}
-        asst_text_positions: dict[str, list[int]] = {}
-        for _mi, _m in enumerate(transcript):
-            if (_m.get("messageType") or "text") == "event":
-                continue
-            _role = "User" if _m.get("sender") == "user" else "Assistant"
-            _text, _, _, _ = prepare_transcript_turn(_role, _m.get("text") or "")
-            _norm = " ".join(_text.lower().split())[:120]
-            (user_text_positions if _role == "User" else asst_text_positions).setdefault(_norm, []).append(_mi)
+        turns = _group_into_turns(transcript)
 
         st.markdown('<div class="chat-thread">', unsafe_allow_html=True)
 
-        for mi, m in enumerate(transcript):
-            mtype = m.get("messageType") or "text"
-            if mtype == "event":
+        for user_msgs, asst_msgs in turns:
+            for m in user_msgs:
+                display_text, _, _, _ = prepare_transcript_turn("User", m.get("text") or "")
+                safe_text = _md_to_html(html.escape(display_text).replace("\n", "<br/>"))
+                st.markdown(
+                    f'<div class="msg-row left">'
+                    f'  <div class="role-tag">CUSTOMER</div>'
+                    f'  <div class="msg-card"><div class="bubble">{safe_text}</div></div>'
+                    f'</div>',
+                    unsafe_allow_html=True,
+                )
+
+            for m in asst_msgs:
+                display_text, _, _, _ = prepare_transcript_turn("Assistant", m.get("text") or "")
+                safe_text = _md_to_html(html.escape(display_text).replace("\n", "<br/>"))
+                st.markdown(
+                    f'<div class="msg-row right">'
+                    f'  <div class="role-tag">ASSISTANT</div>'
+                    f'  <div class="msg-card"><div class="bubble">{safe_text}</div></div>'
+                    f'</div>',
+                    unsafe_allow_html=True,
+                )
+
+            turn_flags = _collect_turn_flags(user_msgs, asst_msgs, evidence_hits, mi_to_m)
+            if not turn_flags:
                 continue
 
-            role = "User" if m.get("sender") == "user" else "Assistant"
-            display_text, _, _, _ = prepare_transcript_turn(role, m.get("text") or "")
-            hits = evidence_hits.get(mi, [])
+            turn_flags.sort(key=lambda h: h.get("score", 5.0))
+            top_flags = turn_flags[:2]
+            is_red = any(
+                h.get("score", 5.0) <= 2.0
+                or h.get("key", "") in {"hallucination_check", "factual_accuracy", "cross_brand_check"}
+                for h in top_flags
+            )
+            bar_class = "turn-verdict" if is_red else "turn-verdict amber"
+            # Prefer the eval-level failure_descriptions (already a concise executive sentence)
+            # over dimension issue text, which can be verbose or mid-sentence when truncated.
+            failure_descs = [fd for fd in (merged.get("failure_descriptions") or []) if fd and fd.strip()]
+            verdict_reason = failure_descs[0] if failure_descs else top_flags[0].get("reason", "")
 
-            norm = " ".join(display_text.lower().split())[:120]
-            positions = (user_text_positions if role == "User" else asst_text_positions).get(norm, [])
-            # "Last occurrence of a text that repeats 2+ times" — the moment the issue is undeniable
-            is_last_repeat = len(positions) >= 2 and positions[-1] == mi
-
-            def _suppress_repeated(reason_text: str) -> bool:
-                rl = (reason_text or "").lower()
-                mentions_repeat = "repeat" in rl or "multiple times" in rl or "again and again" in rl
-                if not mentions_repeat:
-                    return False
-                # Allow the badge only on the last occurrence of a repeated text
-                return not is_last_repeat
-
-            # Filter out hits whose reason describes repetition unless we're at the most damning moment
-            hits = [h for h in hits if not _suppress_repeated(h.get("reason", ""))]
-
-            # Strict role-based filtering: assistant-side dimensions only attach to assistant messages,
-            # user-side dimensions only attach to customer messages — even if the evidence quote happened
-            # to overlap the other role's text.
-            allowed_dims = ASSISTANT_DIMS if role == "Assistant" else USER_DIMS
-            hits = [h for h in hits if h.get("key", "") in allowed_dims]
-            is_bad = bool(hits)
-
-            # Prepare text: escape HTML then convert markdown to clickable links
-            safe_text = html.escape(display_text).replace("\n", "<br/>")
-            safe_text = _md_to_html(safe_text)
-
-            # Choose bubble style
-            if is_bad and role == "User":
-                bubble_class = "flagged-customer"
-            elif is_bad:
-                bubble_class = "flagged-assistant"
-            else:
-                bubble_class = "neutral"
-
-            align = "left" if role == "User" else "right"
-            display_role = "CUSTOMER" if role == "User" else "ASSISTANT"
-
-            # ── Build insight badges (3-tier fallback) ──
-            insight_html = ""
-            shown_insights: set[str] = set()  # per-message de-duplication
-
-            if hits:
-                # TIER 1: Direct evidence match
-                for hit in hits:
-                    badge_color = "red" if role == "User" else "amber"
-                    badge_label = badge_for(hit.get("key", ""), hit["label"], hit["reason"])
-                    dedup_key = f"{badge_label}:{hit['reason'][:40]}"
-                    if dedup_key not in shown_insights:
-                        shown_insights.add(dedup_key)
-                        insight_html += (
-                            f'<div class="audit-insight">'
-                            f'  <span class="insight-badge {badge_color}">{badge_label}</span>'
-                            f'  <span class="insight-reason">{html.escape(hit["reason"])}</span>'
-                            f'</div>'
-                        )
-
-            role_slug = "user" if role == "User" else "assistant"
-            if insight_html:
-                card_class = "msg-card has-insights"
-                bundle_open = f'<div class="flagged-bundle {role_slug}">'
-                bundle_close = "</div>"
-            else:
-                card_class = "msg-card"
-                bundle_open = ""
-                bundle_close = ""
+            badges_html = ""
+            for hit in top_flags:
+                bl = _badge_for(hit.get("key", ""), hit["label"], hit.get("reason", ""))
+                hit_red = (
+                    hit.get("score", 5.0) <= 2.0
+                    or hit.get("key", "") in {"hallucination_check", "factual_accuracy", "cross_brand_check"}
+                )
+                bc = "red" if hit_red else "amber"
+                badges_html += f'<span class="verdict-badge {bc}">{html.escape(bl)}</span>'
 
             st.markdown(
-                f'<div class="msg-row {align}">'
-                f'  <div class="role-tag">{display_role}</div>'
-                f'  <div class="{card_class}">'
-                f"    {bundle_open}"
-                f'    <div class="bubble {bubble_class}">{safe_text}</div>'
-                f"    {insight_html}"
-                f"    {bundle_close}"
-                f"  </div>"
-                f"</div>",
+                f'<div class="{bar_class}">'
+                f'  {badges_html}'
+                f'  <span class="verdict-reason">· {html.escape(verdict_reason)}</span>'
+                f'</div>',
                 unsafe_allow_html=True,
             )
 
