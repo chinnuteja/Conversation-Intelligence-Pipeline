@@ -62,7 +62,7 @@ def load_messages_index():
         idx.setdefault(cid, []).append(
             {
                 "sender": m.get("sender"),
-                "text": (m.get("text") or "")[:8000],
+                "text": (m.get("text") or ""),
                 "timestamp": str(m.get("timestamp", "")),
                 "messageType": m.get("messageType", "text"),
                 "_id": str(m.get("_id", "")),

@@ -22,6 +22,7 @@ from dashboard.cached_loaders import (
     load_messages_index,
     load_report,
 )
+from src.models import ProductContext
 from src.stage1_ingest import parse_agent_message
 
 OUTPUT_DIR = ROOT / "output"
@@ -181,6 +182,79 @@ CUSTOM_CSS = """
         border: 1px solid rgba(255, 255, 255, 0.22);
         border-top: 1px dashed rgba(255, 255, 255, 0.12);
         background: rgba(0, 0, 0, 0.18);
+    }
+    /* ── Product Catalog (evaluator ground truth) ── */
+    .catalog-details {
+        margin-top: 8px;
+        max-width: min(100%, 620px);
+        font-family: 'Inter', sans-serif;
+        font-size: 0.72rem;
+        color: rgba(255, 255, 255, 0.86);
+    }
+    .catalog-details summary {
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+        padding: 7px 11px;
+        border-radius: 8px;
+        border: 1px solid rgba(255, 255, 255, 0.22);
+        background: rgba(255, 255, 255, 0.07);
+        font-weight: 700;
+        font-size: 0.72rem;
+        letter-spacing: 0.02em;
+        color: rgba(255, 255, 255, 0.95);
+        user-select: none;
+        list-style: none;
+    }
+    .catalog-details summary:hover {
+        background: rgba(255, 255, 255, 0.11);
+        border-color: rgba(255, 255, 255, 0.32);
+    }
+    .catalog-details summary::-webkit-details-marker { display: none; }
+    .catalog-details summary::after {
+        content: "";
+        flex-shrink: 0;
+        width: 0;
+        height: 0;
+        border-left: 5px solid transparent;
+        border-right: 5px solid transparent;
+        border-top: 6px solid rgba(255, 255, 255, 0.65);
+        margin-left: 4px;
+        transition: transform 0.18s ease;
+    }
+    .catalog-details[open] summary::after { transform: rotate(180deg); }
+    .catalog-details[open] summary {
+        border-radius: 8px 8px 0 0;
+        border-bottom-color: transparent;
+    }
+    .catalog-body {
+        padding: 8px 11px 4px 11px;
+        border-radius: 0 0 8px 8px;
+        border: 1px solid rgba(255, 255, 255, 0.22);
+        border-top: 1px dashed rgba(255, 255, 255, 0.12);
+        background: rgba(0, 0, 0, 0.18);
+    }
+    .catalog-row {
+        padding: 7px 0;
+        border-bottom: 1px dashed rgba(255, 255, 255, 0.08);
+    }
+    .catalog-row:last-child { border-bottom: none; }
+    .catalog-head { display: flex; align-items: baseline; gap: 8px; flex-wrap: wrap; }
+    .catalog-title { font-weight: 600; color: rgba(255, 255, 255, 0.95); }
+    .catalog-price { color: #b7f7c2; font-weight: 600; }
+    .catalog-link { font-size: 0.68rem; color: #74b9ff; text-decoration: underline; }
+    .catalog-desc {
+        font-size: 0.70rem;
+        color: rgba(255, 255, 255, 0.60);
+        margin-top: 3px;
+        line-height: 1.45;
+    }
+    .catalog-variants {
+        font-size: 0.62rem;
+        color: rgba(255, 255, 255, 0.45);
+        margin-top: 3px;
     }
     /* ── Chat Thread ── */
     .chat-thread {
@@ -661,6 +735,77 @@ def _collect_turn_flags(
     return result
 
 
+def _aggregate_conversation_products(transcript: list[dict]) -> list[ProductContext]:
+    """Walk agent messages, parse each product payload, dedupe by (title, price)."""
+    seen: set[tuple[str, str]] = set()
+    products: list[ProductContext] = []
+    for m in transcript:
+        if m.get("sender") != "agent" or (m.get("messageType") or "text") != "text":
+            continue
+        _, parsed = parse_agent_message(m.get("text") or "")
+        for p in parsed:
+            key = (p.title.strip().lower(), str(p.price).strip())
+            if key in seen:
+                continue
+            seen.add(key)
+            products.append(p)
+    return products
+
+
+def render_product_catalog(products: list[ProductContext]) -> None:
+    """Show the same product catalog the evaluator used as ground truth."""
+    if not products:
+        return
+
+    rows_html = ""
+    for p in products:
+        title = html.escape(p.title or "(untitled)")
+        price = html.escape(str(p.price or "").strip())
+        link_html = (
+            f'<a class="catalog-link" href="{html.escape(p.link, quote=True)}" target="_blank">view</a>'
+            if p.link else ""
+        )
+        price_html = f'<span class="catalog-price">{price}</span>' if price else ""
+
+        desc_clean = " ".join((p.description or "").split())
+        desc_html = (
+            f'<div class="catalog-desc">{html.escape(desc_clean)}</div>'
+            if desc_clean else ""
+        )
+
+        variants = p.variants or []
+        variants_html = ""
+        if variants:
+            variant_titles = ", ".join(
+                f"{v.get('title', '?')} ({v.get('price', '?')})" for v in variants
+            )
+            variants_html = (
+                f'<div class="catalog-variants" title="{html.escape(variant_titles, quote=True)}">'
+                f"{len(variants)} variant{'s' if len(variants) != 1 else ''}"
+                f"</div>"
+            )
+
+        rows_html += (
+            '<div class="catalog-row">'
+            '  <div class="catalog-head">'
+            f'    <span class="catalog-title">{title}</span>'
+            f"    {price_html}"
+            f"    {link_html}"
+            "  </div>"
+            f"  {desc_html}"
+            f"  {variants_html}"
+            "</div>"
+        )
+
+    st.markdown(
+        '<details class="catalog-details">'
+        f"<summary>Catalog evaluator used ({len(products)} product{'s' if len(products) != 1 else ''})</summary>"
+        f'<div class="catalog-body">{rows_html}</div>'
+        "</details>",
+        unsafe_allow_html=True,
+    )
+
+
 # ── Rendering ──
 
 def render_conversation(ev: dict) -> None:
@@ -682,6 +827,8 @@ def render_conversation(ev: dict) -> None:
         flags = collect_dimension_flags(merged)
 
         render_evaluation_metadata(ev, merged)
+
+        render_product_catalog(_aggregate_conversation_products(transcript))
 
         st.divider()
         st.markdown("##### Chat transcript (proof)")
